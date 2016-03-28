@@ -3309,8 +3309,11 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f020062
 			public const int mr_ic_settings_light = 2130837602;
 			
+			// aapt resource value: 0x7f020064
+			public const int notification_template_icon_bg = 2130837604;
+			
 			// aapt resource value: 0x7f020063
-			public const int notification_template_icon_bg = 2130837603;
+			public const int Repos = 2130837603;
 			
 			static Drawable()
 			{
@@ -3912,6 +3915,12 @@ namespace GitRemote.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f05001f
+			public const int ApplicationName = 2131034143;
+			
+			// aapt resource value: 0x7f05001e
+			public const int Hello = 2131034142;
 			
 			// aapt resource value: 0x7f05000b
 			public const int abc_action_bar_home_description = 2131034123;
