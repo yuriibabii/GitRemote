@@ -8,12 +8,13 @@ using Xamarin.Forms;
 
 namespace GitRemote
 {
-    public partial class GeneralPage : NavigationPage
+    public partial class GeneralPage : MasterDetailPage
     {
         public GeneralPage()
         {
             InitializeComponent();
-            Navigation.PushAsync(new UpperTabs());
+            //Navigation.PushAsync(new UpperTabs());
+
         }
     }
 }
