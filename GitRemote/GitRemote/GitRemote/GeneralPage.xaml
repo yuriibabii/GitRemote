@@ -4,15 +4,15 @@
              xmlns:gitRemote="clr-namespace:GitRemote;assembly=GitRemote"
              x:Class="GitRemote.GeneralPage">
   <MasterDetailPage.Master>
-    <gitRemote:UpperTabs Icon="">
+    <gitRemote:UpperTabs Icon="Repos.png">
 
     </gitRemote:UpperTabs>
   </MasterDetailPage.Master>
   
   <MasterDetailPage.Detail>
-    <TabbedPage>
-
-    </TabbedPage>
+    <NavigationPage>
+          
+    </NavigationPage>
   </MasterDetailPage.Detail>
 </MasterDetailPage>
 

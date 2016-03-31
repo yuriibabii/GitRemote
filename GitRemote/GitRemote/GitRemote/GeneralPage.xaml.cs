@@ -13,7 +13,7 @@ namespace GitRemote
         public GeneralPage()
         {
             InitializeComponent();
-            //Navigation.PushAsync(new UpperTabs());
+            this.Detail.Navigation.PushAsync(new UpperTabs());
 
         }
     }
