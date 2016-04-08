@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace GitRemote.Droid
 {
-    [Activity(Label = "GitRemote", Icon = "@drawable/ic_launcher", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "GitRemote", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -18,7 +18,6 @@ namespace GitRemote.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
-            this.ActionBar.SetIcon(Android.Resource.Color.Transparent);
         }
     }
 }
