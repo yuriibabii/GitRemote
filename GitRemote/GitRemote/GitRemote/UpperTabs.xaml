@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GitRemote.UpperTabs"
              x:Name="ContentPage"
-             Title="Hey"
-             Icon="Repos.png">
+             Title="Hey">
 <RelativeLayout>
    <Image Source="Repos.png" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"/>
 </RelativeLayout>
