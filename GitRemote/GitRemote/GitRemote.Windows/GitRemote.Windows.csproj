@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{290D12CC-B370-4A45-8276-15711363582D}</ProjectGuid>
+    <ProjectGuid>{0D474567-A271-4A8D-AAF6-0599FD189183}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GitRemote.Windows</RootNamespace>

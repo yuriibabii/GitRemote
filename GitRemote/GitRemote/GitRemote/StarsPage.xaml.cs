@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace GitRemote
 {
-    public partial class UpperTabs : ContentPage
+    public partial class StarsPage : ContentPage
     {
-        public UpperTabs()
+        public StarsPage()
         {
             InitializeComponent();
         }

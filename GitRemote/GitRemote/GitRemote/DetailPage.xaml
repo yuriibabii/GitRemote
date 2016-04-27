@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitRemote.DetailPage"
+             xmlns:local="clr-namespace:GitRemote;assembly=GitRemote">
+  
+  <local:NewsPage>
+    
+  </local:NewsPage>
+  
+  <local:RepositoriesPage>
+    
+  </local:RepositoriesPage>
+  
+  <local:StarsPage>
+    
+  </local:StarsPage>
+  
+  <local:FollowersPage>
+    
+  </local:FollowersPage>
+  
+  <local:FollowingPage>
+    
+  </local:FollowingPage>
+  
+</TabbedPage>
