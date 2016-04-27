@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace GitRemote
 {
-    public partial class DetailPage : ContentPage
+    public partial class DetailPage : TabbedPage
     {
         public DetailPage()
         {

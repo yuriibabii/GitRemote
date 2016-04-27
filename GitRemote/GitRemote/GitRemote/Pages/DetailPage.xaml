@@ -2,7 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GitRemote.DetailPage"
-             xmlns:local="clr-namespace:GitRemote;assembly=GitRemote">
+             xmlns:local="clr-namespace:GitRemote;assembly=GitRemote"
+             Title="GitRemote">
   
   <local:NewsPage>
     
