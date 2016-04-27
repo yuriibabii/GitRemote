@@ -36,29 +36,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="DetailPage.xaml.cs">
+    <Compile Include="Pages\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FollowersPage.xaml.cs">
+    <Compile Include="Pages\FollowersPage.xaml.cs">
       <DependentUpon>FollowersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FollowingPage.xaml.cs">
+    <Compile Include="Pages\FollowingPage.xaml.cs">
       <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage.xaml.cs">
+    <Compile Include="Pages\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewsPage.xaml.cs">
+    <Compile Include="Pages\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProfilePage.xaml.cs">
+    <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoriesPage.xaml.cs">
+    <Compile Include="Pages\RepositoriesPage.xaml.cs">
       <DependentUpon>RepositoriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StarsPage.xaml.cs">
+    <Compile Include="Pages\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -77,53 +77,52 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProfilePage.xaml">
+    <EmbeddedResource Include="Pages\ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MasterPage.xaml">
+    <EmbeddedResource Include="Pages\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DetailPage.xaml">
+    <EmbeddedResource Include="Pages\DetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="NewsPage.xaml">
+    <EmbeddedResource Include="Pages\NewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RepositoriesPage.xaml">
+    <EmbeddedResource Include="Pages\RepositoriesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="StarsPage.xaml">
+    <EmbeddedResource Include="Pages\StarsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FollowersPage.xaml">
+    <EmbeddedResource Include="Pages\FollowersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FollowingPage.xaml">
+    <EmbeddedResource Include="Pages\FollowingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
