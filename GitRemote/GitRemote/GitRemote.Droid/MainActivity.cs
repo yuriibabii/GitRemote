@@ -14,6 +14,7 @@ namespace GitRemote.Droid
     [Activity(Label = "GitRemote", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
+
         protected override void OnCreate(Bundle bundle)
         {
             FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
@@ -22,6 +23,7 @@ namespace GitRemote.Droid
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
             LoadApplication(new App());
+            
         }
     }
 }

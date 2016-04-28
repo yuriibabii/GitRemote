@@ -2431,32 +2431,38 @@ namespace GitRemote.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f08004b
-			public const int abc_background_cache_hint_selector_material_dark = 2131230795;
-			
 			// aapt resource value: 0x7f08004c
-			public const int abc_background_cache_hint_selector_material_light = 2131230796;
+			public const int BlueBarBackground = 2131230796;
+			
+			// aapt resource value: 0x7f08004b
+			public const int GreenIndicator = 2131230795;
 			
 			// aapt resource value: 0x7f08004d
-			public const int abc_color_highlight_material = 2131230797;
+			public const int abc_background_cache_hint_selector_material_dark = 2131230797;
+			
+			// aapt resource value: 0x7f08004e
+			public const int abc_background_cache_hint_selector_material_light = 2131230798;
+			
+			// aapt resource value: 0x7f08004f
+			public const int abc_color_highlight_material = 2131230799;
 			
 			// aapt resource value: 0x7f080004
 			public const int abc_input_method_navigation_guard = 2131230724;
 			
-			// aapt resource value: 0x7f08004e
-			public const int abc_primary_text_disable_only_material_dark = 2131230798;
-			
-			// aapt resource value: 0x7f08004f
-			public const int abc_primary_text_disable_only_material_light = 2131230799;
-			
 			// aapt resource value: 0x7f080050
-			public const int abc_primary_text_material_dark = 2131230800;
+			public const int abc_primary_text_disable_only_material_dark = 2131230800;
 			
 			// aapt resource value: 0x7f080051
-			public const int abc_primary_text_material_light = 2131230801;
+			public const int abc_primary_text_disable_only_material_light = 2131230801;
 			
 			// aapt resource value: 0x7f080052
-			public const int abc_search_url_text = 2131230802;
+			public const int abc_primary_text_material_dark = 2131230802;
+			
+			// aapt resource value: 0x7f080053
+			public const int abc_primary_text_material_light = 2131230803;
+			
+			// aapt resource value: 0x7f080054
+			public const int abc_search_url_text = 2131230804;
 			
 			// aapt resource value: 0x7f080005
 			public const int abc_search_url_text_normal = 2131230725;
@@ -2467,11 +2473,11 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f080007
 			public const int abc_search_url_text_selected = 2131230727;
 			
-			// aapt resource value: 0x7f080053
-			public const int abc_secondary_text_material_dark = 2131230803;
+			// aapt resource value: 0x7f080055
+			public const int abc_secondary_text_material_dark = 2131230805;
 			
-			// aapt resource value: 0x7f080054
-			public const int abc_secondary_text_material_light = 2131230804;
+			// aapt resource value: 0x7f080056
+			public const int abc_secondary_text_material_light = 2131230806;
 			
 			// aapt resource value: 0x7f080049
 			public const int accent = 2131230793;
@@ -2677,11 +2683,11 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f08003b
 			public const int switch_thumb_disabled_material_light = 2131230779;
 			
-			// aapt resource value: 0x7f080055
-			public const int switch_thumb_material_dark = 2131230805;
+			// aapt resource value: 0x7f080057
+			public const int switch_thumb_material_dark = 2131230807;
 			
-			// aapt resource value: 0x7f080056
-			public const int switch_thumb_material_light = 2131230806;
+			// aapt resource value: 0x7f080058
+			public const int switch_thumb_material_light = 2131230808;
 			
 			// aapt resource value: 0x7f08003c
 			public const int switch_thumb_normal_material_dark = 2131230780;
@@ -4558,6 +4564,9 @@ namespace GitRemote.Droid
 			
 			// aapt resource value: 0x7f070033
 			public const int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2131165235;
+			
+			// aapt resource value: 0x7f070146
+			public const int TabStyle = 2131165510;
 			
 			// aapt resource value: 0x7f0700b1
 			public const int TextAppearance_AppCompat = 2131165361;
