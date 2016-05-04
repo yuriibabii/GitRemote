@@ -3388,6 +3388,12 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f0b003a
 			public const int action_mode_close_button = 2131427386;
 			
+			// aapt resource value: 0x7f0b0084
+			public const int action_navigation = 2131427460;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int action_search = 2131427459;
+			
 			// aapt resource value: 0x7f0b003b
 			public const int activity_chooser_view_content = 2131427387;
 			
@@ -3936,6 +3942,22 @@ namespace GitRemote.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0c0000
+			public const int menu_home = 2131492864;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}

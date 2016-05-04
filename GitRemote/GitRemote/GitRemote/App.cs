@@ -13,6 +13,7 @@ namespace GitRemote
         {
             // The root page of your application
             MainPage = new ProfilePage();
+            
         }
        
     }
