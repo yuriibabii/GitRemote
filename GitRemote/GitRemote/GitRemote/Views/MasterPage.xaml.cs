@@ -8,9 +8,10 @@ namespace GitRemote.Views
     public partial class MasterPage : ContentPage
     {
         private List <MasterPageItem> _menuItems;
-
-        public MasterPage()
+        private RootPage root;
+        public MasterPage(RootPage root)
         {
+            this.root = root;
             InitializeComponent();
 
             AbsoluteLayout.SetLayoutBounds(MasterProfileImage, new Rectangle(16, 16, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
@@ -26,18 +27,20 @@ namespace GitRemote.Views
                      
             ListViewMenu.ItemsSource = _menuItems = new List<MasterPageItem>
             {
-                new MasterPageItem {MasterItemName = "Gists", MasterItemImage = "ic_code_black_24dp.png"},
-                new MasterPageItem {MasterItemName = "Issue Dashboard", MasterItemImage = "ic_slow_motion_video_black_24dp.png"},
-                new MasterPageItem {MasterItemName = "Bookmarks", MasterItemImage = "ic_bookmark_black_24dp.png"},
-                new MasterPageItem {MasterItemName = "Report an issue", MasterItemImage = "ic_error_outline_black_24dp.png"}
+                new MasterPageItem {MasterItemName = "Gists", MenuType = MenuType.Gists, MasterItemImage = "ic_code_black_24dp.png"},
+                new MasterPageItem {MasterItemName = "Issue Dashboard", MenuType = MenuType.IssueDashboard, MasterItemImage = "ic_slow_motion_video_black_24dp.png"},
+                new MasterPageItem {MasterItemName = "Bookmarks", MenuType = MenuType.Bookmarks, MasterItemImage = "ic_bookmark_black_24dp.png"},
+                new MasterPageItem {MasterItemName = "Report an issue", MenuType = MenuType.ReportAnIssue, MasterItemImage = "ic_error_outline_black_24dp.png"}
             };
+
+            ListViewMenu.SelectedItem = _menuItems[0];
 
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
                 if ( ListViewMenu.SelectedItem == null )
                     return;
 
-                await new NavigationPage(this).PushAsync(new ContentPage());
+                await this.root.NavigateAsync(( ( MasterPageItem )e.SelectedItem ).MenuType);
             };
         }
     }

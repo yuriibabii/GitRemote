@@ -59,6 +59,7 @@
     <Compile Include="Views\RepositoriesPage.xaml.cs">
       <DependentUpon>RepositoriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RootPage.cs" />
     <Compile Include="Views\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
     </Compile>

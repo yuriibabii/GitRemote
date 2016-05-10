@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using GitRemote.Views;
 using Xamarin.Forms;
 
 namespace GitRemote
@@ -11,8 +11,8 @@ namespace GitRemote
     {
         public App()
         {
-           
-            MainPage = new ProfilePage();
+            MainPage = new RootPage();
+            //MainPage = new ProfilePage();
             //MainPage = new ContentPage();
         }
        
