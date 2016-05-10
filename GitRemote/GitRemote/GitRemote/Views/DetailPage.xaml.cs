@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace GitRemote.Pages
+namespace GitRemote.Views
 {
     public partial class DetailPage : TabbedPage
     {

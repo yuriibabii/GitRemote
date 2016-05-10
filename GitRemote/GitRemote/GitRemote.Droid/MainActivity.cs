@@ -18,10 +18,10 @@ using Android.Support.V4.Content;
 
 namespace GitRemote.Droid
 {
-    [Activity(Label = "GitRemote", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "GitRemote", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : FormsAppCompatActivity
     {
-        Android.Support.V7.Widget.SearchView searchView;
+        
         protected override void OnCreate(Bundle bundle)
         {
             FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
@@ -34,21 +34,26 @@ namespace GitRemote.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            //change menu_search to your name
-           
-                this.MenuInflater.Inflate(Resource.Menu.menu_home, menu);
-                
-                var searchItem = menu.FindItem(Resource.Id.action_search);
-                var provider = MenuItemCompat.GetActionView(searchItem);
-                searchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
+            Android.Widget.SearchView searchView;
+            MenuInflater.Inflate(Resource.Menu.menu_home, menu);
 
-                searchView.QueryTextSubmit += (sender, args) => {
+            var searchItem = menu.FindItem(Resource.Id.action_search);
+            var provider = MenuItemCompat.GetActionView(searchItem);
+            searchView = provider.JavaCast<Android.Widget.SearchView>();
+           // searchView.SetIconifiedByDefault(false);
+            searchView.QueryTextSubmit += (sender, args) =>
+            {
+                Toast.MakeText(this, "You searched: " + args.Query, ToastLength.Short).Show();
+            };
+            //searchView.QueryTextSubmit += (sender, args) =>
+            //{
 
-                    var view = sender as Android.Support.V7.Widget.SearchView;
-                    if ( view != null )
-                        view.ClearFocus();
-                };
-            return base.OnCreateOptionsMenu(menu);
+            //    var view = sender as Android.Support.V7.Widget.SearchView;
+            //    if ( view != null )
+            //        view.ClearFocus();
+            //};
+            //return base.OnCreateOptionsMenu(menu);
+            return true;
         }
     }
 }

@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-<string name="searchIcon">icon.png</string>
+<string name="search">Search</string>
 </resources>

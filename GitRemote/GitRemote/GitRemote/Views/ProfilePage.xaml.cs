@@ -13,7 +13,7 @@ namespace GitRemote
         public ProfilePage()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new Pages.DetailPage());
+            Detail = new NavigationPage(new Views.DetailPage());
         }
     }
 }

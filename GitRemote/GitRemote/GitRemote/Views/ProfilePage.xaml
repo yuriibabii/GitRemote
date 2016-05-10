@@ -2,12 +2,12 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GitRemote.ProfilePage"
-             xmlns:local="clr-namespace:GitRemote;assembly=GitRemote">
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote">
   
 <MasterDetailPage.Master>
-  <local:MasterPage>
+  <views:MasterPage>
     
-  </local:MasterPage>
+  </views:MasterPage>
 </MasterDetailPage.Master>
   
 <MasterDetailPage.Detail>

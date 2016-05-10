@@ -11,9 +11,9 @@ namespace GitRemote
     {
         public App()
         {
-            // The root page of your application
+           
             MainPage = new ProfilePage();
-            
+            //MainPage = new ContentPage();
         }
        
     }
