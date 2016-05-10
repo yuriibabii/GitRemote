@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitRemote.Views.MasterPage"
+             Title="Nessesary">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Gray"
+                   TargetType="BoxView">
+                <Setter Property="Color"
+                        Value="#A99C96" />
+            </Style>
+            
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <AbsoluteLayout x:Name="MasterMenu">
+        
+        <!--Header-->
+        <BoxView x:Name="GrayHeader"
+                 Style="{StaticResource Gray}"
+                 AbsoluteLayout.LayoutBounds="0, 0, 1, 0.175"
+                 AbsoluteLayout.LayoutFlags="All">
+        </BoxView>
+
+        <Image x:Name="MasterProfileImage"
+               WidthRequest="50"
+               HeightRequest="50"
+               Source="ic_account_circle_white_24dp.png">
+        </Image>
+
+        <Label x:Name="MasterProfileName"
+               Text="GitRemote"
+               Font="Bold"
+               FontSize="18">
+        </Label>
+        
+        <!--Body-->
+        
+        <ListView x:Name="ListViewMenu"
+                  SeparatorColor="Transparent"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Spacing="15" Padding="10" > 
+                            <Image Source="{Binding MasterItemImage}" WidthRequest="25" HeightRequest="25" />
+                            <Label Text="{Binding MasterItemName}" FontSize="16" VerticalOptions="Center" Font="Bold"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            
+        </ListView> 
+        
+    </AbsoluteLayout>
+    
+    
+    
+</ContentPage>
