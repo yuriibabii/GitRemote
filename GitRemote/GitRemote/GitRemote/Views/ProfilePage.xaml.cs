@@ -8,11 +8,12 @@ using Xamarin.Forms;
 
 namespace GitRemote
 {
-    public partial class DetailPage : ContentPage
+    public partial class ProfilePage : MasterDetailPage
     {
-        public DetailPage()
+        public ProfilePage()
         {
             InitializeComponent();
+            Detail = new NavigationPage(new Views.DetailPage());
         }
     }
 }
