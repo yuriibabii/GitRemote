@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GitRemote.Helpers;
 using GitRemote.Models;
 using Xamarin.Forms;
 
@@ -8,10 +9,10 @@ namespace GitRemote.Views
     public partial class MasterPage : ContentPage
     {
         private List <MasterPageItem> _menuItems;
-        private RootPage root;
-        public MasterPage(RootPage root)
+
+        public MasterPage()
         {
-            this.root = root;
+
             InitializeComponent();
 
             AbsoluteLayout.SetLayoutBounds(MasterProfileImage, new Rectangle(16, 16, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
@@ -24,8 +25,8 @@ namespace GitRemote.Views
             AbsoluteLayout.SetLayoutFlags(MasterProfileImage, AbsoluteLayoutFlags.None);
 
             BindingContext = new MasterPageItem();
-                     
-            ListViewMenu.ItemsSource = _menuItems = new List<MasterPageItem>
+
+            _menuItems = new List<MasterPageItem>
             {
                 new MasterPageItem {MasterItemName = "Gists", MenuType = MenuType.Gists, MasterItemImage = "ic_code_black_24dp.png"},
                 new MasterPageItem {MasterItemName = "Issue Dashboard", MenuType = MenuType.IssueDashboard, MasterItemImage = "ic_slow_motion_video_black_24dp.png"},
@@ -33,14 +34,17 @@ namespace GitRemote.Views
                 new MasterPageItem {MasterItemName = "Report an issue", MenuType = MenuType.ReportAnIssue, MasterItemImage = "ic_error_outline_black_24dp.png"}
             };
 
-            ListViewMenu.SelectedItem = _menuItems[0];
+            ListViewMenu.ItemsSource = _menuItems;
+            ListViewMenu.SelectedItem = null;
 
-            ListViewMenu.ItemSelected += async (sender, e) =>
+            ListViewMenu.ItemSelected += (sender, e) =>
             {
+                MasterNavigation.Exist = true;
+
                 if ( ListViewMenu.SelectedItem == null )
                     return;
 
-                await this.root.NavigateAsync(( ( MasterPageItem )e.SelectedItem ).MenuType);
+                MasterNavigation.NavigateAsync(( ( MasterPageItem )e.SelectedItem ).MenuType);
             };
         }
     }

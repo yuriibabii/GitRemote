@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace GitRemote
+namespace GitRemote.Views.MasterPageViews
 {
-    public partial class ProfilePage : MasterDetailPage
+    public partial class IssueDashboardPage : ContentPage
     {
-        public ProfilePage()
+        public IssueDashboardPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
     }
 }

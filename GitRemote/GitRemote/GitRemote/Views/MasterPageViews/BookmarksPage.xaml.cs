@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace GitRemote
+namespace GitRemote.Views.MasterPageViews
 {
-    public partial class ProfilePage : MasterDetailPage
+    public partial class BookmarksPage : ContentPage
     {
-        public ProfilePage()
+        public BookmarksPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
     }
 }

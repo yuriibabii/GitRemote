@@ -51,7 +51,6 @@ namespace GitRemote.Models
         Gists,
         IssueDashboard,
         Bookmarks,
-        ReportAnIssue,
-        Detail
+        ReportAnIssue
     }
 }
