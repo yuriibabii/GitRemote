@@ -2,6 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GitRemote.Views.MasterPageViews.ReportAnIssuePage"
-             Title ="ReportAnIssue">
+             Title ="Report an iSssue">
     <Label Text="No ReportAnIssue" VerticalOptions="Center" HorizontalOptions="Center" />
 </ContentPage>

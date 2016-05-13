@@ -1,19 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GitRemote.ProfilePage"
-             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote">
+             x:Class="GitRemote.Views.ProfilePage"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
+             Title="GitRemote">
 
-    <MasterDetailPage.Master>
-        <views:MasterPage>
-
-        </views:MasterPage>
-    </MasterDetailPage.Master>
     
-    <MasterDetailPage.Detail>
-        <views:DetailPage>
-            
-        </views:DetailPage>
-    </MasterDetailPage.Detail>
-
+    
 </MasterDetailPage>

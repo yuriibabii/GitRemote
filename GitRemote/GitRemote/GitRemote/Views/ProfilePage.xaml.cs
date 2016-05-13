@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Xamarin.Forms;
 
-using Xamarin.Forms;
-
-namespace GitRemote
+namespace GitRemote.Views
 {
     public partial class ProfilePage : MasterDetailPage
     {
+        public static NavigationPage NavigationPage;
+        public static NavigationPage nav;
         public ProfilePage()
         {
-            InitializeComponent();            
+            InitializeComponent();  
+            nav = new NavigationPage(new DetailPage());
+            NavigationPage.SetHasNavigationBar(nav, false);
+            Detail = nav;
+            
+            Master = new MasterPage();
+            //NavigationPage = new NavigationPage(new MasterPage());
+            //NavigationPage.Title = "Nessesacy";
+            //Master = NavigationPage;
+            // Master = new NavigationPage(new MasterPage()) {Title = "Nessesary"};          
         }
     }
 }

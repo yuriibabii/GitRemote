@@ -10,6 +10,7 @@ namespace GitRemote.Views
     {
         private List <MasterPageItem> _menuItems;
 
+
         public MasterPage()
         {
 
@@ -39,11 +40,11 @@ namespace GitRemote.Views
 
             ListViewMenu.ItemSelected += (sender, e) =>
             {
-                MasterNavigation.Exist = true;
-
                 if ( ListViewMenu.SelectedItem == null )
                     return;
 
+                MasterNavigation.Exist = true;
+                
                 MasterNavigation.NavigateAsync(( ( MasterPageItem )e.SelectedItem ).MenuType);
             };
         }
