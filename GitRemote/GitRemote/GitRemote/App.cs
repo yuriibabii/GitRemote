@@ -5,13 +5,14 @@ namespace GitRemote
 {
     public class App : Application
     {
-        
+        public static NavigationPage Navigator;
+        public static ProfilePage MDP;
+
         public App()
         {
-            //Navigation = new NavigationPage(new ProfilePage());
-            //MainPage = Navigation;
-            //MainPage = new Views.ProfilePage();
-            MainPage = new ProfilePage();
+            MDP = new ProfilePage();
+            //MainPage = new ProfilePage();
+            MainPage = MDP;
         }
     }
 }

@@ -10,9 +10,7 @@ namespace GitRemote.Helpers
 {
     public static class MasterNavigation
     {
-        private static Application app;
-        public static INavigation Navigation;
-
+        
         private static string CurrentPage { get; set; }
 
         private static bool _exist;
@@ -28,22 +26,17 @@ namespace GitRemote.Helpers
             switch ( id )
             {
                 case MenuType.Gists:
-                    //await App.Navigation.PushAsync(new Views.MasterPageViews.GistsPage());
-                    await ProfilePage.nav.PushAsync(new GistsPage());
-                    //await new NavigationPage().PushAsync(new GistsPage());
-                    //ProfilePage.NavigationPage.PushAsync(new GistsPage());
-                    //app = Application.Current;
-                    //app.MainPage = 
+                    await App.Navigator.PushAsync(new GistsPage());                    
                     break;
-                //case MenuType.IssueDashboard:
-                //    await App.Navigation.PushAsync(new IssueDashboardPage());
-                //    break;
-                //case MenuType.Bookmarks:
-                //    await App.Navigation.PushAsync(new BookmarksPage());
-                //    break;
-                //case MenuType.ReportAnIssue:
-                //    await App.Navigation.PushAsync(new ReportAnIssuePage());
-                //    break;
+                case MenuType.IssueDashboard:
+                    await App.Navigator.PushAsync(new IssueDashboardPage());
+                    break;
+                case MenuType.Bookmarks:
+                    await App.Navigator.PushAsync(new BookmarksPage());
+                    break;
+                case MenuType.ReportAnIssue:
+                    await App.Navigator.PushAsync(new ReportAnIssuePage());
+                    break;
             }
             CurrentPage = id.ToString();
         }
