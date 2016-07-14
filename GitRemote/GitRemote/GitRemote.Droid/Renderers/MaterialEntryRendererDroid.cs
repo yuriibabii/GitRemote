@@ -112,6 +112,7 @@ namespace GitRemote.Droid.Renderers
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
             view.EditText.FocusChange += EditTextOnFocusChanged;
+            //view.EditText.setTr(InputTypes);
             return view;
         }
 

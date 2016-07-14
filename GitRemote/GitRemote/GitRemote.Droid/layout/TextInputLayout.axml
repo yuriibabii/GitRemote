@@ -18,5 +18,5 @@
     android:textCursorDrawable="@drawable/color_cursor"
     android:inputType="textNoSuggestions" 
     />
-  <!--"In Input Type we deleted Spell Check underline-->
+  <!--"With help of textNoSuggestions in input type we deleted Spell Check underline-->
 </android.support.design.widget.TextInputLayout>
