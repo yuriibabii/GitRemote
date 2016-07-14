@@ -14,6 +14,7 @@
                          AbsoluteLayout.LayoutBounds=".5, .05, .9, .1"
                          AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
     <views:MaterialEntry x:Name="PasswordEntry"
+                         
                          Placeholder = "Password" 
                          AbsoluteLayout.LayoutBounds=".5, .18, .9, .1"
                          AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>

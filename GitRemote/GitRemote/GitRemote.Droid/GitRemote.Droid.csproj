@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renderers\MaterialEntryRenderer_Droid.cs" />
+    <Compile Include="Renderers\MaterialEntryRendererDroid.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,7 +139,9 @@
     <AndroidResource Include="values\colors.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="values\style.xml" />
+    <AndroidResource Include="values\style.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="values\strings.xml" />

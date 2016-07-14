@@ -1,33 +1,29 @@
-using System.ComponentModel;
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
-using GitRemote.Droid;
 using GitRemote.Droid.Renderers;
 using GitRemote.Views;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
 using View = Android.Views.View;
- 
-[assembly: ExportRenderer(typeof (MaterialEntry), typeof(MaterialEntryRenderer_Droid))]
+
+[assembly: ExportRenderer(typeof(MaterialEntry), typeof(MaterialEntryRendererDroid))]
 
 namespace GitRemote.Droid.Renderers
 {
-    public class MaterialEntryRenderer_Droid : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
+    public class MaterialEntryRendererDroid : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
     {
         private TextInputLayout _nativeView;
 
-        private TextInputLayout NativeView
-        {
-            get { return _nativeView ?? (_nativeView = InitializeNativeView()); }
-        }
+        private TextInputLayout NativeView => _nativeView ?? ( _nativeView = InitializeNativeView() );
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
 
-            if (e.OldElement == null)
+            if ( e.OldElement == null )
             {
                 var ctrl = CreateNativeControl();
                 SetNativeControl(ctrl);
@@ -68,12 +64,22 @@ namespace GitRemote.Droid.Renderers
             {
                 SetText();
             }
+
+
         }
 
         private void EditTextOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             Element.Text = textChangedEventArgs.Text.ToString();
             NativeView.EditText.SetSelection(Element.Text.Length);
+        }
+
+        private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangeEventArgs)
+        {
+            //NativeView.EditText.SetHintTextColor(NativeView.EditText.IsFocused
+            //    ? new Android.Content.Res.ColorStateList(new int[][] { }, new int[] { Android.Resource.Color.HoloBlueDark })
+            //    : new Android.Content.Res.ColorStateList(new int[][] { }, new int[] { Android.Resource.Color.DarkerGray }));
+            
         }
 
         private void SetText()
@@ -100,7 +106,7 @@ namespace GitRemote.Droid.Renderers
 
         private void SetTextColor()
         {
-            if (Element.TextColor == Color.Default)
+            if ( Element.TextColor == Color.Default )
                 NativeView.EditText.SetTextColor(NativeView.EditText.TextColors);
             else
                 NativeView.EditText.SetTextColor(Element.TextColor.ToAndroid());
@@ -110,6 +116,7 @@ namespace GitRemote.Droid.Renderers
         {
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
+            view.EditText.FocusChange += EditTextOnFocusChanged;
             return view;
         }
 
@@ -119,5 +126,7 @@ namespace GitRemote.Droid.Renderers
         }
     }
 
-    
+
+
+
 }

@@ -6,4 +6,5 @@
   <color name="window_background">#FFFFFF</color>
   <color name="GreenIndicator">#51D929</color>
   <color name="BlueBarBackground">#054678</color>
+  <color name="MetalBlueEntryHighLight">#929DF5</color>
 </resources>
