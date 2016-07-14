@@ -47,7 +47,7 @@ namespace GitRemote.Views
                 
                 MasterNavigation.NavigateAsync(( ( MasterPageItem )e.SelectedItem ).MenuType);
                 App.MDP.IsPresented = false;
-
+                ListViewMenu.SelectedItem = null;
             };
         }
     }

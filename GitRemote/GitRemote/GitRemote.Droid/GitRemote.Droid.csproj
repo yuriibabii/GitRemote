@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\MaterialEntryRenderer_Droid.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +107,9 @@
     </AndroidResource>
     <AndroidResource Include="layout\toolbar.axml">
       <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="layout\TextInputLayout.axml">
+      <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />

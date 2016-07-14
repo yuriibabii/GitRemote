@@ -6,14 +6,11 @@ namespace GitRemote.Views
     {
         public ProfilePage()
         {
-            InitializeComponent();  
+            InitializeComponent();
             App.Navigator = new NavigationPage(new DetailPage());
             NavigationPage.SetHasNavigationBar(App.Navigator, false);
             Detail = App.Navigator;
             Master = new MasterPage();
-            
-            
-        }       
-
+        }
     }
 }

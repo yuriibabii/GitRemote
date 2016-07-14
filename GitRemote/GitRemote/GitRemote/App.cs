@@ -1,6 +1,5 @@
 ﻿using GitRemote.Views;
 using Xamarin.Forms;
-
 namespace GitRemote
 {
     public class App : Application
@@ -10,9 +9,13 @@ namespace GitRemote
 
         public App()
         {
+
             MDP = new ProfilePage();
             //MainPage = new ProfilePage();
-            MainPage = MDP;
+            MainPage = new NavigationPage(new LoginingPage());
+            //MainPage = MDP; // Must Be Normal
+
+
         }
     }
 }
