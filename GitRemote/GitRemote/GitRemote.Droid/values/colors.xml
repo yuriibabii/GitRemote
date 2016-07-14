@@ -8,4 +8,7 @@
   <color name="GreenIndicator">#51D929</color>
   <color name="BlueBarBackground">#054678</color>
   <color name="MetalBlueEntryHighLight">#929DF5</color>
+  <color name="BlackCursor">#38463E</color>
+  <color name="KindOfBlueHintColor">#37429B</color>
+  <color name="SomethingLikeGreenForUnderLine">#30BB6D</color>
 </resources>

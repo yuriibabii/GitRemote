@@ -13,8 +13,7 @@
   </style>
   <style name="ThemeForMaterialEntry"
          parent="MyTheme">
-    <item name="colorControlActivated">#30BB6D</item>
-    <item name="android:textCursorDrawable">@null</item>
+    <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
   </style>
   <style name = "Tab">
     <item name = "tabIndicatorColor">@color/GreenIndicator</item>
@@ -24,7 +23,7 @@
   </style>
 
   <style name ="MaterialEntryHint" parent="@android:style/TextAppearance">
-    <item name ="android:textColor">#37429B</item> <!--Kind of Blue-->
+    <item name ="android:textColor">@color/KindOfBlueHintColor</item>
     <item name ="android:textSize">14sp</item>
     
   </style>
