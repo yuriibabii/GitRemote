@@ -9,6 +9,13 @@
     <ToolbarItem Text="Log in"></ToolbarItem>
   </ContentPage.ToolbarItems>
   <AbsoluteLayout>
-    <views:MaterialEntry Placeholder = "Login"> </views:MaterialEntry>
+    <views:MaterialEntry x:Name="LoginEntry"
+                         Placeholder = "Username or Email" 
+                         AbsoluteLayout.LayoutBounds=".5, .05, .9, .1"
+                         AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
+    <views:MaterialEntry x:Name="PasswordEntry"
+                         Placeholder = "Password" 
+                         AbsoluteLayout.LayoutBounds=".5, .18, .9, .1"
+                         AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
   </AbsoluteLayout>
 </ContentPage>
