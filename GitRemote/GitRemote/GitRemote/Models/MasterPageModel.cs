@@ -42,5 +42,15 @@ namespace GitRemote.Models
             get { return _masterItemName; }
             set { _masterItemName = value; }
         }
+
+        public MenuType MenuType { get; set; }
+    }
+
+    public enum MenuType
+    {
+        Gists,
+        IssueDashboard,
+        Bookmarks,
+        ReportAnIssue
     }
 }

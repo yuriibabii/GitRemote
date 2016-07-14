@@ -46,8 +46,23 @@
     <Compile Include="Views\FollowingPage.xaml.cs">
       <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginingPage.xaml.cs">
+      <DependentUpon>LoginingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\BookmarksPage.xaml.cs">
+      <DependentUpon>BookmarksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\GistsPage.xaml.cs">
+      <DependentUpon>GistsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\IssueDashboardPage.xaml.cs">
+      <DependentUpon>IssueDashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\ReportAnIssuePage.xaml.cs">
+      <DependentUpon>ReportAnIssuePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
@@ -59,6 +74,7 @@
     <Compile Include="Views\RepositoriesPage.xaml.cs">
       <DependentUpon>RepositoriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MasterNavigation.cs" />
     <Compile Include="Views\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +146,36 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\GistsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\IssueDashboardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\BookmarksPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\ReportAnIssuePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LoginingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

@@ -2431,38 +2431,50 @@ namespace GitRemote.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f08004c
-			public const int BlueBarBackground = 2131230796;
-			
-			// aapt resource value: 0x7f08004b
-			public const int GreenIndicator = 2131230795;
+			// aapt resource value: 0x7f08004f
+			public const int BlackCursor = 2131230799;
 			
 			// aapt resource value: 0x7f08004d
-			public const int abc_background_cache_hint_selector_material_dark = 2131230797;
+			public const int BlueBarBackground = 2131230797;
+			
+			// aapt resource value: 0x7f08004c
+			public const int GreenIndicator = 2131230796;
+			
+			// aapt resource value: 0x7f080050
+			public const int KindOfBlueHintColor = 2131230800;
 			
 			// aapt resource value: 0x7f08004e
-			public const int abc_background_cache_hint_selector_material_light = 2131230798;
+			public const int MetalBlueEntryHighLight = 2131230798;
 			
-			// aapt resource value: 0x7f08004f
-			public const int abc_color_highlight_material = 2131230799;
+			// aapt resource value: 0x7f080051
+			public const int SomethingLikeGreenForUnderLine = 2131230801;
+			
+			// aapt resource value: 0x7f080052
+			public const int abc_background_cache_hint_selector_material_dark = 2131230802;
+			
+			// aapt resource value: 0x7f080053
+			public const int abc_background_cache_hint_selector_material_light = 2131230803;
+			
+			// aapt resource value: 0x7f080054
+			public const int abc_color_highlight_material = 2131230804;
 			
 			// aapt resource value: 0x7f080004
 			public const int abc_input_method_navigation_guard = 2131230724;
 			
-			// aapt resource value: 0x7f080050
-			public const int abc_primary_text_disable_only_material_dark = 2131230800;
+			// aapt resource value: 0x7f080055
+			public const int abc_primary_text_disable_only_material_dark = 2131230805;
 			
-			// aapt resource value: 0x7f080051
-			public const int abc_primary_text_disable_only_material_light = 2131230801;
+			// aapt resource value: 0x7f080056
+			public const int abc_primary_text_disable_only_material_light = 2131230806;
 			
-			// aapt resource value: 0x7f080052
-			public const int abc_primary_text_material_dark = 2131230802;
+			// aapt resource value: 0x7f080057
+			public const int abc_primary_text_material_dark = 2131230807;
 			
-			// aapt resource value: 0x7f080053
-			public const int abc_primary_text_material_light = 2131230803;
+			// aapt resource value: 0x7f080058
+			public const int abc_primary_text_material_light = 2131230808;
 			
-			// aapt resource value: 0x7f080054
-			public const int abc_search_url_text = 2131230804;
+			// aapt resource value: 0x7f080059
+			public const int abc_search_url_text = 2131230809;
 			
 			// aapt resource value: 0x7f080005
 			public const int abc_search_url_text_normal = 2131230725;
@@ -2473,14 +2485,17 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f080007
 			public const int abc_search_url_text_selected = 2131230727;
 			
-			// aapt resource value: 0x7f080055
-			public const int abc_secondary_text_material_dark = 2131230805;
+			// aapt resource value: 0x7f08005a
+			public const int abc_secondary_text_material_dark = 2131230810;
 			
-			// aapt resource value: 0x7f080056
-			public const int abc_secondary_text_material_light = 2131230806;
+			// aapt resource value: 0x7f08005b
+			public const int abc_secondary_text_material_light = 2131230811;
 			
 			// aapt resource value: 0x7f080049
 			public const int accent = 2131230793;
+			
+			// aapt resource value: 0x7f08004a
+			public const int accentForMaterialEntry = 2131230794;
 			
 			// aapt resource value: 0x7f080008
 			public const int accent_material_dark = 2131230728;
@@ -2683,11 +2698,11 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f08003b
 			public const int switch_thumb_disabled_material_light = 2131230779;
 			
-			// aapt resource value: 0x7f080057
-			public const int switch_thumb_material_dark = 2131230807;
+			// aapt resource value: 0x7f08005c
+			public const int switch_thumb_material_dark = 2131230812;
 			
-			// aapt resource value: 0x7f080058
-			public const int switch_thumb_material_light = 2131230808;
+			// aapt resource value: 0x7f08005d
+			public const int switch_thumb_material_light = 2131230813;
 			
 			// aapt resource value: 0x7f08003c
 			public const int switch_thumb_normal_material_dark = 2131230780;
@@ -2695,8 +2710,8 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f08003d
 			public const int switch_thumb_normal_material_light = 2131230781;
 			
-			// aapt resource value: 0x7f08004a
-			public const int window_background = 2131230794;
+			// aapt resource value: 0x7f08004b
+			public const int window_background = 2131230795;
 			
 			static Color()
 			{
@@ -3217,133 +3232,136 @@ namespace GitRemote.Droid
 			public const int abc_textfield_search_material = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int design_fab_background = 2130837566;
+			public const int color_cursor = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int design_snackbar_background = 2130837567;
+			public const int design_fab_background = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int ic_account_circle_white_24dp = 2130837568;
+			public const int design_snackbar_background = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int ic_bookmark_black_24dp = 2130837569;
+			public const int ic_account_circle_white_24dp = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int ic_cast_dark = 2130837570;
+			public const int ic_bookmark_black_24dp = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int ic_cast_disabled_light = 2130837571;
+			public const int ic_cast_dark = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int ic_cast_light = 2130837572;
+			public const int ic_cast_disabled_light = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int ic_cast_off_light = 2130837573;
+			public const int ic_cast_light = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int ic_cast_on_0_light = 2130837574;
+			public const int ic_cast_off_light = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int ic_cast_on_1_light = 2130837575;
+			public const int ic_cast_on_0_light = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int ic_cast_on_2_light = 2130837576;
+			public const int ic_cast_on_1_light = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int ic_cast_on_light = 2130837577;
+			public const int ic_cast_on_2_light = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int ic_code_black_24dp = 2130837578;
+			public const int ic_cast_on_light = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int ic_error_outline_black_24dp = 2130837579;
+			public const int ic_code_black_24dp = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int ic_media_pause = 2130837580;
+			public const int ic_error_outline_black_24dp = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int ic_media_play = 2130837581;
+			public const int ic_media_pause = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int ic_media_route_disabled_mono_dark = 2130837582;
+			public const int ic_media_play = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int ic_media_route_off_mono_dark = 2130837583;
+			public const int ic_media_route_disabled_mono_dark = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int ic_media_route_on_0_mono_dark = 2130837584;
+			public const int ic_media_route_off_mono_dark = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int ic_media_route_on_1_mono_dark = 2130837585;
+			public const int ic_media_route_on_0_mono_dark = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int ic_media_route_on_2_mono_dark = 2130837586;
+			public const int ic_media_route_on_1_mono_dark = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int ic_media_route_on_mono_dark = 2130837587;
+			public const int ic_media_route_on_2_mono_dark = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int ic_pause_dark = 2130837588;
+			public const int ic_media_route_on_mono_dark = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int ic_pause_light = 2130837589;
+			public const int ic_pause_dark = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int ic_play_dark = 2130837590;
+			public const int ic_pause_light = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ic_play_light = 2130837591;
+			public const int ic_play_dark = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_setting_dark = 2130837592;
+			public const int ic_play_light = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_setting_light = 2130837593;
+			public const int ic_setting_dark = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int ic_slow_motion_video_black_24dp = 2130837594;
+			public const int ic_setting_light = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int icon = 2130837595;
+			public const int ic_slow_motion_video_black_24dp = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int mr_ic_cast_dark = 2130837596;
+			public const int icon = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int mr_ic_cast_light = 2130837597;
+			public const int mr_ic_cast_dark = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837598;
+			public const int mr_ic_cast_light = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int mr_ic_media_route_connecting_mono_light = 2130837599;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int mr_ic_media_route_mono_dark = 2130837600;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int mr_ic_media_route_mono_light = 2130837601;
+			public const int mr_ic_media_route_mono_dark = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int mr_ic_pause_dark = 2130837602;
+			public const int mr_ic_media_route_mono_light = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int mr_ic_pause_light = 2130837603;
+			public const int mr_ic_pause_dark = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int mr_ic_play_dark = 2130837604;
+			public const int mr_ic_pause_light = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int mr_ic_play_light = 2130837605;
+			public const int mr_ic_play_dark = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int mr_ic_settings_dark = 2130837606;
+			public const int mr_ic_play_light = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int mr_ic_settings_light = 2130837607;
+			public const int mr_ic_settings_dark = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notification_template_icon_bg = 2130837608;
+			public const int mr_ic_settings_light = 2130837608;
+			
+			// aapt resource value: 0x7f020069
+			public const int notification_template_icon_bg = 2130837609;
 			
 			static Drawable()
 			{
@@ -3403,8 +3421,8 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f0b003a
 			public const int action_mode_close_button = 2131427386;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int action_search = 2131427459;
+			// aapt resource value: 0x7f0b0084
+			public const int action_search = 2131427460;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int activity_chooser_view_content = 2131427387;
@@ -3715,6 +3733,9 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f0b007c
 			public const int text2 = 2131427452;
 			
+			// aapt resource value: 0x7f0b0082
+			public const int textInputLayout = 2131427458;
+			
 			// aapt resource value: 0x7f0b0048
 			public const int textSpacerNoButtons = 2131427400;
 			
@@ -3730,8 +3751,8 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int title_template = 2131427396;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int toolbar = 2131427458;
+			// aapt resource value: 0x7f0b0083
+			public const int toolbar = 2131427459;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int top = 2131427376;
@@ -3946,7 +3967,10 @@ namespace GitRemote.Droid
 			public const int tabs = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int toolbar = 2130903089;
+			public const int TextInputLayout = 2130903089;
+			
+			// aapt resource value: 0x7f030032
+			public const int toolbar = 2130903090;
 			
 			static Layout()
 			{
@@ -4527,6 +4551,9 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f070006
 			public const int CardView_Light = 2131165190;
 			
+			// aapt resource value: 0x7f070148
+			public const int MaterialEntryHint = 2131165512;
+			
 			// aapt resource value: 0x7f070144
 			public const int MyTheme = 2131165508;
 			
@@ -4602,8 +4629,8 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f070033
 			public const int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2131165235;
 			
-			// aapt resource value: 0x7f070146
-			public const int TabStyle = 2131165510;
+			// aapt resource value: 0x7f070147
+			public const int Tab = 2131165511;
 			
 			// aapt resource value: 0x7f0700b1
 			public const int TextAppearance_AppCompat = 2131165361;
@@ -4823,6 +4850,9 @@ namespace GitRemote.Droid
 			
 			// aapt resource value: 0x7f070001
 			public const int Theme_MediaRouter_Light = 2131165185;
+			
+			// aapt resource value: 0x7f070146
+			public const int ThemeForMaterialEntry = 2131165510;
 			
 			// aapt resource value: 0x7f0700ee
 			public const int ThemeOverlay_AppCompat = 2131165422;

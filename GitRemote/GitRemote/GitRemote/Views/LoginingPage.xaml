@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
+             x:Class="GitRemote.Views.LoginingPage"
+             Title="GitRemote"
+             >
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Log in"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+  <AbsoluteLayout>
+    <views:MaterialEntry x:Name="LoginEntry"
+                         Placeholder = "Username or Email" 
+                         AbsoluteLayout.LayoutBounds=".5, .08, .9, .1"
+                         AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
+    <views:MaterialEntry x:Name="PasswordEntry"
+                         
+                         Placeholder = "Password" 
+                         AbsoluteLayout.LayoutBounds=".5, .22, .9, .1"
+                         AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
+  </AbsoluteLayout>
+</ContentPage>

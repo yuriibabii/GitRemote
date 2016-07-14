@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using GitRemote.Views;
 using Xamarin.Forms;
-
 namespace GitRemote
 {
     public class App : Application
     {
+        public static NavigationPage Navigator;
+        public static ProfilePage MDP;
+
         public App()
         {
-           
-            MainPage = new ProfilePage();
-            //MainPage = new ContentPage();
+
+            MDP = new ProfilePage();
+            //MainPage = new ProfilePage();
+            MainPage = new NavigationPage(new LoginingPage());
+            //MainPage = MDP; // Must Be Normal
+
+
         }
-       
     }
 }
