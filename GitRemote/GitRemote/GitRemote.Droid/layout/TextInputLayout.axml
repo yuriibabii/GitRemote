@@ -16,6 +16,7 @@
     android:singleLine="true"   
     android:textSize ="20sp"
     android:textCursorDrawable="@drawable/color_cursor"
+    android:inputType="textNoSuggestions" 
     />
-    
+  <!--"In Input Type we deleted Spell Check underline-->
 </android.support.design.widget.TextInputLayout>
