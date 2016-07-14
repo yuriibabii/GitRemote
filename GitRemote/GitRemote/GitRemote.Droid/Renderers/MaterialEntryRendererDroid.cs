@@ -64,8 +64,6 @@ namespace GitRemote.Droid.Renderers
             {
                 SetText();
             }
-
-
         }
 
         private void EditTextOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
@@ -76,10 +74,7 @@ namespace GitRemote.Droid.Renderers
 
         private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangeEventArgs)
         {
-            //NativeView.EditText.SetHintTextColor(NativeView.EditText.IsFocused
-            //    ? new Android.Content.Res.ColorStateList(new int[][] { }, new int[] { Android.Resource.Color.HoloBlueDark })
-            //    : new Android.Content.Res.ColorStateList(new int[][] { }, new int[] { Android.Resource.Color.DarkerGray }));
-            
+            //NotImplemented yet          
         }
 
         private void SetText()
@@ -117,8 +112,6 @@ namespace GitRemote.Droid.Renderers
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
             view.EditText.FocusChange += EditTextOnFocusChanged;
-            //view.EditText.Focus(Android.Graphics.Color.Green);
-            
             return view;
         }
 
@@ -127,8 +120,5 @@ namespace GitRemote.Droid.Renderers
             return LayoutInflater.From(Context).Inflate(Resource.Layout.TextInputLayout, null);
         }
     }
-
-
-
 
 }
