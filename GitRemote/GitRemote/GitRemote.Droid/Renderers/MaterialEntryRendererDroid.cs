@@ -4,6 +4,8 @@ using Android.Views;
 using GitRemote.Droid.Renderers;
 using GitRemote.Views;
 using System.ComponentModel;
+using Android.Runtime;
+using Android.Text.Method;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
@@ -112,7 +114,7 @@ namespace GitRemote.Droid.Renderers
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
             view.EditText.FocusChange += EditTextOnFocusChanged;
-            //view.EditText.setTr(InputTypes);
+            
             return view;
         }
 

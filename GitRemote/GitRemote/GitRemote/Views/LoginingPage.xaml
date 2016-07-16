@@ -18,5 +18,14 @@
                          Placeholder = "Password" 
                          AbsoluteLayout.LayoutBounds=".5, .22, .9, .1"
                          AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
+    <views:CheckBoxImage x:Name="ShowPasswordCheckBox"
+                         AbsoluteLayout.LayoutBounds= ".5, .33, .9, .03"
+                         AbsoluteLayout.LayoutFlags="All">
+      <StackLayout Orientation="Horizontal">
+        <Image Source="btn_stat_notify_checkbox_square_unchecked.png"></Image>
+        <Label Text="Hello"></Label>
+      </StackLayout>
+      
+    </views:CheckBoxImage>
   </AbsoluteLayout>
 </ContentPage>
