@@ -22,14 +22,14 @@ namespace GitRemote.Views
 
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this,  new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public ICommand TapShowPassword { protected set; get; }
 
         public ShowPasswordCheckBox()
         {
-            TapShowPassword = new Command(OnShowPasswordTapped);           
+            TapShowPassword = new Command(OnShowPasswordTapped);
         }
 
         private string _imagePath = "btn_stat_notify_checkbox_square_unchecked.png";
@@ -39,18 +39,21 @@ namespace GitRemote.Views
             get { return _imagePath; }
             set
             {
-                if (value == null) throw new ArgumentNullException(nameof(value));
+                if ( value == null ) throw new ArgumentNullException(nameof(value));
                 _imagePath = value;
                 OnPropertyChanged("ImagePath");
-            } 
+            }
         }
 
         private bool IsPasswordVisible { get; set; }
 
+        /// <summary>
+        /// Doing what is needing after CheckBox tap
+        /// </summary>
         private void OnShowPasswordTapped()
         {
             ImagePath = IsPasswordVisible ? "btn_stat_notify_checkbox_square_unchecked.png" : "btn_Green_check_mark.png";
-            IsPasswordVisible = !IsPasswordVisible;          
+            IsPasswordVisible = !IsPasswordVisible;
         }
     }
 }
