@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace GitRemote.Views
@@ -9,57 +10,47 @@ namespace GitRemote.Views
         public LoginingPage()
         {
             InitializeComponent();
+            BindingContext = new ShowPasswordCheckBox();
         }
     }
 
     public class MaterialEntry : Entry { }
 
-    public class CheckBoxImage : ContentView
+    public class ShowPasswordCheckBox : INotifyPropertyChanged
     {
-        
-        Label _lblText = new Label() { Text = "This is UnChecked" };
-        private Image _image = new Image();
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public CheckBoxImage()
+        protected void OnPropertyChanged(string propertyName)
         {
-            //Im.Source = "btn_stat_notify_checkbox-square-unchecked.png";
-            //StackLayout stklayout = new StackLayout()
-            //{
-            //    //Orientation = StackOrientation.Horizontal,
-            //    //Children =
-            //    //{
-            //    //    Im,
-            //    //    lblText
-            //    //}
-            //};
-
-            //TapGestureRecognizer t = new TapGestureRecognizer();
-            //t.Tapped += OnScreenTapped;
-            //stklayout.GestureRecognizers.Add(t);
-
-            //Content = stklayout;
-
+            PropertyChanged?.Invoke(this,  new PropertyChangedEventArgs(propertyName));
         }
 
-        public void OnScreenTapped(object sender, EventArgs args)
+        public ICommand TapShowPassword { protected set; get; }
+
+        public ShowPasswordCheckBox()
         {
-            var resourceName = Resources["ImageName"];
-            if ( resourceName.ToString() == "btn_stat_notify_checkbox-square-unchecked" )
+            TapShowPassword = new Command(OnShowPasswordTapped);           
+        }
+
+        private string _imagePath = "btn_stat_notify_checkbox_square_unchecked.png";
+
+        public string ImagePath
+        {
+            get { return _imagePath; }
+            set
             {
-                Resources["ImageName"] = "btn_stat_notify_Green_check_mark";
-                _image.Source = ImageSource.FromResource("btn_stat_notify_Green_check_mark");
-                _lblText.Text = "This is Checked";
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                _imagePath = value;
+                OnPropertyChanged("ImagePath");
+            } 
+        }
 
-            }
-            else
-            {
-                Resources["ImageName"] = "btn_stat_notify_checkbox-square-unchecked";
-                _image.Source = ImageSource.FromResource("btn_stat_notify_checkbox-square-unchecked");
-                _lblText.Text = "This is UnChecked";
+        private bool IsPasswordVisible { get; set; }
 
-            }
-
-
+        private void OnShowPasswordTapped()
+        {
+            ImagePath = IsPasswordVisible ? "btn_stat_notify_checkbox_square_unchecked.png" : "btn_Green_check_mark.png";
+            IsPasswordVisible = !IsPasswordVisible;          
         }
     }
 }

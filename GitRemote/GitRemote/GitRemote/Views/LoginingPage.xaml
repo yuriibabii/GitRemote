@@ -12,20 +12,27 @@
     <views:MaterialEntry x:Name="LoginEntry"
                          Placeholder = "Username or Email" 
                          AbsoluteLayout.LayoutBounds=".5, .08, .9, .1"
-                         AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
+                         AbsoluteLayout.LayoutFlags="All"/>
+    
     <views:MaterialEntry x:Name="PasswordEntry"
                          IsPassword="True"
                          Placeholder = "Password" 
                          AbsoluteLayout.LayoutBounds=".5, .22, .9, .1"
-                         AbsoluteLayout.LayoutFlags="All"></views:MaterialEntry>
-    <views:CheckBoxImage x:Name="ShowPasswordCheckBox"
-                         AbsoluteLayout.LayoutBounds= ".5, .33, .9, .03"
-                         AbsoluteLayout.LayoutFlags="All">
-      <StackLayout Orientation="Horizontal">
-        <Image Source="btn_stat_notify_checkbox_square_unchecked.png"></Image>
-        <Label Text="Hello"></Label>
-      </StackLayout>
+                         AbsoluteLayout.LayoutFlags="All"/>
+    
+    <StackLayout Orientation="Horizontal"
+                 AbsoluteLayout.LayoutBounds= ".5, .33, .9, .03"
+                 AbsoluteLayout.LayoutFlags="All">
       
-    </views:CheckBoxImage>
+
+      <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding TapShowPassword}"
+                                NumberOfTapsRequired="1"/>
+      </StackLayout.GestureRecognizers>
+      
+        <Image Source="{Binding ImagePath}"/>
+        <Label Text="Show Password"/>
+    
+    </StackLayout>
   </AbsoluteLayout>
 </ContentPage>
