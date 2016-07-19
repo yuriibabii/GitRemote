@@ -6,6 +6,7 @@ using GitRemote.Views;
 using System.ComponentModel;
 using Android.Runtime;
 using Android.Text.Method;
+using Android.Views.InputMethods;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
@@ -42,27 +43,27 @@ namespace GitRemote.Droid.Renderers
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if ( e.PropertyName == Entry.PlaceholderProperty.PropertyName )
+            if (e.PropertyName == Entry.PlaceholderProperty.PropertyName)
             {
                 SetHintText();
             }
 
-            if ( e.PropertyName == Entry.TextColorProperty.PropertyName )
+            if (e.PropertyName == Entry.TextColorProperty.PropertyName)
             {
                 SetTextColor();
             }
 
-            if ( e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName )
+            if (e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName)
             {
                 SetBackgroundColor();
             }
 
-            if ( e.PropertyName == Entry.IsPasswordProperty.PropertyName )
+            if (e.PropertyName == Entry.IsPasswordProperty.PropertyName)
             {
                 SetIsPassword();
             }
 
-            if ( e.PropertyName == Entry.TextProperty.PropertyName )
+            if (e.PropertyName == Entry.TextProperty.PropertyName)
             {
                 SetText();
             }
@@ -88,7 +89,7 @@ namespace GitRemote.Droid.Renderers
         {
             NativeView.EditText.InputType = Element.IsPassword
                 ? InputTypes.TextVariationPassword | InputTypes.ClassText
-                : NativeView.EditText.InputType;
+                : InputTypes.ClassText;
         }
 
         public void SetBackgroundColor()
@@ -122,6 +123,7 @@ namespace GitRemote.Droid.Renderers
         {
             return LayoutInflater.From(Context).Inflate(Resource.Layout.TextInputLayout, null);
         }
+      
     }
 
 }

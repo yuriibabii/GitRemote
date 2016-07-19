@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,9 +13,10 @@ namespace GitRemote.Views
             InitializeComponent();
             BindingContext = new ShowPasswordCheckBox();
         }
+
     }
 
-    public class MaterialEntry : Entry { }
+    public class MaterialEntry : Entry {}
 
     public class ShowPasswordCheckBox : INotifyPropertyChanged
     {
@@ -41,19 +43,29 @@ namespace GitRemote.Views
             {
                 if ( value == null ) throw new ArgumentNullException(nameof(value));
                 _imagePath = value;
-                OnPropertyChanged("ImagePath");
+                OnPropertyChanged(nameof(ImagePath));
             }
         }
 
-        private bool IsPasswordVisible { get; set; }
+        private bool _isPasswordUnVisible = true;
+
+        public bool IsPasswordUnVisible
+        {
+            get { return _isPasswordUnVisible;}
+            set
+            {
+                _isPasswordUnVisible = value;
+                OnPropertyChanged(nameof(IsPasswordUnVisible));
+            }
+        }
 
         /// <summary>
         /// Doing what is needing after CheckBox tap
         /// </summary>
         private void OnShowPasswordTapped()
         {
-            ImagePath = IsPasswordVisible ? "btn_stat_notify_checkbox_square_unchecked.png" : "btn_Green_check_mark.png";
-            IsPasswordVisible = !IsPasswordVisible;
+            ImagePath = IsPasswordUnVisible ? "btn_stat_notify_checkbox_square_unchecked.png" : "btn_Green_check_mark.png";
+            IsPasswordUnVisible = !IsPasswordUnVisible;
         }
     }
 }
