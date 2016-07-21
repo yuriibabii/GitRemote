@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,10 +15,15 @@ namespace GitRemote.Views
 
     }
 
-    public class MaterialEntry : Entry {}
+    public class MaterialEntry : Entry { }
 
     public class ShowPasswordCheckBox : INotifyPropertyChanged
     {
+        public ShowPasswordCheckBox()
+        {
+            //ImageWidth = Binding.
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
@@ -47,11 +51,35 @@ namespace GitRemote.Views
             }
         }
 
+        private double _imageHeight = 0;
+
+        public double ImageHeight
+        {
+            get { return _imageHeight; }
+            set
+            {
+                _imageHeight = value;
+                OnPropertyChanged(nameof(ImageHeight));
+            }
+        }
+
+        private double _imageWidth = 0;
+
+        public double ImageWidth
+        {
+            get { return _imageWidth; }
+            set
+            {
+                _imageWidth = value;
+                OnPropertyChanged(nameof(ImageWidth));
+            }
+        }
+
         private bool _isPasswordUnVisible = true;
 
         public bool IsPasswordUnVisible
         {
-            get { return _isPasswordUnVisible;}
+            get { return _isPasswordUnVisible; }
             set
             {
                 _isPasswordUnVisible = value;
@@ -64,7 +92,7 @@ namespace GitRemote.Views
         /// </summary>
         private void OnShowPasswordTapped()
         {
-            ImagePath = IsPasswordUnVisible ? "btn_stat_notify_checkbox_square_unchecked.png" : "btn_Green_check_mark.png";
+            ImagePath = IsPasswordUnVisible ? "btn_Green_check_mark.png" : "btn_stat_notify_checkbox_square_unchecked.png";
             IsPasswordUnVisible = !IsPasswordUnVisible;
         }
     }

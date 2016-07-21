@@ -21,7 +21,8 @@
                          AbsoluteLayout.LayoutFlags="All"/>
     
     <StackLayout Orientation="Horizontal"
-                 AbsoluteLayout.LayoutBounds= ".1, .33, .35, .03"
+                 BackgroundColor="Blue"
+                 AbsoluteLayout.LayoutBounds= ".1, .33, .39, .04"
                  AbsoluteLayout.LayoutFlags="All">
       
       <StackLayout.GestureRecognizers>
@@ -29,7 +30,9 @@
                                 NumberOfTapsRequired="1"/>
       </StackLayout.GestureRecognizers>
       
-        <Image Source="{Binding ImagePath}"/>
+        <Image Source="{Binding ImagePath}" 
+               WidthRequest="{Binding ImageWidth}" 
+               HeightRequest="{Binding ImageHeight}"/>
       
         <Label Text="Show Password"
                VerticalTextAlignment="Center"/>
