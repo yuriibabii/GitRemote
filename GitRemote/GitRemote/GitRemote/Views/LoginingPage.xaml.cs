@@ -19,11 +19,6 @@ namespace GitRemote.Views
 
     public class ShowPasswordCheckBox : INotifyPropertyChanged
     {
-        public ShowPasswordCheckBox()
-        {
-            //ImageWidth = Binding.
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
@@ -48,30 +43,6 @@ namespace GitRemote.Views
                 if ( value == null ) throw new ArgumentNullException(nameof(value));
                 _imagePath = value;
                 OnPropertyChanged(nameof(ImagePath));
-            }
-        }
-
-        private double _imageHeight = 0;
-
-        public double ImageHeight
-        {
-            get { return _imageHeight; }
-            set
-            {
-                _imageHeight = value;
-                OnPropertyChanged(nameof(ImageHeight));
-            }
-        }
-
-        private double _imageWidth = 0;
-
-        public double ImageWidth
-        {
-            get { return _imageWidth; }
-            set
-            {
-                _imageWidth = value;
-                OnPropertyChanged(nameof(ImageWidth));
             }
         }
 

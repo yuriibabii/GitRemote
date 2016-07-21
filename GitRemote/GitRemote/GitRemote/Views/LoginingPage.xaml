@@ -12,30 +12,35 @@
     <views:MaterialEntry x:Name="LoginEntry"
                          Placeholder = "Username or Email" 
                          AbsoluteLayout.LayoutBounds=".5, .08, .9, .1"
-                         AbsoluteLayout.LayoutFlags="All"/>
+                         AbsoluteLayout.LayoutFlags="All"
+                         />
     
     <views:MaterialEntry x:Name="PasswordEntry"
                          IsPassword="{Binding IsPasswordUnVisible}"
                          Placeholder = "Password" 
                          AbsoluteLayout.LayoutBounds=".5, .22, .9, .1"
-                         AbsoluteLayout.LayoutFlags="All"/>
+                         AbsoluteLayout.LayoutFlags="All"
+                         />
     
     <StackLayout Orientation="Horizontal"
-                 BackgroundColor="Blue"
+                 
                  AbsoluteLayout.LayoutBounds= ".1, .33, .39, .04"
                  AbsoluteLayout.LayoutFlags="All">
       
       <StackLayout.GestureRecognizers>
           <TapGestureRecognizer Command="{Binding TapShowPassword}"
-                                NumberOfTapsRequired="1"/>
+                                NumberOfTapsRequired="1"
+          />
       </StackLayout.GestureRecognizers>
       
-        <Image Source="{Binding ImagePath}" 
-               WidthRequest="{Binding ImageWidth}" 
-               HeightRequest="{Binding ImageHeight}"/>
+        <Image x:Name="ShowPasswordImage"
+               Source="{Binding ImagePath}" 
+               />
       
-        <Label Text="Show Password"
-               VerticalTextAlignment="Center"/>
+        <Label x:Name="ShowPasswordLabel"
+               Text="Show Password"
+               VerticalTextAlignment="Center"
+               />
     
     </StackLayout>
   </AbsoluteLayout>
