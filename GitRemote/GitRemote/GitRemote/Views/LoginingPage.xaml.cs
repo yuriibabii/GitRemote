@@ -5,18 +5,12 @@ using Xamarin.Forms;
 
 namespace GitRemote.Views
 {
-    public partial class LoginingPage : ContentPage
+    public partial class LoginingPage
     {
         public LoginingPage()
         {
             InitializeComponent();
             BindingContext = new ShowPasswordCheckBox();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            LoginEntry.Focus();
         }
     }
 

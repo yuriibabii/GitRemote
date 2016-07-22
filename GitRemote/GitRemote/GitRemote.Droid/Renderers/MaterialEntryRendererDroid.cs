@@ -1,19 +1,12 @@
-using System;
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
 using GitRemote.Droid.Renderers;
 using GitRemote.Views;
 using System.ComponentModel;
-using System.Threading;
-using Android.Runtime;
-using Android.Text.Method;
-using Android.Views.InputMethods;
-using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
-using Thread = Java.Lang.Thread;
 using View = Android.Views.View;
 
 [assembly: ExportRenderer(typeof(MaterialEntry), typeof(MaterialEntryRendererDroid))]
@@ -26,69 +19,46 @@ namespace GitRemote.Droid.Renderers
 
         private TextInputLayout NativeView => _nativeView ?? ( _nativeView = InitializeNativeView() );
 
-        private bool _inititialized = false;
-
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
 
-            if ( e.OldElement == null )
-            {
-                var ctrl = CreateNativeControl();
-                SetNativeControl(ctrl);
+            if ( e.OldElement != null ) return;
+            var ctrl = CreateNativeControl();
+            SetNativeControl(ctrl);
 
-                SetText();
-                SetHintText();
-                SetBackgroundColor();
-                SetTextColor();
-                SetIsPassword();
-            }
-
-            
-            if ( this.Control != null )
-            {
-                if ( !_inititialized )
-                {
-                    this.Control.FocusChange += ( (sender, evt) => {
-                        if ( evt.HasFocus )
-                        {
-                            ThreadPool.QueueUserWorkItem(s =>
-                            {
-                                Thread.Sleep(100); // For some reason, a short delay is required here.
-                                Device.BeginInvokeOnMainThread(() => ( ( Android.Views.InputMethods.InputMethodManager )Xamarin.Forms.Forms.Context.GetSystemService(Android.Content.Context.InputMethodService) ).ShowSoftInput(this.Control, Android.Views.InputMethods.ShowFlags.Implicit));
-                            });
-                        }
-                    } );
-                    _inititialized = true;
-                }
-            }
+            SetText();
+            SetHintText();
+            SetBackgroundColor();
+            SetTextColor();
+            SetIsPassword();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == Entry.PlaceholderProperty.PropertyName)
+            if ( e.PropertyName == Entry.PlaceholderProperty.PropertyName )
             {
                 SetHintText();
             }
 
-            if (e.PropertyName == Entry.TextColorProperty.PropertyName)
+            if ( e.PropertyName == Entry.TextColorProperty.PropertyName )
             {
                 SetTextColor();
             }
 
-            if (e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName)
+            if ( e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName )
             {
                 SetBackgroundColor();
             }
 
-            if (e.PropertyName == Entry.IsPasswordProperty.PropertyName)
+            if ( e.PropertyName == Entry.IsPasswordProperty.PropertyName )
             {
                 SetIsPassword();
             }
 
-            if (e.PropertyName == Entry.TextProperty.PropertyName)
+            if ( e.PropertyName == Entry.TextProperty.PropertyName )
             {
                 SetText();
             }
@@ -142,7 +112,7 @@ namespace GitRemote.Droid.Renderers
         {
             return LayoutInflater.From(Context).Inflate(Resource.Layout.TextInputLayout, null);
         }
-      
+
     }
 
 }
