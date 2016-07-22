@@ -1,15 +1,19 @@
+using System;
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
 using GitRemote.Droid.Renderers;
 using GitRemote.Views;
 using System.ComponentModel;
+using System.Threading;
 using Android.Runtime;
 using Android.Text.Method;
 using Android.Views.InputMethods;
+using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
+using Thread = Java.Lang.Thread;
 using View = Android.Views.View;
 
 [assembly: ExportRenderer(typeof(MaterialEntry), typeof(MaterialEntryRendererDroid))]
@@ -21,6 +25,8 @@ namespace GitRemote.Droid.Renderers
         private TextInputLayout _nativeView;
 
         private TextInputLayout NativeView => _nativeView ?? ( _nativeView = InitializeNativeView() );
+
+        private bool _inititialized = false;
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
@@ -36,6 +42,25 @@ namespace GitRemote.Droid.Renderers
                 SetBackgroundColor();
                 SetTextColor();
                 SetIsPassword();
+            }
+
+            
+            if ( this.Control != null )
+            {
+                if ( !_inititialized )
+                {
+                    this.Control.FocusChange += ( (sender, evt) => {
+                        if ( evt.HasFocus )
+                        {
+                            ThreadPool.QueueUserWorkItem(s =>
+                            {
+                                Thread.Sleep(100); // For some reason, a short delay is required here.
+                                Device.BeginInvokeOnMainThread(() => ( ( Android.Views.InputMethods.InputMethodManager )Xamarin.Forms.Forms.Context.GetSystemService(Android.Content.Context.InputMethodService) ).ShowSoftInput(this.Control, Android.Views.InputMethods.ShowFlags.Implicit));
+                            });
+                        }
+                    } );
+                    _inititialized = true;
+                }
             }
         }
 
@@ -67,17 +92,13 @@ namespace GitRemote.Droid.Renderers
             {
                 SetText();
             }
+
         }
 
         private void EditTextOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             Element.Text = textChangedEventArgs.Text.ToString();
             NativeView.EditText.SetSelection(Element.Text.Length);
-        }
-
-        private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangeEventArgs)
-        {
-            //NotImplemented yet          
         }
 
         private void SetText()
@@ -114,8 +135,6 @@ namespace GitRemote.Droid.Renderers
         {
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
-            view.EditText.FocusChange += EditTextOnFocusChanged;
-            
             return view;
         }
 

@@ -13,6 +13,11 @@ namespace GitRemote.Views
             BindingContext = new ShowPasswordCheckBox();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoginEntry.Focus();
+        }
     }
 
     public class MaterialEntry : Entry { }

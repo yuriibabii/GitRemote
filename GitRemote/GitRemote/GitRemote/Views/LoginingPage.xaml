@@ -6,8 +6,11 @@
              Title="GitRemote"
              >
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Log in"></ToolbarItem>
+    <ToolbarItem x:Name ="LogInButton"
+                 Text="Log in"
+                 />
   </ContentPage.ToolbarItems>
+  
   <AbsoluteLayout>
     <views:MaterialEntry x:Name="LoginEntry"
                          Placeholder = "Username or Email" 
@@ -23,14 +26,14 @@
                          />
     
     <StackLayout Orientation="Horizontal"
-                 
+                 x:Name="ShowPasswordLayout"
                  AbsoluteLayout.LayoutBounds= ".1, .33, .39, .04"
                  AbsoluteLayout.LayoutFlags="All">
-      
+
       <StackLayout.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding TapShowPassword}"
-                                NumberOfTapsRequired="1"
-          />
+        <TapGestureRecognizer Command="{Binding TapShowPassword}"
+                              NumberOfTapsRequired="1"
+                                />
       </StackLayout.GestureRecognizers>
       
         <Image x:Name="ShowPasswordImage"
