@@ -12,6 +12,11 @@ namespace GitRemote.Views
             InitializeComponent();
             BindingContext = new ShowPasswordCheckBox();
         }
+
+        private void PasswordEntry_OnCompleted(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class MaterialEntry : Entry { }
@@ -33,13 +38,16 @@ namespace GitRemote.Views
             return !( string.IsNullOrEmpty(LoginEntryText) || string.IsNullOrEmpty(PasswordEntryText) );
         }
 
+#region
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #region
+        #endregion
+
+#region
         private string _imagePath = "btn_stat_notify_checkbox_square_unchecked.png";
 
         public string ImagePath
@@ -91,6 +99,9 @@ namespace GitRemote.Views
             }
         }
         #endregion
+
+        
+
         /// <summary>
         /// Doing what is needing after CheckBox tap
         /// </summary>
