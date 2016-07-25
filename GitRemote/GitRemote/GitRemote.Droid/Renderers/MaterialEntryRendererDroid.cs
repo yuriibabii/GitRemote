@@ -80,7 +80,7 @@ namespace GitRemote.Droid.Renderers
         {
             NativeView.EditText.InputType = Element.IsPassword
                 ? InputTypes.TextVariationPassword | InputTypes.ClassText
-                : InputTypes.ClassText;
+                : InputTypes.TextVariationVisiblePassword;
         }
 
         public void SetBackgroundColor()

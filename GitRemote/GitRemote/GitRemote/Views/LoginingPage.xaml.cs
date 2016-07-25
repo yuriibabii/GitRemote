@@ -13,10 +13,6 @@ namespace GitRemote.Views
             BindingContext = new ShowPasswordCheckBox();
         }
 
-        private void PasswordEntry_OnCompleted(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class MaterialEntry : Entry { }
@@ -38,7 +34,7 @@ namespace GitRemote.Views
             return !( string.IsNullOrEmpty(LoginEntryText) || string.IsNullOrEmpty(PasswordEntryText) );
         }
 
-#region
+        #region
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
@@ -47,7 +43,7 @@ namespace GitRemote.Views
         }
         #endregion
 
-#region
+        #region
         private string _imagePath = "btn_stat_notify_checkbox_square_unchecked.png";
 
         public string ImagePath
@@ -100,7 +96,7 @@ namespace GitRemote.Views
         }
         #endregion
 
-        
+
 
         /// <summary>
         /// Doing what is needing after CheckBox tap
@@ -109,12 +105,13 @@ namespace GitRemote.Views
         {
             ImagePath = IsPasswordUnVisible ? "btn_Green_check_mark.png" : "btn_stat_notify_checkbox_square_unchecked.png";
             IsPasswordUnVisible = !IsPasswordUnVisible;
+
         }
 
         /// <summary>
         /// Doing what is needing after Log In tap
         /// </summary>
-        private void OnLogInTapped()
+        public void OnLogInTapped()
         {
             //throw new NotImplementedException();
         }
