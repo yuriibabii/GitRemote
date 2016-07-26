@@ -14,14 +14,16 @@
   </ContentPage.ToolbarItems>
   
   <AbsoluteLayout>
-    <views:MaterialEntry x:Name="LoginEntry"
+    <views:MaterialEntry ClassId ="LoginEntry"
+                         x:Name="LoginEntry"
                          Text="{Binding LoginEntryText, Mode=OneWayToSource}"
                          Placeholder = "Username or Email" 
                          AbsoluteLayout.LayoutBounds=".5, .08, .9, .1"
                          AbsoluteLayout.LayoutFlags="All"
                          />
 
-    <views:MaterialEntry x:Name="PasswordEntry"
+    <views:MaterialEntry ClassId = "PasswordEntry"
+                         x:Name="PasswordEntry"
                          Text="{Binding PasswordEntryText, Mode=OneWayToSource}"
                          IsPassword="{Binding IsPasswordUnVisible}"
                          Placeholder = "Password"

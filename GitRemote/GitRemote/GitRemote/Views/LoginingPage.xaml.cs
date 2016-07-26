@@ -12,10 +12,22 @@ namespace GitRemote.Views
             InitializeComponent();
             BindingContext = new ShowPasswordCheckBox();
         }
-
     }
 
-    public class MaterialEntry : Entry { }
+    public class MaterialEntry : Entry
+    {
+        public Action DonePressed;
+
+        public MaterialEntry()
+        {
+            DonePressed += SomeMethod;
+        }
+
+        private void SomeMethod()
+        {
+
+        }
+    }
 
     public class ShowPasswordCheckBox : INotifyPropertyChanged
     {
@@ -111,7 +123,12 @@ namespace GitRemote.Views
         /// <summary>
         /// Doing what is needing after Log In tap
         /// </summary>
-        public void OnLogInTapped()
+
+    }
+
+    public class Logining
+    {
+        public static void OnLogInTapped()
         {
             //throw new NotImplementedException();
         }
