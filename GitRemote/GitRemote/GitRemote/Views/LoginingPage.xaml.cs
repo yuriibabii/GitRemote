@@ -16,11 +16,11 @@ namespace GitRemote.Views
 
     public class MaterialEntry : Entry
     {
-        public Action DonePressed;
+        public Action SendPressed;
 
         public MaterialEntry()
         {
-            DonePressed += SomeMethod;
+            SendPressed += SomeMethod;
         }
 
         private void SomeMethod()
@@ -123,15 +123,15 @@ namespace GitRemote.Views
         /// <summary>
         /// Doing what is needing after Log In tap
         /// </summary>
-
-    }
-
-    public class Logining
-    {
         public static void OnLogInTapped()
         {
             //throw new NotImplementedException();
         }
+    }
+
+    public class Logining
+    {
+       
     }
 
 

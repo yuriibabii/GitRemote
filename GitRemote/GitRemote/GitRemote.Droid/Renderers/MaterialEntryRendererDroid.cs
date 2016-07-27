@@ -40,8 +40,8 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) )
-                SetDoneButtonAction();
+            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) ) 
+                SetSendButtonAction();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -123,24 +123,18 @@ namespace GitRemote.Droid.Renderers
             return LayoutInflater.From(Context).Inflate(Resource.Layout.TextInputLayout, null);
         }
 
-        private void SetDoneButtonAction()
+        /// <summary>
+        /// If Action of our entry is Send than call delegate from Portable
+        /// </summary>
+        private void SetSendButtonAction()
         {
-            //var control = (EditText) Control;
-            //control.ImeOptions = ImeAction.Done;
-            //control.EditorAction += (sender, args) =>
-            //{
-            //    if (args.ActionId == ImeAction.Done)
-            //    {
-            //        var entry = (MaterialEntry) Element;
-            //        entry.DonePressed();
-            //    }
-            //};
-
             NativeView.EditText.EditorAction += (sender, e) =>
             {
-                if ( e.ActionId == ImeAction.Done )
-                { Control.}
-            }
+                if (e.ActionId == ImeAction.Send)
+                    ((MaterialEntry) Element).SendPressed();
+                else
+                    e.Handled = false;
+            };
         }
     }
 
