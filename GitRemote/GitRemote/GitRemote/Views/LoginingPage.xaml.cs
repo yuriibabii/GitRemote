@@ -11,7 +11,13 @@ namespace GitRemote.Views
         {
             InitializeComponent();
             BindingContext = new ShowPasswordCheckBox();
+            var loginer = new Loginer { TapLogIn = new Command(bebe, () => true) };
+            //LogInButton.SetBinding();
+
         }
+
+        public void bebe()
+        { }
     }
 
     public class MaterialEntry : Entry
@@ -20,25 +26,27 @@ namespace GitRemote.Views
 
         public MaterialEntry()
         {
-            SendPressed += SomeMethod;
+            SendPressed += ShowPasswordCheckBox.OnLogInTapped;
         }
 
-        private void SomeMethod()
-        {
+    }
 
-        }
+    public class Loginer
+    {
+        public ICommand TapLogIn { get; set; }
     }
 
     public class ShowPasswordCheckBox : INotifyPropertyChanged
     {
         public ICommand TapShowPassword { get; set; }
+        public ICommand TabLogIn { get; set; }
 
-        public ICommand TapLogIn { get; set; }
 
         public ShowPasswordCheckBox()
         {
+
+            TabLogIn = new Command(OnShowPasswordTapped);
             TapShowPassword = new Command(OnShowPasswordTapped);
-            TapLogIn = new Command(OnLogInTapped, CheckLogInEnableState);
         }
 
         public bool CheckLogInEnableState()
@@ -46,6 +54,7 @@ namespace GitRemote.Views
             return !( string.IsNullOrEmpty(LoginEntryText) || string.IsNullOrEmpty(PasswordEntryText) );
         }
 
+        //INotify staff
         #region
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -54,7 +63,7 @@ namespace GitRemote.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
+        //Bindable properties
         #region
         private string _imagePath = "btn_stat_notify_checkbox_square_unchecked.png";
 
@@ -90,7 +99,7 @@ namespace GitRemote.Views
             {
                 _loginEntryText = value;
                 OnPropertyChanged(nameof(LoginEntryText));
-                ( ( Command )TapLogIn ).ChangeCanExecute();
+                ( ( Command )TabLogIn ).ChangeCanExecute();
             }
         }
 
@@ -103,7 +112,7 @@ namespace GitRemote.Views
             {
                 _passwordEntryText = value;
                 OnPropertyChanged(nameof(PasswordEntryText));
-                ( ( Command )TapLogIn ).ChangeCanExecute();
+                ( ( Command )TabLogIn ).ChangeCanExecute();
             }
         }
         #endregion
@@ -125,14 +134,8 @@ namespace GitRemote.Views
         /// </summary>
         public static void OnLogInTapped()
         {
+
             //throw new NotImplementedException();
         }
     }
-
-    public class Logining
-    {
-       
-    }
-
-
 }

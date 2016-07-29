@@ -8,12 +8,12 @@
   <ContentPage.ToolbarItems>  
     <ToolbarItem  x:Name ="LogInButton"
                   Text="Log in"
-                  Command="{Binding TapLogIn}"> 
+                  > 
     </ToolbarItem>
                 
   </ContentPage.ToolbarItems>
   
-  <AbsoluteLayout>
+  <!--<AbsoluteLayout>
     <views:MaterialEntry ClassId ="LoginEntry"
                          x:Name="LoginEntry"
                          Text="{Binding LoginEntryText, Mode=OneWayToSource}"
@@ -52,5 +52,5 @@
                />
     
     </StackLayout>
-  </AbsoluteLayout>
+  </AbsoluteLayout>-->
 </ContentPage>
