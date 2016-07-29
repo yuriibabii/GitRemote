@@ -35,8 +35,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
-    <Compile Include="Models\MasterPageModel.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BadStuff\Models\MasterPageModel.cs" />
+    <Compile Include="ViewModels\DetailPageViewModel.cs" />
+    <Compile Include="ViewModels\FollowersPageViewModel.cs" />
+    <Compile Include="ViewModels\FollowingPageViewModel.cs" />
+    <Compile Include="ViewModels\LoginingPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewModels\BookmarksPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewModels\GistsPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewModels\IssueDashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewModels\ReportAnIssuePageViewModel.cs" />
+    <Compile Include="ViewModels\NewsPageViewModel.cs" />
+    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\StarsPageViewModel.cs" />
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
@@ -74,7 +89,7 @@
     <Compile Include="Views\RepositoriesPage.xaml.cs">
       <DependentUpon>RepositoriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\MasterNavigation.cs" />
+    <Compile Include="BadStuff\Helpers\MasterNavigation.cs" />
     <Compile Include="Views\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
     </Compile>
@@ -161,7 +176,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterPageViews\GistsPage.xaml">
