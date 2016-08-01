@@ -40,7 +40,9 @@
     </Compile>
     <Compile Include="BadStuff\Models\MasterPageModel.cs" />
     <Compile Include="CustomClasses\MaterialEntry.cs" />
-    <Compile Include="Models\ShowPasswordCheckBox.cs" />
+    <Compile Include="Models\LogInPageEntriesModel.cs" />
+    <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
+    <Compile Include="Services\StringService.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\FollowersPageViewModel.cs" />
     <Compile Include="ViewModels\FollowingPageViewModel.cs" />

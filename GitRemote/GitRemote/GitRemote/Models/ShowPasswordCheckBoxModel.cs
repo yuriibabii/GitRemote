@@ -1,6 +1,6 @@
 ﻿namespace GitRemote.Models
 {
-    public class ShowPasswordCheckBox
+    public class ShowPasswordCheckBoxModel
     {
         private const string CheckedImageSource = "btn_Green_check_mark.png";
         private const string UncheckedImageSource = "btn_stat_notify_checkbox_square_unchecked.png";

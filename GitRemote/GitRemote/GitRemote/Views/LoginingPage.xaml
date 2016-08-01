@@ -19,7 +19,7 @@
     <Switch IsToggled="{Binding IsChecked}"></Switch>
     <Button Command="{Binding CheckedCommand}"></Button>
   </StackLayout>
-  <!--<AbsoluteLayout>
+  <AbsoluteLayout>
     <views:MaterialEntry ClassId ="LoginEntry"
                          x:Name="LoginEntry"
                          Text="{Binding LoginEntryText, Mode=OneWayToSource}"
@@ -58,5 +58,5 @@
                />
     
     </StackLayout>
-  </AbsoluteLayout>-->
+  </AbsoluteLayout>
 </ContentPage>
