@@ -15,6 +15,10 @@
                 
   </ContentPage.ToolbarItems>
   
+  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <Switch IsToggled="{Binding IsChecked}"></Switch>
+    <Button Command="{Binding CheckedCommand}"></Button>
+  </StackLayout>
   <!--<AbsoluteLayout>
     <views:MaterialEntry ClassId ="LoginEntry"
                          x:Name="LoginEntry"

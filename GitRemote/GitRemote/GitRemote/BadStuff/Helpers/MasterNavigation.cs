@@ -23,22 +23,22 @@ namespace GitRemote.Helpers
 
         public static async void NavigateAsync(MenuType id)
         {
-            switch ( id )
-            {
-                case MenuType.Gists:
-                    await App.Navigator.PushAsync(new GistsPage());                    
-                    break;
-                case MenuType.IssueDashboard:
-                    await App.Navigator.PushAsync(new IssueDashboardPage());
-                    break;
-                case MenuType.Bookmarks:
-                    await App.Navigator.PushAsync(new BookmarksPage());
-                    break;
-                case MenuType.ReportAnIssue:
-                    await App.Navigator.PushAsync(new ReportAnIssuePage());
-                    break;
-            }
-            CurrentPage = id.ToString();
+            //switch ( id )
+            //{
+            //    case MenuType.Gists:
+            //        await App.Navigator.PushAsync(new GistsPage());                    
+            //        break;
+            //    case MenuType.IssueDashboard:
+            //        await App.Navigator.PushAsync(new IssueDashboardPage());
+            //        break;
+            //    case MenuType.Bookmarks:
+            //        await App.Navigator.PushAsync(new BookmarksPage());
+            //        break;
+            //    case MenuType.ReportAnIssue:
+            //        await App.Navigator.PushAsync(new ReportAnIssuePage());
+            //        break;
+            //}
+            //CurrentPage = id.ToString();
         }
     }
 }

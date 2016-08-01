@@ -3,7 +3,7 @@ using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using GitRemote.Droid.Renderers;
-using GitRemote.Views;
+using GitRemote.CustomClasses;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -40,8 +40,8 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) ) 
-                SetSendButtonAction();
+            //if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) ) 
+            //    SetSendButtonAction();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -128,13 +128,13 @@ namespace GitRemote.Droid.Renderers
         /// </summary>
         private void SetSendButtonAction()
         {
-            NativeView.EditText.EditorAction += (sender, e) =>
-            {
-                if (e.ActionId == ImeAction.Send)
-                    ((MaterialEntry) Element).SendPressed();
-                else
-                    e.Handled = false;
-            };
+            //NativeView.EditText.EditorAction += (sender, e) =>
+            //{
+            //    if (e.ActionId == ImeAction.Send)
+            //        ((MaterialEntry) Element).SendPressed();
+            //    else
+            //        e.Handled = false;
+            //};
         }
     }
 
