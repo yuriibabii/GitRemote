@@ -6,7 +6,7 @@ namespace GitRemote.Services
     {
         public static bool CheckForNullOrEmpty(params string[] strings)
         {
-            return strings.All(current => !string.IsNullOrEmpty(current));
+            return strings.All(s => !string.IsNullOrEmpty(s));
         }
     }
 }

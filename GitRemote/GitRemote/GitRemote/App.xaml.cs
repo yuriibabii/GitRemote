@@ -9,7 +9,7 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync(nameof(LoginingPage));
+            NavigationService.NavigateAsync("ToolbarPage/LoginingPage");
         }
         protected override void RegisterTypes()
         {
@@ -26,6 +26,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<ProfilePage>();
             Container.RegisterTypeForNavigation<RepositoriesPage>();
             Container.RegisterTypeForNavigation<StarsPage>();
+            Container.RegisterTypeForNavigation<ToolbarPage>();
         }
     }
 }

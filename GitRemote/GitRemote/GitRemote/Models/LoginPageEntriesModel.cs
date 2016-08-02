@@ -7,6 +7,5 @@ namespace GitRemote.Models
         public string LoginText = Empty;
         public string PasswordText = Empty;
 
-
     }
 }

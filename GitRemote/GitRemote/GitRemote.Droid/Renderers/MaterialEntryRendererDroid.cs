@@ -5,6 +5,7 @@ using Android.Views.InputMethods;
 using GitRemote.Droid.Renderers;
 using GitRemote.CustomClasses;
 using System.ComponentModel;
+using GitRemote.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
@@ -40,8 +41,8 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            //if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) ) 
-            //    SetSendButtonAction();
+            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) ) 
+                SetSendButtonAction();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -105,10 +106,9 @@ namespace GitRemote.Droid.Renderers
 
         private void SetTextColor()
         {
-            if ( Element.TextColor == Color.Default )
-                NativeView.EditText.SetTextColor(NativeView.EditText.TextColors);
-            else
-                NativeView.EditText.SetTextColor(Element.TextColor.ToAndroid());
+            //NativeView.EditText.SetTextColor(Element.TextColor == Resource.Color.accentForMaterialEntry
+            //    ? NativeView.EditText.TextColors
+            //    : Element.TextColor.ToAndroid());
         }
 
         private TextInputLayout InitializeNativeView()
@@ -128,13 +128,15 @@ namespace GitRemote.Droid.Renderers
         /// </summary>
         private void SetSendButtonAction()
         {
-            //NativeView.EditText.EditorAction += (sender, e) =>
-            //{
-            //    if (e.ActionId == ImeAction.Send)
-            //        ((MaterialEntry) Element).SendPressed();
-            //    else
-            //        e.Handled = false;
-            //};
+            NativeView.EditText.EditorAction += (sender, e) =>
+            {
+                if (e.ActionId == ImeAction.Send)
+                {
+                    ((LoginingPageViewModel)Element.BindingContext).OnLogInTapped();
+                }
+                else
+                    e.Handled = false;
+            };
         }
     }
 
