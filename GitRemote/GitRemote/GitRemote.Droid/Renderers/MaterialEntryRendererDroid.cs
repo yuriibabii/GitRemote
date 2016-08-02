@@ -2,10 +2,10 @@ using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
-using GitRemote.Droid.Renderers;
 using GitRemote.CustomClasses;
-using System.ComponentModel;
+using GitRemote.Droid.Renderers;
 using GitRemote.ViewModels;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
@@ -41,7 +41,7 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) ) 
+            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) )
                 SetSendButtonAction();
         }
 
@@ -106,9 +106,10 @@ namespace GitRemote.Droid.Renderers
 
         private void SetTextColor()
         {
-            //NativeView.EditText.SetTextColor(Element.TextColor == Resource.Color.accentForMaterialEntry
-            //    ? NativeView.EditText.TextColors
-            //    : Element.TextColor.ToAndroid());
+            if ( Element.TextColor == Color.Default )
+                NativeView.EditText.SetTextColor(NativeView.EditText.TextColors);
+            else
+                NativeView.EditText.SetTextColor(Element.TextColor.ToAndroid());
         }
 
         private TextInputLayout InitializeNativeView()
@@ -124,15 +125,15 @@ namespace GitRemote.Droid.Renderers
         }
 
         /// <summary>
-        /// If Action of our entry is Send than call delegate from Portable
+        /// If Action of our entry is Send than call method from Portable
         /// </summary>
         private void SetSendButtonAction()
         {
             NativeView.EditText.EditorAction += (sender, e) =>
             {
-                if (e.ActionId == ImeAction.Send)
+                if ( e.ActionId == ImeAction.Send )
                 {
-                    ((LoginingPageViewModel)Element.BindingContext).OnLogInTapped();
+                    ( ( LoginingPageViewModel )Element.BindingContext ).OnLogInTapped();
                 }
                 else
                     e.Handled = false;
