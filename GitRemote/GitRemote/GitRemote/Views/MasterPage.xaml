@@ -5,7 +5,7 @@
              xmlns:b="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.MasterPage"
-             Title="Nessesary">
+             Title="Necessary">
   
     <AbsoluteLayout x:Name="MasterMenu">
         

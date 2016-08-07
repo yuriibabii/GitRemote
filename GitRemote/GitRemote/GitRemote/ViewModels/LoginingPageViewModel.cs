@@ -1,10 +1,10 @@
 ﻿using GitRemote.Models;
 using GitRemote.Services;
+using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
 {
@@ -54,7 +54,8 @@ namespace GitRemote.ViewModels
 
             CheckedCommand = new DelegateCommand(OnCheckBoxTapped);
             LogInCommand = new DelegateCommand(OnLogInTapped, isLogInCommandEnable);
-            DependencyService.Get<IKeyboardHelper>().ShowKeyboard();
+
+            //DependencyService.Get<IKeyboardHelper>().ShowKeyboard();
         }
 
         public void OnCheckBoxTapped()
@@ -68,7 +69,9 @@ namespace GitRemote.ViewModels
 
         public void OnLogInTapped()
         {
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(NavigationBarPage)}/{nameof(ProfilePage)}/{nameof(DetailPage)}", UriKind.Absolute);
 
+            _navigationService.NavigateAsync(navigationStack, animated: false);
         }
     }
 }

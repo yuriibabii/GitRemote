@@ -51,16 +51,16 @@
     <Compile Include="ViewModels\FollowingPageViewModel.cs" />
     <Compile Include="ViewModels\LoginingPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewModels\BookmarksPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewModels\GistsPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewModels\IssueDashboardPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewModels\ReportAnIssuePageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewsModels\BookmarksPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewsModels\GistsPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewsModels\IssueDashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewsModels\ReportAnIssuePageViewModel.cs" />
     <Compile Include="ViewModels\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\StarsPageViewModel.cs" />
-    <Compile Include="Views\ToolbarPage.xaml.cs">
-      <DependentUpon>ToolbarPage.xaml</DependentUpon>
+    <Compile Include="Views\NavigationBarPage.xaml.cs">
+      <DependentUpon>NavigationBarPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
@@ -230,7 +230,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ToolbarPage.xaml">
+    <EmbeddedResource Include="Views\NavigationBarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

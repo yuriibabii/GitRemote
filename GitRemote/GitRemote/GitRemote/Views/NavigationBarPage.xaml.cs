@@ -2,9 +2,9 @@
 
 namespace GitRemote.Views
 {
-    public partial class ToolbarPage
+    public partial class NavigationBarPage
     {
-        public ToolbarPage(Page rootPage) : base(rootPage)
+        public NavigationBarPage(Page rootPage) : base(rootPage)
         {
             InitializeComponent();
         }
