@@ -3,11 +3,13 @@ using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using GitRemote.CustomClasses;
+using GitRemote.Droid.DependencyServices;
 using GitRemote.Droid.Renderers;
 using GitRemote.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Color = Xamarin.Forms.Color;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
 using View = Android.Views.View;
 
@@ -41,8 +43,28 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            if ( ( Control != null ) && ( e.NewElement.ClassId == "PasswordEntry" ) )
-                SetSendButtonAction();
+            if ( Control != null )
+                switch ( e.NewElement.ClassId )
+                {
+                    case "LoginEntry":
+                        ViewSaver.SaveLoginView(Control);
+                        //Element.Focused += (sender, args) =>
+                        //{
+                        //    ViewSaver.LastView = "LoginEntry";
+                        //};
+                        break;
+
+                    case "PasswordEntry":
+                        SetSendButtonAction();
+                        ViewSaver.SavePasswordView(Control);
+
+                        //Element.Focused += (sender, args) =>
+                        //{
+                        //    ViewSaver.LastView = "PasswordEntry";
+                        //};
+                        break;
+
+                }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -139,6 +161,8 @@ namespace GitRemote.Droid.Renderers
                     e.Handled = false;
             };
         }
+
+
     }
 
 }

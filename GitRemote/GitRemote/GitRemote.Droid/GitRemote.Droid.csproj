@@ -128,6 +128,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyServices\KeyboardHelper.cs" />
+    <Compile Include="DependencyServices\ViewSaver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\MaterialEntryRendererDroid.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

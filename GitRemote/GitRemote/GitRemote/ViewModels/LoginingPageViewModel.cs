@@ -2,8 +2,8 @@
 using GitRemote.Services;
 using Prism.Commands;
 using Prism.Mvvm;
-using System;
 using Prism.Navigation;
+using System;
 using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
@@ -14,6 +14,8 @@ namespace GitRemote.ViewModels
         private readonly LogInPageEntriesModel _entries;
         private readonly INavigationService _navigationService;
 
+        private string _lastActiveEntry = string.Empty;
+
         public DelegateCommand CheckedCommand { get; }
         public DelegateCommand LogInCommand { get; }
 
@@ -23,15 +25,22 @@ namespace GitRemote.ViewModels
         public string LoginEntryText
         {
             get { return _entries.LoginText; }
-            set { _entries.LoginText = value;
-                LogInCommand.RaiseCanExecuteChanged(); }
+            set
+            {
+                _entries.LoginText = value;
+                LogInCommand.RaiseCanExecuteChanged();
+
+            }
         }
 
         public string PasswordEntryText
         {
             get { return _entries.PasswordText; }
-            set { _entries.PasswordText = value;
-                LogInCommand.RaiseCanExecuteChanged(); }
+            set
+            {
+                _entries.PasswordText = value;
+                LogInCommand.RaiseCanExecuteChanged();
+            }
         }
 
         public LoginingPageViewModel(INavigationService navigationService)
@@ -45,6 +54,7 @@ namespace GitRemote.ViewModels
 
             CheckedCommand = new DelegateCommand(OnCheckBoxTapped);
             LogInCommand = new DelegateCommand(OnLogInTapped, isLogInCommandEnable);
+            DependencyService.Get<IKeyboardHelper>().ShowKeyboard();
         }
 
         public void OnCheckBoxTapped()
@@ -53,6 +63,7 @@ namespace GitRemote.ViewModels
             _checkBox.ChangeImageState();
             OnPropertyChanged(nameof(IsUnChecked));
             OnPropertyChanged(nameof(CheckBoxImagePath));
+            //DependencyService.Get<IKeyboardHelper>().ShowKeyboard();
         }
 
         public void OnLogInTapped()
