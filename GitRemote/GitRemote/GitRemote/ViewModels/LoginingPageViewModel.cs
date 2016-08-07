@@ -69,7 +69,7 @@ namespace GitRemote.ViewModels
 
         public void OnLogInTapped()
         {
-            var navigationStack = new Uri("https://Necessary/" + $"{nameof(NavigationBarPage)}/{nameof(ProfilePage)}/{nameof(DetailPage)}", UriKind.Absolute);
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);
 
             _navigationService.NavigateAsync(navigationStack, animated: false);
         }
