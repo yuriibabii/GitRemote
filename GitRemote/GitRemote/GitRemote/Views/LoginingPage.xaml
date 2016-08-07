@@ -23,7 +23,7 @@
                                  Placeholder = "Username or Email"
                                  AbsoluteLayout.LayoutBounds=".5, .08, .9, .1"
                                  AbsoluteLayout.LayoutFlags="All"
-                                 Focused="LoginEntry_OnFocused"
+                                 
                          />
 
     <customClasses:MaterialEntry ClassId = "PasswordEntry"
@@ -33,7 +33,7 @@
                                  Placeholder = "Password"
                                  AbsoluteLayout.LayoutBounds=".5, .22, .9, .1"
                                  AbsoluteLayout.LayoutFlags="All"
-                                 Focused="PasswordEntry_OnFocused"
+                                 
                          />
 
     <StackLayout Orientation="Horizontal"

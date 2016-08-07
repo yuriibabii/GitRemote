@@ -1,14 +1,11 @@
-﻿using System;
+﻿using GitRemote.Models;
 using System.Collections.Generic;
-using GitRemote.Helpers;
-using GitRemote.Models;
-using Xamarin.Forms;
 
 namespace GitRemote.Views
 {
-    public partial class MasterPage : ContentPage
+    public partial class MasterPage
     {
-        private List <MasterPageItem> _menuItems;
+        private List<MasterPageItem> _menuItems;
 
 
         public MasterPage()
@@ -18,7 +15,7 @@ namespace GitRemote.Views
 
             //AbsoluteLayout.SetLayoutBounds(MasterProfileImage, new Rectangle(16, 16, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             //AbsoluteLayout.SetLayoutFlags(MasterProfileImage, AbsoluteLayoutFlags.None);
-            
+
             //AbsoluteLayout.SetLayoutBounds(MasterProfileName, new Rectangle(16, 16 + 50 + 5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             //AbsoluteLayout.SetLayoutFlags(MasterProfileImage, AbsoluteLayoutFlags.None);
 
@@ -44,7 +41,7 @@ namespace GitRemote.Views
             //        return;
 
             //    MasterNavigation.Exist = true;
-                
+
             //    MasterNavigation.NavigateAsync(( ( MasterPageItem )e.SelectedItem ).MenuType);
             //    App.MDP.IsPresented = false;
             //    ListViewMenu.SelectedItem = null;
