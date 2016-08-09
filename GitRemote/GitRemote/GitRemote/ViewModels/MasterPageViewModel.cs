@@ -67,7 +67,6 @@ namespace GitRemote.ViewModels
 
         public ObservableCollection<MasterPageMenuItemModel> MenuItems;
 
-
         public DelegateCommand MenuItemSelected;
 
         public MasterPageViewModel(INavigationService navigationService)
@@ -77,8 +76,8 @@ namespace GitRemote.ViewModels
 
             MasterProfileGrayHeaderBounds = new Rectangle(0, 0, 1, 0.175);
             MasterProfileImageBounds = new Rectangle(16, 16, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
-            MasterProfileNameBounds = new Rectangle(16, MasterProfileImageBounds.Bottom + 5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
-            MasterMenuBounds = new Rectangle(0, MasterProfileNameBounds.Bottom + 62, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
+            MasterProfileNameBounds = new Rectangle(16, 70, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
+            MasterMenuBounds = new Rectangle(16, 100 + 10, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
 
             MenuItems = new ObservableCollection<MasterPageMenuItemModel>
             {

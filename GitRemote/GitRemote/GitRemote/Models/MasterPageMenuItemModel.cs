@@ -1,8 +1,14 @@
-﻿namespace GitRemote.Models
+﻿using Prism.Mvvm;
+
+namespace GitRemote.Models
 {
-    public class MasterPageMenuItemModel
+    public class MasterPageMenuItemModel : BindableBase
     {
-        public string Name = string.Empty;
-        public string ImageSource = string.Empty;
+        public string Name { get { return _name; } set { SetProperty(ref _name, value); } }
+        public string ImageSource { get { return _name; } set { SetProperty(ref _imageSource, value); } }
+
+        private string _name = string.Empty;
+        private string _imageSource = string.Empty;
+
     }
 }
