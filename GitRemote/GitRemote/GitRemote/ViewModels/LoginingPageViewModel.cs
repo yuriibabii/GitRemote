@@ -1,4 +1,5 @@
-﻿using GitRemote.Models;
+﻿using GitRemote.GitHub;
+using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
 using Prism.Commands;
@@ -13,9 +14,8 @@ namespace GitRemote.ViewModels
         private readonly ShowPasswordCheckBoxModel _checkBox;
         private readonly LogInPageEntriesModel _entries;
         private readonly INavigationService _navigationService;
-
-        private string _lastActiveEntry = string.Empty;
-
+        private readonly IKeyboardHelper _keyboardHelper;
+        private readonly AccountManager _accountManager;
         public DelegateCommand CheckedCommand { get; }
         public DelegateCommand LogInCommand { get; }
 
@@ -43,33 +43,41 @@ namespace GitRemote.ViewModels
             }
         }
 
-        public LoginingPageViewModel(INavigationService navigationService)
+        public LoginingPageViewModel(INavigationService navigationService, IKeyboardHelper keyboardHelper, ISecuredDataProvider securedDataProvider)
         {
             _navigationService = navigationService;
+            _keyboardHelper = keyboardHelper;
             _checkBox = new ShowPasswordCheckBoxModel();
             _entries = new LogInPageEntriesModel();
+
+            _accountManager = new AccountManager(new ClientAuthorization(), securedDataProvider);
 
             Func<bool> isLogInCommandEnable = () =>
                 StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);
 
             CheckedCommand = new DelegateCommand(OnCheckBoxTapped);
             LogInCommand = new DelegateCommand(OnLogInTapped, isLogInCommandEnable);
-
-            //DependencyService.Get<IKeyboardHelper>().ShowKeyboard();
+            //_keyboardHelper.ShowKeyboard();
         }
 
         public void OnCheckBoxTapped()
         {
+            _keyboardHelper.ShowKeyboard();
             _checkBox.ChangeCheckedProperty();
             _checkBox.ChangeImageState();
             OnPropertyChanged(nameof(IsUnChecked));
             OnPropertyChanged(nameof(CheckBoxImagePath));
-            //DependencyService.Get<IKeyboardHelper>().ShowKeyboard();
         }
 
         public void OnLogInTapped()
         {
-            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);
+            _keyboardHelper.HideKeyboard();
+            LoginEntryText = "gitrem";
+            PasswordEntryText = "password1";
+            _accountManager.AddAccount(LoginEntryText, PasswordEntryText);
+
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
+                UriKind.Absolute);
 
             _navigationService.NavigateAsync(navigationStack, animated: false);
         }

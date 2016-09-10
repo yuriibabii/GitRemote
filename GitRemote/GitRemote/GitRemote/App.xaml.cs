@@ -1,4 +1,5 @@
-﻿using GitRemote.Views;
+﻿using GitRemote.GitHub;
+using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
 
@@ -9,7 +10,7 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(LoginingPage)}");
+            NavigationService.NavigateAsync($"{nameof(StartPage)}");
         }
         protected override void RegisterTypes()
         {
@@ -27,6 +28,14 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<RepositoriesPage>();
             Container.RegisterTypeForNavigation<StarsPage>();
             Container.RegisterTypeForNavigation<NavigationBarPage>();
+            Container.RegisterTypeForNavigation<StartPage>();
+            Container.RegisterTypeForNavigation<ChooseUserPage>();
+        }
+
+        protected override void OnSleep()
+        {
+            base.OnSleep();
+            AccountManager.SaveLastUser();
         }
     }
 }

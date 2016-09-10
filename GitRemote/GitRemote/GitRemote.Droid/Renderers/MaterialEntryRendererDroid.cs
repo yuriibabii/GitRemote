@@ -27,8 +27,6 @@ namespace GitRemote.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-
-
             if ( e.OldElement != null ) return;
 
             // MaterialEntry Render Staff
@@ -43,28 +41,18 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            if ( Control != null )
-                switch ( e.NewElement.ClassId )
-                {
-                    case "LoginEntry":
-                        ViewSaver.SaveLoginView(Control);
-                        //Element.Focused += (sender, args) =>
-                        //{
-                        //    ViewSaver.LastView = "LoginEntry";
-                        //};
-                        break;
+            if ( Control == null ) return;
 
-                    case "PasswordEntry":
-                        SetSendButtonAction();
-                        ViewSaver.SavePasswordView(Control);
-
-                        //Element.Focused += (sender, args) =>
-                        //{
-                        //    ViewSaver.LastView = "PasswordEntry";
-                        //};
-                        break;
-
-                }
+            switch ( e.NewElement.ClassId )
+            {
+                case "LoginEntry":
+                    ViewSaver.SaveLoginView(Control);
+                    break;
+                case "PasswordEntry":
+                    SetSendButtonAction();
+                    ViewSaver.SavePasswordView(Control);
+                    break;
+            }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -104,6 +92,12 @@ namespace GitRemote.Droid.Renderers
             NativeView.EditText.SetSelection(Element.Text.Length);
         }
 
+        private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangedEventArgs)
+        {
+            if ( focusChangedEventArgs.HasFocus )
+                ViewSaver.SetLastView(Element.ClassId);
+        }
+
         private void SetText()
         {
             NativeView.EditText.Text = Element.Text;
@@ -138,6 +132,7 @@ namespace GitRemote.Droid.Renderers
         {
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
+            view.EditText.FocusChange += EditTextOnFocusChanged;
             return view;
         }
 

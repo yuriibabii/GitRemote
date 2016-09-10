@@ -7,28 +7,28 @@ namespace GitRemote.Droid.DependencyServices
 {
     public class ViewSaver : IViewSaver
     {
-        public static View LoginView;
-        public static View PasswordView;
-        private static string _lastView = string.Empty;
+        private static View _loginView;
+        private static View _passwordView;
+        private static string _lastView = "LoginEntry";
 
         public static void SaveLoginView(View loginView)
         {
-            LoginView = loginView;
+            _loginView = loginView;
         }
 
         public static void SavePasswordView(View passwordView)
         {
-            PasswordView = passwordView;
+            _passwordView = passwordView;
         }
 
         public static View GetLoginView()
         {
-            return LoginView;
+            return _loginView;
         }
 
         public static View GetPasswordView()
         {
-            return PasswordView;
+            return _passwordView;
         }
 
         public static void SetLastView(string viewName)
