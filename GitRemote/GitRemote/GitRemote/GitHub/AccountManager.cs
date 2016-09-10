@@ -10,7 +10,7 @@ namespace GitRemote.GitHub
     {
         private readonly ClientAuthorization _clientAuthorization;
         private readonly ISecuredDataProvider _securedDataProvider;
-        private static string _lastUser = string.Empty;
+        private static string _lastUser = GetLastUserFromStorage();
         private readonly List<string> _users;
 
         public AccountManager(ClientAuthorization clientAuthorization, ISecuredDataProvider securedDataProvider)
@@ -75,7 +75,7 @@ namespace GitRemote.GitHub
         {
 
             if ( Application.Current.Properties.ContainsKey("_lastUser") )
-                return Application.Current.Properties[_lastUser] as string;
+                return Application.Current.Properties["_lastUser"] as string;
 
             return string.Empty;
         }
