@@ -1,6 +1,5 @@
 using GitRemote.Droid.DependencyServices;
 using GitRemote.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Auth;
@@ -35,17 +34,9 @@ namespace GitRemote.Droid.DependencyServices
 
         Account ISecuredDataProvider.Retreive(string providerName, string userName)
         {
-            try
-            {
-                Account account = _accountStore.FindAccountsForService(providerName)
-                    .FirstOrDefault((acc) => acc.Username == userName);
-                return account;
-            }
-            catch ( Exception )
-            {
-
-                return null;
-            }
+            var account = _accountStore.FindAccountsForService(providerName)
+                    .FirstOrDefault(acc => acc.Username == userName);
+            return account;
         }
 
         public List<Account> RetreiveAll(string providerName)

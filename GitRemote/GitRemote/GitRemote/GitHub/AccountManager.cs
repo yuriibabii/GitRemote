@@ -17,7 +17,8 @@ namespace GitRemote.GitHub
         {
             _clientAuthorization = clientAuthorization;
             _securedDataProvider = securedDataProvider;
-            _users = _securedDataProvider.RetreiveAll(ConstantsService.ProviderName).Select(acc => acc.Username) as List<string>;
+            _users = new List<string>(_securedDataProvider.RetreiveAll(ConstantsService.ProviderName).
+                Select(acc => acc.Username));
         }
 
         public void AddAccount(string login, string password)
@@ -30,7 +31,7 @@ namespace GitRemote.GitHub
                 new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
 
             SetLastUser(login);
-            _users.Insert(0, login);
+            _users.Add(login);
         }
 
         private string GetToken(string login, string password)
@@ -45,7 +46,7 @@ namespace GitRemote.GitHub
 
         private void CheckForExist(string login)
         {
-            var retreiveResponce = _securedDataProvider.Retreive(ConstantsService.ProviderName, login).Username;
+            var retreiveResponce = _securedDataProvider.Retreive(ConstantsService.ProviderName, login)?.Username;
 
             if ( retreiveResponce == null ) return;
 

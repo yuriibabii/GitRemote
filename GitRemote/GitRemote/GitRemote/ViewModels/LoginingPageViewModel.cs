@@ -72,8 +72,6 @@ namespace GitRemote.ViewModels
         public void OnLogInTapped()
         {
             _keyboardHelper.HideKeyboard();
-            LoginEntryText = "gitrem";
-            PasswordEntryText = "password1";
             _accountManager.AddAccount(LoginEntryText, PasswordEntryText);
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
