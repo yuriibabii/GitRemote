@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="GitRemote.Views.ChooseUserPage">
+             x:Class="GitRemote.Views.ChooseUserPage"
+             Title ="Existing Users">
+
+  <ListView x:Name="ListOfUsers"
+            ItemsSource="{Binding Users}"
+            VerticalOptions="Fill">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding }"
+                  Command="{Binding Source={x:Reference Name=ListOfUsers},
+                                    Path=BindingContext.ListItemTappedCommand}"/>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 
 </ContentPage>

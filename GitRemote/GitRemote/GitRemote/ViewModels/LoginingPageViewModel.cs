@@ -15,6 +15,7 @@ namespace GitRemote.ViewModels
         private readonly LogInPageEntriesModel _entries;
         private readonly INavigationService _navigationService;
         private readonly IKeyboardHelper _keyboardHelper;
+        private readonly ISecuredDataProvider _securedDataProvider;
         private readonly AccountManager _accountManager;
         public DelegateCommand CheckedCommand { get; }
         public DelegateCommand LogInCommand { get; }
@@ -29,7 +30,6 @@ namespace GitRemote.ViewModels
             {
                 _entries.LoginText = value;
                 LogInCommand.RaiseCanExecuteChanged();
-
             }
         }
 
@@ -43,14 +43,16 @@ namespace GitRemote.ViewModels
             }
         }
 
-        public LoginingPageViewModel(INavigationService navigationService, IKeyboardHelper keyboardHelper, ISecuredDataProvider securedDataProvider)
+        public LoginingPageViewModel(INavigationService navigationService, IKeyboardHelper keyboardHelper,
+            ISecuredDataProvider securedDataProvider)
         {
             _navigationService = navigationService;
             _keyboardHelper = keyboardHelper;
+            _securedDataProvider = securedDataProvider;
             _checkBox = new ShowPasswordCheckBoxModel();
             _entries = new LogInPageEntriesModel();
 
-            _accountManager = new AccountManager(new ClientAuthorization(), securedDataProvider);
+            _accountManager = new AccountManager(new ClientAuthorization(), _securedDataProvider);
 
             Func<bool> isLogInCommandEnable = () =>
                 StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);

@@ -20,7 +20,7 @@
             WidthRequest="300"
             HeightRequest="70"
             Margin="30, 30, 0, 0"
-            Text="Log in with exist user"
+            Text="Log in with existing user"
             TextColor="White"
             BackgroundColor="#054678"
             Command="{Binding LogInWithExistUserButtonCommand}"

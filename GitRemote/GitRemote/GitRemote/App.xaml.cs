@@ -35,7 +35,7 @@ namespace GitRemote
         protected override void OnSleep()
         {
             base.OnSleep();
-            AccountManager.SaveLastUser();
+            UserManager.SaveLastUser();
         }
     }
 }

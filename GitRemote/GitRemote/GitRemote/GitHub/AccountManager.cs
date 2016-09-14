@@ -1,8 +1,6 @@
 ﻿using GitRemote.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Xamarin.Forms;
 
 namespace GitRemote.GitHub
 {
@@ -10,15 +8,11 @@ namespace GitRemote.GitHub
     {
         private readonly ClientAuthorization _clientAuthorization;
         private readonly ISecuredDataProvider _securedDataProvider;
-        private static string _lastUser = GetLastUserFromStorage();
-        private readonly List<string> _users;
 
         public AccountManager(ClientAuthorization clientAuthorization, ISecuredDataProvider securedDataProvider)
         {
             _clientAuthorization = clientAuthorization;
             _securedDataProvider = securedDataProvider;
-            _users = new List<string>(_securedDataProvider.RetreiveAll(ConstantsService.ProviderName).
-                Select(acc => acc.Username));
         }
 
         public void AddAccount(string login, string password)
@@ -30,8 +24,8 @@ namespace GitRemote.GitHub
             _securedDataProvider.Store(login, ConstantsService.ProviderName,
                 new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
 
-            SetLastUser(login);
-            _users.Add(login);
+            UserManager.SetLastUser(login);
+            UserManager.AddedUsers.Add(login);
         }
 
         private string GetToken(string login, string password)
@@ -52,34 +46,8 @@ namespace GitRemote.GitHub
 
             _securedDataProvider.Clear(retreiveResponce);
 
-            if ( _users.Contains(login) )
-                _users.Remove(login);
+            UserManager.DeletedUsers.Add(login);
         }
 
-        #region LastUser
-        public static void SetLastUser(string userName)
-        {
-            _lastUser = userName;
-        }
-
-        public static void SaveLastUser()
-        {
-            Application.Current.Properties["_lastUser"] = _lastUser;
-        }
-
-        public string GetLastUser()
-        {
-            return _lastUser;
-        }
-
-        public static string GetLastUserFromStorage()
-        {
-
-            if ( Application.Current.Properties.ContainsKey("_lastUser") )
-                return Application.Current.Properties["_lastUser"] as string;
-
-            return string.Empty;
-        }
-        #endregion
     }
 }
