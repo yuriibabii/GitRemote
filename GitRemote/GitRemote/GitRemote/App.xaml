@@ -10,6 +10,12 @@
         <Setter Property="Color"
                 Value="#A99C96"/>
       </Style>
+      
+      
+      <Color x:Key="NativeCellAndroidTextColorHighlight">#C283AF</Color>
+      <Color x:Key="LogInWithExistUserBackgroundColor">#054678</Color>
+      <Color x:Key="CreateNewUserButtonBackgroundColor">#245625</Color>
+      
     </ResourceDictionary>
   </prism:PrismApplication.Resources>
 </prism:PrismApplication>

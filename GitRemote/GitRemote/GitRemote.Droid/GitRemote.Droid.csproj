@@ -173,6 +173,7 @@
     <Compile Include="DependencyServices\ViewSaver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\MaterialEntryRendererDroid.cs" />
+    <Compile Include="Renderers\NativeCellRendererDroid.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,6 +188,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="app.config" />
+    <AndroidResource Include="layout\NativeCellAndroid.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomClasses\MaterialEntry.cs" />
+    <Compile Include="CustomClasses\NativeCell.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\Client.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />

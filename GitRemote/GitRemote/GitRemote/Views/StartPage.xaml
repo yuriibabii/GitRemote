@@ -22,7 +22,7 @@
             Margin="30, 30, 0, 0"
             Text="Log in with existing user"
             TextColor="White"
-            BackgroundColor="#054678"
+            BackgroundColor="{StaticResource LogInWithExistUserBackgroundColor}"
             Command="{Binding LogInWithExistUserButtonCommand}"
     />
 
@@ -32,7 +32,7 @@
             Margin="30, 30, 0, 0"
             Text="Create new user"
             TextColor="White"
-            BackgroundColor="#245625"
+            BackgroundColor="{StaticResource CreateNewUserButtonBackgroundColor}"
             Command="{Binding CreateNewUserButtonCommand}"
     />
 
