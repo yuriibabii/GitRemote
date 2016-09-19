@@ -13,5 +13,22 @@ namespace GitRemote.CustomClasses
             set { SetValue(UserNameProperty, value); }
         }
 
+        public static BindableProperty ChangeBackgroundWhenSelectedProperty =
+            BindableProperty.Create("ChangeBackgroundWhenSelected", typeof(bool), typeof(NativeCell), false);
+
+        public bool ChangeBackgroundWhenSelected
+        {
+            get { return ( bool )GetValue(ChangeBackgroundWhenSelectedProperty); }
+            set { SetValue(ChangeBackgroundWhenSelectedProperty, value); }
+        }
+
+        public static BindableProperty BackgroundColorWhenSelectedProperty =
+            BindableProperty.Create("BackgroundColorWhenSelected", typeof(Color), typeof(NativeCell), Color.Accent);
+
+        public Color BackgroundColorWhenSelected
+        {
+            get { return ( Color )GetValue(BackgroundColorWhenSelectedProperty); }
+            set { SetValue(BackgroundColorWhenSelectedProperty, value); }
+        }
     }
 }

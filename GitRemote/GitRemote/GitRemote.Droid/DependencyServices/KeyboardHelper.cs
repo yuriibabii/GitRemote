@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Views.InputMethods;
+using GitRemote.DI;
 using GitRemote.Droid.DependencyServices;
 using GitRemote.Services;
 using Xamarin.Forms;

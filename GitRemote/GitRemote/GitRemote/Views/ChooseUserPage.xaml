@@ -6,18 +6,20 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.ChooseUserPage"
              Title ="Existing Users">
-
   <ListView x:Name="ListOfUsers"
             ItemsSource="{Binding Users}"
             VerticalOptions="Fill"
-            SeparatorColor="{StaticResource NativeCellAndroidTextColorHighlight}"
             HasUnevenRows="False"
-            >
+            SeparatorVisibility="None">
+
     <ListView.ItemTemplate>
       <DataTemplate>
         <customClasses:NativeCell UserName="{Binding }"
                                   Command="{Binding Source={x:Reference Name=ListOfUsers},
-                                    Path=BindingContext.ListItemTappedCommand}"/>
+                                    Path=BindingContext.ListItemTappedCommand}"
+                                  ChangeBackgroundWhenSelected="True"
+                                  BackgroundColorWhenSelected="{StaticResource NativeCellAndroidBackgroundColorWhenSelected}"
+                                 />
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>

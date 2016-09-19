@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Auth;
 
-namespace GitRemote.Services
+namespace GitRemote.DI
 {
     public interface ISecuredDataProvider
     {

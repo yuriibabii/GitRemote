@@ -1,6 +1,7 @@
 ﻿using GitRemote.Services;
 using System;
 using System.Collections.Generic;
+using GitRemote.DI;
 
 namespace GitRemote.GitHub
 {

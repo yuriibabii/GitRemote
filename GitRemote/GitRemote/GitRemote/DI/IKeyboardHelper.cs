@@ -1,4 +1,4 @@
-﻿namespace GitRemote.Services
+﻿namespace GitRemote.DI
 {
     public interface IKeyboardHelper
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using GitRemote.DI;
 using Xamarin.Forms;
 
 namespace GitRemote.GitHub

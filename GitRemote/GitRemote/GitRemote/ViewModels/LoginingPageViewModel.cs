@@ -1,4 +1,5 @@
-﻿using GitRemote.GitHub;
+﻿using GitRemote.DI;
+using GitRemote.GitHub;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;

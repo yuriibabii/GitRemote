@@ -4,6 +4,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using GitRemote.DI;
 
 namespace GitRemote.ViewModels
 {

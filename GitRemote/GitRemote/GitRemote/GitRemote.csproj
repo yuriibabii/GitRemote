@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="CustomClasses\MaterialEntry.cs" />
     <Compile Include="CustomClasses\NativeCell.cs" />
+    <Compile Include="DI\IBackgroundHelper.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\Client.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
@@ -48,9 +49,9 @@
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
     <Compile Include="Services\ConstantsService.cs" />
-    <Compile Include="Services\IKeyboardHelper.cs" />
-    <Compile Include="Services\ISecuredDataProvider.cs" />
-    <Compile Include="Services\IViewSaver.cs" />
+    <Compile Include="DI\IKeyboardHelper.cs" />
+    <Compile Include="DI\ISecuredDataProvider.cs" />
+    <Compile Include="DI\IViewSaver.cs" />
     <Compile Include="Services\StringService.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\ChooseUserPageViewModel.cs" />

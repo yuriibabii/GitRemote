@@ -1,4 +1,5 @@
 using Android.Views;
+using GitRemote.DI;
 using GitRemote.Droid.DependencyServices;
 using GitRemote.Services;
 

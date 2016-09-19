@@ -12,7 +12,7 @@
       </Style>
       
       
-      <Color x:Key="NativeCellAndroidTextColorHighlight">#C283AF</Color>
+      <Color x:Key="NativeCellAndroidBackgroundColorWhenSelected">#C283AF</Color>
       <Color x:Key="LogInWithExistUserBackgroundColor">#054678</Color>
       <Color x:Key="CreateNewUserButtonBackgroundColor">#245625</Color>
       
