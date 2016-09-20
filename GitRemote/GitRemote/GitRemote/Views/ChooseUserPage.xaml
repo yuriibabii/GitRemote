@@ -6,6 +6,12 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.ChooseUserPage"
              Title ="Existing Users">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="PlusButton"
+                 Icon="ic_menu_ic_person_add.png"/>
+    <ToolbarItem x:Name="DeleteButton"
+                 Icon="ic_delete_white_48dp.png"/>
+  </ContentPage.ToolbarItems>
   <ListView x:Name="ListOfUsers"
             ItemsSource="{Binding Users}"
             VerticalOptions="Fill"
