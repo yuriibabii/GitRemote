@@ -2,24 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.ChooseUserPage"
              Title ="Existing Users">
   <ListView x:Name="ListOfUsers"
             ItemsSource="{Binding Users}"
             VerticalOptions="Fill"
-            HasUnevenRows="False"
+            RowHeight="80"
             SeparatorVisibility="None">
 
     <ListView.ItemTemplate>
       <DataTemplate>
-        <customClasses:NativeCell UserName="{Binding }"
-                                  Command="{Binding Source={x:Reference Name=ListOfUsers},
-                                    Path=BindingContext.ListItemTappedCommand}"
-                                  ChangeBackgroundWhenSelected="True"
-                                  BackgroundColorWhenSelected="{StaticResource NativeCellAndroidBackgroundColorWhenSelected}"
-                                 />
+        <ViewCell x:Name="Cell">
+          <ViewCell.View>
+            <StackLayout Padding="20, 20, 20, 0">
+              <Label Text="{Binding }"
+                     FontSize="32"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"/>
+            </StackLayout>
+          </ViewCell.View>
+          <behaviors:Interaction.Behaviors>
+            <behaviors:BehaviorCollection>
+              <behaviors:EventToCommand EventName="Tapped"
+                                        Command="{Binding Source = {x:Reference Name = ListOfUsers},
+                                                          Path=BindingContext.ListItemTappedCommand}"
+                                        CommandParameter="{x:Reference Name=Cell}">
+              </behaviors:EventToCommand>
+            </behaviors:BehaviorCollection>
+          </behaviors:Interaction.Behaviors>
+        </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>
