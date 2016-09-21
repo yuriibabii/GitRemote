@@ -5,7 +5,7 @@
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.LoginingPage"
-             Title="GitRemote">
+             Title="Logining">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem  x:Name ="LogInButton"

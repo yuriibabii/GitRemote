@@ -1,8 +1,8 @@
-﻿using GitRemote.Services;
+﻿using GitRemote.DI;
+using GitRemote.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using GitRemote.DI;
 using Xamarin.Forms;
 
 namespace GitRemote.GitHub
@@ -10,15 +10,13 @@ namespace GitRemote.GitHub
     public class UserManager
     {
         private readonly ObservableCollection<string> _users;
-        private readonly ISecuredDataProvider _securedDataProvider;
         public static List<string> AddedUsers = new List<string>();
         public static List<string> DeletedUsers = new List<string>();
         private static string _lastUser = GetLastUserFromStorage();
 
         public UserManager(ISecuredDataProvider securedDataProvider)
         {
-            _securedDataProvider = securedDataProvider;
-            _users = new ObservableCollection<string>(_securedDataProvider.RetreiveAll(ConstantsService.ProviderName).
+            _users = new ObservableCollection<string>(securedDataProvider.RetreiveAll(ConstantsService.ProviderName).
                 Select(acc => acc.Username).Reverse());
         }
 

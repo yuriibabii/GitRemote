@@ -18,12 +18,14 @@ namespace GitRemote.GitHub
 
         public void AddAccount(string login, string password)
         {
-            var token = GetToken(login, password);
+            // var token = GetToken(login, password);
 
-            CheckForExist(login);
+            // CheckForExist(login);
 
+            //_securedDataProvider.Store(login, ConstantsService.ProviderName,
+            //    new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
             _securedDataProvider.Store(login, ConstantsService.ProviderName,
-                new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
+                new Dictionary<string, string> { { _clientAuthorization.GetNote(), "1" } });
 
             UserManager.SetLastUser(login);
             UserManager.AddedUsers.Add(login);

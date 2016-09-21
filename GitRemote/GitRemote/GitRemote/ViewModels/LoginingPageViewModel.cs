@@ -75,7 +75,8 @@ namespace GitRemote.ViewModels
         public void OnLogInTapped()
         {
             _keyboardHelper.HideKeyboard();
-            _accountManager.AddAccount(LoginEntryText, PasswordEntryText);
+            _accountManager.AddAccount(Convert.ToString(TimeService.CurrentTimeMillis()), "1");
+            //_accountManager.AddAccount(LoginEntryText, PasswordEntryText);
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);
