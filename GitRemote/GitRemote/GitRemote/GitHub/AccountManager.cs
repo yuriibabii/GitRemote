@@ -31,6 +31,11 @@ namespace GitRemote.GitHub
             UserManager.AddedUsers.Add(login);
         }
 
+        public void OpenAccount(string token)
+        {
+            
+        }
+
         private string GetToken(string login, string password)
         {
             var token = _clientAuthorization.GenerateToken(new Client(login, password).GetClient());

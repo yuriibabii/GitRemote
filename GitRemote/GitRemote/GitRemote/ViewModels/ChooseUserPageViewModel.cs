@@ -17,7 +17,6 @@ namespace GitRemote.ViewModels
         private ViewCell _currentCell;
         private StackLayout _currentStackLayout;
         private StackLayout _previousStackLayout;
-        public bool IsAnimated { get; set; } = false;
 
         public DelegateCommand<ViewCell> ListItemTappedCommand { get; }
         public DelegateCommand AddCommand { get; }
@@ -42,6 +41,8 @@ namespace GitRemote.ViewModels
         public void OnListItemTapped(ViewCell cell)
         {
             _currentCell = cell;
+
+            if ( _previousCell == _currentCell ) return;
 
             ( ( ListView )_currentCell.Parent ).SelectedItem = 0;
 

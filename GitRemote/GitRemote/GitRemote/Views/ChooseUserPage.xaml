@@ -28,7 +28,8 @@
                      HorizontalOptions="CenterAndExpand"
                      VerticalOptions="Center"
                      LineBreakMode="MiddleTruncation"
-                     WidthRequest="200"/>
+                     WidthRequest="200"
+              BackgroundColor="Maroon"/>
 
               <Image Source="ic_menu_delete_button.png"
                      HorizontalOptions="CenterAndExpand"
@@ -36,8 +37,12 @@
                      HeightRequest="32"
                      WidthRequest="32"
                      IsVisible="False"
-                     IsEnabled="False"
+                     IsEnabled="True"
                      BackgroundColor="#EDEDED">
+                <!--IsVisible="{Binding Source={x:Reference Name = ListOfUsers},
+                                         Path=BindingContext.IsAnimated}"
+                     IsEnabled="{Binding Source={x:Reference Name = ListOfUsers},
+                                         Path=BindingContext.IsAnimated}"-->
 
                 <Image.GestureRecognizers>
                   <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
@@ -53,7 +58,7 @@
                      HeightRequest="30"
                      WidthRequest="30"
                      IsVisible="False"
-                     IsEnabled="False"
+                     IsEnabled="True"
                      BackgroundColor="#EDEDED">
 
                 <Image.GestureRecognizers>
