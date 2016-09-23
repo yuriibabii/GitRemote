@@ -5,6 +5,7 @@ using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -27,12 +28,17 @@ namespace GitRemote.ViewModels
 
         private readonly INavigationService _navigationService;
         private readonly ISecuredDataProvider _securedDataProvider;
+        private readonly IPageDialogService _pageDialogService;
+
         private readonly UserManager _userManager;
 
-        public ChooseUserPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        public ChooseUserPageViewModel(INavigationService navigationService,
+                                       ISecuredDataProvider securedDataProvider,
+                                       IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;
             _securedDataProvider = securedDataProvider;
+            _pageDialogService = pageDialogService;
             _userManager = new UserManager(_securedDataProvider);
             ListItemTappedCommand = new DelegateCommand<ViewCell>(OnListItemTapped);
             AddCommand = new DelegateCommand(OnAdd);
@@ -83,14 +89,18 @@ namespace GitRemote.ViewModels
             _navigationService.NavigateAsync($"{nameof(LoginingPage)}");
         }
 
-        public void OnDelete()
+        public async void OnDelete()
         {
-            if ( _currentCell != null )
-            {
-                var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
-                _securedDataProvider.Clear(currentCellName);
-                Users.Remove(currentCellName);
-            }
+            var answer = await _pageDialogService.DisplayAlertAsync("Delete Operation",
+                                                              "Are you sure that you want to delete this user?",
+                                                              "Yes", "No");
+            if ( answer )
+                if ( _currentCell != null )
+                {
+                    var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
+                    _securedDataProvider.Clear(currentCellName);
+                    Users.Remove(currentCellName);
+                }
 
             _currentCell = null;
         }
@@ -104,9 +114,8 @@ namespace GitRemote.ViewModels
             var parameters = new NavigationParameters { { "Token", token }, { "Login", currentCellName } };
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);
+            _currentCell = null;
             _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }
-
-
     }
 }
