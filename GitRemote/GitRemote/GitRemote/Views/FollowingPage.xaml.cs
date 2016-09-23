@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-
-namespace GitRemote
+﻿namespace GitRemote.Views
 {
-    public partial class FollowingPage : ContentPage
+    public partial class FollowingPage
     {
         public FollowingPage()
         {

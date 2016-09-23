@@ -1,59 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
+             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.MasterPage"
-             Title="Nessesary">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="Gray"
-                   TargetType="BoxView">
-                <Setter Property="Color"
-                        Value="#A99C96" />
-            </Style>
-            
-
-        </ResourceDictionary>
-
-    </ContentPage.Resources>
-
+             Title="Necessary">
+  
     <AbsoluteLayout x:Name="MasterMenu">
         
         <!--Header-->
         <BoxView x:Name="GrayHeader"
-                 Style="{StaticResource Gray}"
-                 AbsoluteLayout.LayoutBounds="0, 0, 1, 0.175"
+                 Style="{StaticResource GrayBoxView}"
+                 AbsoluteLayout.LayoutBounds="{Binding MasterProfileGrayHeaderBounds}"
                  AbsoluteLayout.LayoutFlags="All">
         </BoxView>
 
         <Image x:Name="MasterProfileImage"
                WidthRequest="50"
                HeightRequest="50"
-               Source="ic_account_circle_white_24dp.png">
+               Source="ic_account_circle_white_24dp.png"
+               AbsoluteLayout.LayoutBounds="{Binding MasterProfileImageBounds}"
+               AbsoluteLayout.LayoutFlags="None">
         </Image>
 
         <Label x:Name="MasterProfileName"
                Text="GitRemote"
-               Font="Bold"
-               FontSize="18">
+               FontAttributes="Bold"
+               FontSize="18"
+               AbsoluteLayout.LayoutBounds="{Binding MasterProfileNameBounds}"
+               AbsoluteLayout.LayoutFlags="None">
         </Label>
         
         <!--Body-->
         
-        <ListView x:Name="ListViewMenu"
+        <ListView x:Name="MasterPageMenu"
                   SeparatorColor="Transparent"
-                  >
+                  AbsoluteLayout.LayoutBounds="{Binding MasterMenuBounds}"
+                  AbsoluteLayout.LayoutFlags="None"
+                  ItemsSource="{Binding MenuItems}"
+                  SelectedItem="{Binding MenuItemSelectedProperty, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Spacing="15" Padding="10" > 
-                            <Image Source="{Binding MasterItemImage}" WidthRequest="25" HeightRequest="25" />
-                            <Label Text="{Binding MasterItemName}" FontSize="16" VerticalOptions="Center" Font="Bold"/>
+                            <Label Text="{Binding Name}" FontSize="16" VerticalOptions="Center" FontAttributes="Bold"/>
+                            <Image Source="{Binding ImageSource}" WidthRequest="25" HeightRequest="25" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
-            
+            <b:Interaction.Behaviors>
+              <b:BehaviorCollection>
+                <b:EventToCommand EventName="ItemSelected" Command="{Binding MenuItemSelected}"></b:EventToCommand>
+              </b:BehaviorCollection>
+            </b:Interaction.Behaviors>
         </ListView> 
         
     </AbsoluteLayout>

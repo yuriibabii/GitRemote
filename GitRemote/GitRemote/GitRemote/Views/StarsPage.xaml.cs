@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-
-namespace GitRemote
+﻿namespace GitRemote.Views
 {
-    public partial class StarsPage : ContentPage
+    public partial class StarsPage
     {
         public StarsPage()
         {

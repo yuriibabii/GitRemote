@@ -1,28 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GitRemote.Views.DetailPage"
-             xmlns:local="clr-namespace:GitRemote;assembly=GitRemote"
-             Title="GitRemote">
-  
-  <local:NewsPage>
-    
-  </local:NewsPage>
-  
-  <local:RepositoriesPage>
-    
-  </local:RepositoriesPage>
-  
-  <local:StarsPage>
-    
-  </local:StarsPage>
-  
-  <local:FollowersPage>
-    
-  </local:FollowersPage>
-  
-  <local:FollowingPage>
-    
-  </local:FollowingPage>
-  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="GitRemote.Views.DetailPage"
+            xmlns:local="clr-namespace:GitRemote;assembly=GitRemote"
+            xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
+            Title="GitRemote">
+
+  <views:NewsPage/>
+  <views:RepositoriesPage/>
+  <views:StarsPage/>
+  <views:FollowersPage/>
+  <views:FollowingPage/>
 </TabbedPage>
