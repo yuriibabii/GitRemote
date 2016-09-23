@@ -75,13 +75,12 @@ namespace GitRemote.ViewModels
         public void OnLogInTapped()
         {
             _keyboardHelper.HideKeyboard();
-            _accountManager.AddAccount(Convert.ToString(TimeService.CurrentTimeMillis()), "1");
-            //_accountManager.AddAccount(LoginEntryText, PasswordEntryText);
-
+            var token = _accountManager.AddAccountAndReturnToken(LoginEntryText, PasswordEntryText);
+            var parameters = new NavigationParameters { { "Token", token }, { "Login", LoginEntryText } };
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);
 
-            _navigationService.NavigateAsync(navigationStack, animated: false);
+            _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }
     }
 }

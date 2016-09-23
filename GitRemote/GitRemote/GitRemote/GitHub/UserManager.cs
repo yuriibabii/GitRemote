@@ -16,8 +16,9 @@ namespace GitRemote.GitHub
 
         public UserManager(ISecuredDataProvider securedDataProvider)
         {
-            _users = new ObservableCollection<string>(securedDataProvider.RetreiveAll(ConstantsService.ProviderName).
-                Select(acc => acc.Username).Reverse());
+            _users = new ObservableCollection<string>(securedDataProvider.RetreiveAll(ConstantsService.ProviderName)
+                                                                         .Select(acc => acc.Username)
+                                                                         .Reverse());
         }
 
         public ObservableCollection<string> GetAllUsers()
@@ -36,6 +37,8 @@ namespace GitRemote.GitHub
 
             return _users;
         }
+
+
 
         #region LastUser
         public static void SetLastUser(string userName)

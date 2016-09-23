@@ -1,7 +1,9 @@
-﻿using GitRemote.Services;
+﻿using GitRemote.DI;
+using GitRemote.Services;
+using Octokit;
+using Octokit.Internal;
 using System;
 using System.Collections.Generic;
-using GitRemote.DI;
 
 namespace GitRemote.GitHub
 {
@@ -16,29 +18,25 @@ namespace GitRemote.GitHub
             _securedDataProvider = securedDataProvider;
         }
 
-        public void AddAccount(string login, string password)
+        public string AddAccountAndReturnToken(string login, string password)
         {
-            // var token = GetToken(login, password);
+            var token = GetToken(login, password);
 
-            // CheckForExist(login);
+            CheckForExist(login);
 
-            //_securedDataProvider.Store(login, ConstantsService.ProviderName,
-            //    new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
             _securedDataProvider.Store(login, ConstantsService.ProviderName,
-                new Dictionary<string, string> { { _clientAuthorization.GetNote(), "1" } });
+                new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
 
-            UserManager.SetLastUser(login);
             UserManager.AddedUsers.Add(login);
-        }
 
-        public void OpenAccount(string token)
-        {
-            
+            return token;
         }
 
         private string GetToken(string login, string password)
         {
-            var token = _clientAuthorization.GenerateToken(new Client(login, password).GetClient());
+            var token = _clientAuthorization.GenerateToken(new GitHubClient
+                (new ProductHeaderValue(ConstantsService.AppName),
+                new InMemoryCredentialStore(new Credentials(login, password))));
 
             if ( token == null )
                 throw new Exception("Something wrong with generating token");

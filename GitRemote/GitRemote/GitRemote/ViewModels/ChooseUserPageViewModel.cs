@@ -1,9 +1,11 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.Services;
 using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
@@ -95,7 +97,14 @@ namespace GitRemote.ViewModels
 
         public void OnOpen()
         {
+            if ( _currentCell == null ) return;
 
+            var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
+            var token = _securedDataProvider.Retreive(ConstantsService.ProviderName, currentCellName);
+            var parameters = new NavigationParameters { { "Token", token }, { "Login", currentCellName } };
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
+                UriKind.Absolute);
+            _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }
 
 

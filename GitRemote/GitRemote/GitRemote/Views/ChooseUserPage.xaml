@@ -25,11 +25,10 @@
                          Orientation="Horizontal">
               <Label Text="{Binding }"
                      FontSize="32"
-                     HorizontalOptions="CenterAndExpand"
+                     HorizontalOptions="EndAndExpand"
                      VerticalOptions="Center"
                      LineBreakMode="MiddleTruncation"
-                     WidthRequest="200"
-              BackgroundColor="Maroon"/>
+                     WidthRequest="200"/>
 
               <Image Source="ic_menu_delete_button.png"
                      HorizontalOptions="CenterAndExpand"
@@ -39,11 +38,7 @@
                      IsVisible="False"
                      IsEnabled="True"
                      BackgroundColor="#EDEDED">
-                <!--IsVisible="{Binding Source={x:Reference Name = ListOfUsers},
-                                         Path=BindingContext.IsAnimated}"
-                     IsEnabled="{Binding Source={x:Reference Name = ListOfUsers},
-                                         Path=BindingContext.IsAnimated}"-->
-
+               
                 <Image.GestureRecognizers>
                   <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
                                                           Path=BindingContext.DeleteCommand}"

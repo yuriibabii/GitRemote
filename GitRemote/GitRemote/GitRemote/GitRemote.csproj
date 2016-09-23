@@ -40,8 +40,8 @@
     </Compile>
     <Compile Include="CustomClasses\MaterialEntry.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
-    <Compile Include="GitHub\Client.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
+    <Compile Include="GitHub\GitRemoteClient.cs" />
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
