@@ -1,13 +1,10 @@
-﻿using Xamarin.Forms;
-
-namespace GitRemote.Views
+﻿namespace GitRemote.Views
 {
-    public partial class DetailPage : TabbedPage
+    public partial class DetailPage
     {
         public DetailPage()
         {
             InitializeComponent();
-            
         }
     }
 }

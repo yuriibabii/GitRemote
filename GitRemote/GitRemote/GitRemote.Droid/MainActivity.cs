@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
@@ -24,11 +25,12 @@ namespace GitRemote.Droid
         
         protected override void OnCreate(Bundle bundle)
         {
-            FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
-            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
+            ToolbarResource = Resource.Layout.toolbar;
+            TabLayoutResource = Resource.Layout.tabs;
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
             LoadApplication(new App());
+            
             
         }
 

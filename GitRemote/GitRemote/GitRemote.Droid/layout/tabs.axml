@@ -4,6 +4,6 @@
     android:id="@+id/sliding_tabs"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style ="@style/TabStyle"   
+    style ="@style/Tab"   
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     />

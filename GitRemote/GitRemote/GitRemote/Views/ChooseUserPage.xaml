@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.ChooseUserPage"
+             Title ="Existing Users">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="AddButton"
+                 Icon="ic_menu_ic_person_add.png"
+                 Command="{Binding AddCommand}"/>
+  </ContentPage.ToolbarItems>
+  <ListView x:Name="ListOfUsers"
+            ItemsSource="{Binding Users}"
+            VerticalOptions="Fill"
+            RowHeight="80"
+            SeparatorVisibility="None">
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell x:Name="Cell">
+          <ViewCell.View>
+            <StackLayout Padding="20, 20, 20, 0"
+                         Orientation="Horizontal">
+              <Label Text="{Binding }"
+                     FontSize="32"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="Center"
+                     LineBreakMode="MiddleTruncation"
+                     WidthRequest="200"/>
+
+              <Image Source="ic_menu_delete_button.png"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center"
+                     HeightRequest="32"
+                     WidthRequest="32"
+                     IsVisible="False"
+                     IsEnabled="True"
+                     BackgroundColor="#EDEDED">
+               
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
+                                                          Path=BindingContext.DeleteCommand}"
+                                        NumberOfTapsRequired="1">
+                  </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+              </Image>
+              
+              <Image Source="ic_menu_open_button.png"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center"
+                     HeightRequest="30"
+                     WidthRequest="30"
+                     IsVisible="False"
+                     IsEnabled="True"
+                     BackgroundColor="#EDEDED">
+
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
+                                                            Path=BindingContext.OpenCommand}"
+                                        NumberOfTapsRequired="1">
+                  </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+              </Image>
+            </StackLayout>
+          </ViewCell.View>
+          <behaviors:Interaction.Behaviors>
+            <behaviors:BehaviorCollection>
+              <behaviors:EventToCommand EventName="Tapped"
+                                        Command="{Binding Source = {x:Reference Name = ListOfUsers},
+                                                          Path=BindingContext.ListItemTappedCommand}"
+                                        CommandParameter="{x:Reference Name=Cell}">
+              </behaviors:EventToCommand>
+            </behaviors:BehaviorCollection>
+          </behaviors:Interaction.Behaviors>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+</ContentPage>
