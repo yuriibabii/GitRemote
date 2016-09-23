@@ -1,11 +1,15 @@
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
+using Android.Views.InputMethods;
+using GitRemote.CustomClasses;
+using GitRemote.Droid.DependencyServices;
 using GitRemote.Droid.Renderers;
-using GitRemote.Views;
+using GitRemote.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Color = Xamarin.Forms.Color;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
 using View = Android.Views.View;
 
@@ -23,16 +27,31 @@ namespace GitRemote.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            if ( e.OldElement == null )
-            {
-                var ctrl = CreateNativeControl();
-                SetNativeControl(ctrl);
+            if ( e.OldElement != null ) return;
 
-                SetText();
-                SetHintText();
-                SetBackgroundColor();
-                SetTextColor();
-                SetIsPassword();
+            // MaterialEntry Render Staff
+            #region
+            var ctrl = CreateNativeControl();
+            SetNativeControl(ctrl);
+
+            SetText();
+            SetHintText();
+            SetBackgroundColor();
+            SetTextColor();
+            SetIsPassword();
+            #endregion
+
+            if ( Control == null ) return;
+
+            switch ( e.NewElement.ClassId )
+            {
+                case "LoginEntry":
+                    ViewSaver.SaveLoginView(Control);
+                    break;
+                case "PasswordEntry":
+                    SetSendButtonAction();
+                    ViewSaver.SavePasswordView(Control);
+                    break;
             }
         }
 
@@ -64,6 +83,7 @@ namespace GitRemote.Droid.Renderers
             {
                 SetText();
             }
+
         }
 
         private void EditTextOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
@@ -72,9 +92,10 @@ namespace GitRemote.Droid.Renderers
             NativeView.EditText.SetSelection(Element.Text.Length);
         }
 
-        private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangeEventArgs)
+        private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangedEventArgs)
         {
-            //NotImplemented yet          
+            if ( focusChangedEventArgs.HasFocus )
+                ViewSaver.SetLastView(Element.ClassId);
         }
 
         private void SetText()
@@ -86,7 +107,7 @@ namespace GitRemote.Droid.Renderers
         {
             NativeView.EditText.InputType = Element.IsPassword
                 ? InputTypes.TextVariationPassword | InputTypes.ClassText
-                : NativeView.EditText.InputType;
+                : InputTypes.TextVariationVisiblePassword;
         }
 
         public void SetBackgroundColor()
@@ -119,6 +140,24 @@ namespace GitRemote.Droid.Renderers
         {
             return LayoutInflater.From(Context).Inflate(Resource.Layout.TextInputLayout, null);
         }
+
+        /// <summary>
+        /// If Action of our entry is Send than call method from Portable
+        /// </summary>
+        private void SetSendButtonAction()
+        {
+            NativeView.EditText.EditorAction += (sender, e) =>
+            {
+                if ( e.ActionId == ImeAction.Send )
+                {
+                    ( ( LoginingPageViewModel )Element.BindingContext ).OnLogInTapped();
+                }
+                else
+                    e.Handled = false;
+            };
+        }
+
+
     }
 
 }

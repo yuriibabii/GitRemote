@@ -11,4 +11,6 @@
   <color name="BlackCursor">#38463E</color>
   <color name="KindOfBlueHintColor">#37429B</color>
   <color name="SomethingLikeGreenForUnderLine">#30BB6D</color>
+  <color name="NativeCellAndroidBackground">#FFFFFF</color>
+  <color name="NativeCellAndroidTextColor">#054678</color>
 </resources>

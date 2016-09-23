@@ -1,0 +1,1 @@
+1) After first tap on ShowPassword Checkbox it has strange movements
