@@ -8,11 +8,17 @@
         public bool IsUnChecked = true;
         public string ImageSource = UncheckedImageSource;
 
+        /// <summary>
+        /// Inverts checked value
+        /// </summary>
         public void ChangeCheckedProperty()
         {
             IsUnChecked = !IsUnChecked;
         }
 
+        /// <summary>
+        /// Sets properly image
+        /// </summary>
         public void ChangeImageState()
         {
             ImageSource = ImageSource == UncheckedImageSource ? CheckedImageSource : UncheckedImageSource;

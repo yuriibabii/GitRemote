@@ -10,6 +10,11 @@ namespace GitRemote.GitHub
         private string _generatedTokenTime = string.Empty;
         private string _note = string.Empty;
 
+        /// <summary>
+        /// Gets token from Github API and generates unique note
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns>Token</returns>
         public string GenerateToken(GitHubClient client)
         {
             _generatedTokenTime = TimeService.CurrentTimeMillis().ToString();

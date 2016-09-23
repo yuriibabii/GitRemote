@@ -187,9 +187,6 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="app.config" />
-    <AndroidResource Include="layout\NativeCellAndroid.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

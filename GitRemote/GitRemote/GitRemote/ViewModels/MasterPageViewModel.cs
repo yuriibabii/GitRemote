@@ -9,19 +9,15 @@ namespace GitRemote.ViewModels
 {
     public class MasterPageViewModel : BindableBase
     {
-        /// <summary>
-        /// Constants
-        /// </summary>
-        #region
+
+        #region Constants
         private const string GistsPageImagePath = "ic_code_black_24dp.png";
         private const string IssueDashboardPageImagePath = "ic_slow_motion_video_black_24dp.png";
         private const string BookmarksPageImagePath = "ic_bookmark_black_24dp.png";
         private const string ReportAnIssuePageImagePath = "ic_error_outline_black_24dp.png";
         #endregion
-        /// <summary>
-        /// Bindable properties
-        /// </summary>
-        #region
+
+        #region Bindable properties
         private Rectangle _masterProfileGrayHeaderBounds;
 
         public Rectangle MasterProfileGrayHeaderBounds

@@ -1,8 +1,8 @@
+using GitRemote.DI;
 using GitRemote.Droid.DependencyServices;
 using GitRemote.Services;
 using System.Collections.Generic;
 using System.Linq;
-using GitRemote.DI;
 using Xamarin.Auth;
 using Xamarin.Forms;
 using Account = Xamarin.Auth.Account;

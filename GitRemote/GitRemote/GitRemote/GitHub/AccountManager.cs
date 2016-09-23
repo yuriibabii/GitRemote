@@ -18,6 +18,12 @@ namespace GitRemote.GitHub
             _securedDataProvider = securedDataProvider;
         }
 
+        /// <summary>
+        /// Takes token, checks for exist of account with same login, saves account and returns token for this account
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns>Token</returns>
         public string AddAccountAndReturnToken(string login, string password)
         {
             var token = GetToken(login, password);
@@ -32,6 +38,12 @@ namespace GitRemote.GitHub
             return token;
         }
 
+        /// <summary>
+        /// Gets token if all is fine
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns>Token</returns>
         private string GetToken(string login, string password)
         {
             var token = _clientAuthorization.GenerateToken(new GitHubClient
@@ -44,6 +56,10 @@ namespace GitRemote.GitHub
             return token;
         }
 
+        /// <summary>
+        /// Checks for already exist account in storage
+        /// </summary>
+        /// <param name="login"></param>
         private void CheckForExist(string login)
         {
             var retreiveResponce = _securedDataProvider.Retreive(ConstantsService.ProviderName, login)?.Username;

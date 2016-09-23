@@ -46,24 +46,27 @@ namespace GitRemote.ViewModels
             OpenCommand = new DelegateCommand(OnOpen);
         }
 
+        /// <summary>
+        /// Method that fires when item of list tapped.
+        /// Sets property background and Hides/Shows delete and open buttons(images)
+        /// </summary>
+        /// <param name="cell">Cell that is tapped</param>
         public void OnListItemTapped(ViewCell cell)
         {
             _currentCell = cell;
 
-            if ( _previousCell == _currentCell ) return;
+            if ( _previousCell == _currentCell ) return; // If it is the same cell
 
             ( ( ListView )_currentCell.Parent ).SelectedItem = 0;
 
             if ( _previousCell != null )
-                _previousCell.View.BackgroundColor = Color.Default;
+                _previousCell.View.BackgroundColor = Color.Default; // Clears color from previous tapped list item
 
             _currentCell.View.BackgroundColor = Color.FromHex("#EDEDED");
 
-            _previousCell = _currentCell;
-
             _currentStackLayout = _currentCell.View as StackLayout;
 
-            if ( _currentStackLayout != null )
+            if ( _currentStackLayout != null ) //Shows buttons of current item
             {
                 _currentStackLayout.Children[1].IsVisible = true;
                 _currentStackLayout.Children[1].IsEnabled = true;
@@ -71,7 +74,7 @@ namespace GitRemote.ViewModels
                 _currentStackLayout.Children[2].IsEnabled = true;
             }
 
-            if ( _previousStackLayout != null )
+            if ( _previousStackLayout != null ) //Hides buttons of previous item
             {
                 _previousStackLayout.Children[1].IsVisible = false;
                 _previousStackLayout.Children[1].IsEnabled = false;
