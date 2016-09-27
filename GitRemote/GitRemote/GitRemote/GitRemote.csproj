@@ -67,6 +67,7 @@
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\StarsPageViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\TwoFactorAuthPageViewModel.cs" />
     <Compile Include="Views\ChooseUserPage.xaml.cs">
       <DependentUpon>ChooseUserPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +116,9 @@
     </Compile>
     <Compile Include="Views\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwoFactorAuthPage.xaml.cs">
+      <DependentUpon>TwoFactorAuthPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +301,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\StartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TwoFactorAuthPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

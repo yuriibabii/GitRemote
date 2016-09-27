@@ -53,7 +53,7 @@ namespace GitRemote.ViewModels
             _checkBox = new ShowPasswordCheckBoxModel();
             _entries = new LogInPageEntriesModel();
 
-            _accountManager = new AccountManager(new ClientAuthorization(), _securedDataProvider);
+            _accountManager = new AccountManager(new ClientAuthorization(_navigationService), _securedDataProvider);
 
             Func<bool> isLogInCommandEnable = () =>
                 StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);
@@ -72,15 +72,23 @@ namespace GitRemote.ViewModels
             OnPropertyChanged(nameof(CheckBoxImagePath));
         }
 
-        public void OnLogInTapped()
+        public async void OnLogInTapped()
         {
-            _keyboardHelper.HideKeyboard();
-            var token = _accountManager.AddAccountAndReturnToken(LoginEntryText, PasswordEntryText);
-            var parameters = new NavigationParameters { { "Token", token }, { "Login", LoginEntryText } };
-            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
-                UriKind.Absolute);
 
-            _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
+            var token = await _accountManager.GetTokenAsync(LoginEntryText, PasswordEntryText);
+
+            _keyboardHelper.HideKeyboard();
+
+            if ( token == "2FA" ) return;
+
+            _accountManager.AddAccount(LoginEntryText, token);
+
+            var parameters = new NavigationParameters { { "Token", token }, { "Login", LoginEntryText } };
+
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
+                    UriKind.Absolute);
+
+            await _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }
     }
 }

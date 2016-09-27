@@ -2,8 +2,8 @@
 using GitRemote.Services;
 using Octokit;
 using Octokit.Internal;
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GitRemote.GitHub
 {
@@ -12,7 +12,8 @@ namespace GitRemote.GitHub
         private readonly ClientAuthorization _clientAuthorization;
         private readonly ISecuredDataProvider _securedDataProvider;
 
-        public AccountManager(ClientAuthorization clientAuthorization, ISecuredDataProvider securedDataProvider)
+        public AccountManager(ClientAuthorization clientAuthorization,
+                              ISecuredDataProvider securedDataProvider)
         {
             _clientAuthorization = clientAuthorization;
             _securedDataProvider = securedDataProvider;
@@ -22,20 +23,17 @@ namespace GitRemote.GitHub
         /// Takes token, checks for exist of account with same login, saves account and returns token for this account
         /// </summary>
         /// <param name="login"></param>
-        /// <param name="password"></param>
+        /// <param name="token"></param>
         /// <returns>Token</returns>
-        public string AddAccountAndReturnToken(string login, string password)
-        {
-            var token = GetToken(login, password);
 
+        public void AddAccount(string login, string token)
+        {
             CheckForExist(login);
 
             _securedDataProvider.Store(login, ConstantsService.ProviderName,
                 new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
 
             UserManager.AddedUsers.Add(login);
-
-            return token;
         }
 
         /// <summary>
@@ -44,14 +42,11 @@ namespace GitRemote.GitHub
         /// <param name="login"></param>
         /// <param name="password"></param>
         /// <returns>Token</returns>
-        private string GetToken(string login, string password)
+        public async Task<string> GetTokenAsync(string login, string password)
         {
-            var token = _clientAuthorization.GenerateToken(new GitHubClient
-                (new ProductHeaderValue(ConstantsService.AppName),
-                new InMemoryCredentialStore(new Credentials(login, password))));
-
-            if ( token == null )
-                throw new Exception("Something wrong with generating token");
+            var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
+                                   new InMemoryCredentialStore(new Credentials(login, password)));
+            var token = await _clientAuthorization.GenerateTokenAsync(gitHubClient);
 
             return token;
         }

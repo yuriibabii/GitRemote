@@ -1,31 +1,48 @@
 ﻿using GitRemote.Services;
+using GitRemote.Views;
 using Octokit;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GitRemote.GitHub
 {
     public class ClientAuthorization
     {
+        private readonly INavigationService _navigationService;
+
         private string _generatedTokenTime = string.Empty;
         private string _note = string.Empty;
 
+        public ClientAuthorization(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
         /// <summary>
         /// Gets token from Github API and generates unique note
         /// </summary>
         /// <param name="client"></param>
         /// <returns>Token</returns>
-        public string GenerateToken(GitHubClient client)
+        public async Task<string> GenerateTokenAsync(GitHubClient client)
         {
             _generatedTokenTime = TimeService.CurrentTimeMillis().ToString();
             _note = ConstantsService.AppName + ' ' + _generatedTokenTime;
+
+            var newAuthorization = new NewAuthorization(_note, new List<string> { "user", "repo", "gist" });
             try
             {
-                return client.Authorization.Create(new NewAuthorization(_note, new List<string> { "user", "repo", "gist" })).Result.Token;
+                var getTokenTask = await client.Authorization.Create(newAuthorization);
+                return getTokenTask.Token;
             }
-            catch ( Exception )
+            catch ( TwoFactorRequiredException )
             {
-                return null;
+                await _navigationService.NavigateAsync($"{nameof(TwoFactorAuthPage)}", animated: false);
+                return "2FA";
+            }
+            catch ( Exception ex )
+            {
+                throw new Exception(ex.Message + " (Something wrong with token generation)");
             }
         }
 
