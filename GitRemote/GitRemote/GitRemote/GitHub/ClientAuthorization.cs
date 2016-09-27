@@ -20,7 +20,8 @@ namespace GitRemote.GitHub
             _navigationService = navigationService;
         }
         /// <summary>
-        /// Gets token from Github API and generates unique note
+        /// Checks accoung for 2FA and if it is, then we notify about it our methods and goes to 2FA page.
+        /// If it is not, then we get token from Github API and generates unique note.
         /// </summary>
         /// <param name="client"></param>
         /// <returns>Token</returns>

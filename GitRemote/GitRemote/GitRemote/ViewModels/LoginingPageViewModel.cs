@@ -74,12 +74,11 @@ namespace GitRemote.ViewModels
 
         public async void OnLogInTapped()
         {
-
             var token = await _accountManager.GetTokenAsync(LoginEntryText, PasswordEntryText);
 
             _keyboardHelper.HideKeyboard();
 
-            if ( token == "2FA" ) return;
+            if ( token == "2FA" ) return; // If account has 2FA then I working with it and do below job later
 
             _accountManager.AddAccount(LoginEntryText, token);
 
