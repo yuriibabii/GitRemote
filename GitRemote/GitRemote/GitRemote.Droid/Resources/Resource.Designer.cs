@@ -1163,7 +1163,7 @@ namespace GitRemote.Droid
 			public const int accent = 2131427402;
 			
 			// aapt resource value: 0x7f0b004b
-			public const int accentForMaterialEntry = 2131427403;
+			public const int accentForFloatingEntry = 2131427403;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int accent_material_dark = 2131427336;
@@ -2347,9 +2347,6 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f07003c
 			public const int action_mode_close_button = 2131165244;
 			
-			// aapt resource value: 0x7f07009b
-			public const int action_search = 2131165339;
-			
 			// aapt resource value: 0x7f07003d
 			public const int activity_chooser_view_content = 2131165245;
 			
@@ -3029,22 +3026,6 @@ namespace GitRemote.Droid
 			}
 		}
 		
-		public partial class Menu
-		{
-			
-			// aapt resource value: 0x7f0d0000
-			public const int menu_home = 2131558400;
-			
-			static Menu()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Menu()
-			{
-			}
-		}
-		
 		public partial class String
 		{
 			
@@ -3641,7 +3622,7 @@ namespace GitRemote.Droid
 			public const int CardView_Light = 2131361818;
 			
 			// aapt resource value: 0x7f0a0176
-			public const int MaterialEntryHint = 2131362166;
+			public const int FloatingEntryHint = 2131362166;
 			
 			// aapt resource value: 0x7f0a0172
 			public const int MyTheme = 2131362162;
@@ -3995,7 +3976,7 @@ namespace GitRemote.Droid
 			public const int Theme_MediaRouter_LightControlPanel = 2131361795;
 			
 			// aapt resource value: 0x7f0a0174
-			public const int ThemeForMaterialEntry = 2131362164;
+			public const int ThemeForFloatingEntry = 2131362164;
 			
 			// aapt resource value: 0x7f0a010e
 			public const int ThemeOverlay_AppCompat = 2131362062;

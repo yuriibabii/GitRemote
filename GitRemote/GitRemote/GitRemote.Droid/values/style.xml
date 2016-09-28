@@ -11,7 +11,7 @@
     <item name="android:windowBackground">@color/window_background</item>
     <item name="windowActionModeOverlay">true</item>
   </style>
-  <style name="ThemeForMaterialEntry"
+  <style name="ThemeForFloatingEntry"
          parent="MyTheme">
     <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
   </style>
@@ -22,7 +22,7 @@
     <item name = "tabGravity">fill</item>
   </style>
 
-  <style name ="MaterialEntryHint" parent="@android:style/TextAppearance">
+  <style name ="FloatingEntryHint" parent="@android:style/TextAppearance">
     <item name ="android:textColor">@color/KindOfBlueHintColor</item>
     <item name ="android:textSize">14sp</item>
     

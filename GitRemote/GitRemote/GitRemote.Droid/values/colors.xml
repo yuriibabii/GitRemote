@@ -3,7 +3,7 @@
   <color name="primary">#054678</color>
   <color name="primaryDark">#062E4C</color>
   <color name="accent">#FFC107</color>
-  <color name="accentForMaterialEntry">#30BB6D</color>
+  <color name="accentForFloatingEntry">#30BB6D</color>
   <color name="window_background">#FFFFFF</color>
   <color name="GreenIndicator">#51D929</color>
   <color name="BlueBarBackground">#054678</color>

@@ -2,8 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.TwoFactorAuthPage"
-             Title="TwoFactorAuthentication">
-<Entry ></Entry>
+             Title="TwoFactorAuth">
+  <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Horizontal"
+                 BackgroundColor="#E7E5E5"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="StartAndExpand"
+                 HeightRequest="30">
+      <Label Text="Not sure what to do?"
+             FontSize="15"
+             HorizontalOptions="EndAndExpand"
+             VerticalOptions="Center"/>
+      <customClasses:HyperLinkLabel x:Name="GetSomeHelpHyperLink"
+                                    Text="Get some help."
+                                    FontSize="15"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"
+                                    IsUnderline="True"
+                                    TextColor="#3366BB">
+        <customClasses:HyperLinkLabel.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding HyperLinkTappedCommand}"
+                                NumberOfTapsRequired="1"/>
+        </customClasses:HyperLinkLabel.GestureRecognizers>
+      </customClasses:HyperLinkLabel>
+    </StackLayout>
+    <StackLayout Orientation="Vertical">
+      <Label ></Label>
+      <Entry ></Entry>
+      <Label ></Label>
+    </StackLayout>
+  </StackLayout>
 </ContentPage>

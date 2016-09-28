@@ -2,7 +2,7 @@
 
 namespace GitRemote.CustomClasses
 {
-    public class MaterialEntry : Entry
+    public class FloatingEntry : Entry
     {
     }
 }

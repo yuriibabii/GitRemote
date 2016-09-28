@@ -38,7 +38,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomClasses\MaterialEntry.cs" />
+    <Compile Include="CustomClasses\HyperLinkLabel.cs" />
+    <Compile Include="CustomClasses\FloatingEntry.cs" />
+    <Compile Include="DI\IDevice.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\GitRemoteClient.cs" />

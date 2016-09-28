@@ -13,11 +13,11 @@ using Color = Xamarin.Forms.Color;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
 using View = Android.Views.View;
 
-[assembly: ExportRenderer(typeof(MaterialEntry), typeof(MaterialEntryRendererDroid))]
+[assembly: ExportRenderer(typeof(FloatingEntry), typeof(FloatingEntryRenderer))]
 
 namespace GitRemote.Droid.Renderers
 {
-    public class MaterialEntryRendererDroid : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
+    public class FloatingEntryRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
     {
         private TextInputLayout _nativeView;
 
@@ -29,7 +29,7 @@ namespace GitRemote.Droid.Renderers
 
             if ( e.OldElement != null ) return;
 
-            // MaterialEntry Render Staff
+            // FloatingEntry Render Staff
             #region
             var ctrl = CreateNativeControl();
             SetNativeControl(ctrl);

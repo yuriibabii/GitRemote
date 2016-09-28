@@ -10,31 +10,26 @@
   <ContentPage.ToolbarItems>
     <ToolbarItem  x:Name ="LogInButton"
                   Text="Log in"
-                  Command="{Binding LogInCommand}"
-                  >
+                  Command="{Binding LogInCommand}">
     </ToolbarItem>
 
   </ContentPage.ToolbarItems>
 
   <AbsoluteLayout>
-    <customClasses:MaterialEntry ClassId ="LoginEntry"
+    <customClasses:FloatingEntry ClassId ="LoginEntry"
                                  x:Name="LoginEntry"
                                  Text="{Binding LoginEntryText, Mode=OneWayToSource}"
                                  Placeholder = "Username or Email"
                                  AbsoluteLayout.LayoutBounds=".5, .08, .9, .1"
-                                 AbsoluteLayout.LayoutFlags="All"
-                                 
-                         />
+                                 AbsoluteLayout.LayoutFlags="All"/>
 
-    <customClasses:MaterialEntry ClassId = "PasswordEntry"
+    <customClasses:FloatingEntry ClassId = "PasswordEntry"
                                  x:Name="PasswordEntry"
                                  Text="{Binding PasswordEntryText, Mode=OneWayToSource}"
                                  IsPassword="{Binding IsUnChecked}"
                                  Placeholder = "Password"
                                  AbsoluteLayout.LayoutBounds=".5, .22, .9, .1"
-                                 AbsoluteLayout.LayoutFlags="All"
-                                 
-                         />
+                                 AbsoluteLayout.LayoutFlags="All"/>
 
     <StackLayout Orientation="Horizontal"
                  x:Name="ShowPasswordLayout"
@@ -43,18 +38,15 @@
 
       <StackLayout.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding CheckedCommand}"
-                              NumberOfTapsRequired="1"
-                                />
+                              NumberOfTapsRequired="1"/>
       </StackLayout.GestureRecognizers>
 
       <Image x:Name="ShowPasswordImage"
-             Source="{Binding CheckBoxImagePath}"
-               />
+             Source="{Binding CheckBoxImagePath}"/>
 
       <Label x:Name="ShowPasswordLabel"
              Text="Show Password"
-             VerticalTextAlignment="Center"
-               />
+             VerticalTextAlignment="Center"/>
 
     </StackLayout>
   </AbsoluteLayout>
