@@ -15,6 +15,10 @@
          parent="MyTheme">
     <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
   </style>
+  <style name="ThemeForCodeEntry"
+         parent="MyTheme">
+    <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
+  </style>
   <style name = "Tab">
     <item name = "tabIndicatorColor">@color/GreenIndicator</item>
     <item name = "tabBackground">@color/BlueBarBackground</item>

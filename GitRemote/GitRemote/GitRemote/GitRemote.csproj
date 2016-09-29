@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomClasses\CodeEntry.cs" />
     <Compile Include="CustomClasses\HyperLinkLabel.cs" />
     <Compile Include="CustomClasses\FloatingEntry.cs" />
     <Compile Include="DI\IDevice.cs" />

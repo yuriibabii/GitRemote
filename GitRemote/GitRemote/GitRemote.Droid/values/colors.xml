@@ -13,4 +13,7 @@
   <color name="SomethingLikeGreenForUnderLine">#30BB6D</color>
   <color name="NativeCellAndroidBackground">#FFFFFF</color>
   <color name="NativeCellAndroidTextColor">#054678</color>
+  <color name="CodeInputUnderlineColor">#B2CAE6</color>
+
+  
 </resources>
