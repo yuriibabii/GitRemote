@@ -30,7 +30,7 @@ namespace GitRemote.ViewModels
             set
             {
                 _entries.LoginText = value;
-                LogInCommand.RaiseCanExecuteChanged();
+                LogInCommand?.RaiseCanExecuteChanged();
             }
         }
 
@@ -40,7 +40,7 @@ namespace GitRemote.ViewModels
             set
             {
                 _entries.PasswordText = value;
-                LogInCommand.RaiseCanExecuteChanged();
+                LogInCommand?.RaiseCanExecuteChanged();
             }
         }
 

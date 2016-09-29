@@ -6,6 +6,14 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.TwoFactorAuthPage"
              Title="TwoFactorAuth">
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem  x:Name ="LogInButton"
+                  Text="Log in"
+                  Command="{Binding LogInCommand}">
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
   <StackLayout Orientation="Vertical">
     <StackLayout Orientation="Horizontal"
                  BackgroundColor="#E7E5E5"
@@ -41,7 +49,8 @@
              Margin="10, 5, 5, 5"
              HeightRequest="18"
              TextColor="Black"/>
-      <customClasses:CodeEntry HorizontalOptions="Fill"
+      <customClasses:CodeEntry Text="{Binding AuthCodeEntryText, Mode=OneWayToSource}"
+                               HorizontalOptions="Fill"
                                Margin="5, 0, 5, 0"
                                FontSize="48"></customClasses:CodeEntry>
       <Label  Text="Two-factor authentication is enabled for your account. Enter your athentication code to verify your identity."

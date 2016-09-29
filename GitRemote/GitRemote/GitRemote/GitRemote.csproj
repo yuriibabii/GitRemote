@@ -46,6 +46,7 @@
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\GitRemoteClient.cs" />
     <Compile Include="GitHub\UserManager.cs" />
+    <Compile Include="Models\CodePageEntryModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
