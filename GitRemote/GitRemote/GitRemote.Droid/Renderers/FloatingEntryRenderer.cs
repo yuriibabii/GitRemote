@@ -150,7 +150,8 @@ namespace GitRemote.Droid.Renderers
             {
                 if ( e.ActionId == ImeAction.Send )
                 {
-                    ( ( LoginingPageViewModel )Element.BindingContext ).OnLogInTapped();
+                    if ( ( ( LoginingPageViewModel )Element.BindingContext ).LogInCommand.CanExecute() )
+                        ( ( LoginingPageViewModel )Element.BindingContext ).LogInCommand.Execute();
                 }
                 else
                     e.Handled = false;

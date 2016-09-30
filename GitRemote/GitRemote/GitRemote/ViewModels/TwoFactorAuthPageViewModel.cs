@@ -38,7 +38,7 @@ namespace GitRemote.ViewModels
             await _device.LaunchUriAsync(new Uri(ConstantsService.TwoFactorAuthUrl));
         }
 
-        private async void OnLogInTapped()
+        public async void OnLogInTapped()
         {
 
         }
