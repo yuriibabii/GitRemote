@@ -31,7 +31,7 @@ namespace GitRemote.GitHub
             CheckForExist(login);
 
             _securedDataProvider.Store(login, ConstantsService.ProviderName,
-                new Dictionary<string, string> { { _clientAuthorization.GetNote(), token } });
+                new Dictionary<string, string> { { _clientAuthorization.Note, token } });
 
             UserManager.AddedUsers.Add(login);
         }
@@ -48,6 +48,12 @@ namespace GitRemote.GitHub
                                    new InMemoryCredentialStore(new Credentials(login, password)));
             var token = await _clientAuthorization.GenerateTokenAsync(gitHubClient);
 
+            return token;
+        }
+
+        public async Task<string> GetTokenAsync(GitHubClient gitHubClient, string twoFactorAuthCode)
+        {
+            var token = await _clientAuthorization.GenerateTokenWithCodeAsync(gitHubClient, twoFactorAuthCode);
             return token;
         }
 

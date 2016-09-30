@@ -10,8 +10,8 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
-            //NavigationService.NavigateAsync($"{nameof(StartPage)}");
-            NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(TwoFactorAuthPage)}");
+            NavigationService.NavigateAsync($"{nameof(StartPage)}");
+            //NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(TwoFactorAuthPage)}");
         }
         protected override void RegisterTypes()
         {
