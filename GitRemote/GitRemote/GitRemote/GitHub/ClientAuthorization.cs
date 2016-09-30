@@ -44,6 +44,12 @@ namespace GitRemote.GitHub
             }
         }
 
+        /// <summary>
+        /// Generates token for 2FA account
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="twoFactorAuthCode"></param>
+        /// <returns></returns>
         public async Task<string> GenerateTokenWithCodeAsync(GitHubClient client, string twoFactorAuthCode)
         {
             var newAuthorization = GetNewAuthorization("user", "repo", "gist");

@@ -51,6 +51,12 @@ namespace GitRemote.GitHub
             return token;
         }
 
+        /// <summary>
+        /// Gets token for 2FA account
+        /// </summary>
+        /// <param name="gitHubClient">Client with his credentials</param>
+        /// <param name="twoFactorAuthCode">Code from CodeEntry</param>
+        /// <returns>Token</returns>
         public async Task<string> GetTokenAsync(GitHubClient gitHubClient, string twoFactorAuthCode)
         {
             var token = await _clientAuthorization.GenerateTokenWithCodeAsync(gitHubClient, twoFactorAuthCode);

@@ -3,6 +3,7 @@
   <style name="MyTheme"
          parent="MyTheme.Base">
   </style>
+  
   <style name="MyTheme.Base"
          parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/BlueBarBackground</item>
@@ -11,14 +12,12 @@
     <item name="android:windowBackground">@color/window_background</item>
     <item name="windowActionModeOverlay">true</item>
   </style>
+  
   <style name="ThemeForFloatingEntry"
          parent="MyTheme">
     <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
   </style>
-  <style name="ThemeForCodeEntry"
-         parent="MyTheme">
-    <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
-  </style>
+  
   <style name = "Tab">
     <item name = "tabIndicatorColor">@color/GreenIndicator</item>
     <item name = "tabBackground">@color/BlueBarBackground</item>

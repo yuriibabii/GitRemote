@@ -22,8 +22,8 @@ namespace GitRemote.Droid.Renderers
             if ( e.OldElement != null ) return;
 
             var ctrl = CreateNativeControl();
-            ctrl.RequestFocus();
-            var editText = ( EditText )( ( LinearLayout )ctrl ).GetChildAt(0);
+            ctrl.RequestFocus(); // Gives focus to CodeEntry
+            var editText = ( EditText )( ( LinearLayout )ctrl ).GetChildAt(0); //Gets EditText element from layout
             editText.TextChanged += CodeTextOnTextChanged;
             editText.EditorAction += AttachEditorAction;
             SetNativeControl(ctrl);
@@ -45,6 +45,10 @@ namespace GitRemote.Droid.Renderers
                 e.Handled = false;
         }
 
+        /// <summary>
+        /// Gets view from layout in xml
+        /// </summary>
+        /// <returns></returns>
         protected override View CreateNativeControl()
         {
             return LayoutInflater.From(Context).Inflate(Resource.Layout.CodeInputLayout, null);

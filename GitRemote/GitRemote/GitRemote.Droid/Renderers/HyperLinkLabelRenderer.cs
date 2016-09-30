@@ -34,6 +34,12 @@ namespace GitRemote.Droid.Renderers
                     ? Control.PaintFlags | PaintFlags.UnderlineText
                     : Control.PaintFlags &= ~PaintFlags.UnderlineText;
         }
+
+        /// <summary>
+        /// Sets options that are described for this control in Forms project 
+        /// </summary>
+        /// <param name="view">View from Forms project</param>
+        /// <param name="control">Control that is a view in Android project</param>
         private static void SetUserInterfaceOptions(HyperLinkLabel view, TextView control)
         {
             if ( view.IsUnderline )
