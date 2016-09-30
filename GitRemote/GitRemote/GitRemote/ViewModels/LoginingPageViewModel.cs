@@ -18,8 +18,10 @@ namespace GitRemote.ViewModels
         private readonly IKeyboardHelper _keyboardHelper;
         private readonly ISecuredDataProvider _securedDataProvider;
         private readonly AccountManager _accountManager;
+        private readonly IDevice _device;
         public DelegateCommand CheckedCommand { get; }
         public DelegateCommand LogInCommand { get; }
+        public DelegateCommand HyperLinkTappedCommand { get; }
 
         public bool IsUnChecked => _checkBox.IsUnChecked;
         public string CheckBoxImagePath => _checkBox.ImageSource;
@@ -45,8 +47,9 @@ namespace GitRemote.ViewModels
         }
 
         public LoginingPageViewModel(INavigationService navigationService, IKeyboardHelper keyboardHelper,
-            ISecuredDataProvider securedDataProvider)
+            ISecuredDataProvider securedDataProvider, IDevice device)
         {
+            _device = device;
             _navigationService = navigationService;
             _keyboardHelper = keyboardHelper;
             _securedDataProvider = securedDataProvider;
@@ -58,8 +61,10 @@ namespace GitRemote.ViewModels
             Func<bool> isLogInCommandEnable = () =>
                 StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);
 
+
             CheckedCommand = new DelegateCommand(OnCheckBoxTapped);
             LogInCommand = new DelegateCommand(OnLogInTapped, isLogInCommandEnable);
+            HyperLinkTappedCommand = new DelegateCommand(OnHyperLinkTapped);
             //_keyboardHelper.ShowKeyboard();
         }
 
@@ -88,6 +93,11 @@ namespace GitRemote.ViewModels
                     UriKind.Absolute);
 
             await _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
+        }
+
+        private async void OnHyperLinkTapped()
+        {
+            await _device.LaunchUriAsync(new Uri(ConstantsService.GitHubOfficialPageUrl));
         }
     }
 }

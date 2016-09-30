@@ -10,5 +10,8 @@ namespace GitRemote.Services
 
         public static readonly string TwoFactorAuthUrl =
             "https://help.github.com/articles/about-two-factor-authentication/";
+
+        public static readonly string GitHubOfficialPageUrl =
+            "https://github.com/";
     }
 }

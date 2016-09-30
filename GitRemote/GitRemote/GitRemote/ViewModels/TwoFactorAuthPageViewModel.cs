@@ -34,7 +34,7 @@ namespace GitRemote.ViewModels
         }
 
         public TwoFactorAuthPageViewModel(IDevice device, INavigationService navigationService,
-                                          ISecuredDataProvider securedDataProvider, IKeyboardHelper keyboardHelper)
+            ISecuredDataProvider securedDataProvider, IKeyboardHelper keyboardHelper)
         {
             _keyboardHelper = keyboardHelper;
             _device = device;
