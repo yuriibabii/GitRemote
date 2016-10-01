@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.Authentication.TwoFactorAuthPage"
+             Title="TwoFactorAuth">
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem  x:Name ="LogInButton"
+                  Text="Log in"
+                  Command="{Binding LogInCommand}">
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Horizontal"
+                 BackgroundColor="#E7E5E5"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Start"
+                 HeightRequest="30">
+      <Label Text="Not sure what to do?"
+             FontSize="15"
+             HorizontalOptions="EndAndExpand"
+             VerticalOptions="Center"/>
+      <customClasses:HyperLinkLabel x:Name="GetSomeHelpHyperLink"
+                                    Text="Get some help."
+                                    FontSize="15"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"
+                                    IsUnderline="True"
+                                    TextColor="#3366BB">
+        <customClasses:HyperLinkLabel.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding HyperLinkTappedCommand}"
+                                NumberOfTapsRequired="1"/>
+        </customClasses:HyperLinkLabel.GestureRecognizers>
+      </customClasses:HyperLinkLabel>
+    </StackLayout>
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Start"
+                 Padding="5, 0, 5, 5">
+      <Label Text="Authentication Code"
+             FontAttributes="Bold"
+             FontSize="16"
+             HorizontalOptions="Start"
+             VerticalOptions="Start"
+             Margin="10, 5, 5, 5"
+             HeightRequest="18"
+             TextColor="Black"/>
+      <customClasses:CodeEntry Text="{Binding AuthCodeEntryText, Mode=OneWayToSource}"
+                               HorizontalOptions="Fill"
+                               Margin="5, 0, 5, 0"
+                               FontSize="48"></customClasses:CodeEntry>
+      <Label  Text="Two-factor authentication is enabled for your account. Enter your athentication code to verify your identity."
+              FontSize="14"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              HorizontalTextAlignment="Start"
+              VerticalTextAlignment="Center"
+              Margin="5, 0, 5, 5"
+              LineBreakMode="WordWrap"
+              TextColor="Black"/>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

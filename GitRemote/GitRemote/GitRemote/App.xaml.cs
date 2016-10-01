@@ -1,7 +1,12 @@
 ﻿using GitRemote.GitHub;
+using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
+using ChooseUserPage = GitRemote.Views.Authentication.ChooseUserPage;
+using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
+using StartPage = GitRemote.Views.Authentication.StartPage;
+using TwoFactorAuthPage = GitRemote.Views.Authentication.TwoFactorAuthPage;
 
 namespace GitRemote
 {
@@ -10,8 +15,12 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync($"{nameof(StartPage)}");
+            //if User didn't exit from last session, then opens last session, otherwise opens start page
+            NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
+                ? $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+                : $"{nameof(StartPage)}");
         }
+
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<BookmarksPage>();
@@ -30,6 +39,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<NavigationBarPage>();
             Container.RegisterTypeForNavigation<StartPage>();
             Container.RegisterTypeForNavigation<ChooseUserPage>();
+            Container.RegisterTypeForNavigation<TwoFactorAuthPage>();
         }
 
         protected override void OnSleep()

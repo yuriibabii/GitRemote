@@ -24,9 +24,10 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            _gitHubClient.Credentials = new Credentials(parameters["Token"].ToString());
-
-            _gitRemoteClient.Login = parameters["Login"].ToString();
+            if ( parameters.ContainsKey("Token") )
+                _gitHubClient.Credentials = new Credentials(parameters["Token"].ToString());
+            if ( parameters.ContainsKey("Login") )
+                _gitRemoteClient.Login = parameters["Login"].ToString();
         }
     }
 }

@@ -38,11 +38,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomClasses\MaterialEntry.cs" />
+    <Compile Include="CustomClasses\CodeEntry.cs" />
+    <Compile Include="CustomClasses\HyperLinkLabel.cs" />
+    <Compile Include="CustomClasses\FloatingEntry.cs" />
+    <Compile Include="DI\IDevice.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\GitRemoteClient.cs" />
     <Compile Include="GitHub\UserManager.cs" />
+    <Compile Include="Models\CodePageEntryModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
@@ -52,11 +56,11 @@
     <Compile Include="DI\IViewSaver.cs" />
     <Compile Include="Services\StringService.cs" />
     <Compile Include="Services\TimeService.cs" />
-    <Compile Include="ViewModels\ChooseUserPageViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\ChooseUserPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\FollowersPageViewModel.cs" />
     <Compile Include="ViewModels\FollowingPageViewModel.cs" />
-    <Compile Include="ViewModels\LoginingPageViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\LoginingPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewsModels\BookmarksPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewsModels\GistsPageViewModel.cs" />
@@ -66,8 +70,9 @@
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\StarsPageViewModel.cs" />
-    <Compile Include="ViewModels\StartPageViewModel.cs" />
-    <Compile Include="Views\ChooseUserPage.xaml.cs">
+    <Compile Include="ViewModels\Authentication\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\TwoFactorAuthPageViewModel.cs" />
+    <Compile Include="Views\Authentication\ChooseUserPage.xaml.cs">
       <DependentUpon>ChooseUserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationBarPage.xaml.cs">
@@ -82,7 +87,7 @@
     <Compile Include="Views\FollowingPage.xaml.cs">
       <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginingPage.xaml.cs">
+    <Compile Include="Views\Authentication\LoginingPage.xaml.cs">
       <DependentUpon>LoginingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterPage.xaml.cs">
@@ -103,7 +108,7 @@
     <Compile Include="Views\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StartPage.xaml.cs">
+    <Compile Include="Views\Authentication\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
@@ -115,6 +120,9 @@
     </Compile>
     <Compile Include="Views\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Authentication\TwoFactorAuthPage.xaml.cs">
+      <DependentUpon>TwoFactorAuthPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -278,7 +286,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\LoginingPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\LoginingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -290,13 +298,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ChooseUserPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\ChooseUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\StartPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\StartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Authentication\TwoFactorAuthPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

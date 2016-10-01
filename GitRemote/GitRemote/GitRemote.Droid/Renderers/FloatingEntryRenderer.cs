@@ -5,7 +5,7 @@ using Android.Views.InputMethods;
 using GitRemote.CustomClasses;
 using GitRemote.Droid.DependencyServices;
 using GitRemote.Droid.Renderers;
-using GitRemote.ViewModels;
+using GitRemote.ViewModels.Authentication;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -13,11 +13,11 @@ using Color = Xamarin.Forms.Color;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
 using View = Android.Views.View;
 
-[assembly: ExportRenderer(typeof(MaterialEntry), typeof(MaterialEntryRendererDroid))]
+[assembly: ExportRenderer(typeof(FloatingEntry), typeof(FloatingEntryRenderer))]
 
 namespace GitRemote.Droid.Renderers
 {
-    public class MaterialEntryRendererDroid : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
+    public class FloatingEntryRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
     {
         private TextInputLayout _nativeView;
 
@@ -29,7 +29,7 @@ namespace GitRemote.Droid.Renderers
 
             if ( e.OldElement != null ) return;
 
-            // MaterialEntry Render Staff
+            // FloatingEntry Render Staff
             #region
             var ctrl = CreateNativeControl();
             SetNativeControl(ctrl);
@@ -150,7 +150,8 @@ namespace GitRemote.Droid.Renderers
             {
                 if ( e.ActionId == ImeAction.Send )
                 {
-                    ( ( LoginingPageViewModel )Element.BindingContext ).OnLogInTapped();
+                    if ( ( ( LoginingPageViewModel )Element.BindingContext ).LogInCommand.CanExecute() )
+                        ( ( LoginingPageViewModel )Element.BindingContext ).LogInCommand.Execute();
                 }
                 else
                     e.Handled = false;

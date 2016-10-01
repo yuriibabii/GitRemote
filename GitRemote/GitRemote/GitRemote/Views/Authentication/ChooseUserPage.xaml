@@ -4,7 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="GitRemote.Views.ChooseUserPage"
+             x:Class="GitRemote.Views.Authentication.ChooseUserPage"
              Title ="Existing Users">
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="AddButton"

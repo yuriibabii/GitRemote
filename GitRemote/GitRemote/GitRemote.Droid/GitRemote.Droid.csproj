@@ -168,11 +168,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyServices\Device.cs" />
     <Compile Include="DependencyServices\KeyboardHelper.cs" />
     <Compile Include="DependencyServices\SecuredDataProvider.cs" />
     <Compile Include="DependencyServices\ViewSaver.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renderers\MaterialEntryRendererDroid.cs" />
+    <Compile Include="Renderers\CodeEntryRenderer.cs" />
+    <Compile Include="Renderers\HyperLinkLabelRenderer.cs" />
+    <Compile Include="Renderers\FloatingEntryRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,7 +190,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="app.config" />
-    <AndroidResource Include="layout\NativeCellAndroid.axml">
+    <AndroidResource Include="layout\CodeInputLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="packages.config" />
@@ -209,9 +212,6 @@
     <ProjectReference Include="..\GitRemote\GitRemote.csproj">
       <Name>GitRemote</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="menu\menu_home.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="values-v21\style.xml" />
@@ -400,6 +400,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\ic_menu_delete_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_menu_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldpi\ic_menu_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_menu_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_menu_logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

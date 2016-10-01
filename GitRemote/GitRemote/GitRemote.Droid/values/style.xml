@@ -3,6 +3,7 @@
   <style name="MyTheme"
          parent="MyTheme.Base">
   </style>
+  
   <style name="MyTheme.Base"
          parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/BlueBarBackground</item>
@@ -11,10 +12,12 @@
     <item name="android:windowBackground">@color/window_background</item>
     <item name="windowActionModeOverlay">true</item>
   </style>
-  <style name="ThemeForMaterialEntry"
+  
+  <style name="ThemeForFloatingEntry"
          parent="MyTheme">
     <item name="colorControlActivated">@color/SomethingLikeGreenForUnderLine</item>
   </style>
+  
   <style name = "Tab">
     <item name = "tabIndicatorColor">@color/GreenIndicator</item>
     <item name = "tabBackground">@color/BlueBarBackground</item>
@@ -22,7 +25,7 @@
     <item name = "tabGravity">fill</item>
   </style>
 
-  <style name ="MaterialEntryHint" parent="@android:style/TextAppearance">
+  <style name ="FloatingEntryHint" parent="@android:style/TextAppearance">
     <item name ="android:textColor">@color/KindOfBlueHintColor</item>
     <item name ="android:textSize">14sp</item>
     

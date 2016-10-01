@@ -5,11 +5,6 @@
                         x:Class="GitRemote.App">
   <prism:PrismApplication.Resources>
     <ResourceDictionary>
-      <Style x:Key="GrayBoxView"
-             TargetType="BoxView">
-        <Setter Property="Color"
-                Value="#A99C96"/>
-      </Style>
 
       <Color x:Key="LogInWithExistUserBackgroundColor">#054678</Color>
       <Color x:Key="CreateNewUserButtonBackgroundColor">#245625</Color>
