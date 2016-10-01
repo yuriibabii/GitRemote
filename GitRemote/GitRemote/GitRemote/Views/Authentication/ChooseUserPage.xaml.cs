@@ -1,4 +1,4 @@
-﻿namespace GitRemote.Views
+﻿namespace GitRemote.Views.Authentication
 {
     public partial class ChooseUserPage
     {

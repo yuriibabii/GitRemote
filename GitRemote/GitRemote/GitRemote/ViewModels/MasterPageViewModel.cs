@@ -1,11 +1,11 @@
 ﻿using GitRemote.GitHub;
 using GitRemote.Models;
-using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
+using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels
 {

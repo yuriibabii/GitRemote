@@ -3,7 +3,7 @@ using Android.Views.InputMethods;
 using Android.Widget;
 using GitRemote.CustomClasses;
 using GitRemote.Droid.Renderers;
-using GitRemote.ViewModels;
+using GitRemote.ViewModels.Authentication;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;

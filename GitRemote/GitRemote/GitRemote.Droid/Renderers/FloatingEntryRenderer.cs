@@ -5,7 +5,7 @@ using Android.Views.InputMethods;
 using GitRemote.CustomClasses;
 using GitRemote.Droid.DependencyServices;
 using GitRemote.Droid.Renderers;
-using GitRemote.ViewModels;
+using GitRemote.ViewModels.Authentication;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

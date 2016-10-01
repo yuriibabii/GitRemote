@@ -9,8 +9,9 @@ using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
 
-namespace GitRemote.ViewModels
+namespace GitRemote.ViewModels.Authentication
 {
     public class ChooseUserPageViewModel : BindableBase
     {

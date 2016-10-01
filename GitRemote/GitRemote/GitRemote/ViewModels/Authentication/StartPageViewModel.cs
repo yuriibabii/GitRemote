@@ -1,10 +1,11 @@
-﻿using GitRemote.Services;
-using GitRemote.Views;
+﻿using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using ChooseUserPage = GitRemote.Views.Authentication.ChooseUserPage;
+using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
 
-namespace GitRemote.ViewModels
+namespace GitRemote.ViewModels.Authentication
 {
     public class StartPageViewModel : BindableBase
     {

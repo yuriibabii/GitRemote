@@ -3,6 +3,10 @@ using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
+using ChooseUserPage = GitRemote.Views.Authentication.ChooseUserPage;
+using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
+using StartPage = GitRemote.Views.Authentication.StartPage;
+using TwoFactorAuthPage = GitRemote.Views.Authentication.TwoFactorAuthPage;
 
 namespace GitRemote
 {

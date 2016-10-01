@@ -8,7 +8,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 
-namespace GitRemote.ViewModels
+namespace GitRemote.ViewModels.Authentication
 {
     public class LoginingPageViewModel : BindableBase
     {

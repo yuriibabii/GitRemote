@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace GitRemote.Views
+namespace GitRemote.Views.Authentication
 {
     public partial class TwoFactorAuthPage : ContentPage
     {

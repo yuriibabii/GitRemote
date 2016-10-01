@@ -1,9 +1,9 @@
 ﻿using GitRemote.Services;
-using GitRemote.Views;
 using Octokit;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
+using TwoFactorAuthPage = GitRemote.Views.Authentication.TwoFactorAuthPage;
 
 namespace GitRemote.GitHub
 {
