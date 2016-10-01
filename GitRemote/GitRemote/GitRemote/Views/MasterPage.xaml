@@ -12,10 +12,9 @@
     <BoxView x:Name="GrayHeader"
              Color="#CACED2"
              RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1}"
-             
+             RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"
              RelativeLayout.WidthConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-             RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
-             RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"/>
+             RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"/>
     
 
     <Image x:Name="MasterProfileImage"
@@ -44,40 +43,31 @@
            TextColor="Black"
            RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
            RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=LogOutImage, Property=Y, Factor=1, Constant=55}"/>
-
-    <!--<ListView x:Name="MasterPageMenu"
-              SeparatorColor="Transparent"
-              
-              ItemsSource="{Binding MenuItems}"
-              SelectedItem="{Binding MenuItemSelectedProperty, Mode=TwoWay}"
-              Margin="15, 0, 0, 0"
-              RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Factor=1}"
-              RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0.85}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <StackLayout Orientation="Horizontal"
-                         Spacing="15"
-                         Padding="10" >
-              <Label Text="{Binding Name}"
-                     FontSize="16"
-                     VerticalOptions="Center"
-                     FontAttributes="Bold"/>
-              <Image Source="{Binding ImageSource}"
-                     WidthRequest="25"
-                     HeightRequest="25" />
-            </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-      <b:Interaction.Behaviors>
-        <b:BehaviorCollection>
-          <b:EventToCommand EventName="ItemSelected"
-                            Command="{Binding MenuItemSelected}"></b:EventToCommand>
-        </b:BehaviorCollection>
-      </b:Interaction.Behaviors>
-    </ListView>-->
-
-  </RelativeLayout>
+    
+    <RelativeLayout
+      XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1}"
+      YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2, Constant=10}"
+      WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=15}"
+      HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MasterProfileImage, Property=Height, Factor=1}">
+      
+      <Image x:Name="GistsImage"  BackgroundColor="Blue"
+           WidthRequest="20"
+           HeightRequest="20"
+           Source="{Binding GistsPageImagePath}"
+           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=10}"/>
+      <Label x:Name="GistsLabel"  BackgroundColor="Fuchsia"
+           Text="Gists"
+           FontSize="16"
+           TextColor="Black"
+           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=50}"
+           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"/>
+      <!--RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=GistsImage, Property=X, Factor=1, Constant=50}"
+           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=GistsImage, Property=Y, Factor=1}"-->
+        <RelativeLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding GistsCommand}" NumberOfTapsRequired="1"/>
+      </RelativeLayout.GestureRecognizers>
+    </RelativeLayout> 
+ </RelativeLayout>
 
 </ContentPage>
