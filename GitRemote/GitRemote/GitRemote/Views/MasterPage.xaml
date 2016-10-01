@@ -6,59 +6,78 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.MasterPage"
              Title="Necessary">
-  
-    <AbsoluteLayout x:Name="MasterMenu">
-        
-        <!--Header-->
-        <BoxView x:Name="GrayHeader"
-                 Style="{StaticResource GrayBoxView}"
-                 AbsoluteLayout.LayoutBounds="{Binding MasterProfileGrayHeaderBounds}"
-                 AbsoluteLayout.LayoutFlags="All">
-        </BoxView>
 
-        <Image x:Name="MasterProfileImage"
-               WidthRequest="50"
-               HeightRequest="50"
-               Source="ic_account_circle_white_24dp.png"
-               AbsoluteLayout.LayoutBounds="{Binding MasterProfileImageBounds}"
-               AbsoluteLayout.LayoutFlags="None">
-        </Image>
+  <RelativeLayout x:Name="MasterMenu">
 
-        <Label x:Name="MasterProfileName"
-               Text="GitRemote"
-               FontAttributes="Bold"
-               FontSize="18"
-               AbsoluteLayout.LayoutBounds="{Binding MasterProfileNameBounds}"
-               AbsoluteLayout.LayoutFlags="None">
-        </Label>
-        
-        <!--Body-->
-        
-        <ListView x:Name="MasterPageMenu"
-                  SeparatorColor="Transparent"
-                  AbsoluteLayout.LayoutBounds="{Binding MasterMenuBounds}"
-                  AbsoluteLayout.LayoutFlags="None"
-                  ItemsSource="{Binding MenuItems}"
-                  SelectedItem="{Binding MenuItemSelectedProperty, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Spacing="15" Padding="10" > 
-                            <Label Text="{Binding Name}" FontSize="16" VerticalOptions="Center" FontAttributes="Bold"/>
-                            <Image Source="{Binding ImageSource}" WidthRequest="25" HeightRequest="25" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <b:Interaction.Behaviors>
-              <b:BehaviorCollection>
-                <b:EventToCommand EventName="ItemSelected" Command="{Binding MenuItemSelected}"></b:EventToCommand>
-              </b:BehaviorCollection>
-            </b:Interaction.Behaviors>
-        </ListView> 
-        
-    </AbsoluteLayout>
+    <BoxView x:Name="GrayHeader"
+             Color="#CACED2"
+             RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1}"
+             
+             RelativeLayout.WidthConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+             RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
+             RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"/>
     
+
+    <Image x:Name="MasterProfileImage"
+           WidthRequest="50"
+           HeightRequest="50"
+           Source="ic_account_circle_white_24dp.png"
+           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=15}"/>
     
+    <Image x:Name="LogOutImage"
+           WidthRequest="35"
+           HeightRequest="35"
+           Source="ic_menu_logout.png"
+           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"
+           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=25}">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ExitCommand}"
+                              NumberOfTapsRequired="1"/>
+      </Image.GestureRecognizers>
+      </Image>
     
+    <Label x:Name="MasterProfileName"
+           Text="GitRemote"
+           FontAttributes="Bold"
+           FontSize="18"
+           TextColor="Black"
+           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=LogOutImage, Property=Y, Factor=1, Constant=55}"/>
+
+    <!--<ListView x:Name="MasterPageMenu"
+              SeparatorColor="Transparent"
+              
+              ItemsSource="{Binding MenuItems}"
+              SelectedItem="{Binding MenuItemSelectedProperty, Mode=TwoWay}"
+              Margin="15, 0, 0, 0"
+              RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Factor=1}"
+              RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0.85}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15"
+                         Padding="10" >
+              <Label Text="{Binding Name}"
+                     FontSize="16"
+                     VerticalOptions="Center"
+                     FontAttributes="Bold"/>
+              <Image Source="{Binding ImageSource}"
+                     WidthRequest="25"
+                     HeightRequest="25" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+      <b:Interaction.Behaviors>
+        <b:BehaviorCollection>
+          <b:EventToCommand EventName="ItemSelected"
+                            Command="{Binding MenuItemSelected}"></b:EventToCommand>
+        </b:BehaviorCollection>
+      </b:Interaction.Behaviors>
+    </ListView>-->
+
+  </RelativeLayout>
+
 </ContentPage>

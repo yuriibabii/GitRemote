@@ -87,6 +87,8 @@ namespace GitRemote.ViewModels
 
             _accountManager.AddAccount(LoginEntryText, token);
 
+            UserManager.SetLastUser(LoginEntryText);
+
             var parameters = new NavigationParameters { { "Token", token }, { "Login", LoginEntryText } };
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",

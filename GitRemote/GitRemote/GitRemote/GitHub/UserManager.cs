@@ -63,7 +63,6 @@ namespace GitRemote.GitHub
 
         public static string GetLastUserFromStorage()
         {
-
             if ( Application.Current.Properties.ContainsKey("_lastUser") )
                 return Application.Current.Properties["_lastUser"] as string;
 

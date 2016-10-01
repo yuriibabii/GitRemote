@@ -114,6 +114,7 @@ namespace GitRemote.ViewModels
 
             var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
             var token = _securedDataProvider.Retreive(ConstantsService.ProviderName, currentCellName);
+            UserManager.SetLastUser(currentCellName);
             var parameters = new NavigationParameters { { "Token", token }, { "Login", currentCellName } };
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);

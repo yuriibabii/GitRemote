@@ -56,6 +56,9 @@ namespace GitRemote.ViewModels
             var token = await _accountManager.GetTokenAsync(_client, AuthCodeEntryText);
             _keyboardHelper.HideKeyboard();
             _accountManager.AddAccount(_client.Credentials.Login, token);
+
+            UserManager.SetLastUser(_client.Credentials.Login);
+
             var parameters = new NavigationParameters { { "Token", token }, { "Login", _client.Credentials.Login } };
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",

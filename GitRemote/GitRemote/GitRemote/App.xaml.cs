@@ -1,4 +1,5 @@
 ﻿using GitRemote.GitHub;
+using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
@@ -10,9 +11,12 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync($"{nameof(StartPage)}");
-            //NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(TwoFactorAuthPage)}");
+            //if User didn't exit from last session, then opens last session, otherwise opens start page
+            NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
+                ? $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+                : $"{nameof(StartPage)}");
         }
+
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<BookmarksPage>();
