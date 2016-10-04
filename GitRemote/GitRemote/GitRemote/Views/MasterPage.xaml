@@ -2,20 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:b="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.MasterPage"
              Title="Necessary">
 
-  <RelativeLayout x:Name="MasterMenu">
+  <RelativeLayout x:Name="MasterMenu"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill">
 
-    <BoxView x:Name="GrayHeader"
+  <!--  <BoxView x:Name="GrayHeader"
              Color="#CACED2"
              RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1}"
              RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"
              RelativeLayout.WidthConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
              RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"/>
-    
+
 
     <Image x:Name="MasterProfileImage"
            WidthRequest="50"
@@ -23,7 +24,7 @@
            Source="ic_account_circle_white_24dp.png"
            RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
            RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=15}"/>
-    
+
     <Image x:Name="LogOutImage"
            WidthRequest="35"
            HeightRequest="35"
@@ -34,8 +35,8 @@
         <TapGestureRecognizer Command="{Binding ExitCommand}"
                               NumberOfTapsRequired="1"/>
       </Image.GestureRecognizers>
-      </Image>
-    
+    </Image>
+
     <Label x:Name="MasterProfileName"
            Text="GitRemote"
            FontAttributes="Bold"
@@ -43,31 +44,239 @@
            TextColor="Black"
            RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
            RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=LogOutImage, Property=Y, Factor=1, Constant=55}"/>
-    
-    <RelativeLayout
-      XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1}"
-      YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2, Constant=10}"
-      WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=15}"
-      HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MasterProfileImage, Property=Height, Factor=1}">
+
+    <Grid RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+          RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2, Constant=15}"
+          ColumnSpacing="35"
+          RowSpacing="20">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="35"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="35"/>
+        <RowDefinition Height="35"/>
+        <RowDefinition Height="35"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="35"/>
+      </Grid.RowDefinitions>
+      <Image x:Name="GistsImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Source="{Binding GistsPageImagePath}"
+             Grid.Column="0"
+             Grid.Row="0"/>
+      <Label x:Name="GistsLabel"
+             Text="Gists"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"
+             Grid.Column="1"
+             Grid.Row="0"/>
+      <Image x:Name="DashboardImage" 
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Source="{Binding IssueDashboardPageImagePath}"
+             Grid.Column="0"
+             Grid.Row="1"/>
+      <Label x:Name="DashboardLabel" 
+             Text="Issue Dashboard"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"
+             Grid.Column="1"
+             Grid.Row="1"/>
+      <Image x:Name="BookmarksImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Source="{Binding BookmarksPageImagePath}"
+             Grid.Column="0"
+             Grid.Row="2"/>
+      <Label x:Name="BookmarksLabel"
+             Text="Bookmarks"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"
+             Grid.Column="1"
+             Grid.Row="2"/>
+      <BoxView x:Name="GrayLine"
+               Color="#CACED2"
+               HeightRequest="1"
+               WidthRequest="10000"
+               Margin="0, 5, 0, 5"
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.ColumnSpan="3"
+               Grid.Column="0"
+               Grid.Row="3"/>
+
+      <Image x:Name="IssueImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Source="{Binding ReportAnIssuePageImagePath}"
+             Grid.Column="0"
+             Grid.Row="4"/>
+      <Label x:Name="IssueLabel"
+             Text="Report an issue"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"
+             Grid.Column="1"
+             Grid.Row="4"/>
       
-      <Image x:Name="GistsImage"  BackgroundColor="Blue"
-           WidthRequest="20"
-           HeightRequest="20"
-           Source="{Binding GistsPageImagePath}"
-           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
-           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=10}"/>
-      <Label x:Name="GistsLabel"  BackgroundColor="Fuchsia"
-           Text="Gists"
-           FontSize="16"
-           TextColor="Black"
-           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=50}"
-           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"/>
-      <!--RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=GistsImage, Property=X, Factor=1, Constant=50}"
-           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=GistsImage, Property=Y, Factor=1}"-->
-        <RelativeLayout.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding GistsCommand}" NumberOfTapsRequired="1"/>
-      </RelativeLayout.GestureRecognizers>
-    </RelativeLayout> 
- </RelativeLayout>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding GistsCommand}"
+                              NumberOfTapsRequired="1"/>
+      </Grid.GestureRecognizers>
+    
+    </Grid>-->
+
+    <StackLayout x:Name="GistsView"
+                 RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+                 RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2, Constant=15}"
+                 HeightRequest="35">
+
+
+      <Image x:Name="GistsImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Start"
+             VerticalOptions="Center"
+             Margin="0, 0, 40, 0"
+             Source="{Binding GistsPageImagePath}"/>
+
+      <Label x:Name="GistsLabel"
+             Text="Gists"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"/>
+
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding GistsCommand}"/>
+      </StackLayout.GestureRecognizers>
+    </StackLayout>
+
+    <StackLayout x:Name="DashboardView"
+                 RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+                 RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=GistsView, Property=Y, Constant=35}"
+                 HeightRequest="35">
+
+
+      <Image x:Name="DashboardImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Start"
+             VerticalOptions="Center"
+             Margin="0, 0, 40, 0"
+             Source="{Binding DashBoardPageImagePath}"/>
+
+      <Label x:Name="DashboardLabel"
+             Text="Gists"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"/>
+
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding DashboardCommand}"/>
+      </StackLayout.GestureRecognizers>
+    </StackLayout>
+
+    <StackLayout x:Name="BookmarksView"
+                 RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+                 RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=DashboardView, Property=Y, Constant=35}"
+                 HeightRequest="35">
+
+
+      <Image x:Name="BookmarksImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Start"
+             VerticalOptions="Center"
+             Margin="0, 0, 40, 0"
+             Source="{Binding GistsPageImagePath}"/>
+
+      <Label x:Name="BookmarksLabel"
+             Text="Gists"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"/>
+
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding BookmarksCommand}"/>
+      </StackLayout.GestureRecognizers>
+    </StackLayout>
+
+    <StackLayout>
+      <BoxView x:Name="GrayLine"
+               Color="#CACED2"
+               HeightRequest="1"
+               WidthRequest="10000"
+               Margin="0, 5, 0, 5"
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="FillAndExpand"/>
+    </StackLayout>
+
+    <StackLayout x:Name="IssueView"
+                 RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
+                 RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=BookmarksView, Property=Y, Constant=35}"
+                 HeightRequest="35">
+
+
+      <Image x:Name="IssueImage"
+             WidthRequest="25"
+             HeightRequest="25"
+             HorizontalOptions="Start"
+             VerticalOptions="Center"
+             Margin="0, 0, 40, 0"
+             Source="{Binding IssuePageImagePath}"/>
+
+      <Label x:Name="IssueLabel"
+             Text="Gists"
+             FontSize="14"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             TextColor="Black"/>
+
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding IssueCommand}"/>
+      </StackLayout.GestureRecognizers>
+    </StackLayout>
+
+
+  </RelativeLayout>
+
 
 </ContentPage>
