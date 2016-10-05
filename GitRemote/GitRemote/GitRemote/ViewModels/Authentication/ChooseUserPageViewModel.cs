@@ -8,7 +8,9 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
+using Label = Xamarin.Forms.Label;
 using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
 
 namespace GitRemote.ViewModels.Authentication
@@ -115,8 +117,9 @@ namespace GitRemote.ViewModels.Authentication
 
             var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
             var token = _securedDataProvider.Retreive(ConstantsService.ProviderName, currentCellName);
+
             UserManager.SetLastUser(currentCellName);
-            var parameters = new NavigationParameters { { "Token", token }, { "Login", currentCellName } };
+            var parameters = new NavigationParameters { { "Session", new Session(currentCellName, token.Properties.First().Value) } };
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);
             _currentCell = null;

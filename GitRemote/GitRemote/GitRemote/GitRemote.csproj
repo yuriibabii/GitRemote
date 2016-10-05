@@ -44,11 +44,11 @@
     <Compile Include="DI\IDevice.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
-    <Compile Include="GitHub\GitRemoteClient.cs" />
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
+    <Compile Include="GitHub\Session.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
     <Compile Include="Services\ConstantsService.cs" />
     <Compile Include="DI\IKeyboardHelper.cs" />

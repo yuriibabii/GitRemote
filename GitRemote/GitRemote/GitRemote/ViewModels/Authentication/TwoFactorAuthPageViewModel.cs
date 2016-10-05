@@ -59,7 +59,7 @@ namespace GitRemote.ViewModels.Authentication
 
             UserManager.SetLastUser(_client.Credentials.Login);
 
-            var parameters = new NavigationParameters { { "Token", token }, { "Login", _client.Credentials.Login } };
+            var parameters = new NavigationParameters { { "Session", new Session(_client.Credentials.Login, token) } };
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                     UriKind.Absolute);

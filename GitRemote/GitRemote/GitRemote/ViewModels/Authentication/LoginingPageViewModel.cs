@@ -16,7 +16,6 @@ namespace GitRemote.ViewModels.Authentication
         private readonly LogInPageEntriesModel _entries;
         private readonly INavigationService _navigationService;
         private readonly IKeyboardHelper _keyboardHelper;
-        private readonly ISecuredDataProvider _securedDataProvider;
         private readonly AccountManager _accountManager;
         private readonly IDevice _device;
         public DelegateCommand CheckedCommand { get; }
@@ -52,11 +51,10 @@ namespace GitRemote.ViewModels.Authentication
             _device = device;
             _navigationService = navigationService;
             _keyboardHelper = keyboardHelper;
-            _securedDataProvider = securedDataProvider;
             _checkBox = new ShowPasswordCheckBoxModel();
             _entries = new LogInPageEntriesModel();
 
-            _accountManager = new AccountManager(new ClientAuthorization(_navigationService), _securedDataProvider);
+            _accountManager = new AccountManager(new ClientAuthorization(_navigationService), securedDataProvider);
 
             Func<bool> isLogInCommandEnable = () =>
                 StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);
@@ -89,7 +87,7 @@ namespace GitRemote.ViewModels.Authentication
 
             UserManager.SetLastUser(LoginEntryText);
 
-            var parameters = new NavigationParameters { { "Token", token }, { "Login", LoginEntryText } };
+            var parameters = new NavigationParameters { { "Session", new Session(LoginEntryText, token) } };
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                     UriKind.Absolute);
