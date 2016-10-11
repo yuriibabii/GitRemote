@@ -12,14 +12,15 @@ namespace GitRemote
 {
     public partial class App
     {
-        protected override void OnInitialized()
+        protected override async void OnInitialized()
         {
             InitializeComponent();
             //if User didn't exit from last session, then opens last session, otherwise opens start page
-            NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-                ? $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
-                : $"{nameof(StartPage)}");
+            await NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
+              ? $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+              : $"{nameof(StartPage)}");
             //NavigationService.NavigateAsync($"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}");
+            //NavigationService.NavigateAsync($"{nameof(RepositoriesPage)}");
         }
 
         protected override void RegisterTypes()

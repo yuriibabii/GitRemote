@@ -29,7 +29,24 @@ namespace GitRemote.ViewModels
             _session = parameters["Session"] as Session;
             _gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
                 new InMemoryCredentialStore(new Credentials(_session?.GetToken())));
+            
+            //var user = await _gitHubClient.Activity.Feeds.GetFeeds();
 
+            //var url = $"https://github.com/{_session?.Login}.private.atom?token={_session?.GetToken()}";
+            //var request = WebRequest.Create(url);
+            //using ( var responce = await request.GetResponseAsync() )
+            //{
+            //    var stream = responce.GetResponseStream();
+            //    var streamReader = new StreamReader(stream);
+            //    var line = streamReader.ReadLine();
+            //    while ( line != null )
+            //    {
+            //        line = streamReader.ReadLine();
+            //        Debug.WriteLine(line);
+            //    }
+
+
+            //}
         }
     }
 }
