@@ -17,11 +17,6 @@ namespace GitRemote.ViewModels
 
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-
-        }
-
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
             if ( !parameters.ContainsKey("Session") ) return;
@@ -48,5 +43,11 @@ namespace GitRemote.ViewModels
 
             //}
         }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+
+        }
+
     }
 }

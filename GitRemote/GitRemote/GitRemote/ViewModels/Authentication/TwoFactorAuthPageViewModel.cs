@@ -13,11 +13,12 @@ namespace GitRemote.ViewModels.Authentication
 {
     public class TwoFactorAuthPageViewModel : BindableBase, INavigationAware
     {
-        private AccountManager _accountManager;
         private readonly INavigationService _navigationService;
         private readonly ISecuredDataProvider _securedDataProvider;
         private readonly IKeyboardHelper _keyboardHelper;
-        private GitHubClient _client;
+        private AccountManager _accountManager;
+        private PrivateNewsManager _feedsManager;
+        private GitHubClient _gitHubClient;
         private readonly IDevice _device;
         private readonly CodePageEntryModel _codePageEntryModel;
         public DelegateCommand HyperLinkTappedCommand { get; }
@@ -53,13 +54,18 @@ namespace GitRemote.ViewModels.Authentication
         public async void OnLogInTapped()
         {
             _accountManager = new AccountManager(new ClientAuthorization(), _securedDataProvider);
-            var token = await _accountManager.GetTokenAsync(_client, AuthCodeEntryText);
+            _feedsManager = new PrivateNewsManager();
+
+            var token = await _accountManager.GetTokenAsync(_gitHubClient, AuthCodeEntryText);
+            var privateFeedUlr = await _feedsManager.GetPrivateFeedUrlFromApiAsync(_gitHubClient);
+
             _keyboardHelper.HideKeyboard();
-            _accountManager.AddAccount(_client.Credentials.Login, token);
 
-            UserManager.SetLastUser(_client.Credentials.Login);
+            _accountManager.AddAccount(_gitHubClient.Credentials.Login, token, privateFeedUlr);
 
-            var parameters = new NavigationParameters { { "Session", new Session(_client.Credentials.Login, token) } };
+            UserManager.SetLastUser(_gitHubClient.Credentials.Login);
+
+            var parameters = new NavigationParameters { { "Session", new Session(_gitHubClient.Credentials.Login, token, privateFeedUlr) } };
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                     UriKind.Absolute);
@@ -70,7 +76,7 @@ namespace GitRemote.ViewModels.Authentication
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if ( parameters.ContainsKey("Client") )
-                _client = ( GitHubClient )parameters["Client"];
+                _gitHubClient = ( GitHubClient )parameters["Client"];
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters) { }

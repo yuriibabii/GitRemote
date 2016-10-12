@@ -10,7 +10,7 @@ namespace GitRemote.DI
         /// </summary>
         /// <param name="userId">Unique name of account(login, userName, ..)</param>
         /// <param name="providerName">Unique name, that helps to find accounts for application(ConstantsService.ProviderName)</param>
-        /// <param name="data">Unique id for token(Note) and token</param>
+        /// <param name="data">Unique identificator and secret item</param>
         void Store(string userId, string providerName, Dictionary<string, string> data);
 
         /// <summary>

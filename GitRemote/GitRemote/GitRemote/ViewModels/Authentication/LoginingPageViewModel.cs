@@ -3,6 +3,8 @@ using GitRemote.GitHub;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
+using Octokit;
+using Octokit.Internal;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -56,6 +58,7 @@ namespace GitRemote.ViewModels.Authentication
 
             _accountManager = new AccountManager(new ClientAuthorization(_navigationService), securedDataProvider);
 
+
             Func<bool> isLogInCommandEnable = () =>
                 StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);
 
@@ -77,17 +80,26 @@ namespace GitRemote.ViewModels.Authentication
 
         public async void OnLogInTapped()
         {
-            var token = await _accountManager.GetTokenAsync(LoginEntryText, PasswordEntryText);
+            var _newsManager = new PrivateNewsManager();
+
+            var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
+                 new InMemoryCredentialStore(new Credentials(LoginEntryText, PasswordEntryText)));
+
+            var token = await _accountManager.GetTokenAsync(gitHubClient);
+
+            var privateFeedUrl = await _newsManager.GetPrivateFeedUrlFromApiAsync(gitHubClient);
+
+            var session = new Session(LoginEntryText, token, privateFeedUrl);
 
             _keyboardHelper.HideKeyboard();
 
-            if ( token == "2FA" ) return; // If account has 2FA then I working with it and do below job later
+            if ( token == "2FA" ) return; // If account hasn't 2FA then I working with it and do below job later
 
-            _accountManager.AddAccount(LoginEntryText, token);
+            _accountManager.AddAccount(LoginEntryText, token, privateFeedUrl);
 
             UserManager.SetLastUser(LoginEntryText);
 
-            var parameters = new NavigationParameters { { "Session", new Session(LoginEntryText, token) } };
+            var parameters = new NavigationParameters { { "Session", session } };
 
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                     UriKind.Absolute);

@@ -1,7 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.Services;
 using Octokit;
-using Octokit.Internal;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,8 +11,7 @@ namespace GitRemote.GitHub
         private readonly ClientAuthorization _clientAuthorization;
         private readonly ISecuredDataProvider _securedDataProvider;
 
-        public AccountManager(ClientAuthorization clientAuthorization,
-                              ISecuredDataProvider securedDataProvider)
+        public AccountManager(ClientAuthorization clientAuthorization, ISecuredDataProvider securedDataProvider)
         {
             _clientAuthorization = clientAuthorization;
             _securedDataProvider = securedDataProvider;
@@ -24,28 +22,28 @@ namespace GitRemote.GitHub
         /// </summary>
         /// <param name="login"></param>
         /// <param name="token"></param>
+        /// <param name="privateFeedUrl"></param>
         /// <returns>Token</returns>
-
-        public void AddAccount(string login, string token)
+        public void AddAccount(string login, string token, string privateFeedUrl)
         {
             CheckForExist(login);
 
-            _securedDataProvider.Store(login, ConstantsService.ProviderName,
-                new Dictionary<string, string> { { _clientAuthorization.Note, token } });
+            var securedDictionary = new Dictionary<string, string>
+            {
+                {_clientAuthorization.Note, token},
+                {"PrivateFeedUrl", privateFeedUrl}
+            };
 
+            _securedDataProvider.Store(login, ConstantsService.ProviderName, securedDictionary);
             UserManager.AddedUsers.Add(login);
         }
 
         /// <summary>
         /// Gets token if all is fine
         /// </summary>
-        /// <param name="login"></param>
-        /// <param name="password"></param>
         /// <returns>Token</returns>
-        public async Task<string> GetTokenAsync(string login, string password)
+        public async Task<string> GetTokenAsync(GitHubClient gitHubClient)
         {
-            var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
-                                   new InMemoryCredentialStore(new Credentials(login, password)));
             var token = await _clientAuthorization.GenerateTokenAsync(gitHubClient);
 
             return token;
