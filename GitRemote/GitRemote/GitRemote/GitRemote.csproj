@@ -39,7 +39,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomClasses\CodeEntry.cs" />
-    <Compile Include="CustomClasses\CustomRepositoriesHeader.cs" />
     <Compile Include="CustomClasses\FontIcon.cs" />
     <Compile Include="CustomClasses\HyperLinkLabel.cs" />
     <Compile Include="CustomClasses\FloatingEntry.cs" />

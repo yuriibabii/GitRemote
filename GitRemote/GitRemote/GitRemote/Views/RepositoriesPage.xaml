@@ -18,6 +18,7 @@
                          IsGroupingEnabled="True"
                          FlowGroupDisplayBinding="{Binding Key}"
                          Margin="0, 15, 0, 0">
+    
     <controls:FlowListView.GroupHeaderTemplate>
       <DataTemplate>
         <ViewCell Height="50">

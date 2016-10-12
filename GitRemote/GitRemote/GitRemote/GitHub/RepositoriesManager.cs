@@ -21,6 +21,10 @@ namespace GitRemote.GitHub
                 new InMemoryCredentialStore(new Credentials(session?.GetToken())));
         }
 
+        /// <summary>
+        /// Sends request via API to Github acc and takes all repos from it, then converts it to GitRemote repos and groups it
+        /// </summary>
+        /// <returns>Grouped Obs Collection of GitRemote repos</returns>
         public async Task<ObservableCollection<GroupingModel<string, RepositoryModel>>> GetRepositoriesAsync()
         {
             try
@@ -47,10 +51,10 @@ namespace GitRemote.GitHub
                     gitRemoteRepos.Add(repos);
                 }
 
-                var groupedGitRemoteRepos = from model in gitRemoteRepos
-                                            orderby model.RepositoryName
-                                            group model by Convert.ToString(model.RepositoryName[0]).ToUpper() into modelGroup
-                                            select new GroupingModel<string, RepositoryModel>(modelGroup.Key.ToUpper(), modelGroup);
+                var groupedGitRemoteRepos = from model in gitRemoteRepos //foreach rep
+                                            orderby model.RepositoryName // sort by Name
+                                            group model by Convert.ToString(model.RepositoryName[0]).ToUpper() into modelGroup //Save each group and its key
+                                            select new GroupingModel<string, RepositoryModel>(modelGroup.Key.ToUpper(), modelGroup); //Convert it to collection
 
                 return new ObservableCollection<GroupingModel<string, RepositoryModel>>(groupedGitRemoteRepos);
             }
@@ -64,6 +68,11 @@ namespace GitRemote.GitHub
             }
         }
 
+        /// <summary>
+        /// Decides what is repos type and return Icon for it
+        /// </summary>
+        /// <param name="repos">Repository</param>
+        /// <returns>Octicon FontIcon code</returns>
         private string GetRepositoryTypeIcon(Repository repos)
         {
             return repos.Fork ? FontIconsService.Octicons.RepoForked
