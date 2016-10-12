@@ -4,6 +4,8 @@ using Octokit;
 using Octokit.Internal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -19,12 +21,11 @@ namespace GitRemote.GitHub
                 new InMemoryCredentialStore(new Credentials(session?.GetToken())));
         }
 
-        public async Task<List<RepositoryModel>> GetRepositoriesAsync()
+        public async Task<ObservableCollection<GroupingModel<string, RepositoryModel>>> GetRepositoriesAsync()
         {
             try
             {
-                var reposRequest = new RepositoryRequest { Sort = RepositorySort.FullName };
-                var gitHubRepos = await _gitHubClient.Repository.GetAllForCurrent(reposRequest);
+                var gitHubRepos = await _gitHubClient.Repository.GetAllForCurrent();
 
                 var gitRemoteRepos = new List<RepositoryModel>();
 
@@ -46,7 +47,12 @@ namespace GitRemote.GitHub
                     gitRemoteRepos.Add(repos);
                 }
 
-                return gitRemoteRepos;
+                var groupedGitRemoteRepos = from model in gitRemoteRepos
+                                            orderby model.RepositoryName
+                                            group model by Convert.ToString(model.RepositoryName[0]).ToUpper() into modelGroup
+                                            select new GroupingModel<string, RepositoryModel>(modelGroup.Key.ToUpper(), modelGroup);
+
+                return new ObservableCollection<GroupingModel<string, RepositoryModel>>(groupedGitRemoteRepos);
             }
             catch ( WebException ex )
             {

@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomClasses\CodeEntry.cs" />
+    <Compile Include="CustomClasses\CustomRepositoriesHeader.cs" />
     <Compile Include="CustomClasses\FontIcon.cs" />
     <Compile Include="CustomClasses\HyperLinkLabel.cs" />
     <Compile Include="CustomClasses\FloatingEntry.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="GitHub\RepositoriesManager.cs" />
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
+    <Compile Include="Models\GroupingModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
     <Compile Include="GitHub\Session.cs" />

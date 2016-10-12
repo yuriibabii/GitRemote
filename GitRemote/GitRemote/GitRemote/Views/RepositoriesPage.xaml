@@ -8,83 +8,47 @@
              x:Class="GitRemote.Views.RepositoriesPage"
              Title="Repositories">
 
-  <!--<controls:FlowListView x:Name="ReposList"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Repositories.Result}"
-                         SeparatorVisibility="None"
-                         HasUnevenRows="True"
-                         FlowColumnCount="1">
-    <controls:FlowListView.FlowColumnTemplate>
-      <DataTemplate>
-        <AbsoluteLayout VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Margin="15, 0, 15, 0">
-          <customClasses:FontIcon x:Name="TypeIcon"
-                                  Text="{Binding RepositoryTypeIcon}"
-                                  FontSize="30"
-                                  FontFamily="Octicons"
-                                  AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.TypeIconBounds}"
-                                  AbsoluteLayout.LayoutFlags="None"/>
-          <Label x:Name="Name"
-                 Text="{Binding RepositoryName}"
-                 FontAttributes="Bold"
-                 FontSize="20"
-                 AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.NameBounds}"
-                 AbsoluteLayout.LayoutFlags="None"/>
-          <Label x:Name="Description"
-                 Text="{Binding RepositoryDescription}"
-                 FontSize="16"
-                 AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.DescriptionBounds}"
-                 AbsoluteLayout.LayoutFlags="None"/>
-          <Label x:Name="Language"
-                 Text="{Binding RepositoryLanguage}"
-                 FontSize="14"
-                 AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.LanguageBounds}"
-                 AbsoluteLayout.LayoutFlags="None"/>
-          <customClasses:FontIcon x:Name="StarIcon"
-                                  Text="{Binding RepositoryStarIcon}"
-                                  FontSize="14"
-                                  FontFamily="Octicons"
-                                  AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.StarIconBounds}"
-                                  AbsoluteLayout.LayoutFlags="None"/>
-          <Label x:Name="StarsCount"
-                 Text="{Binding RepositoryStarsCount}"
-                 FontSize="14"
-                 AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.StarsCountBounds}"
-                 AbsoluteLayout.LayoutFlags="None"/>
-          <customClasses:FontIcon x:Name="ForkIcon"
-                                  Text="{Binding RepositoryForkIcon}"
-                                  FontSize="14"
-                                  FontFamily="Octicons"
-                                  AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.ForkIconBounds}"
-                                  AbsoluteLayout.LayoutFlags="None"/>
-          <Label x:Name="ForksCount"
-                 Text="{Binding RepositoryForksCount}"
-                 FontSize="14"
-                 AbsoluteLayout.LayoutBounds="{Binding Source = {x:Reference ReposList}, Path=BindingContext.ForksCountBounds}"
-                 AbsoluteLayout.LayoutFlags="None"/>
-        </AbsoluteLayout>
-      </DataTemplate>
-    </controls:FlowListView.FlowColumnTemplate>
-
-  </controls:FlowListView>-->
-
   <controls:FlowListView x:Name="ReposList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Repositories.Result}"
+                         FlowItemsSource="{Binding GroupedRepositories.Result}"
                          SeparatorVisibility="None"
                          HasUnevenRows="True"
-                         FlowColumnCount="1">
+                         FlowColumnCount="1"
+                         IsGroupingEnabled="True"
+                         FlowGroupDisplayBinding="{Binding Key}"
+                         Margin="0, 15, 0, 0">
+    <controls:FlowListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <ViewCell Height="50">
+          <StackLayout Orientation="Vertical"
+                       VerticalOptions="FillAndExpand"
+                       Padding="0, 5, 0, 20">
+            <Label Text="{Binding Key}"
+                   TextColor="#054678"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Margin="15, 0, 0, 0"
+                   FontSize="16"/>
+            <BoxView BackgroundColor="#054678"
+                     HeightRequest="1"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="Center"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </controls:FlowListView.GroupHeaderTemplate>
+
+
+
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
         <Grid VerticalOptions="FillAndExpand"
               HorizontalOptions="FillAndExpand"
               Margin="15, 15, 15, 15"
-          ColumnSpacing="0">
+              ColumnSpacing="0">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="33"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -100,18 +64,19 @@
 
           <customClasses:FontIcon x:Name="TypeIcon"
                                   Text="{Binding RepositoryTypeIcon}"
-                                  FontSize="30"
+                                  FontSize="28"
                                   FontFamily="Octicons"
                                   TextColor="Gray"
                                   Grid.Column="0"
                                   Grid.Row="0"
-                                  Grid.RowSpan="2"
+                                  Grid.RowSpan="3"
                                   VerticalOptions="StartAndExpand"
-                                  HorizontalOptions="Center"/>
+                                  HorizontalOptions="StartAndExpand"
+                                  Margin="0, 5, 0, 0"/>
 
           <Label x:Name="Name"
                  Text="{Binding RepositoryName}"
-                 FontAttributes="Bold"
+                 TextColor="Black"
                  FontSize="20"
                  LineBreakMode="TailTruncation"
                  Grid.Column="1"
@@ -146,7 +111,8 @@
                                   Grid.Column="2"
                                   VerticalOptions="Center"
                                   HorizontalOptions="StartAndExpand"
-                                  Grid.Row="2" Margin="10, 0, 2, 0"/>
+                                  Grid.Row="2"
+                                  Margin="10, 0, 2, 0"/>
 
           <Label x:Name="StarsCount"
                  Text="{Binding RepositoryStarsCount}"
@@ -163,7 +129,8 @@
                                   Grid.Column="4"
                                   VerticalOptions="Center"
                                   HorizontalOptions="End"
-                                  Grid.Row="2" Margin="10, 0, 2, 0"/>
+                                  Grid.Row="2"
+                                  Margin="10, 0, 2, 0"/>
 
           <Label x:Name="ForksCount"
                  Text="{Binding RepositoryForksCount}"

@@ -15,7 +15,7 @@ namespace GitRemote.ViewModels
     {
         private INavigationService _navigationService;
         private readonly Session _session;
-        public NotifyTask<ObservableCollection<RepositoryModel>> Repositories { get; }
+        public NotifyTask<ObservableCollection<GroupingModel<string, RepositoryModel>>> GroupedRepositories { get; }
         private readonly RepositoriesManager _repositoriesManager;
 
         public RepositoriesPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
@@ -28,16 +28,17 @@ namespace GitRemote.ViewModels
 
             _repositoriesManager = new RepositoriesManager(_session);
 
-            Repositories = NotifyTask.Create(GetRepositoriesAsync());
+            GroupedRepositories= NotifyTask.Create(GetRepositoriesAsync());
 
-            if ( Repositories.Exception != null )
-                foreach ( var exception in Repositories.Exception.InnerExceptions )
+            
+            if ( GroupedRepositories.Exception != null )
+                foreach ( var exception in GroupedRepositories.Exception.InnerExceptions )
                     throw exception;
         }
 
-        private async Task<ObservableCollection<RepositoryModel>> GetRepositoriesAsync()
+        private async Task<ObservableCollection<GroupingModel<string, RepositoryModel>>> GetRepositoriesAsync()
         {
-            return new ObservableCollection<RepositoryModel>(await _repositoriesManager.GetRepositoriesAsync());
+            return new ObservableCollection <GroupingModel<string, RepositoryModel>> ( await _repositoriesManager.GetRepositoriesAsync());
         }
 
     }
