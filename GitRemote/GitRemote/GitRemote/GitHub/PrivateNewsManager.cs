@@ -2,16 +2,18 @@
 using Octokit;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net;
-using System.ServiceModel.Syndication;
+using System.Net.Http;
 using System.Threading.Tasks;
-using System.Xml;
+using System.Xml.Linq;
 
 namespace GitRemote.GitHub
 {
     public class PrivateNewsManager
     {
+        private const string NAMESPACE = "http://www.w3.org/2005/Atom";
+
         private readonly Session _session;
 
         public PrivateNewsManager(Session session)
@@ -29,11 +31,12 @@ namespace GitRemote.GitHub
             return task.CurrentUserUrl;
         }
 
-        public ObservableCollection<PrivateNewsModel> GetPrivateNews()
+        public async Task<IEnumerable<PrivateNewsModel>> GetPrivateNews()
         {
             try
             {
-                var gitHubPrivateFeedItems = GetPrivateFeedItems();
+
+                var gitHubPrivateFeedItems = await GetPrivateFeedItems();
 
                 var gitRemotePrivateFeedItems = new List<PrivateNewsModel>();
 
@@ -41,14 +44,15 @@ namespace GitRemote.GitHub
                 {
                     var NewsItem = new PrivateNewsModel();
                     {
-                        var title = item.Title;
 
-                    };
+
+                    }
+                    ;
 
                     gitRemotePrivateFeedItems.Add(NewsItem);
                 }
+                return new List<PrivateNewsModel>();
 
-                return new ObservableCollection<PrivateNewsModel>(gitRemotePrivateFeedItems);
             }
             catch ( WebException ex )
             {
@@ -58,21 +62,68 @@ namespace GitRemote.GitHub
             {
                 throw new Exception("Getting repos from github failed! " + ex.Message);
             }
+
+
         }
 
-        private IEnumerable<SyndicationItem> GetPrivateFeedItems()
+        private async Task<IEnumerable<PrivateNewsModel>> GetPrivateFeedItems()
         {
-            var formatter = new Atom10FeedFormatter();
+            var client = new HttpClient();
 
-            if ( _session == null )
-                throw new Exception("Be careful with calling this method without session");
+            var content = await client.GetStringAsync(_session.GetPrivateFeedUrl());
 
-            using ( var reader = XmlReader.Create(_session.GetPrivateFeedUrl()) )
+            if ( string.IsNullOrEmpty(content) ) return new List<PrivateNewsModel>();
+
+            var result = XElement.Parse(content);
+
+            var feeds = from entry in result.Elements("{" + NAMESPACE + "}entry") select entry;
+
+            foreach ( var xElement in feeds )
             {
-                formatter.ReadFrom(reader);
+                var element = xElement.Element(XName.Get("title", NAMESPACE));
+
+                if ( element != null )
+                {
+                    var title = element.Value;
+                }
             }
 
-            return formatter.Feed.Items;
-        }
+
+
+
+
+
+
+
+//    ////var content = await new HttpClient().GetStringAsync(_session.GetPrivateFeedUrl());
+//    //var feedDoc = XDocument.Load(_session.GetPrivateFeedUrl());
+
+            //    //var root = feedDoc.Root;
+
+            //    //var feeds = root?.Elements().Where<XElement>(( Func<XElement, bool> )( i => i.Name.LocalName.Equals("entry") )).Select<XElement, PrivateNewsModel>(( Func<XElement, PrivateNewsModel> )( item => new PrivateNewsModel()
+            //    //{
+            //    //    Description = Find(item, "summary").Value,
+            //    //    Link = Find(item, "link").Attribute(( XName )"href").Value,
+            //    //    Title = Find(item, "title").Value
+            //    //} ));
+
+            //    //return feeds;
+
+
+            //    //var fp = new FeedParser();
+            //    //var items = fp.Parse(_session.GetPrivateFeedUrl(), FeedType.Atom);
+            //    //return items;
+
+
+            //    //using ( HttpClient httpClient = new HttpClient() )
+            //    //{
+            //    //    string content = await httpClient.GetStringAsync(url).ConfigureAwait(false);
+            //    //    objs = this.Parse(content, feedType);
+            //    //}
+            //}
+
+        private static readonly
+            Func<XElement, string, XElement> Find = ( Func<XElement, string, XElement> )( (item, name) => item.Elements().First<XElement>(( Func<XElement, bool> )( i => i.Name.LocalName.Equals(name) )) );
+
     }
 }

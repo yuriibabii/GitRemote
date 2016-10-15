@@ -6,6 +6,10 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Nito.Mvvm;
+using Xamarin.Auth;
 
 namespace GitRemote.ViewModels
 {
@@ -13,7 +17,8 @@ namespace GitRemote.ViewModels
     {
         private INavigationService _navigationService;
         private readonly Session _session;
-        public ObservableCollection<PrivateNewsModel> PrivateNews { get; }
+        //public ObservableCollection<PrivateNewsModel> PrivateNews { get; }
+        public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
 
         public NewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
@@ -21,15 +26,21 @@ namespace GitRemote.ViewModels
             _navigationService = navigationService;
 
             var store = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
+
             _session = new Session(UserManager.GetLastUser(), store.Properties.First().Value, store.Properties["PrivateFeedUrl"]);
 
             var navigationParameters = new NavigationParameters { { "Session", _session } };
 
             _privateNewsManager = new PrivateNewsManager(_session);
 
-            PrivateNews = _privateNewsManager.GetPrivateNews();
+            PrivateNews = NotifyTask.Create(GetPrivateNewsAsync());
+            //PrivateNews = new ObservableCollection<PrivateNewsModel>(_privateNewsManager.GetPrivateNews());
+        }
 
-
+        private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()
+        {
+            return new ObservableCollection<PrivateNewsModel>
+                (await _privateNewsManager.GetPrivateNews());
         }
 
 
