@@ -8,6 +8,7 @@
             public const string RepoForked = "\uf002";
             public const string Repo = "\uf001";
             public const string Star = "\uf02a";
+            public const string Person = "\uf018";
         }
     }
 }

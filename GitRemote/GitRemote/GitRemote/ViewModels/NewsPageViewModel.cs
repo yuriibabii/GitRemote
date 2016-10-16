@@ -2,14 +2,12 @@
 using GitRemote.GitHub;
 using GitRemote.Models;
 using GitRemote.Services;
+using Nito.Mvvm;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Nito.Mvvm;
-using Xamarin.Auth;
 
 namespace GitRemote.ViewModels
 {
@@ -17,7 +15,6 @@ namespace GitRemote.ViewModels
     {
         private INavigationService _navigationService;
         private readonly Session _session;
-        //public ObservableCollection<PrivateNewsModel> PrivateNews { get; }
         public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
 
@@ -34,7 +31,6 @@ namespace GitRemote.ViewModels
             _privateNewsManager = new PrivateNewsManager(_session);
 
             PrivateNews = NotifyTask.Create(GetPrivateNewsAsync());
-            //PrivateNews = new ObservableCollection<PrivateNewsModel>(_privateNewsManager.GetPrivateNews());
         }
 
         private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()
@@ -42,8 +38,5 @@ namespace GitRemote.ViewModels
             return new ObservableCollection<PrivateNewsModel>
                 (await _privateNewsManager.GetPrivateNews());
         }
-
-
-
     }
 }

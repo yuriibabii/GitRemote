@@ -1,9 +1,9 @@
 ﻿using GitRemote.Models;
+using GitRemote.Services;
+using ModernHttpClient;
 using Octokit;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -12,8 +12,6 @@ namespace GitRemote.GitHub
 {
     public class PrivateNewsManager
     {
-        private const string NAMESPACE = "http://www.w3.org/2005/Atom";
-
         private readonly Session _session;
 
         public PrivateNewsManager(Session session)
@@ -33,97 +31,85 @@ namespace GitRemote.GitHub
 
         public async Task<IEnumerable<PrivateNewsModel>> GetPrivateNews()
         {
-            try
+            //try
+            //{
+            var gitHubPrivateFeedItems = await GetPrivateFeedItems();
+
+            var gitRemotePrivateFeedItems = new List<PrivateNewsModel>();
+
+            foreach ( var item in gitHubPrivateFeedItems )
             {
-
-                var gitHubPrivateFeedItems = await GetPrivateFeedItems();
-
-                var gitRemotePrivateFeedItems = new List<PrivateNewsModel>();
-
-                foreach ( var item in gitHubPrivateFeedItems )
+                var newsItem = new PrivateNewsModel
                 {
-                    var NewsItem = new PrivateNewsModel();
+                    Title = item?.Element(XName.Get("title", ConstantsService.AtomNamespace))?.Value,
+                    Published = TimeService.ConvertToFriendly(item?.Element(XName.Get("published", ConstantsService.AtomNamespace))?.Value),
+                    ImageUrl = item?.Element(XName.Get("media", ConstantsService.AtomNamespace))?.Attribute(XName.Get("url", ConstantsService.AtomNamespace)).Value
+                };
+
+                var media = item?.Element(XName.Get("media", ConstantsService.AtomNamespace));
+                var attrs = media?.Attributes();
+                var medVal = media?.Value;
+                var url = media?.Attribute(XName.Get("url", ConstantsService.AtomNamespace)).Value;
+
+                var urlval = item?.Element(XName.Get("url", ConstantsService.AtomNamespace));
+
+                var splitedTitle = newsItem.Title?.Split(' ');
+                if ( splitedTitle != null )
+                {
+                    newsItem.Perfomer = splitedTitle[0];
+                    newsItem.ActionType = splitedTitle[1];
+                    newsItem.AdditionalTarget = newsItem.ActionType == "added"
+                        ? splitedTitle[2]
+                        : string.Empty;
+                    newsItem.Target = splitedTitle[splitedTitle.Length - 1];
+                    switch ( newsItem.ActionType )
                     {
-
-
+                        case "added":
+                            newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Person;
+                            break;
+                        case "created":
+                            newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Repo;
+                            break;
+                        case "forked":
+                            newsItem.ActionTypeFontIcon = FontIconsService.Octicons.RepoForked;
+                            break;
+                        case "starred":
+                            newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Star;
+                            break;
                     }
-                    ;
-
-                    gitRemotePrivateFeedItems.Add(NewsItem);
                 }
-                return new List<PrivateNewsModel>();
+                gitRemotePrivateFeedItems.Add(newsItem);
+            }
+            return gitRemotePrivateFeedItems;
 
-            }
-            catch ( WebException ex )
-            {
-                throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
-            }
-            catch ( Exception ex )
-            {
-                throw new Exception("Getting repos from github failed! " + ex.Message);
-            }
+            //}
+            //catch ( WebException ex )
+            //{
+            //    throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
+            //}
+            //catch ( Exception ex )
+            //{
+            //    throw new Exception("Getting repos from github failed! " + ex.Message);
+            //}
 
 
         }
 
-        private async Task<IEnumerable<PrivateNewsModel>> GetPrivateFeedItems()
+        private async Task<IEnumerable<XElement>> GetPrivateFeedItems()
         {
-            var client = new HttpClient();
+            var client = new HttpClient(new NativeMessageHandler());
 
-            var content = await client.GetStringAsync(_session.GetPrivateFeedUrl());
+            var feed = await client.GetStringAsync(_session.GetPrivateFeedUrl());
 
-            if ( string.IsNullOrEmpty(content) ) return new List<PrivateNewsModel>();
+            if ( string.IsNullOrEmpty(feed) ) return new List<XElement>();
 
-            var result = XElement.Parse(content);
+            var parsedFeed = XElement.Parse(feed);
 
-            var feeds = from entry in result.Elements("{" + NAMESPACE + "}entry") select entry;
+            var entries = from entry in parsedFeed.Elements("{" + ConstantsService.AtomNamespace + "}entry") select entry;
 
-            foreach ( var xElement in feeds )
-            {
-                var element = xElement.Element(XName.Get("title", NAMESPACE));
+            return entries;
+        }
 
-                if ( element != null )
-                {
-                    var title = element.Value;
-                }
-            }
-
-
-
-
-
-
-
-
-//    ////var content = await new HttpClient().GetStringAsync(_session.GetPrivateFeedUrl());
-//    //var feedDoc = XDocument.Load(_session.GetPrivateFeedUrl());
-
-            //    //var root = feedDoc.Root;
-
-            //    //var feeds = root?.Elements().Where<XElement>(( Func<XElement, bool> )( i => i.Name.LocalName.Equals("entry") )).Select<XElement, PrivateNewsModel>(( Func<XElement, PrivateNewsModel> )( item => new PrivateNewsModel()
-            //    //{
-            //    //    Description = Find(item, "summary").Value,
-            //    //    Link = Find(item, "link").Attribute(( XName )"href").Value,
-            //    //    Title = Find(item, "title").Value
-            //    //} ));
-
-            //    //return feeds;
-
-
-            //    //var fp = new FeedParser();
-            //    //var items = fp.Parse(_session.GetPrivateFeedUrl(), FeedType.Atom);
-            //    //return items;
-
-
-            //    //using ( HttpClient httpClient = new HttpClient() )
-            //    //{
-            //    //    string content = await httpClient.GetStringAsync(url).ConfigureAwait(false);
-            //    //    objs = this.Parse(content, feedType);
-            //    //}
-            //}
-
-        private static readonly
-            Func<XElement, string, XElement> Find = ( Func<XElement, string, XElement> )( (item, name) => item.Elements().First<XElement>(( Func<XElement, bool> )( i => i.Name.LocalName.Equals(name) )) );
 
     }
 }

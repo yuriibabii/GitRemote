@@ -2,8 +2,84 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.NewsPage"
              Title="News">
-  
+
+  <controls:FlowListView x:Name="ReposList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding PrivateNews.Result}"
+                         SeparatorVisibility="None"
+                         HasUnevenRows="True"
+                         FlowColumnCount="1"
+                         Margin="0, 15, 0, 0">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              Margin="15, 5, 15, 15"
+              ColumnSpacing="0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+          </Grid.RowDefinitions>
+
+          <Image x:Name="Avatar"
+                 Source="{Binding ImageUrl}"
+                 HeightRequest="28"
+                 WidthRequest="28"                                
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 Grid.RowSpan="2"
+                 VerticalOptions="StartAndExpand"
+                 HorizontalOptions="StartAndExpand"
+                 Margin="0, 5, 0, 0"/>
+
+          <Label x:Name="Title"
+                 FormattedText="{Binding CustomFormattedText}"
+                 TextColor="Black"
+                 LineBreakMode="CharacterWrap"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.ColumnSpan="3" />
+
+          <customClasses:FontIcon x:Name="ActionTypeIcon"
+                                  Text="{Binding ActionTypeFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="16"
+                                  FontFamily="Octicons"
+                                  Grid.Column="1"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="StartAndExpand"
+                                  Grid.Row="1"
+                                  Margin="10, 0, 2, 0"/>
+
+          <Label x:Name="PublishedTime"
+                 Text="{Binding Published}"
+                 FontSize="14"
+                 Grid.Column="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="End"
+                 Grid.Row="1"/>
+
+        
+        </Grid>
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+
+  </controls:FlowListView>
+
 </ContentPage>

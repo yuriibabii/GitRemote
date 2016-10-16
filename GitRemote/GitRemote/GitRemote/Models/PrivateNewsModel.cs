@@ -1,16 +1,29 @@
-﻿namespace GitRemote.Models
+﻿using Xamarin.Forms;
+
+namespace GitRemote.Models
 {
     public class PrivateNewsModel
     {
         public string Title { get; set; }
-        public string Link { get; set; }
-        public string Description { get; set; }
-        public PrivateNewsModel(string title, string link, string description)
+        public string Published { get; set; }
+        public string ActionType { get; set; }
+        public string ImageUrl { get; set; }
+        public string Perfomer { get; set; }
+        public string Target { get; set; }
+        public string AdditionalTarget { get; set; }
+        public string ActionTypeFontIcon { get; set; }
+
+        public FormattedString CustomFormattedText => new FormattedString
         {
-            Title = title;
-            Link = link;
-            Description = description;
-        }
+            Spans = {
+                new Span { Text = Perfomer + " ", FontAttributes=FontAttributes.Bold, FontSize=16 },
+                new Span { Text = ActionType + " ", FontSize=16 },
+                new Span { Text = ActionType == "created" ? "reposiroty " : "", FontSize = 16},
+                new Span { Text = ActionType == "added" ? AdditionalTarget + " " : "",
+                    FontAttributes =FontAttributes.Bold, FontSize = 16},
+                new Span { Text = ActionType == "added" ? "to " : "", FontSize = 16},
+                new Span { Text = Target, FontAttributes=FontAttributes.Bold, FontSize = 16} }
+        };
 
         public PrivateNewsModel() { }
     }
