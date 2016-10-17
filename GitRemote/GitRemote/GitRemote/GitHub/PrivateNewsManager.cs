@@ -43,17 +43,11 @@ namespace GitRemote.GitHub
                 {
                     Title = item?.Element(XName.Get("title", ConstantsService.AtomNamespace))?.Value,
                     Published = TimeService.ConvertToFriendly(item?.Element(XName.Get("published", ConstantsService.AtomNamespace))?.Value),
-                    ImageUrl = item?.Element(XName.Get("media", ConstantsService.AtomNamespace))?.Attribute(XName.Get("url", ConstantsService.AtomNamespace)).Value
+                    ImageUrl = item?.Elements().ElementAtOrDefault(6).Attribute("url").Value // Hardcoded, but happy cuz works
                 };
 
-                var media = item?.Element(XName.Get("media", ConstantsService.AtomNamespace));
-                var attrs = media?.Attributes();
-                var medVal = media?.Value;
-                var url = media?.Attribute(XName.Get("url", ConstantsService.AtomNamespace)).Value;
-
-                var urlval = item?.Element(XName.Get("url", ConstantsService.AtomNamespace));
-
                 var splitedTitle = newsItem.Title?.Split(' ');
+
                 if ( splitedTitle != null )
                 {
                     newsItem.Perfomer = splitedTitle[0];
