@@ -11,8 +11,8 @@
     <views:MasterPage/>
   </MasterDetailPage.Master>
 
-  <MasterDetailPage.Detail>
+  <!--<MasterDetailPage.Detail>
     <views:DetailPage/>
-  </MasterDetailPage.Detail>
+  </MasterDetailPage.Detail>-->
 
 </MasterDetailPage>
