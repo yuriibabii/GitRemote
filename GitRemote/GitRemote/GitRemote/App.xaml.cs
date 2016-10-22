@@ -1,5 +1,4 @@
 ﻿using GitRemote.GitHub;
-using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
@@ -12,6 +11,8 @@ namespace GitRemote
 {
     public partial class App
     {
+        public static int ScreenWidth = 0;
+
         protected override void OnInitialized()
         {
             InitializeComponent();

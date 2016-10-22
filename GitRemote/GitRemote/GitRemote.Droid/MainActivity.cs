@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using DLToolkit.Forms.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 namespace GitRemote.Droid
@@ -11,6 +12,8 @@ namespace GitRemote.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            App.ScreenWidth = ( int )( Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density );
+            FlowListView.Init();
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
             base.OnCreate(bundle);

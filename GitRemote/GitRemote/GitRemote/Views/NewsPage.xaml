@@ -12,71 +12,68 @@
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          FlowItemsSource="{Binding PrivateNews.Result}"
-                         SeparatorVisibility="None"
                          HasUnevenRows="True"
                          FlowColumnCount="1"
-                         Margin="0, 15, 0, 0">
+                         Margin="15, 15, 15, 0">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
-        <Grid VerticalOptions="FillAndExpand"
-              HorizontalOptions="FillAndExpand"
-              Margin="15, 0, 15, 15"
+        <Grid VerticalOptions="Start"
+              HorizontalOptions="Start"
+              Margin="0, 0, 0, 20"
               ColumnSpacing="0"
-              RowSpacing="5" BackgroundColor="Aqua">
+              RowSpacing="5">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="33"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="{Binding Source={x:Reference Name=ReposList}, Path=BindingContext.ColumnWidth}"/>
+
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
           </Grid.RowDefinitions>
 
           <Image x:Name="Avatar"
                  Source="{Binding ImageUrl}"
-                 HeightRequest="28"
-                 WidthRequest="28"
+                 HeightRequest="30"
+                 WidthRequest="30"
                  Grid.Column="0"
                  Grid.Row="0"
                  Grid.RowSpan="2"
-                 VerticalOptions="StartAndExpand"
-                 HorizontalOptions="StartAndExpand"
-                 Margin="0, 5, 0, 0" BackgroundColor="Blue"/>
-          <StackLayout HorizontalOptions="StartAndExpand"
-                       VerticalOptions="StartAndExpand"
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       Grid.ColumnSpan="3" BackgroundColor="Green">
+                 VerticalOptions="Start"
+                 HorizontalOptions="Start"
+                 Margin="0, 5, 5, 0"/>
+
+          <StackLayout  Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand" BackgroundColor="Aqua">
+
             <Label x:Name="Title"
                    FormattedText="{Binding CustomFormattedText}"
                    TextColor="Black"
-                   LineBreakMode="CharacterWrap"                
-                   VerticalOptions="StartAndExpand"
-                   HorizontalOptions="StartAndExpand" BackgroundColor="Fuchsia"/>
+                   LineBreakMode="CharacterWrap"/>
           </StackLayout>
-          
           <customClasses:FontIcon x:Name="ActionTypeIcon"
                                   Text="{Binding ActionTypeFontIcon}"
                                   TextColor="Gray"
                                   FontSize="16"
                                   FontFamily="Octicons"
                                   Grid.Column="1"
+                                  Grid.Row="1"
                                   VerticalOptions="Center"
                                   HorizontalOptions="StartAndExpand"
-                                  Grid.Row="1"
-                                  Margin="0, 0, 2, 0" BackgroundColor="Maroon"/>
+                                  Margin="0, 0, 5, 0"/>
 
           <Label x:Name="PublishedTime"
                  Text="{Binding Published}"
                  FontSize="14"
                  Grid.Column="2"
                  VerticalOptions="Center"
-                 HorizontalOptions="End"
-                 Grid.Row="1" BackgroundColor="Purple"/>
-
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="1"/>
 
         </Grid>
       </DataTemplate>

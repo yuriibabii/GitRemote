@@ -33,6 +33,8 @@ namespace GitRemote.ViewModels
             if ( GroupedRepositories.Exception != null )
                 foreach ( var exception in GroupedRepositories.Exception.InnerExceptions )
                     throw exception;
+
+
         }
 
         /// <summary>

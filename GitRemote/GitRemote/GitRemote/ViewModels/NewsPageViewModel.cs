@@ -8,6 +8,7 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
 {
@@ -17,6 +18,9 @@ namespace GitRemote.ViewModels
         private readonly Session _session;
         public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
+        private const int MaxNormalWidthForTitle = 450;
+        private const int OtherWidth = 80;
+        public GridLength ColumnWidth { get; set; }
 
         public NewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
         {
@@ -31,6 +35,10 @@ namespace GitRemote.ViewModels
             _privateNewsManager = new PrivateNewsManager(_session);
 
             PrivateNews = NotifyTask.Create(GetPrivateNewsAsync());
+
+            ColumnWidth = new GridLength(App.ScreenWidth < MaxNormalWidthForTitle
+                ? App.ScreenWidth - OtherWidth
+                : MaxNormalWidthForTitle);
         }
 
         private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()
