@@ -47,6 +47,7 @@
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\PrivateNewsManager.cs" />
     <Compile Include="GitHub\RepositoriesManager.cs" />
+    <Compile Include="GitHub\StarredRepositoriesManager.cs" />
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
     <Compile Include="Models\GroupingModel.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Models\PrivateNewsModel.cs" />
     <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
+    <Compile Include="Models\StarredRepositoryModel.cs" />
     <Compile Include="Services\ConstantsService.cs" />
     <Compile Include="DI\IKeyboardHelper.cs" />
     <Compile Include="DI\ISecuredDataProvider.cs" />
