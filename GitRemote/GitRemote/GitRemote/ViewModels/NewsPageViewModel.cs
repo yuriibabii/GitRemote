@@ -19,7 +19,7 @@ namespace GitRemote.ViewModels
         public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
         private const int MaxNormalWidthForTitle = 450;
-        private const int OtherWidth = 80;
+        private const int OtherWidth = 95;
         public GridLength ColumnWidth { get; set; }
 
         public NewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
@@ -28,7 +28,8 @@ namespace GitRemote.ViewModels
 
             var store = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
 
-            _session = new Session(UserManager.GetLastUser(), store.Properties.First().Value, store.Properties["PrivateFeedUrl"]);
+            _session = new Session(UserManager.GetLastUser(), store.Properties.First().Value,
+                store.Properties["PrivateFeedUrl"]);
 
             var navigationParameters = new NavigationParameters { { "Session", _session } };
 
@@ -36,9 +37,11 @@ namespace GitRemote.ViewModels
 
             PrivateNews = NotifyTask.Create(GetPrivateNewsAsync());
 
+            // It is doing to fit title to display width
             ColumnWidth = new GridLength(App.ScreenWidth < MaxNormalWidthForTitle
                 ? App.ScreenWidth - OtherWidth
                 : MaxNormalWidthForTitle);
+
         }
 
         private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()

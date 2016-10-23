@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="GitRemote.Views.MasterPage"
              Title="Necessary">
 
@@ -18,13 +20,20 @@
              RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"/>
 
 
-    <Image x:Name="MasterProfileImage" 
-           WidthRequest="40"
-           HeightRequest="40"
-           Aspect="Fill"
-           Source="{Binding ProfileImageUrl, Mode=OneWay}"
-           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=20}"
-           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=20}"/>
+    <ffimageloading:CachedImage x:Name="MasterProfileImage"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                Aspect="Fill"
+                                Source="{Binding ProfileImageUrl, Mode=OneWay}"
+                                RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=20}"
+                                RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1, Constant=20}"
+                                CacheDuration ="5"
+                                DownsampleToViewSize ="True">
+      <ffimageloading:CachedImage.Transformations>
+        <transformations:RoundedTransformation Radius="100"/>
+      </ffimageloading:CachedImage.Transformations>
+
+    </ffimageloading:CachedImage>
 
     <Image x:Name="LogOutImage"
            WidthRequest="35"
@@ -150,7 +159,7 @@
                VerticalOptions="Center"/>
     </StackLayout>
 
-    <StackLayout x:Name="IssueView" 
+    <StackLayout x:Name="IssueView"
                  Orientation="Horizontal"
                  RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=1, Constant=15}"
                  RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToView, ElementName=LineView, Property=Y, Constant=20}"
