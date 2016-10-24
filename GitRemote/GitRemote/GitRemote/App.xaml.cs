@@ -32,8 +32,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<IssueDashboardPage>();
             Container.RegisterTypeForNavigation<ReportAnIssuePage>();
             Container.RegisterTypeForNavigation<DetailPage>();
-            Container.RegisterTypeForNavigation<FollowersPage>();
-            Container.RegisterTypeForNavigation<FollowingPage>();
+            Container.RegisterTypeForNavigation<FollowPage>();
             Container.RegisterTypeForNavigation<LoginingPage>();
             Container.RegisterTypeForNavigation<MasterPage>();
             Container.RegisterTypeForNavigation<NewsPage>();

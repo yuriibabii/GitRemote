@@ -37,7 +37,7 @@ namespace GitRemote.ViewModels
 
             PrivateNews = NotifyTask.Create(GetPrivateNewsAsync());
 
-            // It is doing to fit title to display width
+            // It does to fit title to display width
             ColumnWidth = new GridLength(App.ScreenWidth < MaxNormalWidthForTitle
                 ? App.ScreenWidth - OtherWidth
                 : MaxNormalWidthForTitle);

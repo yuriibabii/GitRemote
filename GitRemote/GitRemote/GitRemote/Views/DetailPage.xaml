@@ -11,6 +11,6 @@
   <views:NewsPage/>
   <views:RepositoriesPage/>
   <views:StarsPage/>
-  <views:FollowersPage/>
-  <views:FollowingPage/>
+  <views:FollowPage Title="Followers"/>
+  <views:FollowPage Title="Following"/>
 </TabbedPage>

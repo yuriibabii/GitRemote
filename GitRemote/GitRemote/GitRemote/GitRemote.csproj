@@ -45,11 +45,13 @@
     <Compile Include="DI\IDevice.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
+    <Compile Include="GitHub\FollowManager.cs" />
     <Compile Include="GitHub\PrivateNewsManager.cs" />
     <Compile Include="GitHub\RepositoriesManager.cs" />
     <Compile Include="GitHub\StarredRepositoriesManager.cs" />
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
+    <Compile Include="Models\FollowModel.cs" />
     <Compile Include="Models\GroupingModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
@@ -67,9 +69,8 @@
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\Authentication\ChooseUserPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
-    <Compile Include="ViewModels\FollowersPageViewModel.cs" />
-    <Compile Include="ViewModels\FollowingPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\LoginingPageViewModel.cs" />
+    <Compile Include="ViewModels\FollowPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewsModels\BookmarksPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewsModels\GistsPageViewModel.cs" />
@@ -84,17 +85,14 @@
     <Compile Include="Views\Authentication\ChooseUserPage.xaml.cs">
       <DependentUpon>ChooseUserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FollowPage.xaml.cs">
+      <DependentUpon>FollowPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationBarPage.xaml.cs">
       <DependentUpon>NavigationBarPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FollowersPage.xaml.cs">
-      <DependentUpon>FollowersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FollowingPage.xaml.cs">
-      <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Authentication\LoginingPage.xaml.cs">
       <DependentUpon>LoginingPage.xaml</DependentUpon>
@@ -293,18 +291,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\FollowersPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\FollowingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\MasterPageViews\GistsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -364,7 +350,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FollowPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
