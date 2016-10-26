@@ -83,14 +83,14 @@ namespace GitRemote.ViewModels.Authentication
             LoginEntryText = "UniorDev";
             PasswordEntryText = "Komikcvest2010";
 
-            var _newsManager = new PrivateNewsManager();
+            var newsManager = new PrivateNewsManager();
 
             var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
                  new InMemoryCredentialStore(new Credentials(LoginEntryText, PasswordEntryText)));
 
             var token = await _accountManager.GetTokenAsync(gitHubClient);
 
-            var privateFeedUrl = await _newsManager.GetPrivateFeedUrlFromApiAsync(gitHubClient);
+            var privateFeedUrl = await newsManager.GetPrivateFeedUrlFromApiAsync(gitHubClient);
 
             var session = new Session(LoginEntryText, token, privateFeedUrl);
 
@@ -104,8 +104,8 @@ namespace GitRemote.ViewModels.Authentication
 
             var parameters = new NavigationParameters { { "Session", session } };
 
-            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
-                    UriKind.Absolute);
+            var navigationStack = new Uri("https://Necessary/" +
+                $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);
 
             await _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }

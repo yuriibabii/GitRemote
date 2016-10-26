@@ -9,6 +9,10 @@
             public const string Repo = "\uf001";
             public const string Star = "\uf02a";
             public const string Person = "\uf018";
+            public const string Bell = "\uf0de";
+            public const string Commit = "\uf01f";
+            public const string PullRequest = "\uf009";
+            public const string IssueOpened = "\uf026";
         }
     }
 }

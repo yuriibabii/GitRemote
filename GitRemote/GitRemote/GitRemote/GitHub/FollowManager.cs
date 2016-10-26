@@ -27,6 +27,7 @@ namespace GitRemote.GitHub
             {
                 IEnumerable<User> gitHubFollowUsers;
 
+                //Switch Follow page
                 if ( IsActiveFollowersPage )
                 {
                     IsActiveFollowersPage = !IsActiveFollowersPage;

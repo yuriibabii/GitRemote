@@ -53,7 +53,7 @@ namespace GitRemote.GitHub
 
         public static void SaveLastUser()
         {
-            Application.Current.Properties["_lastUser"] = _lastUser;
+            Application.Current.Properties["LastUser"] = _lastUser;
         }
 
         public static string GetLastUser()
@@ -63,8 +63,8 @@ namespace GitRemote.GitHub
 
         public static string GetLastUserFromStorage()
         {
-            if ( Application.Current.Properties.ContainsKey("_lastUser") )
-                return Application.Current.Properties["_lastUser"] as string;
+            if ( Application.Current.Properties.ContainsKey("LastUser") )
+                return Application.Current.Properties["LastUser"] as string;
 
             return string.Empty;
         }

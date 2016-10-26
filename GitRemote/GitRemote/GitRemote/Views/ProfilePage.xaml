@@ -6,13 +6,8 @@
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="GitRemote.Views.ProfilePage"
                   Title="GitRemote">
-
   <MasterDetailPage.Master>
     <views:MasterPage/>
   </MasterDetailPage.Master>
-
-  <!--<MasterDetailPage.Detail>
-    <views:DetailPage/>
-  </MasterDetailPage.Detail>-->
 
 </MasterDetailPage>

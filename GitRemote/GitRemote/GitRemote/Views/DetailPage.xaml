@@ -7,7 +7,12 @@
             xmlns:local="clr-namespace:GitRemote;assembly=GitRemote"
             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
             Title="GitRemote">
-
+<TabbedPage.ToolbarItems>
+  <ToolbarItem x:Name="Notifications"
+               Icon="ic_menu_bell.png"
+               Command="{Binding NotificationsCommand}"/>
+</TabbedPage.ToolbarItems>
+  
   <views:NewsPage/>
   <views:RepositoriesPage/>
   <views:StarsPage/>
