@@ -3,7 +3,6 @@ using GitRemote.Models;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
@@ -43,15 +42,9 @@ namespace GitRemote.ViewModels
 
             _notificationsManager = new NotificationsManager(_session);
 
-            Notifications = await GetNotificationsAsync();
-        }
-
-        private async Task<ObservableCollection<NotificationModel>> GetNotificationsAsync()
-        {
-            return new ObservableCollection<NotificationModel>
+            Notifications = new ObservableCollection<NotificationModel>
                 (await _notificationsManager.GetNotificationsAsync());
         }
-
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {

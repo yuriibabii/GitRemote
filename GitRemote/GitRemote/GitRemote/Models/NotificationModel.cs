@@ -16,8 +16,19 @@ namespace GitRemote.Models
             set
             {
                 SetProperty(ref _isRead, value);
-                NotifyTitleColor = IsRead ? Color.Gray : Color.Black;
-                NotifyTypeIconColor = IsRead ? Color.Gray : Color.FromHex("054678");
+
+                if ( IsRead )
+                {
+                    NotifyTitleColor = Color.FromHex("054678");
+                    NotifyTypeIconColor = Color.FromHex("054678");
+                    NotifyFontAttr = FontAttributes.None;
+                }
+                else
+                {
+                    NotifyTitleColor = Color.Black;
+                    NotifyTypeIconColor = Color.Black;
+                    NotifyFontAttr = FontAttributes.Bold;
+                }
             }
         }
 
@@ -69,7 +80,14 @@ namespace GitRemote.Models
             set { SetProperty(ref _notifyTypeIconColor, value); }
         }
 
-        #endregion
+        private FontAttributes _notifyFontAttr;
 
+        public FontAttributes NotifyFontAttr
+        {
+            get { return _notifyFontAttr; }
+            set { SetProperty(ref _notifyFontAttr, value); }
+        }
+
+        #endregion
     }
 }

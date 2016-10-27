@@ -7,8 +7,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.NotificationsPage"
              Title="Notifications">
- 
- <controls:FlowListView x:Name="NotifyList"
+
+  <controls:FlowListView x:Name="NotifyList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          FlowItemsSource="{Binding Notifications}"
@@ -46,23 +46,25 @@
             VerticalOptions="Start"
             HorizontalOptions="Start"
             Margin="0, 3, 10, 0"/>
-            
-           <Label x:Name="FullName"
+
+          <Label x:Name="FullName"
                  Text="{Binding NotifyFullName}"
+                 TextColor="Black"
                  FontSize="14"
                  Grid.Column="1"
                  VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Grid.Row="0"
                  LineBreakMode="TailTruncation"/>
-                   
+
           <StackLayout  Grid.Column="1"
                         Grid.Row="1"
                         VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 2">
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0, 0, 0, 2">
 
             <Label x:Name="Title"
-                   FontAttributes="Bold"
+                   FontAttributes="{Binding NotifyFontAttr}"
                    FontSize="16"
                    Text="{Binding NotifyTitle}"
                    TextColor="{Binding NotifyTitleColor}"
@@ -70,15 +72,17 @@
           </StackLayout>
 
           <Label x:Name="PublishedTime"
+                 TextColor="Black"
                  Text="{Binding NotifyTime}"
                  FontSize="12"
+                 LineBreakMode="TailTruncation"
                  Grid.Column="1"
                  Grid.Row="2"
                  VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"/>
 
         </Grid>
-      
+
       </DataTemplate>
     </controls:FlowListView.FlowColumnTemplate>
 
