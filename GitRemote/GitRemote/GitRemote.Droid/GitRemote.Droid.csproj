@@ -203,6 +203,7 @@
   <ItemGroup>
     <Compile Include="DependencyServices\Device.cs" />
     <Compile Include="DependencyServices\KeyboardHelper.cs" />
+    <Compile Include="DependencyServices\MetricsHelper.cs" />
     <Compile Include="DependencyServices\SecuredDataProvider.cs" />
     <Compile Include="DependencyServices\ViewSaver.cs" />
     <Compile Include="MainActivity.cs" />
@@ -215,7 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="layout\tabs.xml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="layout\toolbar.xml">
       <SubType>AndroidResource</SubType>

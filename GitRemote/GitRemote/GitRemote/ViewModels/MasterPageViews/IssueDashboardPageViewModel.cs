@@ -1,13 +1,13 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
 
-namespace GitRemote.ViewModels.MasterPageViewsModels
+namespace GitRemote.ViewModels.MasterPageViews
 {
-    public class BookmarksPageViewModel : BindableBase
+    public class IssueDashboardPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
 
-        public BookmarksPageViewModel(INavigationService navigationService)
+        public IssueDashboardPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }

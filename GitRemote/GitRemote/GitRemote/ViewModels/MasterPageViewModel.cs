@@ -100,35 +100,35 @@ namespace GitRemote.ViewModels
 
         #region CommandHandlers
 
-        private void OnGistsTapped()
+        private async void OnGistsTapped()
         {
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(GistsPage)}",
-                _navigationParameters);
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(GistsPage)}",
+                _navigationParameters, animated: false);
         }
 
-        private void OnDashboardTapped()
+        private async void OnDashboardTapped()
         {
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(IssueDashboardPage)}",
-                _navigationParameters);
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(IssueDashboardPage)}",
+                _navigationParameters, animated: false);
         }
 
-        private void OnBookmarksTapped()
+        private async void OnBookmarksTapped()
         {
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(BookmarksPage)}",
-                _navigationParameters);
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(BookmarksPage)}",
+                _navigationParameters, animated: false);
         }
 
-        private void OnIssueTapped()
+        private async void OnIssueTapped()
         {
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ReportAnIssuePage)}",
-                _navigationParameters);
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ReportAnIssuePage)}",
+                _navigationParameters, animated: false);
         }
 
-        private void OnExitTapped()
+        private async void OnExitTapped()
         {
             UserManager.SetLastUser(string.Empty);
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(StartPage)}", UriKind.Absolute);
-            _navigationService.NavigateAsync(navigationStack, animated: false);
+            await _navigationService.NavigateAsync(navigationStack, animated: false);
         }
 
 

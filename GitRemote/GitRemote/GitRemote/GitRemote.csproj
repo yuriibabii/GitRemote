@@ -43,6 +43,7 @@
     <Compile Include="CustomClasses\HyperLinkLabel.cs" />
     <Compile Include="CustomClasses\FloatingEntry.cs" />
     <Compile Include="DI\IDevice.cs" />
+    <Compile Include="DI\IMetricsHelper.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\FollowManager.cs" />
@@ -74,10 +75,10 @@
     <Compile Include="ViewModels\Authentication\LoginingPageViewModel.cs" />
     <Compile Include="ViewModels\FollowPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\BookmarksPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\GistsPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\IssueDashboardPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\ReportAnIssuePageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\BookmarksPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\ReportAnIssuePageViewModel.cs" />
     <Compile Include="ViewModels\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />

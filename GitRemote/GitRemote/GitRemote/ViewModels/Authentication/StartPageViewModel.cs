@@ -21,14 +21,14 @@ namespace GitRemote.ViewModels.Authentication
             CreateNewUserButtonCommand = new DelegateCommand(OnCreateNewUserButtonTapped);
         }
 
-        private void OnLogInWithExistUserButtonTapped()
+        private async void OnLogInWithExistUserButtonTapped()
         {
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ChooseUserPage)}");
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ChooseUserPage)}");
         }
 
-        private void OnCreateNewUserButtonTapped()
+        private async void OnCreateNewUserButtonTapped()
         {
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(LoginingPage)}");
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(LoginingPage)}");
         }
     }
 }

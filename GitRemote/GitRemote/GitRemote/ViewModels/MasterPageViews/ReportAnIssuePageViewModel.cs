@@ -1,7 +1,7 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
 
-namespace GitRemote.ViewModels.MasterPageViewsModels
+namespace GitRemote.ViewModels.MasterPageViews
 {
     public class ReportAnIssuePageViewModel : BindableBase
     {
