@@ -47,6 +47,7 @@
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\FollowManager.cs" />
+    <Compile Include="GitHub\GistsManager.cs" />
     <Compile Include="GitHub\NotificationsManager.cs" />
     <Compile Include="GitHub\PrivateNewsManager.cs" />
     <Compile Include="GitHub\RepositoriesManager.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
     <Compile Include="Models\FollowModel.cs" />
+    <Compile Include="Models\GistModel.cs" />
     <Compile Include="Models\GroupingModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="ViewModels\FollowPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\BookmarksPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\GistsListPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\ReportAnIssuePageViewModel.cs" />
@@ -91,6 +94,9 @@
     </Compile>
     <Compile Include="Views\FollowPage.xaml.cs">
       <DependentUpon>FollowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\GistsListPage.xaml.cs">
+      <DependentUpon>GistsListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationBarPage.xaml.cs">
       <DependentUpon>NavigationBarPage.xaml</DependentUpon>
@@ -365,6 +371,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\NotificationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\GistsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

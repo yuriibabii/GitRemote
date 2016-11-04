@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.MasterPageViews.GistsListPage"
+             Title="{Binding TabTitle}">
+
+  <controls:FlowListView x:Name="GistsList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding Gists.Result}"
+                         FlowColumnCount="1"
+                         HasUnevenRows="True"
+                         Margin="15, 15, 15, 0">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="Start"
+              HorizontalOptions="FillAndExpand"
+              Margin="0, 0, 0, 20"
+              ColumnSpacing="0"
+              RowSpacing="5">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20"/>
+          </Grid.ColumnDefinitions>
+          
+          <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
+          </Grid.RowDefinitions>
+
+          <forms:CachedImage
+            x:Name="Avatar"
+            Source="{Binding ImageUrl}"
+            HeightRequest="40"
+            WidthRequest="40"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            Margin="0, 5, 10, 0"
+            CacheDuration = "5"
+            DownsampleToViewSize ="True"
+            LoadingPlaceholder="ic_list_NoAvatar.png">
+            <forms:CachedImage.Transformations>
+              <transformations:RoundedTransformation Radius="100"/>
+            </forms:CachedImage.Transformations>
+
+          </forms:CachedImage>
+
+
+          <Label x:Name="Id"
+                 Text="{Binding Id}"
+                 TextColor="#A8A8A8"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 FontSize="12"
+                 Grid.ColumnSpan="7"
+                 VerticalOptions="End"
+                 HorizontalOptions="FillAndExpand"/>
+
+          <Label x:Name="Description"
+                 Text="{Binding Description}"
+                 FontSize="14"
+                 TextColor="Black"
+                 FontAttributes="Bold"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="7"
+                 LineBreakMode="TailTruncation"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="1"/>
+
+          <Label x:Name="OwnerName"
+                 Text="{Binding OwnerName}"
+                 FontSize="12"
+                 TextColor="#A8A8A8"
+                 FontAttributes="Bold"
+                 Grid.Column="1"
+                 LineBreakMode="TailTruncation"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 Grid.Row="2"/>
+
+          <Label x:Name="CreatedTime"
+                 Text="{Binding CreatedTime}"
+                 FontSize="12"
+                 TextColor="#A8A8A8"
+                 Grid.ColumnSpan="2"
+                 Grid.Column="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="2"
+                 Margin="5, 0, 5, 0"/>
+
+          <customClasses:FontIcon x:Name="FileFontIcon"
+                                  Text="{Binding FileFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="12"
+                                  FontFamily="Octicons"
+                                  Grid.Column="4"
+                                  Grid.Row="2"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="End"/>
+          
+          <Label x:Name="FilesCount"
+                 Text="{Binding FilesCount}"
+                 FontSize="12"
+                 TextColor="#A8A8A8"
+                 Grid.Column="5"
+                 Grid.Row="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 Margin="0, 0, 5, 0"/>
+
+          <customClasses:FontIcon x:Name="CommentFontIcon"
+                                  Text="{Binding CommentFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="12"
+                                  FontFamily="Octicons"
+                                  Grid.Column="6"
+                                  Grid.Row="2"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="End"
+                                  Opacity="{Binding CommentOpacity}"
+                                  Margin="0, 0, 2, 0"/>
+
+          <Label x:Name="Count"
+                 Text="{Binding CommentsCount}"
+                 FontSize="12"
+                 TextColor="#A8A8A8"
+                 Grid.Column="7"
+                 Grid.Row="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 Opacity="{Binding CommentOpacity}"/>
+        </Grid>
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+  </controls:FlowListView>
+</ContentPage>

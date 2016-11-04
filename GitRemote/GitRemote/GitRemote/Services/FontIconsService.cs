@@ -13,6 +13,8 @@
             public const string Commit = "\uf01f";
             public const string PullRequest = "\uf009";
             public const string IssueOpened = "\uf026";
+            public const string Comment = "\uf02b";
+            public const string File = "\uf011";
         }
     }
 }

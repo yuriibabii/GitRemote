@@ -53,9 +53,10 @@ namespace GitRemote.ViewModels
 
         private readonly INavigationService _navigationService;
         private readonly Session _session;
+        private readonly IMetricsHelper _metricsHelper;
 
-
-        public MasterPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        public MasterPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider,
+            IMetricsHelper metricsHelper)
         {
             #region Initialize Commands
 
@@ -67,7 +68,7 @@ namespace GitRemote.ViewModels
             #endregion
 
             _navigationService = navigationService;
-
+            _metricsHelper = metricsHelper;
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
             _navigationParameters = new NavigationParameters { { "Session", _session } };
@@ -102,6 +103,7 @@ namespace GitRemote.ViewModels
 
         private async void OnGistsTapped()
         {
+            GistsManager.SetTabsTitles(_metricsHelper);
             await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(GistsPage)}",
                 _navigationParameters, animated: false);
         }

@@ -49,18 +49,19 @@
               Margin="15, 15, 15, 15"
               ColumnSpacing="0">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="33"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="33"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
           </Grid.RowDefinitions>
 
           <customClasses:FontIcon x:Name="TypeIcon"
@@ -84,7 +85,7 @@
                  Grid.Row="0"
                  VerticalOptions="CenterAndExpand"
                  HorizontalOptions="FillAndExpand"
-                 Grid.ColumnSpan="6" />
+                 Grid.ColumnSpan="6"/>
 
           <Label x:Name="Description"
                  IsVisible="{Binding IsDescription}"

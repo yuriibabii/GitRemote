@@ -52,7 +52,7 @@ namespace GitRemote.GitHub
                 }
 
                 var groupedGitRemoteRepos = from model in gitRemoteRepos //foreach rep
-                                            orderby model.RepositoryName // sort by Name
+                                            orderby model.RepositoryName // sort by OwnerName
                                             group model by Convert.ToString(model.RepositoryName[0]).ToUpper() into modelGroup //Save each group and its key
                                             select new GroupingModel<string, RepositoryModel>(modelGroup.Key.ToUpper(), modelGroup); //Convert it to collection
 

@@ -2,11 +2,13 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:masterPageViews="clr-namespace:GitRemote.Views.MasterPageViews;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.MasterPageViews.GistsPage"
-             Title ="Gists">
+             Title = "Gists">
   
-  <ContentPage Title="{Binding MinePageTitle}"></ContentPage>
-  <ContentPage Title="{Binding StarredPageTitle}"></ContentPage>
-  <ContentPage Title="{Binding AllPageTitle}"></ContentPage>
+  <masterPageViews:GistsListPage/>
+  <masterPageViews:GistsListPage/>
+  <masterPageViews:GistsListPage/>
+  
 </TabbedPage>

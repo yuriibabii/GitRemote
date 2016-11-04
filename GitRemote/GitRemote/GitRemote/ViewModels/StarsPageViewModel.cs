@@ -41,7 +41,7 @@ namespace GitRemote.ViewModels
         /// <summary>
         /// "Converts" task to observ collection
         /// </summary>
-        /// <returns>Collention of stars</returns>
+        /// <returns>Collection of stars</returns>
         private async Task<ObservableCollection<StarredRepositoryModel>> GetStarsAsync()
         {
             return new ObservableCollection<StarredRepositoryModel>
