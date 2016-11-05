@@ -62,7 +62,7 @@ namespace GitRemote.GitHub
                         Id = gist?.Id,
                         CommentsCount = gist.Comments,
                         IsCommented = gist.Comments > 0,
-                        CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(gist?.CreatedAt)),
+                        CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(gist.CreatedAt)),
                         FilesCount = gist.Files.Count,
                         ImageUrl = gist.Owner?.AvatarUrl ?? NoAvatarImage
                     };

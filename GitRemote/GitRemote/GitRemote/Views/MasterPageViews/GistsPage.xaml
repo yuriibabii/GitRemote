@@ -7,6 +7,20 @@
              x:Class="GitRemote.Views.MasterPageViews.GistsPage"
              Title = "Gists">
   
+  <TabbedPage.ToolbarItems>
+    
+    <ToolbarItem x:Name="AddGist"
+                 Icon="ic_action_add.png"
+                 Order="Primary"
+                 Command="{Binding AddGistCommand}"/>
+    
+    <ToolbarItem x:Name="RandomGist"
+                 Text="Random"
+                 Order="Secondary"
+                 Command="{Binding RandomGistCommand}"/>
+
+  </TabbedPage.ToolbarItems>
+  
   <masterPageViews:GistsListPage/>
   <masterPageViews:GistsListPage/>
   <masterPageViews:GistsListPage/>
