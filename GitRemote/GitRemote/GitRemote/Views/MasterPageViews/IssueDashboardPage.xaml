@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:masterPageViews="clr-namespace:GitRemote.Views.MasterPageViews;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.MasterPageViews.IssueDashboardPage"
              Title="Issue Dashboard">
   
-  <Label Text="No Issue Dashboard" VerticalOptions="Center" HorizontalOptions="Center" />
-</ContentPage>
+  <masterPageViews:IssuesListPage/>
+  <masterPageViews:IssuesListPage/>
+  <masterPageViews:IssuesListPage/>
+  <masterPageViews:IssuesListPage/>
+
+</TabbedPage>

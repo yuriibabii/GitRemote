@@ -17,7 +17,7 @@ namespace GitRemote.Models
         {
             Spans = {
                 new Span { Text = Perfomer + " ", FontAttributes=FontAttributes.Bold, FontSize=16 },
-                new Span { Text = ActionType + " ", FontSize=16 },
+                new Span { Text = ActionType !="opened" ? ActionType + " " : "opened issue ", FontSize=16 },
                 new Span { Text = ActionType == "created" ? "reposiroty " : "", FontSize = 16},
                 new Span { Text = ActionType == "added" ? AdditionalTarget + " " : "",
                     FontAttributes =FontAttributes.Bold, FontSize = 16},

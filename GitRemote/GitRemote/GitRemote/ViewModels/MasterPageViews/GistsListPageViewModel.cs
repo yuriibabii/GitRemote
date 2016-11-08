@@ -42,7 +42,7 @@ namespace GitRemote.ViewModels.MasterPageViews
         /// <summary>
         /// "Converts" task to observ collection
         /// </summary>
-        /// <returns>Collection of stars</returns>
+        /// <returns>Collection of gists</returns>
         private async Task<ObservableCollection<GistModel>> GetGistsAsync()
         {
             return new ObservableCollection<GistModel>

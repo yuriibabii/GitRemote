@@ -3161,11 +3161,11 @@ namespace GitRemote.Droid
 			// aapt resource value: 0x7f08000e
 			public const int mr_user_route_category_name = 2131230734;
 			
-			// aapt resource value: 0x7f080028
-			public const int search = 2131230760;
-			
 			// aapt resource value: 0x7f080022
 			public const int status_bar_notification_info_overflow = 2131230754;
+			
+			// aapt resource value: 0x7f080028
+			public const int title = 2131230760;
 			
 			static String()
 			{

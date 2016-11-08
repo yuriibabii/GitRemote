@@ -1,10 +1,12 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V7.Widget;
 using DLToolkit.Forms.Controls;
 using FFImageLoading.Forms.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+
 namespace GitRemote.Droid
 {
     [Activity(Label = "GitRemote", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize |
@@ -18,9 +20,14 @@ namespace GitRemote.Droid
             CachedImageRenderer.Init();
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
+
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
             LoadApplication(new App());
+
+            //var tv = FindViewById(Resource.Id.mySearchView) as SearchView;
+            //var tb = ( Toolbar )tv?.Parent;
+            //if ( tb != null ) tb.Elevation = 20f;
         }
     }
 }

@@ -68,7 +68,10 @@ namespace GitRemote.GitHub
                         newsItem.AdditionalTarget = newsItem.ActionType == "added"
                             ? splitedTitle[2]
                             : string.Empty;
-                        newsItem.Target = splitedTitle[splitedTitle.Length - 1];
+                        newsItem.Target = newsItem.ActionType == "forked"
+                            ? splitedTitle[2]
+                            : splitedTitle[splitedTitle.Length - 1];
+
                         switch ( newsItem.ActionType )
                         {
                             case "added":
@@ -82,6 +85,9 @@ namespace GitRemote.GitHub
                                 break;
                             case "starred":
                                 newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Star;
+                                break;
+                            case "opened":
+                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.OpenedIssue;
                                 break;
                         }
                     }
@@ -115,7 +121,9 @@ namespace GitRemote.GitHub
 
             var parsedFeed = XElement.Parse(feed);
 
-            var entries = from entry in parsedFeed.Elements("{" + ConstantsService.AtomNamespace + "}entry") select entry;
+            var entries = from entry
+                          in parsedFeed.Elements("{" + ConstantsService.AtomNamespace + "}entry")
+                          select entry;
 
             return entries;
         }

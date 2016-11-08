@@ -15,6 +15,7 @@
             public const string IssueOpened = "\uf026";
             public const string Comment = "\uf02b";
             public const string File = "\uf011";
+            public const string OpenedIssue = "\uf026";
         }
     }
 }
