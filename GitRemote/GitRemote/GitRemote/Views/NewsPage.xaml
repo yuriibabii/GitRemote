@@ -10,7 +10,7 @@
              x:Class="GitRemote.Views.NewsPage"
              Title="News">
 
-  <controls:FlowListView x:Name="ReposList"
+  <controls:FlowListView x:Name="NewsList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          FlowItemsSource="{Binding PrivateNews.Result}"
@@ -28,7 +28,7 @@
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="{Binding Source={x:Reference Name=ReposList}, Path=BindingContext.ColumnWidth}"/>
+            <ColumnDefinition Width="{Binding Source={x:Reference Name=NewsList}, Path=BindingContext.ColumnWidth}"/>
 
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>

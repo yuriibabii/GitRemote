@@ -4,8 +4,11 @@ using Octokit;
 using Octokit.Internal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace GitRemote.GitHub
 {
@@ -59,37 +62,21 @@ namespace GitRemote.GitHub
 
                 foreach ( var issue in gitHubIssues )
                 {
-                    //issue.Labels;
-                    //issue.User.Login Name;
-                    //issue.CreatedAt;
-                    //issue.Title;
-                    //issue.State;
-                    //issue.Number;
-                    //issue.Comments;
-                    //issue.Repository;
-                    //issue.
-
                     var issueModel = new IssueModel
                     {
-
-                        //Id = gist?.Id,
-                        //CommentsCount = gist.Comments,
-                        //IsCommented = gist.Comments > 0,
-                        //CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(gist.CreatedAt)),
-                        //FilesCount = gist.Files.Count,
-                        //ImageUrl = gist.Owner?.AvatarUrl ?? NoAvatarImage
+                        IsCommented = issue.Comments > 0,
+                        CommentsCount = issue.Comments,
+                        Title = issue.Title,
+                        Repository = issue.Repository.FullName,
+                        OwnerName = StringService.CheckForNullOrEmpty(issue.User.Name)
+                            ? issue.User.Name
+                            : issue.User.Login,
+                        ImageUrl = issue.User.AvatarUrl,
+                        CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(issue.CreatedAt)),
+                        Nomer = Convert.ToString(issue.Number),
                     };
 
-                    //if ( gist.Owner == null )
-                    //    gistModel.OwnerName = "Anonymous";
-                    //else
-                    //    gistModel.OwnerName = StringService.CheckForNullOrEmpty(gist.Owner?.Name)
-                    //        ? gist.Owner?.Name
-                    //        : gist.Owner?.Login;
-
-                    //gistModel.Description = StringService.CheckForNullOrEmpty(gist.Description)
-                    //    ? gist.Description
-                    //    : "No description given.";
+                    CopyColors(issueModel.Labels, issue.Labels.Select(l => l.Color));
 
                     gitRemoteIssues.Add(issueModel);
                 }
@@ -104,6 +91,17 @@ namespace GitRemote.GitHub
             {
                 throw new Exception("Getting issues from github failed! " + ex.Message);
             }
+        }
+
+        public void CopyColors(ObservableCollection<Color> colors, IEnumerable<string> strings)
+        {
+            var i = 0;
+            foreach ( var s in strings )
+            {
+                colors[i] = Color.FromHex(s);
+                ++i;
+            }
+
         }
     }
 }

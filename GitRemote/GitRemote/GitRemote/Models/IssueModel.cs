@@ -1,5 +1,7 @@
 ﻿using GitRemote.Services;
 using Prism.Mvvm;
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace GitRemote.Models
 {
@@ -25,20 +27,20 @@ namespace GitRemote.Models
             set { SetProperty(ref _commentsCount, value); }
         }
 
-        private string _description;
+        private string _title;
 
-        public string Description
+        public string Title
         {
-            get { return _description; }
-            set { SetProperty(ref _description, value); }
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
         }
 
-        private string _id;
+        private string _repository;
 
-        public string Id
+        public string Repository
         {
-            get { return _id; }
-            set { SetProperty(ref _id, value); }
+            get { return _repository; }
+            set { SetProperty(ref _repository, value); }
         }
 
         private string _ownerName;
@@ -65,6 +67,23 @@ namespace GitRemote.Models
             set { SetProperty(ref _createdTime, value); }
         }
 
+        private string _nomer;
+
+        public string Nomer
+        {
+            get { return _nomer; }
+            set { SetProperty(ref _nomer, value); }
+        }
+
+        private ObservableCollection<Color> _labels = new ObservableCollection<Color>(new Color[7]);
+
+        public ObservableCollection<Color> Labels
+        {
+            get { return _labels; }
+            set { SetProperty(ref _labels, value); }
+        }
+
         #endregion
     }
+
 }

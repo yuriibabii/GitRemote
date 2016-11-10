@@ -25,7 +25,7 @@ namespace GitRemote.Droid
             Forms.Init(this, bundle);
             LoadApplication(new App());
 
-            //var tv = FindViewById(Resource.Id.mySearchView) as SearchView;
+            //var tv = FindViewById(Resource.Repository.mySearchView) as SearchView;
             //var tb = ( Toolbar )tv?.Parent;
             //if ( tb != null ) tb.Elevation = 20f;
         }

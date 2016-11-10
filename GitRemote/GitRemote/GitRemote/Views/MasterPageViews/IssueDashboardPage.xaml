@@ -7,9 +7,9 @@
              x:Class="GitRemote.Views.MasterPageViews.IssueDashboardPage"
              Title="Issue Dashboard">
   
-  <masterPageViews:IssuesListPage/>
-  <masterPageViews:IssuesListPage/>
-  <masterPageViews:IssuesListPage/>
-  <masterPageViews:IssuesListPage/>
+  <masterPageViews:IssuesListPage Title="Watched"/>
+  <masterPageViews:IssuesListPage Title="Assigned"/>
+  <masterPageViews:IssuesListPage Title="Created"/>
+  <masterPageViews:IssuesListPage Title="Mentioned"/>
 
 </TabbedPage>
