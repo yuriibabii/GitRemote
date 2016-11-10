@@ -15,7 +15,7 @@
                          FlowItemsSource="{Binding Issues.Result}"
                          HasUnevenRows="True"
                          FlowColumnCount="1"
-                         Margin="15, 15, 15, 0">
+                         Margin="0, 15, 5, 0">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
@@ -25,40 +25,45 @@
               ColumnSpacing="0"
               RowSpacing="5">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="35"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
 
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
           </Grid.RowDefinitions>
 
-          <BoxView BackgroundColor="#CDC6C6"
+          <BoxView BackgroundColor="#EAEBEC"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="FillAndExpand"
                    Grid.Column="0"
-                   Grid.Row="0"/>
+                   Grid.Row="0"
+                   Margin="0, 0, 15, 0"/>
+          
           <Label Text="{Binding Nomer}"
                  FontSize="12"
                  TextColor="Black"
                  HorizontalOptions="EndAndExpand"
                  VerticalOptions="CenterAndExpand"
                  Grid.Column="0"
-                 Grid.Row="0"/>
-          <StackLayout x:Name="Layout"
+                 Grid.Row="0"
+                 Margin="0, 0, 15, 0"/>
+          
+          <StackLayout x:Name="Stack"
                        Grid.Column="0"
                        Grid.Row="1"
                        Grid.RowSpan="2"
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
-                       Spacing="1">
+                       Spacing="3"
+                       Margin="0, 0, 15, 0">
 
             <BoxView BackgroundColor="{Binding Labels[0]}"
                      HorizontalOptions="FillAndExpand"
@@ -93,7 +98,7 @@
           <Label x:Name="ReposPath"
                  FormattedText="{Binding Repository}"
                  TextColor="Gray"
-                 FontSize="12"
+                 FontSize="14"
                  LineBreakMode="TailTruncation"
                  Grid.Column="1"
                  Grid.Row="0"
@@ -102,8 +107,9 @@
           <Label x:Name="Title"
                  FormattedText="{Binding Title}"
                  TextColor="Black"
-                 FontSize="14"
+                 FontSize="16"
                  LineBreakMode="TailTruncation"
+                 VerticalOptions="CenterAndExpand"
                  Grid.Column="1"
                  Grid.Row="1"
                  Grid.ColumnSpan="6"/>
@@ -115,11 +121,12 @@
             WidthRequest="25"
             Grid.Column="1"
             Grid.Row="2"
-            VerticalOptions="Start"
-            HorizontalOptions="Start"
-            Margin="0, 5, 10, 0"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
             CacheDuration = "5"
-            DownsampleToViewSize ="True">
+            DownsampleToViewSize ="True"
+            LoadingPlaceholder="ic_list_NoAvatar.png"
+            Margin="-5, 0, 0, 0">
             <forms:CachedImage.Transformations>
               <transformations:RoundedTransformation Radius="100"/>
             </forms:CachedImage.Transformations>
@@ -132,23 +139,23 @@
                  FormattedText="{Binding OwnerName}"
                  TextColor="Gray"
                  FontAttributes="Bold"
-                 FontSize="12"
+                 FontSize="14"
                  LineBreakMode="TailTruncation"
                  Grid.Column="2"
                  Grid.Row="2"
-                 VerticalOptions="Center"
+                 VerticalOptions="CenterAndExpand"
                  HorizontalOptions="Start"/>
 
           <Label x:Name="CreatedTime"
                  FormattedText="{Binding CreatedTime}"
                  TextColor="Gray"
-                 FontSize="12"
+                 FontSize="14"
                  LineBreakMode="TailTruncation"
                  Grid.Column="3"
                  Grid.Row="2"
                  VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
-                 Margin="5, 0, 5, 0"/>
+                 Margin="10, 0, 5, 0"/>
 
           <customClasses:FontIcon x:Name="CommentFontIcon"
                                   Text="{Binding CommentFontIcon}"
@@ -159,6 +166,7 @@
                                   Grid.Row="2"
                                   VerticalOptions="Center"
                                   HorizontalOptions="End"
+                                  Margin="0, 5, -5, 0"
                                   Opacity="{Binding CommentOpacity}"/>
 
           <Label x:Name="CommentsCount"
@@ -168,8 +176,8 @@
                  Grid.Column="5"
                  Grid.Row="2"
                  VerticalOptions="Center"
-                 HorizontalOptions="Start"
-                 Margin="0, 0, 5, 0"
+                 HorizontalOptions="End"
+                 Margin="0, 3, 0, 0"
                  Opacity="{Binding CommentOpacity}"/>
 
         </Grid>
