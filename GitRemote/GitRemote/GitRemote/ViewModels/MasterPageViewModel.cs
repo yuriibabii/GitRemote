@@ -1,72 +1,140 @@
-﻿using GitRemote.GitHub;
-using GitRemote.Models;
+﻿using GitRemote.DI;
+using GitRemote.GitHub;
+using GitRemote.Services;
+using GitRemote.Views;
+using GitRemote.Views.MasterPageViews;
+using Octokit;
+using Octokit.Internal;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
 using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels
 {
     public class MasterPageViewModel : BindableBase
     {
+        public string ProfileImageUrl
+        {
+            get { return _profileImageUrl; }
+            set { SetProperty(ref _profileImageUrl, value); }
+        }
 
-        #region Constants
-        private const string GistsPageImagePath = "ic_code_black_24dp.png";
-        private const string IssueDashboardPageImagePath = "ic_slow_motion_video_black_24dp.png";
-        private const string BookmarksPageImagePath = "ic_bookmark_black_24dp.png";
-        private const string ReportAnIssuePageImagePath = "ic_error_outline_black_24dp.png";
+        private string _profileImageUrl = "ic_account_circle_white_24dp.png";
+
+        public string ProfileNickName
+        {
+            get { return _profileNickName; }
+            set { SetProperty(ref _profileNickName, value); }
+        }
+
+        private string _profileNickName = "Unknown";
+
+        private readonly NavigationParameters _navigationParameters;
+
+        #region ImagePaths
+        public string GistsPageImagePath => "ic_list_gists.png";
+        public string DashboardPageImagePath => "ic_list_issueDashboard.png";
+        public string BookmarksPageImagePath => "ic_list_bookmarks.png";
+        public string IssuePageImagePath => "ic_list_issue.png";
         #endregion
 
-        private MasterPageMenuItemModel _menuItemSelectedProperty;
-
-        public MasterPageMenuItemModel MenuItemSelectedProperty
-        {
-            get { return _menuItemSelectedProperty; }
-            set { SetProperty(ref _menuItemSelectedProperty, value); }
-        }
-        ////#endregion
+        #region Commands
+        public DelegateCommand ExitCommand { get; }
+        public DelegateCommand GistsCommand { get; }
+        public DelegateCommand DashboardCommand { get; }
+        public DelegateCommand BookmarksCommand { get; }
+        public DelegateCommand IssueCommand { get; }
+        #endregion
 
         private readonly INavigationService _navigationService;
+        private readonly Session _session;
+        private readonly IMetricsHelper _metricsHelper;
 
-        public ObservableCollection<MasterPageMenuItemModel> MenuItems;
-
-        public DelegateCommand MenuItemSelected { get; }
-        public DelegateCommand ExitCommand { get; }
-
-        public MasterPageViewModel(INavigationService navigationService)
+        public MasterPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider,
+            IMetricsHelper metricsHelper)
         {
+            #region Initialize Commands
+
+            ExitCommand = new DelegateCommand(OnExitTapped);
+            GistsCommand = new DelegateCommand(OnGistsTapped);
+            DashboardCommand = new DelegateCommand(OnDashboardTapped);
+            BookmarksCommand = new DelegateCommand(OnBookmarksTapped);
+            IssueCommand = new DelegateCommand(OnIssueTapped);
+            #endregion
+
             _navigationService = navigationService;
-            MenuItemSelected = new DelegateCommand(OnMenuItemSelected);
-            ExitCommand = new DelegateCommand(OnExit);
-
-            //MasterProfileGrayHeaderBounds = new Rectangle(0, 0, 1, 0.175);
-            //MasterProfileImageBounds = new Rectangle(16, 16, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
-            //MasterProfileNameBounds = new Rectangle(16, 70, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
-            //MasterMenuBounds = new Rectangle(16, 100 + 10, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
-
-            MenuItems = new ObservableCollection<MasterPageMenuItemModel>
-            {
-                new MasterPageMenuItemModel {Name = "GistsPage", ImageSource = GistsPageImagePath},
-                new MasterPageMenuItemModel {Name = "IssueDashboardPage", ImageSource = IssueDashboardPageImagePath},
-                new MasterPageMenuItemModel {Name = "BookmarksPage", ImageSource = BookmarksPageImagePath},
-                new MasterPageMenuItemModel {Name = "ReportAnIssuePage", ImageSource = ReportAnIssuePageImagePath}
-            };
+            _metricsHelper = metricsHelper;
+            var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
+            _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
+            _navigationParameters = new NavigationParameters { { "Session", _session } };
+            SetProfileImageAndNickNameAsync();
         }
 
-        private void OnMenuItemSelected()
+
+        /// <summary>
+        /// Creates gitHubClient with existing token, gets Avatar from url and nickname
+        /// </summary>
+        private async void SetProfileImageAndNickNameAsync()
         {
-            if ( MenuItemSelectedProperty == null ) return;
-            _navigationService.NavigateAsync(MenuItemSelectedProperty.Name, animated: false);
-            MenuItemSelectedProperty = null;
+            var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
+                new InMemoryCredentialStore(new Credentials(_session?.GetToken())));
+            try
+            {
+                var user = await gitHubClient.User.Current();
+                ProfileImageUrl = user?.AvatarUrl;
+                ProfileNickName = StringService.CheckForNullOrEmpty(user?.Name) ? user?.Name : user?.Login;
+            }
+            catch ( WebException )
+            {
+                Debug.WriteLine("Something wrong with internet connection, try to On Internet");
+            }
+            catch ( Exception )
+            {
+                Debug.WriteLine("Getting user from github failed!");
+            }
         }
 
-        private void OnExit()
+        #region CommandHandlers
+
+        private async void OnGistsTapped()
+        {
+            GistsManager.SetTabsTitles(_metricsHelper);
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(GistsPage)}",
+                _navigationParameters, animated: false);
+        }
+
+        private async void OnDashboardTapped()
+        {
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(IssueDashboardPage)}",
+                _navigationParameters, animated: false);
+        }
+
+        private async void OnBookmarksTapped()
+        {
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(BookmarksPage)}",
+                _navigationParameters, animated: false);
+        }
+
+        private async void OnIssueTapped()
+        {
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ReportAnIssuePage)}",
+                _navigationParameters, animated: false);
+        }
+
+        private async void OnExitTapped()
         {
             UserManager.SetLastUser(string.Empty);
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(StartPage)}", UriKind.Absolute);
-            _navigationService.NavigateAsync(navigationStack, animated: false);
+            await _navigationService.NavigateAsync(navigationStack, animated: false);
         }
+
+
+        #endregion
+
     }
 }

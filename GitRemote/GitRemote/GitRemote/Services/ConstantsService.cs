@@ -13,5 +13,8 @@ namespace GitRemote.Services
 
         public static readonly string GitHubOfficialPageUrl =
             "https://github.com/";
+
+        public const string AtomNamespace = "http://www.w3.org/2005/Atom";
+
     }
 }

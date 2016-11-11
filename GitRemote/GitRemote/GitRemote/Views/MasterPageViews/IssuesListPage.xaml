@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.MasterPageViews.IssuesListPage">
+
+  <controls:FlowListView x:Name="IssuesList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding Issues.Result}"
+                         HasUnevenRows="True"
+                         FlowColumnCount="1"
+                         Margin="0, 15, 5, 0">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="Start"
+              HorizontalOptions="FillAndExpand"
+              Margin="0, 0, 0, 20"
+              ColumnSpacing="0"
+              RowSpacing="5">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
+
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+          </Grid.RowDefinitions>
+
+          <BoxView BackgroundColor="#EAEBEC"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Margin="0, 0, 15, 0"/>
+          
+          <Label Text="{Binding Nomer}"
+                 FontSize="12"
+                 TextColor="Black"
+                 HorizontalOptions="EndAndExpand"
+                 VerticalOptions="CenterAndExpand"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 Margin="0, 0, 15, 0"/>
+          
+          <StackLayout x:Name="Stack"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       Grid.RowSpan="2"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Spacing="3"
+                       Margin="0, 0, 15, 0">
+
+            <BoxView BackgroundColor="{Binding Labels[0]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+            <BoxView BackgroundColor="{Binding Labels[1]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+            <BoxView BackgroundColor="{Binding Labels[2]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+            <BoxView BackgroundColor="{Binding Labels[3]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+            <BoxView BackgroundColor="{Binding Labels[4]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+            <BoxView BackgroundColor="{Binding Labels[5]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+            <BoxView BackgroundColor="{Binding Labels[6]}"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="2"/>
+
+          </StackLayout>
+
+          <Label x:Name="ReposPath"
+                 FormattedText="{Binding Repository}"
+                 TextColor="Gray"
+                 FontSize="14"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="6"/>
+
+          <Label x:Name="Title"
+                 FormattedText="{Binding Title}"
+                 TextColor="Black"
+                 FontSize="16"
+                 LineBreakMode="TailTruncation"
+                 VerticalOptions="CenterAndExpand"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 Grid.ColumnSpan="6"/>
+
+          <forms:CachedImage
+            x:Name="Avatar"
+            Source="{Binding ImageUrl}"
+            HeightRequest="25"
+            WidthRequest="25"
+            Grid.Column="1"
+            Grid.Row="2"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            CacheDuration = "5"
+            DownsampleToViewSize ="True"
+            LoadingPlaceholder="ic_list_NoAvatar.png"
+            Margin="-5, 0, 0, 0">
+            <forms:CachedImage.Transformations>
+              <transformations:RoundedTransformation Radius="100"/>
+            </forms:CachedImage.Transformations>
+
+          </forms:CachedImage>
+
+
+
+          <Label x:Name="OwnerName"
+                 FormattedText="{Binding OwnerName}"
+                 TextColor="Gray"
+                 FontAttributes="Bold"
+                 FontSize="14"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="2"
+                 Grid.Row="2"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="Start"/>
+
+          <Label x:Name="CreatedTime"
+                 FormattedText="{Binding CreatedTime}"
+                 TextColor="Gray"
+                 FontSize="14"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="3"
+                 Grid.Row="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Margin="10, 0, 5, 0"/>
+
+          <customClasses:FontIcon x:Name="CommentFontIcon"
+                                  Text="{Binding CommentFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="12"
+                                  FontFamily="Octicons"
+                                  Grid.Column="4"
+                                  Grid.Row="2"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="End"
+                                  Margin="0, 5, -5, 0"
+                                  Opacity="{Binding CommentOpacity}"/>
+
+          <Label x:Name="CommentsCount"
+                 Text="{Binding CommentsCount}"
+                 FontSize="12"
+                 TextColor="#A8A8A8"
+                 Grid.Column="5"
+                 Grid.Row="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="End"
+                 Margin="0, 3, 0, 0"
+                 Opacity="{Binding CommentOpacity}"/>
+
+        </Grid>
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+
+  </controls:FlowListView>
+
+</ContentPage>

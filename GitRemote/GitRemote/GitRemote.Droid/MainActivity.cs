@@ -1,9 +1,11 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V7.Widget;
+using DLToolkit.Forms.Controls;
+using FFImageLoading.Forms.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
 
 namespace GitRemote.Droid
 {
@@ -13,11 +15,19 @@ namespace GitRemote.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            App.ScreenWidth = ( int )( Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density );
+            FlowListView.Init();
+            CachedImageRenderer.Init();
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
+
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
             LoadApplication(new App());
+
+            //var tv = FindViewById(Resource.Repository.mySearchView) as SearchView;
+            //var tb = ( Toolbar )tv?.Parent;
+            //if ( tb != null ) tb.Elevation = 20f;
         }
     }
 }
