@@ -1,13 +1,13 @@
-﻿using GitRemote.Models;
-using GitRemote.Services;
-using Octokit;
-using Octokit.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using GitRemote.Models;
+using GitRemote.Services;
+using Octokit;
+using Octokit.Internal;
 
-namespace GitRemote.GitHub
+namespace GitRemote.GitHub.Managers
 {
     public class NotificationsManager
     {

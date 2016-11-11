@@ -1,5 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Services;
 using GitRemote.Views;
 using Prism.Commands;
@@ -120,7 +121,7 @@ namespace GitRemote.ViewModels.Authentication
 
             UserManager.SetLastUser(currentCellName);
             var parameters = new NavigationParameters { { "Session", new Session(currentCellName, token.Properties.First().Value) } };
-            var navigationStack = new Uri("https://Necessary/" + $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);
             _currentCell = null;
             _navigationService.NavigateAsync(navigationStack, parameters, animated: false);

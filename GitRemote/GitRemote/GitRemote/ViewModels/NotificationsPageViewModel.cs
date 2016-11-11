@@ -3,6 +3,7 @@ using GitRemote.Models;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using GitRemote.GitHub.Managers;
 using Xamarin.Forms;
 
 namespace GitRemote.ViewModels

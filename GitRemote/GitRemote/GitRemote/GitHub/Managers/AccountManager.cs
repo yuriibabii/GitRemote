@@ -1,10 +1,10 @@
-﻿using GitRemote.DI;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using GitRemote.DI;
 using GitRemote.Services;
 using Octokit;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace GitRemote.GitHub
+namespace GitRemote.GitHub.Managers
 {
     public class AccountManager
     {

@@ -6,6 +6,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Linq;
+using GitRemote.GitHub.Managers;
 using GitRemote.Views.MasterPageViews;
 
 namespace GitRemote.ViewModels

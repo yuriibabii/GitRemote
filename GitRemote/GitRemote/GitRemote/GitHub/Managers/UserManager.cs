@@ -1,11 +1,11 @@
-﻿using GitRemote.DI;
-using GitRemote.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using GitRemote.DI;
+using GitRemote.Services;
 using Xamarin.Forms;
 
-namespace GitRemote.GitHub
+namespace GitRemote.GitHub.Managers
 {
     public class UserManager
     {

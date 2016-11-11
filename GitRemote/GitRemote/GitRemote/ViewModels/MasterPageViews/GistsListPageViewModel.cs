@@ -8,6 +8,7 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using GitRemote.GitHub.Managers;
 
 namespace GitRemote.ViewModels.MasterPageViews
 {

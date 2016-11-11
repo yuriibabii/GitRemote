@@ -1,4 +1,4 @@
-﻿using GitRemote.GitHub;
+﻿using GitRemote.GitHub.Managers;
 using GitRemote.Services;
 using GitRemote.ViewModels;
 using GitRemote.ViewModels.Authentication;
@@ -22,9 +22,9 @@ namespace GitRemote
             InitializeComponent();
             //if User didn't exit from last session, then opens last session, otherwise opens start page
             NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-            ? $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+            ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
             : $"{nameof(StartPage)}");
-            //NavigationService.NavigateAsync($"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}");
+            //NavigationService.NavigateAsync($"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}");
             //NavigationService.NavigateAsync($"{nameof(RepositoriesPage)}");
             //NavigationService.NavigateAsync($"{nameof(StartPage)}");
         }
@@ -39,8 +39,8 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<FollowPage, FollowPageViewModel>();
             Container.RegisterTypeForNavigation<LoginingPage, LoginingPageViewModel>();
             Container.RegisterTypeForNavigation<MasterPage, MasterPageViewModel>();
-            Container.RegisterTypeForNavigation<NewsPage, NewsPageViewModel>();
-            Container.RegisterTypeForNavigation<ProfilePage, ProfilePageViewModel>();
+            Container.RegisterTypeForNavigation<PrivateNewsPage, PrivateNewsPageViewModel>();
+            Container.RegisterTypeForNavigation<PrivateProfilePage, PrivateProfilePageViewModel>();
             Container.RegisterTypeForNavigation<RepositoriesPage, RepositoriesPageViewModel>();
             Container.RegisterTypeForNavigation<StarsPage, StarsPageViewModel>();
             Container.RegisterTypeForNavigation<NavigationBarPage>();
@@ -49,6 +49,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<TwoFactorAuthPage, TwoFactorAuthPageViewModel>();
             Container.RegisterTypeForNavigation<NotificationsPage, NotificationsPageViewModel>();
             Container.RegisterTypeForNavigation<GistsListPage, GistsListPageViewModel>();
+            Container.RegisterTypeForNavigation<PublicNewsPage>();
         }
 
         protected override void OnSleep()

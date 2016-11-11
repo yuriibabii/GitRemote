@@ -16,5 +16,7 @@ namespace GitRemote.Services
 
         public const string AtomNamespace = "http://www.w3.org/2005/Atom";
 
+        public const int MaxNormalWidthForTitle = 450;
+        public const int OtherWidth = 95;
     }
 }

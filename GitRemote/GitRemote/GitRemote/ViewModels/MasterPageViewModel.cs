@@ -12,6 +12,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using GitRemote.GitHub.Managers;
 using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels

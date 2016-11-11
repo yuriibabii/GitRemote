@@ -44,16 +44,17 @@
     <Compile Include="CustomClasses\FloatingEntry.cs" />
     <Compile Include="DI\IDevice.cs" />
     <Compile Include="DI\IMetricsHelper.cs" />
-    <Compile Include="GitHub\AccountManager.cs" />
+    <Compile Include="GitHub\Managers\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
-    <Compile Include="GitHub\FollowManager.cs" />
-    <Compile Include="GitHub\GistsManager.cs" />
-    <Compile Include="GitHub\IssuesManager.cs" />
-    <Compile Include="GitHub\NotificationsManager.cs" />
-    <Compile Include="GitHub\PrivateNewsManager.cs" />
-    <Compile Include="GitHub\RepositoriesManager.cs" />
-    <Compile Include="GitHub\StarredRepositoriesManager.cs" />
-    <Compile Include="GitHub\UserManager.cs" />
+    <Compile Include="GitHub\Managers\FollowManager.cs" />
+    <Compile Include="GitHub\Managers\GistsManager.cs" />
+    <Compile Include="GitHub\Managers\IssuesManager.cs" />
+    <Compile Include="GitHub\Managers\NotificationsManager.cs" />
+    <Compile Include="GitHub\Managers\PrivateNewsManager.cs" />
+    <Compile Include="GitHub\Managers\PublicNewsManager.cs" />
+    <Compile Include="GitHub\Managers\RepositoriesManager.cs" />
+    <Compile Include="GitHub\Managers\StarredRepositoriesManager.cs" />
+    <Compile Include="GitHub\Managers\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
     <Compile Include="Models\FollowModel.cs" />
     <Compile Include="Models\GistModel.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="GitHub\Session.cs" />
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PrivateNewsModel.cs" />
+    <Compile Include="Models\PublicNewsModel.cs" />
     <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
     <Compile Include="Models\StarredRepositoryModel.cs" />
@@ -85,9 +87,10 @@
     <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\ReportAnIssuePageViewModel.cs" />
-    <Compile Include="ViewModels\NewsPageViewModel.cs" />
+    <Compile Include="ViewModels\PrivateNewsPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
-    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PrivateProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PublicNewsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\StarsPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\StartPageViewModel.cs" />
@@ -128,8 +131,8 @@
     <Compile Include="Views\MasterPageViews\ReportAnIssuePage.xaml.cs">
       <DependentUpon>ReportAnIssuePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewsPage.xaml.cs">
-      <DependentUpon>NewsPage.xaml</DependentUpon>
+    <Compile Include="Views\PrivateNewsPage.xaml.cs">
+      <DependentUpon>PrivateNewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Authentication\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
@@ -137,10 +140,13 @@
     <Compile Include="Views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    <Compile Include="Views\PrivateProfilePage.xaml.cs">
+      <DependentUpon>PrivateProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PublicNewsPage.xaml.cs">
+      <DependentUpon>PublicNewsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RepositoriesPage.xaml.cs">
       <DependentUpon>RepositoriesPage.xaml</DependentUpon>
     </Compile>
@@ -274,7 +280,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ProfilePage.xaml">
+    <EmbeddedResource Include="Views\PrivateProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -292,7 +298,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\NewsPage.xaml">
+    <EmbeddedResource Include="Views\PrivateNewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -389,6 +395,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterPageViews\IssuesListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PublicNewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

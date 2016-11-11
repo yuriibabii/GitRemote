@@ -1,5 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
@@ -105,7 +106,7 @@ namespace GitRemote.ViewModels.Authentication
             var parameters = new NavigationParameters { { "Session", session } };
 
             var navigationStack = new Uri("https://Necessary/" +
-                $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);
+                $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);
 
             await _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }

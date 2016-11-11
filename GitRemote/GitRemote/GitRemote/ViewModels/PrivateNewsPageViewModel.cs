@@ -1,5 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using Nito.Mvvm;
@@ -12,17 +13,16 @@ using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
 {
-    public class NewsPageViewModel : BindableBase
+    public class PrivateNewsPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
         private readonly Session _session;
         public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
-        private const int MaxNormalWidthForTitle = 450;
-        private const int OtherWidth = 95;
+
         public GridLength ColumnWidth { get; set; }
 
-        public NewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        public PrivateNewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
         {
             _navigationService = navigationService;
 
@@ -38,9 +38,9 @@ namespace GitRemote.ViewModels
             PrivateNews = NotifyTask.Create(GetPrivateNewsAsync());
 
             // It does to fit title to display width
-            ColumnWidth = new GridLength(App.ScreenWidth < MaxNormalWidthForTitle
-                ? App.ScreenWidth - OtherWidth
-                : MaxNormalWidthForTitle);
+            ColumnWidth = new GridLength(App.ScreenWidth < ConstantsService.MaxNormalWidthForTitle
+                ? App.ScreenWidth - ConstantsService.OtherWidth
+                : ConstantsService.MaxNormalWidthForTitle);
 
         }
 

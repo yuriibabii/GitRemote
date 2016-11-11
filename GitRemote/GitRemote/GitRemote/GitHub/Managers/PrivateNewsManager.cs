@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace GitRemote.GitHub
+namespace GitRemote.GitHub.Managers
 {
     public class PrivateNewsManager
     {

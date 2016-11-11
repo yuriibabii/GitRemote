@@ -1,8 +1,8 @@
 ﻿namespace GitRemote.Views
 {
-    public partial class ProfilePage
+    public partial class PrivateNewsPage
     {
-        public ProfilePage()
+        public PrivateNewsPage()
         {
             InitializeComponent();
         }

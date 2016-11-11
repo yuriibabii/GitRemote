@@ -4,7 +4,7 @@
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
                   prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="GitRemote.Views.ProfilePage"
+                  x:Class="GitRemote.Views.PrivateProfilePage"
                   Title="GitRemote">
   <MasterDetailPage.Master>
     <views:MasterPage/>
