@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.NotificationsPage"
+             Title="Notifications">
+
+  <controls:FlowListView x:Name="NotifyList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding Notifications}"
+                         HasUnevenRows="True"
+                         FlowColumnCount="1"
+                         Margin="15, 15, 15, 0">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="Start"
+              HorizontalOptions="Start"
+              Margin="0, 0, 0, 25"
+              ColumnSpacing="0"
+              RowSpacing="5">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="{Binding Source={x:Reference Name=NotifyList}, Path=BindingContext.ColumnWidth}"/>
+
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+          </Grid.RowDefinitions>
+
+          <customClasses:FontIcon
+            x:Name="TypeIcon"
+            Text="{Binding NotifyTypeIcon}"
+            FontSize="20"
+            TextColor="{Binding NotifyTypeIconColor}"
+            FontFamily="Octicons"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            Margin="0, 3, 10, 0"/>
+
+          <Label x:Name="FullName"
+                 Text="{Binding NotifyFullName}"
+                 TextColor="Black"
+                 FontSize="14"
+                 Grid.Column="1"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 LineBreakMode="TailTruncation"/>
+
+          <StackLayout  Grid.Column="1"
+                        Grid.Row="1"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0, 0, 0, 2">
+
+            <Label x:Name="Title"
+                   FontAttributes="{Binding NotifyFontAttr}"
+                   FontSize="16"
+                   Text="{Binding NotifyTitle}"
+                   TextColor="{Binding NotifyTitleColor}"
+                   LineBreakMode="CharacterWrap"/>
+          </StackLayout>
+
+          <Label x:Name="PublishedTime"
+                 TextColor="Black"
+                 Text="{Binding NotifyTime}"
+                 FontSize="12"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="1"
+                 Grid.Row="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"/>
+
+        </Grid>
+
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+
+  </controls:FlowListView>
+</ContentPage>

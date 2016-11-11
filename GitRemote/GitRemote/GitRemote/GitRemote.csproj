@@ -39,34 +39,54 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomClasses\CodeEntry.cs" />
+    <Compile Include="CustomClasses\FontIcon.cs" />
     <Compile Include="CustomClasses\HyperLinkLabel.cs" />
     <Compile Include="CustomClasses\FloatingEntry.cs" />
     <Compile Include="DI\IDevice.cs" />
+    <Compile Include="DI\IMetricsHelper.cs" />
     <Compile Include="GitHub\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
-    <Compile Include="GitHub\GitRemoteClient.cs" />
+    <Compile Include="GitHub\FollowManager.cs" />
+    <Compile Include="GitHub\GistsManager.cs" />
+    <Compile Include="GitHub\IssuesManager.cs" />
+    <Compile Include="GitHub\NotificationsManager.cs" />
+    <Compile Include="GitHub\PrivateNewsManager.cs" />
+    <Compile Include="GitHub\RepositoriesManager.cs" />
+    <Compile Include="GitHub\StarredRepositoriesManager.cs" />
     <Compile Include="GitHub\UserManager.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
+    <Compile Include="Models\FollowModel.cs" />
+    <Compile Include="Models\GistModel.cs" />
+    <Compile Include="Models\GroupingModel.cs" />
+    <Compile Include="Models\IssueModel.cs" />
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
+    <Compile Include="GitHub\Session.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\PrivateNewsModel.cs" />
+    <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
+    <Compile Include="Models\StarredRepositoryModel.cs" />
     <Compile Include="Services\ConstantsService.cs" />
     <Compile Include="DI\IKeyboardHelper.cs" />
     <Compile Include="DI\ISecuredDataProvider.cs" />
     <Compile Include="DI\IViewSaver.cs" />
+    <Compile Include="Services\FontIconsService.cs" />
     <Compile Include="Services\StringService.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\Authentication\ChooseUserPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
-    <Compile Include="ViewModels\FollowersPageViewModel.cs" />
-    <Compile Include="ViewModels\FollowingPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\LoginingPageViewModel.cs" />
+    <Compile Include="ViewModels\FollowPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\IssuesListPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\BookmarksPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\GistsPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\IssueDashboardPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViewsModels\ReportAnIssuePageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\BookmarksPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\GistsListPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViews\ReportAnIssuePageViewModel.cs" />
     <Compile Include="ViewModels\NewsPageViewModel.cs" />
+    <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\StarsPageViewModel.cs" />
@@ -75,17 +95,20 @@
     <Compile Include="Views\Authentication\ChooseUserPage.xaml.cs">
       <DependentUpon>ChooseUserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FollowPage.xaml.cs">
+      <DependentUpon>FollowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\GistsListPage.xaml.cs">
+      <DependentUpon>GistsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPageViews\IssuesListPage.xaml.cs">
+      <DependentUpon>IssuesListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationBarPage.xaml.cs">
       <DependentUpon>NavigationBarPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FollowersPage.xaml.cs">
-      <DependentUpon>FollowersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FollowingPage.xaml.cs">
-      <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Authentication\LoginingPage.xaml.cs">
       <DependentUpon>LoginingPage.xaml</DependentUpon>
@@ -111,6 +134,9 @@
     <Compile Include="Views\Authentication\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -126,12 +152,52 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DLToolkit.Forms.Controls.FlowListView, Version=1.0.6124.18177, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DLToolkit.Forms.Controls.FlowListView.2.0.0-alpha2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\DLToolkit.Forms.Controls.FlowListView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FeedParserPCL, Version=0.1.5749.31894, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FeedParserPCL.0.1.5749.31894-alpha\lib\FeedParserPCL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.Disposables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.Disposables.1.0.0\lib\portable45-net45+win8+wp8+wpa81\Nito.Disposables.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.Mvvm.Async, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.Mvvm.Async.1.0.0-eta-02\lib\portable45-net45+win8+wp8+wpa81\Nito.Mvvm.Async.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.Mvvm.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.Mvvm.Core.1.1.0\lib\portable45-net45+win8+wp8+wpa81\Nito.Mvvm.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Octokit, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -191,15 +257,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -239,24 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\StarsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\FollowersPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\FollowingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -315,16 +363,46 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FollowPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NotificationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\GistsListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPageViews\IssuesListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
