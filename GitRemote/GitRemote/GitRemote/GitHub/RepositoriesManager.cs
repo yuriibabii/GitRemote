@@ -41,7 +41,7 @@ namespace GitRemote.GitHub
                         RepositoryName = repository.Name,
                         RepositoryDescription = repository.Description,
                         IsDescription = !string.IsNullOrEmpty(repository.Description),
-                        RepositoryLanguage = repository.Language,
+                        RepositoryLanguage = repository.Language ?? " ",
                         RepositoryStarIcon = FontIconsService.Octicons.Star,
                         RepositoryStarsCount = Convert.ToString(repository.StargazersCount),
                         RepositoryForkIcon = FontIconsService.Octicons.RepoForked,

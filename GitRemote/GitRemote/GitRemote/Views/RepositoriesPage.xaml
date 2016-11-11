@@ -104,7 +104,7 @@
                  Grid.Column="1"
                  VerticalOptions="Center"
                  HorizontalOptions="Center"
-                 Grid.Row="2" />
+                 Grid.Row="2"/>
 
           <customClasses:FontIcon x:Name="StarIcon"
                                   Text="{Binding RepositoryStarIcon}"
