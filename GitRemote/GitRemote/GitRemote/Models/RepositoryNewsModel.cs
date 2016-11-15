@@ -111,6 +111,29 @@ namespace GitRemote.Models
             set { SetProperty(ref _publishedTime, value); }
         }
 
+        private int _nomer;
+
+        public int Nomer
+        {
+            get { return _nomer; }
+            set { SetProperty(ref _nomer, value); }
+        }
+
+        private string _title;
+
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
+        private bool _isTitle;
+
+        public bool IsTitle
+        {
+            get { return _isTitle; }
+            set { SetProperty(ref _isTitle, value); }
+        }
 
         public FormattedString CustomFormattedText => new FormattedString
         {

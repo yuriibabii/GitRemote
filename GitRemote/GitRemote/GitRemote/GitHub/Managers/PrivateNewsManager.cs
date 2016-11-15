@@ -87,7 +87,7 @@ namespace GitRemote.GitHub.Managers
                                 newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Star;
                                 break;
                             case "opened":
-                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.OpenedIssue;
+                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.IssueOpened;
                                 break;
                         }
                     }

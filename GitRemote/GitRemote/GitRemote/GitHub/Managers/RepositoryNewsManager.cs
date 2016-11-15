@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using static GitRemote.Services.FontIconsService.Octicons;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -26,7 +27,7 @@ namespace GitRemote.GitHub.Managers
                     {
                         AvatarImageUrl = item["actor"]["avatar_url"].ToString(),
                         EventType = item["type"].ToString(),
-                        PublishedTime = item["created_at"].ToString(),
+                        PublishedTime = TimeService.ConvertToFriendly(item["created_at"].ToString()),
                         Perfomer = item["actor"]["display_login"].ToString()
                     };
 
@@ -65,43 +66,84 @@ namespace GitRemote.GitHub.Managers
 
         private bool SetSpecificProperties(RepositoryNewsModel model, JToken item)
         {
+            JArray commits;
+            var payload = item["payload"];
             switch ( model.EventType )
             {
+
                 case "PushEvent":
-                    model.Target = item["payload"]["ref"].ToString().Split('/')[2];
-                    model.CommitsCount = item[]
+                    model.Target = payload["ref"].ToString().Split('/')[2];
+                    commits = JArray.Parse(payload["commits"].ToString());
+                    model.CommitsCount = commits.Count;
+                    model.IsCommits = true;
+                    model.Comment = commits[0]["message"].ToString();
+                    model.PayloadHead = payload["head"].ToString().Substring(0, 7);
+                    model.IsPayloadHead = true;
+                    model.ActionType = "pushed";
+                    model.ActionTypeFontIcon = Commit;
                     break;
 
                 case "PullRequestEvent":
-
+                    model.ActionType = payload["action"].ToString();
+                    model.Nomer = Convert.ToInt32(payload["number"]);
+                    if ( model.ActionType != "reopened" )
+                    {
+                        model.IsTitle = true;
+                        model.Title = payload["title"].ToString();
+                    }
+                    model.ActionTypeFontIcon = PullRequest;
                     break;
 
                 case "IssuesEvent":
-
+                    model.ActionType = payload["action"].ToString();
+                    model.Nomer = Convert.ToInt32(payload["issue"]["number"]);
+                    model.Title = payload["issue"]["title"].ToString();
+                    model.ActionTypeFontIcon = model.ActionType == "opened" ? IssueOpened
+                                               : ( model.ActionType == "reopened" ? IssueReopened
+                                               : IssueClosed );
                     break;
 
                 case "IssueCommentEvent":
-
+                    model.ActionType = payload["action"].ToString();
+                    model.Nomer = Convert.ToInt32(payload["issue"]["number"]);
+                    model.Title = payload["issue"]["title"].ToString();
+                    model.ActionTypeFontIcon = Discussion;
                     break;
 
                 case "CommitCommentEvent":
-
+                    model.ActionType = "commented";
+                    model.PayloadHead = payload["commit_id"].ToString().Substring(0, 10);
+                    model.Title = payload["comment"]["body"].ToString();
+                    model.ActionTypeFontIcon = Comment;
                     break;
 
                 case "CreateEvent":
-
+                    model.ActionType = payload["ref_type"].ToString();
+                    if ( model.ActionType == "tag" )
+                        model.Nomer = Convert.ToInt32(payload["ref"]);
+                    model.ActionTypeFontIcon = model.ActionType == "branch" ? Branch
+                                              : ( model.ActionType == "repository" ? Repo
+                                              : Tag );
                     break;
 
                 case "DeleteEvent":
-
+                    model.ActionType = payload["ref_type"].ToString();
+                    if ( model.ActionType == "tag" )
+                        model.Nomer = Convert.ToInt32(payload["ref"]);
+                    else
+                        model.Target = ( payload["ref"] ).ToString();
+                    model.ActionTypeFontIcon = Trashcan;
                     break;
 
                 case "GollumEvent":
-
+                    model.ActionType = "wiki_updated";
+                    model.ActionTypeFontIcon = Book;
                     break;
 
                 case "MemberEvent":
-
+                    model.ActionType = payload["action"].ToString();
+                    model.Target = payload["member"]["login"].ToString();
+                    model.ActionTypeFontIcon = Person;
                     break;
 
                 case "PublicEvent":
