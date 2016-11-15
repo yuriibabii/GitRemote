@@ -102,7 +102,7 @@ namespace GitRemote.GitHub.Managers
             }
             catch ( Exception ex )
             {
-                throw new Exception("Getting repos from github failed! " + ex.Message);
+                throw new Exception("Getting private news from github failed! " + ex.Message);
             }
         }
 
@@ -113,21 +113,20 @@ namespace GitRemote.GitHub.Managers
         /// <returns>Items(entries)</returns>
         private async Task<IEnumerable<XElement>> GetPrivateFeedItems()
         {
-            var client = new HttpClient(new NativeMessageHandler());
+            using ( var client = new HttpClient(new NativeMessageHandler()) )
+            {
+                var feed = await client.GetStringAsync(_session.GetPrivateFeedUrl());
 
-            var feed = await client.GetStringAsync(_session.GetPrivateFeedUrl());
+                if ( string.IsNullOrEmpty(feed) ) return new List<XElement>();
 
-            if ( string.IsNullOrEmpty(feed) ) return new List<XElement>();
+                var parsedFeed = XElement.Parse(feed);
 
-            var parsedFeed = XElement.Parse(feed);
+                var entries = from entry
+                              in parsedFeed.Elements("{" + ConstantsService.AtomNamespace + "}entry")
+                              select entry;
 
-            var entries = from entry
-                          in parsedFeed.Elements("{" + ConstantsService.AtomNamespace + "}entry")
-                          select entry;
-
-            return entries;
+                return entries;
+            }
         }
-
-
     }
 }

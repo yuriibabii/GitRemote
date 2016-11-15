@@ -13,8 +13,10 @@ namespace GitRemote.ViewModels
     public class PublicNewsPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
-        public NotifyTask<ObservableCollection<PublicNewsModel>> PublicNews { get; }
+        public NotifyTask<ObservableCollection<RepositoryNewsModel>> News { get; }
+
         private readonly PublicNewsManager _publicNewsManager;
+        private readonly RepositoryNewsManager _manager;
         public GridLength ColumnWidth { get; set; }
 
         public PublicNewsPageViewModel(INavigationService navigationService)
@@ -23,7 +25,9 @@ namespace GitRemote.ViewModels
 
             _publicNewsManager = new PublicNewsManager();
 
-            //PublicNews = NotifyTask.Create(GetPublicNewsAsync());
+            _manager = new RepositoryNewsManager();
+
+            News = NotifyTask.Create(GetRepositoryNewsAsync("UniorDev", "GitRemote"));
 
             // It does to fit title to display width
             ColumnWidth = new GridLength(App.ScreenWidth < ConstantsService.MaxNormalWidthForTitle
@@ -31,10 +35,10 @@ namespace GitRemote.ViewModels
                 : ConstantsService.MaxNormalWidthForTitle);
         }
 
-        //private async Task<ObservableCollection<PublicNewsModel>> GetPublicNewsAsync()
-        //{
-        //    return new ObservableCollection<PublicNewsModel>
-        //        (await _publicNewsManager.GetPublicNews());
-        //}
+        private async Task<ObservableCollection<RepositoryNewsModel>> GetRepositoryNewsAsync(string login, string reposName)
+        {
+            return new ObservableCollection<RepositoryNewsModel>
+                (await _manager.GetRepositoryNews(login, reposName));
+        }
     }
 }

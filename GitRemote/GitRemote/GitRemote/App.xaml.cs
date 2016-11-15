@@ -1,5 +1,4 @@
 ﻿using GitRemote.GitHub.Managers;
-using GitRemote.Services;
 using GitRemote.ViewModels;
 using GitRemote.ViewModels.Authentication;
 using GitRemote.ViewModels.MasterPageViews;
@@ -21,12 +20,11 @@ namespace GitRemote
         {
             InitializeComponent();
             //if User didn't exit from last session, then opens last session, otherwise opens start page
-            NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-            ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
-            : $"{nameof(StartPage)}");
-            //NavigationService.NavigateAsync($"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}");
-            //NavigationService.NavigateAsync($"{nameof(RepositoriesPage)}");
-            //NavigationService.NavigateAsync($"{nameof(StartPage)}");
+            //NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
+            //? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+            //: $"{nameof(StartPage)}");
+
+            NavigationService.NavigateAsync($"{nameof(PublicNewsPage)}");
         }
 
         protected override void RegisterTypes()
