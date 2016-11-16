@@ -7,7 +7,7 @@ namespace GitRemote.Models
     {
         #region ElementsPropertiesDeclaretion
 
-        private string _perfomer;
+        private string _perfomer = string.Empty;
 
         public string Perfomer
         {
@@ -15,11 +15,32 @@ namespace GitRemote.Models
             set { SetProperty(ref _perfomer, value); }
         }
 
-        private string _target;
+        private string _target = string.Empty;
 
         public string Target
         {
-            get { return _target; }
+            get
+            {
+                switch ( EventType )
+                {
+                    case "PullRequesEvent":
+                        Target = "pull request " + Nomer;
+                        break;
+
+                    case "IssuesEvent":
+                    case "IssueCommentEvent":
+                        Target = "issue " + Nomer;
+                        break;
+
+                    case "DeleteEvent":
+                    case "CreateEvent":
+                        if ( ActionType == "tag" )
+                            Target = Nomer;
+                        break;
+                }
+
+                return _target;
+            }
             set { SetProperty(ref _target, value); }
         }
 
@@ -31,47 +52,28 @@ namespace GitRemote.Models
             set { SetProperty(ref _avatarImageUrl, value); }
         }
 
-        private int _commitsCount;
+        private string _commitsCount = "0";
 
-        public int CommitsCount
+        public string CommitsCount
         {
-            get { return _commitsCount; }
-            set { SetProperty(ref _commitsCount, value); }
+            get
+            {
+                return _commitsCount == "1"
+                    ? _commitsCount + " new commit"
+                    : _commitsCount + " new commits";
+            }
+            set { SetProperty(ref _commitsCount, value + " new commits"); }
         }
 
-        private bool _isCommits;
+        private string _shaCode = string.Empty;
 
-        public bool IsCommits
+        public string ShaCode
         {
-            get { return _isCommits; }
-            set { SetProperty(ref _isCommits, value); }
+            get { return _shaCode; }
+            set { SetProperty(ref _shaCode, value); }
         }
 
-        private string _payloadHead;
-
-        public string PayloadHead
-        {
-            get { return _payloadHead; }
-            set { SetProperty(ref _payloadHead, value); }
-        }
-
-        private bool _isPayloadHead;
-
-        public bool IsPayloadHead
-        {
-            get { return _isPayloadHead; }
-            set { SetProperty(ref _isPayloadHead, value); }
-        }
-
-        private bool _isComment;
-
-        public bool IsComment
-        {
-            get { return _isComment; }
-            set { SetProperty(ref _isComment, value); }
-        }
-
-        private string _comment;
+        private string _comment = string.Empty;
 
         public string Comment
         {
@@ -103,7 +105,7 @@ namespace GitRemote.Models
             set { SetProperty(ref _actionTypeFontIcon, value); }
         }
 
-        private string _publishedTime;
+        private string _publishedTime = string.Empty;
 
         public string PublishedTime
         {
@@ -111,41 +113,154 @@ namespace GitRemote.Models
             set { SetProperty(ref _publishedTime, value); }
         }
 
-        private int _nomer;
+        private string _nomer = string.Empty;
 
-        public int Nomer
+        public string Nomer
         {
             get { return _nomer; }
             set { SetProperty(ref _nomer, value); }
         }
 
-        private string _title;
+        #region Body
 
-        public string Title
+        private string _body;
+
+        public string Body
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get
+            {
+                if ( EventType == "PushEvent" )
+                    Body = ShaCode + ' ' + Comment;
+                return _body;
+            }
+            set { SetProperty(ref _body, value); }
         }
 
-        private bool _isTitle;
+        private bool _isBody;
 
-        public bool IsTitle
+        public bool IsBody
         {
-            get { return _isTitle; }
-            set { SetProperty(ref _isTitle, value); }
+            get { return _isBody; }
+            set { SetProperty(ref _isBody, value); }
         }
 
-        public FormattedString CustomFormattedText => new FormattedString
+
+        #endregion
+
+        #region Subtitle
+
+        private string _subtitle;
+
+        public string Subtitle
         {
-            //Spans = {
-            //    new Span { Text = Perfomer + " ", FontAttributes=FontAttributes.Bold, FontSize=16 },
-            //    new Span { Text = ActionType !="opened" ? ActionType + " " : "opened issue ", FontSize=16 },
-            //    new Span { Text = ActionType == "created" ? "reposiroty " : "", FontSize = 16},
-            //    new Span { Text = ActionType == "added" ? AdditionalTarget + " " : "",
-            //        FontAttributes =FontAttributes.Bold, FontSize = 16},
-            //    new Span { Text = ActionType == "added" ? "to " : "", FontSize = 16},
-            //    new Span { Text = , FontAttributes=FontAttributes.Bold, FontSize = 16} }
+            get
+            {
+                if ( EventType == "PushEvent" )
+                    Subtitle = CommitsCount;
+                if ( EventType == "CommitCommentEvent" )
+                    Subtitle = "Comment in " + ShaCode;
+                return _subtitle;
+            }
+            set { SetProperty(ref _subtitle, value); }
+        }
+
+        private bool _isSubtitle;
+
+        public bool IsSubtitle
+        {
+            get { return _isSubtitle; }
+            set { SetProperty(ref _isSubtitle, value); }
+        }
+
+        #endregion
+
+
+        private GridLength _subtitleHeight;
+
+        public GridLength SubtitleHeight
+        {
+            get
+            {
+                SubtitleHeight = IsSubtitle ? 18 : 0;
+                return _subtitleHeight;
+            }
+            set { SetProperty(ref _subtitleHeight, value); }
+        }
+
+        private GridLength _bodyHeight;
+
+        public GridLength BodyHeight
+        {
+            get
+            {
+                BodyHeight = IsBody ? 32 : 0;
+                return _bodyHeight;
+            }
+            set { SetProperty(ref _bodyHeight, value); }
+        }
+
+        public FormattedString Title => new FormattedString
+        {
+            Spans =
+            {
+                new Span {Text = Perfomer + " ", FontAttributes = FontAttributes.Bold, FontSize = 15},
+                new Span {Text = Action + " ", FontSize = 15},
+                new Span {Text = Target + " ", FontAttributes = FontAttributes.Bold, FontSize = 15},
+                new Span {Text = Tail, FontSize = 15}
+            }
         };
+
+        private string Action
+        {
+            get
+            {
+                switch ( EventType )
+                {
+                    case "PushEvent":
+                        return ActionType + " to";
+
+                    case "PullRequestEvent":
+                        return ActionType;
+
+                    case "IssuesEvent":
+                        return ActionType;
+
+                    case "IssueCommentEvent":
+                        return "commented on";
+
+                    case "CommitCommentEvent":
+                        return "commented";
+
+                    case "CreateEvent":
+                        return "created" + ActionType == "branch" ? "branch"
+                            : ( ActionType == "tag" ? "tag"
+                            : "repository" );
+
+                    case "DeleteEvent":
+                        return "deleted" + ActionType == "tag" ? "tag" : "branch";
+
+                    case "GollumEvent":
+                        return "updated the wiki";
+
+                    case "MemberEvent":
+                        return ActionType;
+
+                    case "PublicEvent":
+                        return "made repository public";
+
+                    case "ReleaseEvent":
+                        return "released";
+
+                    case "WatchEvent":
+                        return "starred";
+
+                    default:
+                        return "";
+                }
+            }
+        }
+
+        private string Tail => EventType == "MemberEvent" ? "as a collaborator" : string.Empty;
 
         #endregion
     }

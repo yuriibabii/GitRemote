@@ -22,6 +22,7 @@
             public const string Branch = "\uf020";
             public const string Trashcan = "\uf0d0";
             public const string Book = "\uf007";
+            public const string CloudDownload = "\uf00b";
 
         }
     }

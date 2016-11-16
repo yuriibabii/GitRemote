@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.RepositoryNewsPage">
+
+  <controls:FlowListView x:Name="NewsList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding News.Result}"
+                         HasUnevenRows="True"
+                         FlowColumnCount="1"
+                         Margin="15, 15, 15, 0">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="Start"
+              HorizontalOptions="Start"
+              Margin="0, 0, 0, 20"
+              ColumnSpacing="0"
+              RowSpacing="0">
+          <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="{Binding Source={x:Reference Name=NewsList}, Path=BindingContext.ColumnWidth}"/>
+
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{Binding SubtitleHeight}"/>
+            <RowDefinition Height="{Binding BodyHeight}"/>
+            <RowDefinition Height="20"/>
+          </Grid.RowDefinitions>
+
+          <forms:CachedImage
+            x:Name="Avatar"
+            Source="{Binding AvatarImageUrl}"
+            HeightRequest="35"
+            WidthRequest="35"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            Margin="0, 5, 10, 0"
+            CacheDuration ="5"
+            DownsampleToViewSize ="True">
+            <forms:CachedImage.Transformations>
+              <transformations:RoundedTransformation Radius="100"/>
+            </forms:CachedImage.Transformations>
+
+          </forms:CachedImage>
+
+          <StackLayout  Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+            <Label x:Name="Title"
+                   FormattedText="{Binding Title}"
+                   TextColor="Black"
+                   LineBreakMode="CharacterWrap"/>
+          </StackLayout>
+
+          <Label x:Name="Subtitle"
+                 Text="{Binding Subtitle}"
+                 FontSize="13"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="1"/>
+
+          <Label x:Name="Body"
+                 Text="{Binding Body}"
+                 FontSize="13"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="2"/>
+
+          <customClasses:FontIcon x:Name="ActionTypeIcon"
+                                  Text="{Binding ActionTypeFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="16"
+                                  FontFamily="Octicons"
+                                  Grid.Column="1"
+                                  Grid.Row="3"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="StartAndExpand"
+                                  Margin="0, 0, 5, 0"/>
+          
+          <Label x:Name="PublishedTime"
+                 FormattedText="{Binding PublishedTime}"
+                 FontSize="13"
+                 Grid.Column="2"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="3"/>
+
+        </Grid>
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+
+  </controls:FlowListView>
+  
+</ContentPage>

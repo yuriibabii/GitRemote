@@ -10,24 +10,21 @@ using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
 {
-    public class PublicNewsPageViewModel : BindableBase
+    public class RepositoryNewsPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
         public NotifyTask<ObservableCollection<RepositoryNewsModel>> News { get; }
-
-        private readonly PublicNewsManager _publicNewsManager;
         private readonly RepositoryNewsManager _manager;
         public GridLength ColumnWidth { get; set; }
 
-        public PublicNewsPageViewModel(INavigationService navigationService)
+        public RepositoryNewsPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
-            _publicNewsManager = new PublicNewsManager();
-
             _manager = new RepositoryNewsManager();
 
-            News = NotifyTask.Create(GetRepositoryNewsAsync("UniorDev", "GitRemote"));
+            //News = NotifyTask.Create(GetRepositoryNewsAsync("UniorDev", "GitRemote"));
+            News = NotifyTask.Create(GetRepositoryNewsAsync("gitrem2", "Created"));
 
             // It does to fit title to display width
             ColumnWidth = new GridLength(App.ScreenWidth < ConstantsService.MaxNormalWidthForTitle
