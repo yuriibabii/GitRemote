@@ -23,8 +23,8 @@ namespace GitRemote.ViewModels
 
             _manager = new RepositoryNewsManager();
 
-            //News = NotifyTask.Create(GetRepositoryNewsAsync("UniorDev", "GitRemote"));
-            News = NotifyTask.Create(GetRepositoryNewsAsync("gitrem2", "Created"));
+            News = NotifyTask.Create(GetRepositoryNewsAsync("UniorDev", "GitRemote"));
+            //News = NotifyTask.Create(GetRepositoryNewsAsync("gitrem2", "Created"));
 
             // It does to fit title to display width
             ColumnWidth = new GridLength(App.ScreenWidth < ConstantsService.MaxNormalWidthForTitle

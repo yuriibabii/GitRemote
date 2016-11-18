@@ -23,7 +23,7 @@ namespace GitRemote.Models
             {
                 switch ( EventType )
                 {
-                    case "PullRequesEvent":
+                    case "PullRequestEvent":
                         Target = "pull request " + Nomer;
                         break;
 
@@ -62,7 +62,7 @@ namespace GitRemote.Models
                     ? _commitsCount + " new commit"
                     : _commitsCount + " new commits";
             }
-            set { SetProperty(ref _commitsCount, value + " new commits"); }
+            set { SetProperty(ref _commitsCount, value); }
         }
 
         private string _shaCode = string.Empty;
@@ -144,7 +144,17 @@ namespace GitRemote.Models
             set { SetProperty(ref _isBody, value); }
         }
 
+        private GridLength _bodyHeight;
 
+        public GridLength BodyHeight
+        {
+            get
+            {
+                BodyHeight = IsBody ? 20 : 0;
+                return _bodyHeight;
+            }
+            set { SetProperty(ref _bodyHeight, value); }
+        }
         #endregion
 
         #region Subtitle
@@ -172,32 +182,23 @@ namespace GitRemote.Models
             set { SetProperty(ref _isSubtitle, value); }
         }
 
-        #endregion
-
-
         private GridLength _subtitleHeight;
 
         public GridLength SubtitleHeight
         {
             get
             {
-                SubtitleHeight = IsSubtitle ? 18 : 0;
+                SubtitleHeight = IsSubtitle ? 20 : 0;
                 return _subtitleHeight;
             }
             set { SetProperty(ref _subtitleHeight, value); }
         }
+        #endregion
 
-        private GridLength _bodyHeight;
 
-        public GridLength BodyHeight
-        {
-            get
-            {
-                BodyHeight = IsBody ? 32 : 0;
-                return _bodyHeight;
-            }
-            set { SetProperty(ref _bodyHeight, value); }
-        }
+
+
+
 
         public FormattedString Title => new FormattedString
         {
@@ -232,12 +233,12 @@ namespace GitRemote.Models
                         return "commented";
 
                     case "CreateEvent":
-                        return "created" + ActionType == "branch" ? "branch"
+                        return string.Concat("created ", ActionType == "branch" ? "branch"
                             : ( ActionType == "tag" ? "tag"
-                            : "repository" );
+                            : "repository" ));
 
                     case "DeleteEvent":
-                        return "deleted" + ActionType == "tag" ? "tag" : "branch";
+                        return string.Concat("deleted ", ActionType == "tag" ? "tag" : "branch");
 
                     case "GollumEvent":
                         return "updated the wiki";
@@ -252,7 +253,7 @@ namespace GitRemote.Models
                         return "released";
 
                     case "WatchEvent":
-                        return "starred";
+                        return "starred repository";
 
                     default:
                         return "";

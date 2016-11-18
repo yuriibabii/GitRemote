@@ -48,7 +48,8 @@
             HorizontalOptions="Start"
             Margin="0, 5, 10, 0"
             CacheDuration ="5"
-            DownsampleToViewSize ="True">
+            DownsampleToViewSize ="True"
+            LoadingPlaceholder="ic_list_NoAvatar.png">
             <ffimageloading:CachedImage.Transformations>
               <transformations:RoundedTransformation Radius="100"/>
             </ffimageloading:CachedImage.Transformations>

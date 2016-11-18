@@ -29,7 +29,8 @@
             AbsoluteLayout.LayoutFlags="None"
             Margin="0, 0, 15, 10"
             CacheDuration ="5"
-            DownsampleToViewSize ="True">
+            DownsampleToViewSize = "True"
+            LoadingPlaceholder="ic_list_NoAvatar.png">
             <ffimageloading:CachedImage.Transformations>
               <transformations:RoundedTransformation Radius="100"/>
             </ffimageloading:CachedImage.Transformations>

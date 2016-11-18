@@ -122,6 +122,8 @@ namespace GitRemote.GitHub.Managers
                     model.ActionType = payload["ref_type"].ToString();
                     if ( model.ActionType == "tag" )
                         model.Nomer = payload["ref"].ToString();
+                    else
+                        model.Target = payload["ref"].ToString();
                     model.ActionTypeFontIcon = model.ActionType == "branch" ? Branch
                                               : ( model.ActionType == "repository" ? Repo
                                               : Tag );
@@ -132,7 +134,7 @@ namespace GitRemote.GitHub.Managers
                     if ( model.ActionType == "tag" )
                         model.Nomer = payload["ref"].ToString();
                     else
-                        model.Target = ( payload["ref"] ).ToString();
+                        model.Target = payload["ref"].ToString();
                     model.ActionTypeFontIcon = Trashcan;
                     break;
 

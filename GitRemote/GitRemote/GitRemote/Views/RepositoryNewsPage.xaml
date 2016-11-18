@@ -50,7 +50,8 @@
             HorizontalOptions="Start"
             Margin="0, 5, 10, 0"
             CacheDuration ="5"
-            DownsampleToViewSize ="True">
+            DownsampleToViewSize = "True"
+            LoadingPlaceholder="ic_list_NoAvatar.png">
             <forms:CachedImage.Transformations>
               <transformations:RoundedTransformation Radius="100"/>
             </forms:CachedImage.Transformations>
@@ -60,7 +61,7 @@
           <StackLayout  Grid.Column="1"
                         Grid.Row="0"
                         Grid.ColumnSpan="2"
-                        VerticalOptions="FillAndExpand"
+                        VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand">
 
             <Label x:Name="Title"
@@ -76,7 +77,9 @@
                  Grid.ColumnSpan="2"
                  VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
-                 Grid.Row="1"/>
+                 Grid.Row="1"
+                 IsVisible="{Binding IsSubtitle}"
+                 IsEnabled="{Binding IsSubtitle}"/>
 
           <Label x:Name="Body"
                  Text="{Binding Body}"
@@ -85,7 +88,10 @@
                  Grid.ColumnSpan="2"
                  VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
-                 Grid.Row="2"/>
+                 Grid.Row="2"
+                 LineBreakMode="TailTruncation"
+                 IsVisible="{Binding IsBody}"
+                 IsEnabled="{Binding IsBody}"/>
 
           <customClasses:FontIcon x:Name="ActionTypeIcon"
                                   Text="{Binding ActionTypeFontIcon}"
@@ -102,7 +108,7 @@
                  FormattedText="{Binding PublishedTime}"
                  FontSize="13"
                  Grid.Column="2"
-                 VerticalOptions="Center"
+                 VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand"
                  Grid.Row="3"/>
 
