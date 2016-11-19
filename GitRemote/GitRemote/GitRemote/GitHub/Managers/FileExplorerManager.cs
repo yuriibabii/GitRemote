@@ -30,8 +30,11 @@ namespace GitRemote.GitHub.Managers
 
         public async Task<List<FileExplorerModel>> GetFilesAsync()
         {
+            throw new Exception("Exception");
             try
             {
+                
+
                 var gitHubFiles = await GetGitHubExplorerItemsAsync(_path="GitRemote/");
 
                 var gitRemoteFiles = new List<FileExplorerModel>();
@@ -69,16 +72,8 @@ namespace GitRemote.GitHub.Managers
             }
             catch ( Exception ex )
             {
-                throw new Exception("Getting ExplorerFiles from github failed! " + ex.Message);
+                throw new Exception("Getting ExplorerFiles from github failed! ");
             }
-        }
-
-        private int Comparison(FileExplorerModel fileExplorerModel, FileExplorerModel explorerModel)
-        {
-            if ( fileExplorerModel.FileType == "dir" )
-                return explorerModel.FileType == "dir" ? 0 : -1;
-
-            return explorerModel.FileType == "dir" ? 1 : 0;
         }
 
         private async Task<JArray> GetGitHubExplorerItemsAsync(string path = "", string place = null)
@@ -167,6 +162,14 @@ namespace GitRemote.GitHub.Managers
                 : Convert.ToString(Math.Round(( double )originalSize / 1024, 2)) + "KB";
 
             return size;
+        }
+
+        private int Comparison(FileExplorerModel fileExplorerModel, FileExplorerModel explorerModel)
+        {
+            if ( fileExplorerModel.FileType == "dir" )
+                return explorerModel.FileType == "dir" ? 0 : -1;
+
+            return explorerModel.FileType == "dir" ? 1 : 0;
         }
     }
 }

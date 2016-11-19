@@ -4,9 +4,11 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FileExplorerPage">
-
+<StackLayout>
+  <Button></Button>
   <controls:FlowListView x:Name="FilesList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
@@ -46,7 +48,8 @@
                                   Grid.Column="0"
                                   Grid.Row="0"/>
 
-          <Label Text="{Binding Name}"
+          <Label x:Name="Name"
+                 Text="{Binding Name}"
                  FontSize="14"
                  TextColor="Black"
                  HorizontalOptions="CenterAndExpand"
@@ -120,9 +123,19 @@
                  IsEnabled="{Binding IsFile}"/>
 
         </Grid>
+          <!--<behaviors:Interaction.Behaviors>
+            <behaviors:BehaviorCollection>
+              <behaviors:EventToCommand EventName="Tapped"
+                                        Command="{Binding Source = {x:Reference Name = FilesList},
+                                                          Path=BindingContext.ListItemTappedCommand}"
+                                        CommandParameter="{x:Reference Name=Name}">
+              </behaviors:EventToCommand>
+            </behaviors:BehaviorCollection>
+          </behaviors:Interaction.Behaviors>-->
       </DataTemplate>
     </controls:FlowListView.FlowColumnTemplate>
 
 
   </controls:FlowListView>
+</StackLayout>
 </ContentPage>

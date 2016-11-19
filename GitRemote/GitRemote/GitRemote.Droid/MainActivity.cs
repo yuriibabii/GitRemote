@@ -29,6 +29,11 @@ namespace GitRemote.Droid
             //var tb = ( Toolbar )tv?.Parent;
             //if ( tb != null ) tb.Elevation = 20f;
         }
+
+        public override void OnBackPressed()
+        {
+            
+        }
     }
 }
 
