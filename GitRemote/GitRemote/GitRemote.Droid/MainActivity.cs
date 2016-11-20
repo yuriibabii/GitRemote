@@ -1,9 +1,9 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V7.Widget;
 using DLToolkit.Forms.Controls;
 using FFImageLoading.Forms.Droid;
+using GitRemote.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -25,6 +25,8 @@ namespace GitRemote.Droid
             Forms.Init(this, bundle);
             LoadApplication(new App());
 
+            MessagingCenter.Subscribe<object>(this, ConstantsService.Messages.PressHardwareBack, PressHardwareBack);
+
             //var tv = FindViewById(Resource.Repository.mySearchView) as SearchView;
             //var tb = ( Toolbar )tv?.Parent;
             //if ( tb != null ) tb.Elevation = 20f;
@@ -32,7 +34,12 @@ namespace GitRemote.Droid
 
         public override void OnBackPressed()
         {
-            
+            Device.BeginInvokeOnMainThread(() => MessagingCenter.Send("JustIgnore", ConstantsService.Messages.HardwareBackPressed));
+        }
+
+        private void PressHardwareBack(object sender)
+        {
+            base.OnBackPressed();
         }
     }
 }

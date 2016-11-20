@@ -1,5 +1,6 @@
 ﻿using GitRemote.Models;
 using GitRemote.Services;
+using Microsoft.Practices.ObjectBuilder2;
 using Newtonsoft.Json.Linq;
 using Nito.Mvvm;
 using RestSharp.Portable;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using static System.String;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -16,26 +18,27 @@ namespace GitRemote.GitHub.Managers
     {
         private readonly string _login;
         private readonly string _reposName;
-        private string _path = string.Empty;
         private readonly RestClient _restClient;
         private NotifyTask<string> _defaultBranch;
+        private readonly List<string> _pathList = new List<string> { Empty };
+        private string _path = Empty;
 
         public FileExplorerManager(string login, string reposName)
         {
             _restClient = new RestClient(ConstantsService.GitHubApiLink);
             _login = login;
             _reposName = reposName;
-            //_defaultBranch = NotifyTask.Create(GetDefaultBranchAsync());
         }
 
-        public async Task<List<FileExplorerModel>> GetFilesAsync()
+        public async Task<List<FileExplorerModel>> GetFilesAsync(string pathPart = "")
         {
-            throw new Exception("Exception");
             try
             {
-                
+                if (StringService.CheckForNullOrEmpty(pathPart))
+                    _pathList.Add(pathPart);
+                _path = _pathList.JoinStrings(Empty);
 
-                var gitHubFiles = await GetGitHubExplorerItemsAsync(_path="GitRemote/");
+                var gitHubFiles = await GetGitHubExplorerItemsAsync(_path);
 
                 var gitRemoteFiles = new List<FileExplorerModel>();
 
@@ -66,19 +69,18 @@ namespace GitRemote.GitHub.Managers
 
                 return gitRemoteFiles;
             }
-            catch ( WebException ex )
+            catch ( WebException exception )
             {
-                throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
+                throw new Exception("Something wrong with internet connection, try to On Internet " + exception.Message);
             }
             catch ( Exception ex )
             {
-                throw new Exception("Getting ExplorerFiles from github failed! ");
+                throw new Exception("Getting ExplorerFiles from github failed! " + ex.Message);
             }
         }
 
         private async Task<JArray> GetGitHubExplorerItemsAsync(string path = "", string place = null)
         {
-
             if ( _defaultBranch?.Result == null )
             {
                 _defaultBranch = NotifyTask.Create(GetDefaultBranchAsync());
@@ -170,6 +172,14 @@ namespace GitRemote.GitHub.Managers
                 return explorerModel.FileType == "dir" ? 0 : -1;
 
             return explorerModel.FileType == "dir" ? 1 : 0;
+        }
+
+        public bool PopUpExplorer()
+        {
+            if ( _pathList.Count < 1 ) return false;
+
+            _pathList.RemoveAt(_pathList.Count - 1);
+            return true;
         }
     }
 }

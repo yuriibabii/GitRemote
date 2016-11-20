@@ -7,135 +7,131 @@
              xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FileExplorerPage">
-<StackLayout>
-  <Button></Button>
-  <controls:FlowListView x:Name="FilesList"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Files.Result}"
-                         HasUnevenRows="True"
-                         FlowColumnCount="1"
-                         Margin="15, 15, 15, 0">
+  <StackLayout>
+    <controls:FlowListView x:Name="FilesList"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           FlowItemsSource="{Binding Files.Result}"
+                           HasUnevenRows="True"
+                           FlowColumnCount="1"
+                           Margin="15, 15, 15, 0">
 
-    <controls:FlowListView.FlowColumnTemplate>
-      <DataTemplate>
-        <Grid VerticalOptions="Start"
-              HorizontalOptions="FillAndExpand"
-              Margin="0, 0, 0, 10"
-              ColumnSpacing="0"
-              RowSpacing="5">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="{Binding FolderWidth}"/>
-            <ColumnDefinition Width="{Binding FolderWidth}"/>
-            <ColumnDefinition Width="{Binding FolderWidth}"/>
-            <ColumnDefinition Width="{Binding FolderWidth}"/>
-            <ColumnDefinition Width="{Binding FileWidth}"/>
+      <controls:FlowListView.FlowColumnTemplate>
+        <DataTemplate>
+          <Grid VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                Margin="0, 0, 0, 10"
+                ColumnSpacing="0"
+                RowSpacing="5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="30"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FileWidth}"/>
 
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-          </Grid.RowDefinitions>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
 
-          <customClasses:FontIcon Text="{Binding FileTypeIcon}"
-                                  FontSize="18"
-                                  FontFamily="Octicons"
-                                  TextColor="Black"
-                                  HorizontalOptions="CenterAndExpand"
-                                  VerticalOptions="CenterAndExpand"
-                                  Grid.Column="0"
-                                  Grid.Row="0"/>
+            <customClasses:FontIcon Text="{Binding FileTypeIcon}"
+                                    FontSize="18"
+                                    FontFamily="Octicons"
+                                    TextColor="Black"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Grid.Column="0"
+                                    Grid.Row="0"/>
 
-          <Label x:Name="Name"
-                 Text="{Binding Name}"
-                 FontSize="14"
-                 TextColor="Black"
-                 HorizontalOptions="CenterAndExpand"
-                 VerticalOptions="CenterAndExpand"
-                 FontAttributes="{Binding IsBold}"
-                 LineBreakMode="TailTruncation"
-                 Margin="0, 0, 15, 0"
-                 Grid.Column="1"
-                 Grid.Row="0"/>
+            <Label x:Name="Name"
+                   Text="{Binding Name}"
+                   FontSize="14"
+                   TextColor="Black"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontAttributes="{Binding IsBold}"
+                   LineBreakMode="TailTruncation"
+                   Margin="0, 0, 15, 0"
+                   Grid.Column="1"
+                   Grid.Row="0"/>
 
-          <customClasses:FontIcon x:Name="FolderIcon"
-                                  Text="{Binding FolderIcon}"
-                                  FontSize="14"
-                                  FontFamily="Octicons"
-                                  TextColor="Gray"
-                                  Grid.Column="3"
-                                  Grid.Row="0"
-                                  VerticalOptions="Center"
-                                  HorizontalOptions="End"
-                                  Margin="0, 5, 0, 0"
-                                  IsVisible="{Binding IsFolder}"
-                                  IsEnabled="{Binding IsFolder}"/>
+            <customClasses:FontIcon x:Name="FolderIcon"
+                                    Text="{Binding FolderIcon}"
+                                    FontSize="14"
+                                    FontFamily="Octicons"
+                                    TextColor="Gray"
+                                    Grid.Column="3"
+                                    Grid.Row="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Margin="0, 5, 0, 0"
+                                    IsVisible="{Binding IsFolder}"
+                                    IsEnabled="{Binding IsFolder}"/>
 
-          <Label x:Name="FoldersCount"
-                 Text="{Binding FoldersCount}"
-                 FontSize="14"
-                 TextColor="Black"
-                 Grid.Column="4"
-                 Grid.Row="0"
-                 VerticalOptions="Center"
-                 HorizontalOptions="CenterAndExpand"
-                 Margin="0, 3, 10, 0"
-                 IsVisible="{Binding IsFolder}"
-                 IsEnabled="{Binding IsFolder}"/>
+            <Label x:Name="FoldersCount"
+                   Text="{Binding FoldersCount}"
+                   FontSize="14"
+                   TextColor="Black"
+                   Grid.Column="4"
+                   Grid.Row="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0, 3, 10, 0"
+                   IsVisible="{Binding IsFolder}"
+                   IsEnabled="{Binding IsFolder}"/>
 
-          <customClasses:FontIcon x:Name="FileIcon"
-                                  Text="{Binding FileIcon}"
-                                  FontSize="14"
-                                  FontFamily="Octicons"
-                                  TextColor="Gray"
-                                  Grid.Column="5"
-                                  Grid.Row="0"
-                                  VerticalOptions="Center"
-                                  HorizontalOptions="End"
-                                  Margin="0, 5, 0, 0"
-                                  IsVisible="{Binding IsFolder}"
-                                  IsEnabled="{Binding IsFolder}"/>
+            <customClasses:FontIcon x:Name="FileIcon"
+                                    Text="{Binding FileIcon}"
+                                    FontSize="14"
+                                    FontFamily="Octicons"
+                                    TextColor="Gray"
+                                    Grid.Column="5"
+                                    Grid.Row="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Margin="0, 5, 0, 0"
+                                    IsVisible="{Binding IsFolder}"
+                                    IsEnabled="{Binding IsFolder}"/>
 
-          <Label x:Name="FilesCount"
-                 Text="{Binding FilesCount}"
-                 FontSize="14"
-                 TextColor="Black"
-                 Grid.Column="6"
-                 Grid.Row="0"
-                 VerticalOptions="Center"
-                 HorizontalOptions="CenterAndExpand"
-                 Margin="0, 3, 0, 0"
-                 IsVisible="{Binding IsFolder}"
-                 IsEnabled="{Binding IsFolder}"/>
+            <Label x:Name="FilesCount"
+                   Text="{Binding FilesCount}"
+                   FontSize="14"
+                   TextColor="Black"
+                   Grid.Column="6"
+                   Grid.Row="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0, 3, 0, 0"
+                   IsVisible="{Binding IsFolder}"
+                   IsEnabled="{Binding IsFolder}"/>
 
-          <Label x:Name="FileSize"
-                 Text="{Binding FileSize}"
-                 FontSize="14"
-                 TextColor="Black"
-                 Grid.Column="7"
-                 Grid.Row="0"
-                 VerticalOptions="Center"
-                 HorizontalOptions="CenterAndExpand"
-                 Margin="0, 3, 0, 0"
-                 IsVisible="{Binding IsFile}"
-                 IsEnabled="{Binding IsFile}"/>
+            <Label x:Name="FileSize"
+                   Text="{Binding FileSize}"
+                   FontSize="14"
+                   TextColor="Black"
+                   Grid.Column="7"
+                   Grid.Row="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0, 3, 0, 0"
+                   IsVisible="{Binding IsFile}"
+                   IsEnabled="{Binding IsFile}"/>
 
-        </Grid>
-          <!--<behaviors:Interaction.Behaviors>
-            <behaviors:BehaviorCollection>
-              <behaviors:EventToCommand EventName="Tapped"
-                                        Command="{Binding Source = {x:Reference Name = FilesList},
+            <Grid.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding Source = {x:Reference Name = FilesList},
                                                           Path=BindingContext.ListItemTappedCommand}"
-                                        CommandParameter="{x:Reference Name=Name}">
-              </behaviors:EventToCommand>
-            </behaviors:BehaviorCollection>
-          </behaviors:Interaction.Behaviors>-->
-      </DataTemplate>
-    </controls:FlowListView.FlowColumnTemplate>
+                                    CommandParameter="{x:Reference Name=Name}">
+              </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+          </Grid>
+        </DataTemplate>
+      </controls:FlowListView.FlowColumnTemplate>
 
 
-  </controls:FlowListView>
-</StackLayout>
+    </controls:FlowListView>
+  </StackLayout>
 </ContentPage>

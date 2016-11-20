@@ -17,5 +17,11 @@ namespace GitRemote.Services
         public const int MaxNormalWidthForTitle = 450;
         public const int OtherWidth = 95;
         public const string GitHubApiLink = "https://api.github.com";
+
+        public static class Messages
+        {
+            public const string HardwareBackPressed = "HardwareBackPressed";
+            public const string PressHardwareBack = "PressHardwareBack";
+        }
     }
 }
