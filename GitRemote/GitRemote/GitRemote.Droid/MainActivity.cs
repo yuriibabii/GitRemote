@@ -32,10 +32,10 @@ namespace GitRemote.Droid
             //if ( tb != null ) tb.Elevation = 20f;
         }
 
-        public override void OnBackPressed()
-        {
-            Device.BeginInvokeOnMainThread(() => MessagingCenter.Send("JustIgnore", ConstantsService.Messages.HardwareBackPressed));
-        }
+        //public override void OnBackPressed()
+        //{
+        //    Device.BeginInvokeOnMainThread(() => MessagingCenter.Send("JustIgnore", ConstantsService.Messages.HardwareBackPressed));
+        //}
 
         private void PressHardwareBack(object sender)
         {
