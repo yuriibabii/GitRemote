@@ -38,6 +38,10 @@ namespace GitRemote.ViewModels
                 _session = parameters["Session"] as Session;
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
 

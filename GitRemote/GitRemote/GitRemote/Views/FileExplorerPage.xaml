@@ -14,7 +14,9 @@
                            FlowItemsSource="{Binding FileTree}"
                            HasUnevenRows="True"
                            FlowColumnCount="1"
-                           Margin="15, 15, 15, 0">
+                           Margin="15, 15, 15, 0"
+                           FlowItemTappedCommand="{Binding ListItemTappedCommand}"
+                           FlowLastTappedItem="{Binding LastTappedItem}">
 
       <controls:FlowListView.FlowColumnTemplate>
         <DataTemplate>
@@ -120,13 +122,6 @@
                    Margin="0, 3, 0, 0"
                    IsVisible="{Binding IsFile}"
                    IsEnabled="{Binding IsFile}"/>
-
-            <Grid.GestureRecognizers>
-              <TapGestureRecognizer Command="{Binding Source = {x:Reference Name = FilesList},
-                                                          Path=BindingContext.ListItemTappedCommand}"
-                                    CommandParameter="{x:Reference Name=Name}">
-              </TapGestureRecognizer>
-            </Grid.GestureRecognizers>
           </Grid>
         </DataTemplate>
       </controls:FlowListView.FlowColumnTemplate>

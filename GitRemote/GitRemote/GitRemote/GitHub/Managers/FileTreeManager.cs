@@ -1,5 +1,6 @@
 ﻿using GitRemote.Models;
 using GitRemote.Services;
+using Microsoft.Practices.ObjectBuilder2;
 using Newtonsoft.Json.Linq;
 using RestSharp.Portable;
 using RestSharp.Portable.HttpClient;
@@ -18,6 +19,7 @@ namespace GitRemote.GitHub.Managers
         private readonly RestClient _restClient;
         private List<string> _branches;
         private string _currentBranch;
+        private readonly List<string> _currentPath;
         private List<Dictionary<string, List<FileExplorerModel>>> _tree;
 
         public FileTreeManager(string login, string reposName)
@@ -25,25 +27,26 @@ namespace GitRemote.GitHub.Managers
             _restClient = new RestClient(ConstantsService.GitHubApiLink);
             _login = login;
             _reposName = reposName;
+            _currentPath = new List<string>();
         }
 
         public ObservableCollection<FileExplorerModel> GetFiles(string path)
         {
             var collection = new ObservableCollection<FileExplorerModel>();
-            var pathParts = path.Split('/');
-            var index = pathParts.Length - 2;
-            var clearPath = path.Substring(0, path.Length - pathParts[pathParts.Length - 1].Length - 1);
+            _currentPath.Add(path);
+            var stringPath = _currentPath.JoinStrings("");
+            var index = _currentPath.Count - 1;
+            _tree[index][stringPath].Sort(Comparison);
 
-            foreach ( var file in _tree[index][clearPath] )
+            foreach ( var file in _tree[index][stringPath] )
             {
                 if ( file.FileType == "dir" )
                 {
                     var files = 0;
                     var folders = 0;
 
-                    foreach ( var subFile in _tree[index + 1][path + file.Name] )
+                    foreach ( var subFile in _tree[index + 1][stringPath + file.Name + '/'] )
                     {
-
                         if ( subFile.FileType == "file" )
                             files++;
                         else
@@ -98,7 +101,7 @@ namespace GitRemote.GitHub.Managers
                 {
                     var fileType = element["type"].ToString();
 
-                    fileType = fileType == "blob" ? fileType = "file" : "dir";
+                    fileType = fileType == "blob" ? "file" : "dir";
 
                     var path = string.Concat(_reposName, '/', element["path"].ToString());
                     var pathParts = path.Split('/');
@@ -107,22 +110,21 @@ namespace GitRemote.GitHub.Managers
                     {
                         Name = pathParts[pathParts.Length - 1],
                         FileType = fileType,
-
                     };
 
                     if ( model.FileType == "file" )
                         model.FileSize = ConvertSize(element["size"]);
 
-                    var index = pathParts.Length - 2;
-                    var clearPath = path.Substring(0, path.Length - model.Name.Length - 1);
+                    var index = pathParts.Length - 2; // "-2" Because a name is also count
+                    var pathWithoutName = path.Substring(0, path.Length - pathParts[pathParts.Length - 1].Length); 
 
-                    if ( tree.Count - 1 < index )
+                    if ( tree.Count <= index )
                         tree.Add(new Dictionary<string, List<FileExplorerModel>>());
 
-                    if ( !tree[index].ContainsKey(clearPath) )
-                        tree[index].Add(clearPath, new List<FileExplorerModel>());
+                    if ( !tree[index].ContainsKey(pathWithoutName) )
+                        tree[index].Add(pathWithoutName, new List<FileExplorerModel>());
 
-                    tree[index][clearPath].Add(model);
+                    tree[index][pathWithoutName].Add(model);
                 }
             }
             catch ( Exception ex )
@@ -170,6 +172,14 @@ namespace GitRemote.GitHub.Managers
             var branches = jsonBranches.Select(branch => branch["name"].ToString()).ToList();
 
             return branches;
+        }
+
+        private int Comparison(FileExplorerModel fileExplorerModel, FileExplorerModel explorerModel)
+        {
+            if ( fileExplorerModel.FileType == "dir" )
+                return explorerModel.FileType == "dir" ? 0 : -1;
+
+            return explorerModel.FileType == "dir" ? 1 : 0;
         }
     }
 }

@@ -47,6 +47,10 @@ namespace GitRemote.ViewModels
                 (await _notificationsManager.GetNotificationsAsync());
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
 

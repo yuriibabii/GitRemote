@@ -80,6 +80,10 @@ namespace GitRemote.ViewModels.Authentication
                 _gitHubClient = ( GitHubClient )parameters["Client"];
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         public void OnNavigatedFrom(NavigationParameters parameters) { }
     }
 }
