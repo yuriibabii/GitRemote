@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System.Threading.Tasks;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using DLToolkit.Forms.Controls;
@@ -21,26 +22,29 @@ namespace GitRemote.Droid
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
 
+            //base.OnCreate(null);
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
             LoadApplication(new App());
 
-            MessagingCenter.Subscribe<object>(this, ConstantsService.Messages.PressHardwareBack, PressHardwareBack);
+            MessagingCenter.Subscribe<string>(this, ConstantsService.Messages.PressHardwareBack, PressHardwareBack);
 
             //var tv = FindViewById(Resource.Repository.mySearchView) as SearchView;
             //var tb = ( Toolbar )tv?.Parent;
             //if ( tb != null ) tb.Elevation = 20f;
         }
 
-        //public override void OnBackPressed()
-        //{
-        //    Device.BeginInvokeOnMainThread(() => MessagingCenter.Send("JustIgnore", ConstantsService.Messages.HardwareBackPressed));
-        //}
+        public override void OnBackPressed()
+        {
+            Device.BeginInvokeOnMainThread(() => MessagingCenter.Send("JustIgnore", ConstantsService.Messages.HardwareBackPressed));
+        }
 
-        private void PressHardwareBack(object sender)
+        private void PressHardwareBack(string sender)
         {
             base.OnBackPressed();
         }
+
+        
     }
 }
 

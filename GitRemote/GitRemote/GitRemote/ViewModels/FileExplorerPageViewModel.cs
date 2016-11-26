@@ -51,13 +51,13 @@ namespace GitRemote.ViewModels
 
         private void OnHardwareBackPressed(string sender)
         {
-            //if ( _manager.PopUpExplorer() )
-            //{
-            //    Files = NotifyTask.Create(GetFilesAsync());
-            //    OnPropertyChanged(nameof(Files));
-            //}
-            //else
-            //    MessagingCenter.Send(this, ConstantsService.Messages.PressHardwareBack);
+            if ( _manager.PopUpExplorer() )
+            {
+                FileTree = _manager.GetFiles(string.Empty);
+                OnPropertyChanged(nameof(FileTree));
+            }
+            else
+                MessagingCenter.Send("JustIgnore", ConstantsService.Messages.PressHardwareBack);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)

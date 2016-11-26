@@ -33,7 +33,8 @@ namespace GitRemote.GitHub.Managers
         public ObservableCollection<FileExplorerModel> GetFiles(string path)
         {
             var collection = new ObservableCollection<FileExplorerModel>();
-            _currentPath.Add(path);
+            if ( StringService.CheckForNullOrEmpty(path) )
+                _currentPath.Add(path);
             var stringPath = _currentPath.JoinStrings("");
             var index = _currentPath.Count - 1;
             _tree[index][stringPath].Sort(Comparison);
@@ -116,7 +117,7 @@ namespace GitRemote.GitHub.Managers
                         model.FileSize = ConvertSize(element["size"]);
 
                     var index = pathParts.Length - 2; // "-2" Because a name is also count
-                    var pathWithoutName = path.Substring(0, path.Length - pathParts[pathParts.Length - 1].Length); 
+                    var pathWithoutName = path.Substring(0, path.Length - pathParts[pathParts.Length - 1].Length);
 
                     if ( tree.Count <= index )
                         tree.Add(new Dictionary<string, List<FileExplorerModel>>());
@@ -180,6 +181,14 @@ namespace GitRemote.GitHub.Managers
                 return explorerModel.FileType == "dir" ? 0 : -1;
 
             return explorerModel.FileType == "dir" ? 1 : 0;
+        }
+
+        public bool PopUpExplorer()
+        {
+            if ( _currentPath.Count <= 1 ) return false;
+
+            _currentPath.RemoveAt(_currentPath.Count - 1);
+            return true;
         }
     }
 }
