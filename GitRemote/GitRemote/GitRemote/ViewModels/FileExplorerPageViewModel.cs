@@ -37,6 +37,7 @@ namespace GitRemote.ViewModels
         private bool _pathPartsGridIsVisible;
         private readonly List<bool> _layoutIsFull = new List<bool>();
         private int _currentPathPartIndex;
+        private Color _hyperLinkColor = Color.FromHex("3366BB");
         #endregion
 
         public FileExplorerPageViewModel(INavigationService navigationService)
@@ -79,8 +80,6 @@ namespace GitRemote.ViewModels
             {
                 Text = "GitRemote",
                 FontSize = 16,
-                TextColor = Color.FromHex("3366BB"),
-                IsUnderline = true,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 LineBreakMode = LineBreakMode.TailTruncation,
@@ -97,21 +96,7 @@ namespace GitRemote.ViewModels
 
             #endregion
 
-            #region Slash
-
-            var slash = new Label
-            {
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "/",
-                FontSize = 16,
-                TextColor = Color.Black,
-            };
-
-            #endregion
-
             layout.Children.Add(pathPart);
-            layout.Children.Add(slash);
             _pathPartsGrid.RowDefinitions = new RowDefinitionCollection { new RowDefinition { Height = 20 } };
             _pathPartsGrid.Children.Add(layout, 1, 0);
             _layoutIsFull.Add(false);
@@ -145,15 +130,28 @@ namespace GitRemote.ViewModels
             }
 
             var size = DependencyService.Get<IMetricsHelper>()
-                .GetWidthOfString(layoutText + pathPartName + "/", ( float )( ( Label )layout.Children[0] ).FontSize);
+                .GetWidthOfString(layoutText + "/" + pathPartName + "/", ( float )( ( Label )layout.Children[0] ).FontSize);
+
+            #region Slash
+
+            var slash = new Label
+            {
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = "/",
+                FontSize = 16,
+                TextColor = Color.Black,
+            };
+
+            #endregion
 
             #region LinkLabel
             var pathPart = new HyperLinkLabel
             {
                 Text = pathPartName,
                 FontSize = 16,
-                TextColor = Color.FromHex("3366BB"),
-                IsUnderline = true,
+                TextColor = Color.Black,
+                IsUnderline = false,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 LineBreakMode = LineBreakMode.TailTruncation,
@@ -171,23 +169,14 @@ namespace GitRemote.ViewModels
 
             #endregion
 
-            #region Slash
-
-            var slash = new Label
-            {
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "/",
-                FontSize = 16,
-                TextColor = Color.Black,
-            };
-
-            #endregion
+            var previousPart = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
+            previousPart.IsUnderline = true;
+            previousPart.TextColor = _hyperLinkColor;
 
             if ( layout.Spacing * ( layout.Children.Count + 1 ) + size < PathPartsRowWidth.Value )
             {
-                layout.Children.Add(pathPart);
                 layout.Children.Add(slash);
+                layout.Children.Add(pathPart);
             }
             else
             {
@@ -201,8 +190,8 @@ namespace GitRemote.ViewModels
                     Spacing = 3
                 };
 
+                layout.Children.Add(slash);
                 newLayout.Children.Add(pathPart);
-                newLayout.Children.Add(slash);
                 _pathPartsGrid.RowDefinitions = new RowDefinitionCollection { new RowDefinition { Height = 20 } };
                 _pathPartsGrid.Children.Add(newLayout, 1, _layoutIsFull.Count);
                 _layoutIsFull.Add(false);
@@ -218,6 +207,42 @@ namespace GitRemote.ViewModels
                 _currentPathPartIndex--;
                 if ( _currentPathPartIndex == 0 )
                     PathPartsGridIsVisible = false;
+
+                var layout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
+                if ( _pathPartsGrid.Children.Count > 2 )
+                {
+                    if ( layout.Children.Count < 2 )
+                    {
+                        _pathPartsGrid.Children.Remove(layout);
+                        _layoutIsFull.RemoveAt(_layoutIsFull.Count - 1);
+                        var previousLayout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
+                        previousLayout.Children.RemoveAt(previousLayout.Children.Count - 1);
+                        var label = ( HyperLinkLabel )previousLayout.Children[previousLayout.Children.Count - 1];
+                        label.IsUnderline = false;
+                        label.TextColor = Color.Black;
+                    }
+                    else
+                    {
+                        layout.Children.RemoveAt(layout.Children.Count - 1);
+                        layout.Children.RemoveAt(layout.Children.Count - 1);
+                        var label = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
+                        label.IsUnderline = false;
+                        label.TextColor = Color.Black;
+                    }
+                }
+                else
+                {
+                    if ( layout.Children.Count > 1 )
+                    {
+                        layout.Children.RemoveAt(layout.Children.Count - 1);
+                        if ( layout.Children.Count > 1 )
+                            layout.Children.RemoveAt(layout.Children.Count - 1);
+                        var label = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
+                        label.IsUnderline = false;
+                        label.TextColor = Color.Black;
+                    }
+
+                }
 
             }
             else

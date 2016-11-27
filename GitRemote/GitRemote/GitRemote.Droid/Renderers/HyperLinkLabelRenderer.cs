@@ -33,6 +33,13 @@ namespace GitRemote.Droid.Renderers
                 Control.PaintFlags = ( ( HyperLinkLabel )sender ).IsUnderline
                     ? Control.PaintFlags | PaintFlags.UnderlineText
                     : Control.PaintFlags &= ~PaintFlags.UnderlineText;
+            else
+            if (eventArgs.PropertyName == "TextColor")
+            {
+                var label = (HyperLinkLabel) sender;
+                Control.SetTextColor(new Android.Graphics.Color(label.TextColor.ToAndroid()));
+            }
+               
         }
 
         /// <summary>
@@ -42,8 +49,9 @@ namespace GitRemote.Droid.Renderers
         /// <param name="control">Control that is a view in Android project</param>
         private static void SetUserInterfaceOptions(HyperLinkLabel view, TextView control)
         {
-            if ( view.IsUnderline )
-                control.PaintFlags = control.PaintFlags | PaintFlags.UnderlineText;
+            control.PaintFlags = view.IsUnderline
+                    ? control.PaintFlags | PaintFlags.UnderlineText
+                    : control.PaintFlags &= ~PaintFlags.UnderlineText;
         }
     }
 }
