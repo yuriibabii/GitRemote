@@ -37,7 +37,6 @@ namespace GitRemote.GitHub.Managers
                 _currentPath.Add(path);
             var stringPath = _currentPath.JoinStrings("");
             var index = _currentPath.Count - 1;
-            _tree[index][stringPath].Sort(Comparison);
 
             foreach ( var file in _tree[index][stringPath] )
             {
@@ -126,6 +125,14 @@ namespace GitRemote.GitHub.Managers
                         tree[index].Add(pathWithoutName, new List<FileExplorerModel>());
 
                     tree[index][pathWithoutName].Add(model);
+                }
+
+                foreach (var level in tree)
+                {
+                    foreach (var group in level)
+                    {
+                        group.Value.Sort(Comparison);
+                    }
                 }
             }
             catch ( Exception ex )

@@ -22,7 +22,6 @@ namespace GitRemote.Droid
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
 
-            //base.OnCreate(null);
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
             LoadApplication(new App());

@@ -24,6 +24,7 @@
             public const string Book = "\uf007";
             public const string CloudDownload = "\uf00b";
             public const string Directory = "\uf016";
+            public const string SubModule = "\uf017";
 
         }
     }

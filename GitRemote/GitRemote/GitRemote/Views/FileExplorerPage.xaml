@@ -4,17 +4,40 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
-             xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FileExplorerPage">
   <StackLayout>
+    <Grid x:Name="PathParts"
+          VerticalOptions="Start"
+          HorizontalOptions="FillAndExpand"
+          ColumnSpacing="0"
+          RowSpacing="0"
+          IsVisible="{Binding PathPartsGridIsVisible}"
+          IsEnabled="{Binding PathPartsGridIsVisible}"
+          Margin="5, 5, 0, 0">
+      
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="{Binding PathPartsRowWidth}"/>
+      </Grid.ColumnDefinitions>
+
+      <customClasses:FontIcon FontFamily="Octicons"
+                              FontSize="22"
+                              TextColor="Black"
+                              Text="{Binding PathPartsIcon}"
+                              HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="CenterAndExpand"
+                              Grid.Column="0"
+                              Grid.Row="0"/>
+    </Grid>
+
     <controls:FlowListView x:Name="FilesList"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="FillAndExpand"
                            FlowItemsSource="{Binding FileTree}"
                            HasUnevenRows="True"
                            FlowColumnCount="1"
-                           Margin="15, 15, 15, 0"
+                           Margin="15, 5, 15, 0"
                            FlowItemTappedCommand="{Binding ListItemTappedCommand}"
                            FlowLastTappedItem="{Binding LastTappedItem}">
 
@@ -22,7 +45,6 @@
         <DataTemplate>
           <Grid VerticalOptions="Start"
                 HorizontalOptions="FillAndExpand"
-                Margin="0, 0, 0, 10"
                 ColumnSpacing="0"
                 RowSpacing="5">
             <Grid.ColumnDefinitions>
@@ -51,7 +73,7 @@
 
             <Label x:Name="Name"
                    Text="{Binding Name}"
-                   FontSize="14"
+                   FontSize="18"
                    TextColor="Black"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
@@ -107,7 +129,7 @@
                    Grid.Row="0"
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0, 3, 0, 0"
+                   Margin="0, 3, 10, 0"
                    IsVisible="{Binding IsFolder}"
                    IsEnabled="{Binding IsFolder}"/>
 
@@ -119,7 +141,7 @@
                    Grid.Row="0"
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0, 3, 0, 0"
+                   Margin="0, 3, 10, 0"
                    IsVisible="{Binding IsFile}"
                    IsEnabled="{Binding IsFile}"/>
           </Grid>
