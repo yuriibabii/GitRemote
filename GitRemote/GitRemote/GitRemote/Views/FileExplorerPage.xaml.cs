@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using GitRemote.Services;
+using Xamarin.Forms;
 
 namespace GitRemote.Views
 {
@@ -7,7 +8,7 @@ namespace GitRemote.Views
         public FileExplorerPage()
         {
             InitializeComponent();
-            MessagingCenter.Send(PathParts, "TakePathPartsGrid");
+            MessagingCenter.Send(PathParts, ConstantsService.Messages.TakePathPartsGrid);
         }
     }
 }

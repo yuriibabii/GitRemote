@@ -47,7 +47,6 @@
     <Compile Include="GitHub\Managers\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
     <Compile Include="GitHub\Managers\FileExplorerManager.cs" />
-    <Compile Include="GitHub\Managers\FileTreeManager.cs" />
     <Compile Include="GitHub\Managers\FollowManager.cs" />
     <Compile Include="GitHub\Managers\GistsManager.cs" />
     <Compile Include="GitHub\Managers\IssuesManager.cs" />

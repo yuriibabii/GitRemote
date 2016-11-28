@@ -34,10 +34,11 @@ namespace GitRemote.ViewModels
         private readonly INavigationService _navigationService;
         public NotifyTask SetCurrentBranchTask;
         public NotifyTask SetTreeTask;
-        private readonly FileTreeManager _manager;
+        private readonly FileExplorerManager _manager;
         private Grid _pathPartsGrid;
         private bool _pathPartsGridIsVisible;
         private readonly List<bool> _layoutIsFull = new List<bool>();
+        //[0] max index of layout in grid, [1] max index of parts in layout, [2] count of parts in grid
         private readonly List<int> _partsIndexes = new List<int>();
         private int _partsCount;
         private readonly Color _hyperLinkColor = Color.FromHex("3366BB");
@@ -45,7 +46,7 @@ namespace GitRemote.ViewModels
 
         public FileExplorerPageViewModel(INavigationService navigationService)
         {
-            _manager = new FileTreeManager("UniorDev", "GitRemote");
+            _manager = new FileExplorerManager("UniorDev", "GitRemote");
             SetCurrentBranchTask = NotifyTask.Create(_manager.SetCurrentBranchAsync());
             SetCurrentBranchTask.TaskCompleted.ContinueWith(branchTask =>
             {
@@ -61,8 +62,7 @@ namespace GitRemote.ViewModels
             ListItemTappedCommand = new DelegateCommand(OnListItemTapped);
 
             MessagingCenter.Subscribe<string>(this, ConstantsService.Messages.HardwareBackPressed, OnHardwareBackPressed);
-            MessagingCenter.Subscribe<Grid>(this, "TakePathPartsGrid", SetPathPartsGrid);
-
+            MessagingCenter.Subscribe<Grid>(this, ConstantsService.Messages.TakePathPartsGrid, SetPathPartsGrid);
         }
 
         private void SetPathPartsGrid(Grid grid)
@@ -77,6 +77,7 @@ namespace GitRemote.ViewModels
                 Orientation = StackOrientation.Horizontal,
                 Spacing = 3
             };
+
             _partsCount++;
 
             #region LinkLabel
@@ -114,7 +115,7 @@ namespace GitRemote.ViewModels
             for ( ; i > indexes[0]; i-- )
             {
                 var deadLayout = ( StackLayout )_pathPartsGrid.Children[i + 1];
-                var doubleCount = deadLayout.Children.Count / 2f;
+                var doubleCount = deadLayout.Children.Count / 2f; // Cause slashes
                 _partsCount -= ( int )Math.Floor(doubleCount) + 1;
                 _pathPartsGrid.Children.RemoveAt(i + 1);
                 var nextLayout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
@@ -126,7 +127,7 @@ namespace GitRemote.ViewModels
             var layout = ( StackLayout )_pathPartsGrid.Children[i + 1];
             _layoutIsFull[_layoutIsFull.Count - 1] = false;
 
-            for ( var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2 )
+            for ( var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2 ) // * 2 - Cause slashes
             {
                 _partsCount--;
                 layout.Children.RemoveAt(j);
@@ -192,7 +193,7 @@ namespace GitRemote.ViewModels
             previousPart.IsUnderline = true;
             previousPart.TextColor = _hyperLinkColor;
 
-            if ( layout.Spacing * ( layout.Children.Count + 1 ) + size < PathPartsRowWidth.Value )
+            if ( layout.Spacing * ( layout.Children.Count + 1 ) + size < PathPartsRowWidth.Value ) // If needed space less than available
             {
                 _partsIndexes[_partsIndexes.Count - 1]++;
                 #region LinkLabel
@@ -267,7 +268,7 @@ namespace GitRemote.ViewModels
 
         private void OnHardwareBackPressed(string sender)
         {
-            if ( _manager.PopUpExplorer() )
+            if ( _manager.PopUpExplorer() ) // if there is something to PopUp
             {
                 FileTree = _manager.GetFiles(Empty);
                 OnPropertyChanged(nameof(FileTree));
@@ -276,9 +277,9 @@ namespace GitRemote.ViewModels
                     PathPartsGridIsVisible = false;
 
                 var layout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
-                if ( _pathPartsGrid.Children.Count > 2 )
+                if ( _pathPartsGrid.Children.Count > 2 ) // If current layout not firts layout (Cause FontIcon)
                 {
-                    if ( layout.Children.Count < 2 )
+                    if ( layout.Children.Count < 2 ) // Remove whole layout
                     {
                         _pathPartsGrid.Children.Remove(layout);
                         _layoutIsFull.RemoveAt(_layoutIsFull.Count - 1);
@@ -302,7 +303,7 @@ namespace GitRemote.ViewModels
                 }
                 else
                 {
-                    if ( layout.Children.Count > 1 )
+                    if ( layout.Children.Count > 1 ) // Remove elements in first layout
                     {
                         layout.Children.RemoveAt(layout.Children.Count - 1);
                         if ( layout.Children.Count > 1 )
@@ -313,9 +314,7 @@ namespace GitRemote.ViewModels
                         _partsIndexes[_partsIndexes.Count - 1]--;
                         _layoutIsFull[_layoutIsFull.Count - 1] = false;
                     }
-
                 }
-
             }
             else
                 MessagingCenter.Send("JustIgnore", ConstantsService.Messages.PressHardwareBack);
