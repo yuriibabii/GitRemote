@@ -127,9 +127,9 @@ namespace GitRemote.GitHub.Managers
                     tree[index][pathWithoutName].Add(model);
                 }
 
-                foreach (var level in tree)
+                foreach ( var level in tree )
                 {
-                    foreach (var group in level)
+                    foreach ( var group in level )
                     {
                         group.Value.Sort(Comparison);
                     }
@@ -196,6 +196,11 @@ namespace GitRemote.GitHub.Managers
 
             _currentPath.RemoveAt(_currentPath.Count - 1);
             return true;
+        }
+
+        public void PopUpExplorerToIndex(int index)
+        {
+            _currentPath.RemoveRange(index, _currentPath.Count - index);
         }
     }
 }

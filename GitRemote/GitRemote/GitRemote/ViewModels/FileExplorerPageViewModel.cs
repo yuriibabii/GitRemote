@@ -7,9 +7,11 @@ using Nito.Mvvm;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using static System.String;
 
 namespace GitRemote.ViewModels
 {
@@ -36,8 +38,9 @@ namespace GitRemote.ViewModels
         private Grid _pathPartsGrid;
         private bool _pathPartsGridIsVisible;
         private readonly List<bool> _layoutIsFull = new List<bool>();
-        private int _currentPathPartIndex;
-        private Color _hyperLinkColor = Color.FromHex("3366BB");
+        private readonly List<int> _partsIndexes = new List<int>();
+        private int _partsCount;
+        private readonly Color _hyperLinkColor = Color.FromHex("3366BB");
         #endregion
 
         public FileExplorerPageViewModel(INavigationService navigationService)
@@ -65,6 +68,7 @@ namespace GitRemote.ViewModels
         private void SetPathPartsGrid(Grid grid)
         {
             _pathPartsGrid = grid;
+            _partsIndexes.Add(0);
 
             var layout = new StackLayout
             {
@@ -73,6 +77,7 @@ namespace GitRemote.ViewModels
                 Orientation = StackOrientation.Horizontal,
                 Spacing = 3
             };
+            _partsCount++;
 
             #region LinkLabel
 
@@ -88,8 +93,8 @@ namespace GitRemote.ViewModels
                     new TapGestureRecognizer
                     {
                         NumberOfTapsRequired = 1,
-                        Command = new DelegateCommand(OnPathPartTapped),
-                        CommandParameter = _currentPathPartIndex
+                        Command = new DelegateCommand<int[]>(OnPathPartTapped),
+                        CommandParameter = new[]{ _partsIndexes.Count - 1, _partsIndexes[_partsIndexes.Count - 1], _partsCount}
                     }
                 }
             };
@@ -100,11 +105,49 @@ namespace GitRemote.ViewModels
             _pathPartsGrid.RowDefinitions = new RowDefinitionCollection { new RowDefinition { Height = 20 } };
             _pathPartsGrid.Children.Add(layout, 1, 0);
             _layoutIsFull.Add(false);
+
         }
 
-        private void OnPathPartTapped()
+        private void OnPathPartTapped(int[] indexes)
         {
+            var i = _pathPartsGrid.Children.Count - 2; // Cause FontIcon
+            for ( ; i > indexes[0]; i-- )
+            {
+                var deadLayout = ( StackLayout )_pathPartsGrid.Children[i + 1];
+                var doubleCount = deadLayout.Children.Count / 2f;
+                _partsCount -= ( int )Math.Floor(doubleCount) + 1;
+                _pathPartsGrid.Children.RemoveAt(i + 1);
+                var nextLayout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
+                nextLayout.Children.RemoveAt(nextLayout.Children.Count - 1);
+                _partsIndexes.RemoveAt(i);
+                _layoutIsFull.RemoveAt(_layoutIsFull.Count - 1);
+            }
 
+            var layout = ( StackLayout )_pathPartsGrid.Children[i + 1];
+            _layoutIsFull[_layoutIsFull.Count - 1] = false;
+
+            for ( var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2 )
+            {
+                _partsCount--;
+                layout.Children.RemoveAt(j);
+                layout.Children.RemoveAt(j - 1);
+                _partsIndexes[i]--;
+            }
+
+            var tappedPart = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
+            tappedPart.IsUnderline = false;
+            tappedPart.TextColor = Color.Black;
+
+            SetFilesOfPart(indexes[2]);
+        }
+
+        private void SetFilesOfPart(int count)
+        {
+            _manager.PopUpExplorerToIndex(count);
+            FileTree = _manager.GetFiles(Empty);
+            OnPropertyChanged(nameof(FileTree));
+            if ( count == 1 )
+                PathPartsGridIsVisible = false;
         }
 
         private void OnListItemTapped()
@@ -114,7 +157,7 @@ namespace GitRemote.ViewModels
                 FileTree = _manager.GetFiles(LastTappedItem.Name + "/");
                 OnPropertyChanged(nameof(FileTree));
                 PathPartsGridIsVisible = true;
-                _currentPathPartIndex++;
+                _partsCount++;
                 AddPathPart(LastTappedItem.Name);
             }
         }
@@ -122,11 +165,11 @@ namespace GitRemote.ViewModels
         private void AddPathPart(string pathPartName)
         {
             var layout = ( StackLayout )_pathPartsGrid.Children[_layoutIsFull.Count];
-            var layoutText = string.Empty;
+            var layoutText = Empty;
 
             foreach ( var child in layout.Children )
             {
-                layoutText = string.Concat(layoutText, ( ( Label )child ).Text);
+                layoutText = Concat(layoutText, ( ( Label )child ).Text);
             }
 
             var size = DependencyService.Get<IMetricsHelper>()
@@ -145,41 +188,65 @@ namespace GitRemote.ViewModels
 
             #endregion
 
-            #region LinkLabel
-            var pathPart = new HyperLinkLabel
-            {
-                Text = pathPartName,
-                FontSize = 16,
-                TextColor = Color.Black,
-                IsUnderline = false,
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                GestureRecognizers =
-                            {
-                                new TapGestureRecognizer
-                                {
-                                    NumberOfTapsRequired = 1,
-                                    Command = new DelegateCommand(OnPathPartTapped),
-                                    CommandParameter = _currentPathPartIndex
-                                }
-                            }
-            };
-
-
-            #endregion
-
             var previousPart = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
             previousPart.IsUnderline = true;
             previousPart.TextColor = _hyperLinkColor;
 
             if ( layout.Spacing * ( layout.Children.Count + 1 ) + size < PathPartsRowWidth.Value )
             {
+                _partsIndexes[_partsIndexes.Count - 1]++;
+                #region LinkLabel
+                var pathPart = new HyperLinkLabel
+                {
+                    Text = pathPartName,
+                    FontSize = 16,
+                    TextColor = Color.Black,
+                    IsUnderline = false,
+                    HorizontalOptions = LayoutOptions.Start,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    LineBreakMode = LineBreakMode.TailTruncation,
+                    GestureRecognizers =
+                            {
+                                new TapGestureRecognizer
+                                {
+                                    NumberOfTapsRequired = 1,
+                                    Command = new DelegateCommand<int[]>(OnPathPartTapped),
+                                    CommandParameter = new[]{ _partsIndexes.Count - 1, _partsIndexes[_partsIndexes.Count - 1], _partsCount}
+                                }
+                            }
+                };
+
+
+                #endregion
                 layout.Children.Add(slash);
                 layout.Children.Add(pathPart);
             }
             else
             {
+                _partsIndexes.Add(0);
+                #region LinkLabel
+                var pathPart = new HyperLinkLabel
+                {
+                    Text = pathPartName,
+                    FontSize = 16,
+                    TextColor = Color.Black,
+                    IsUnderline = false,
+                    HorizontalOptions = LayoutOptions.Start,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    LineBreakMode = LineBreakMode.TailTruncation,
+                    GestureRecognizers =
+                            {
+                                new TapGestureRecognizer
+                                {
+                                    NumberOfTapsRequired = 1,
+                                    Command = new DelegateCommand<int[]>(OnPathPartTapped),
+                                    CommandParameter = new[]{ _partsIndexes.Count - 1, _partsIndexes[_partsIndexes.Count - 1], _partsCount}
+                                }
+                            }
+                };
+
+
+                #endregion
                 _layoutIsFull[_layoutIsFull.Count - 1] = true;
 
                 var newLayout = new StackLayout
@@ -202,10 +269,10 @@ namespace GitRemote.ViewModels
         {
             if ( _manager.PopUpExplorer() )
             {
-                FileTree = _manager.GetFiles(string.Empty);
+                FileTree = _manager.GetFiles(Empty);
                 OnPropertyChanged(nameof(FileTree));
-                _currentPathPartIndex--;
-                if ( _currentPathPartIndex == 0 )
+                _partsCount--;
+                if ( _partsCount == 1 )
                     PathPartsGridIsVisible = false;
 
                 var layout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
@@ -220,6 +287,7 @@ namespace GitRemote.ViewModels
                         var label = ( HyperLinkLabel )previousLayout.Children[previousLayout.Children.Count - 1];
                         label.IsUnderline = false;
                         label.TextColor = Color.Black;
+                        _partsIndexes.RemoveAt(_partsIndexes.Count - 1);
                     }
                     else
                     {
@@ -228,6 +296,8 @@ namespace GitRemote.ViewModels
                         var label = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
                         label.IsUnderline = false;
                         label.TextColor = Color.Black;
+                        _partsIndexes[_partsIndexes.Count - 1]--;
+                        _layoutIsFull[_layoutIsFull.Count - 1] = false;
                     }
                 }
                 else
@@ -240,6 +310,8 @@ namespace GitRemote.ViewModels
                         var label = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
                         label.IsUnderline = false;
                         label.TextColor = Color.Black;
+                        _partsIndexes[_partsIndexes.Count - 1]--;
+                        _layoutIsFull[_layoutIsFull.Count - 1] = false;
                     }
 
                 }
