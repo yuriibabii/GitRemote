@@ -18,7 +18,7 @@ namespace GitRemote.GitHub.Managers
         private readonly string _reposName;
         private readonly RestClient _restClient;
         private List<string> _branches;
-        private string _currentBranch;
+        public string CurrentBranch { get; private set; }
         private readonly List<string> _currentPath;
         private List<Dictionary<string, List<FileExplorerModel>>> _tree;
 
@@ -70,9 +70,9 @@ namespace GitRemote.GitHub.Managers
         public async Task SetCurrentBranchAsync(string branch = "")
         {
             if ( StringService.CheckForNullOrEmpty(branch) )
-                _currentBranch = branch;
+                CurrentBranch = branch;
             else
-                _currentBranch = await GetDefaultBranchAsync();
+                CurrentBranch = await GetDefaultBranchAsync();
         }
 
         public async Task SetTreeAsync()
@@ -82,7 +82,7 @@ namespace GitRemote.GitHub.Managers
 
         private async Task<JArray> GetJsonTreeAsync()
         {
-            var request = new RestRequest($"/repos/{_login}/{_reposName}/git/trees/{_currentBranch}?recursive=1", Method.GET)
+            var request = new RestRequest($"/repos/{_login}/{_reposName}/git/trees/{CurrentBranch}?recursive=1", Method.GET)
             {
                 Serializer = { ContentType = "application/json" }
             };
@@ -164,7 +164,7 @@ namespace GitRemote.GitHub.Managers
             return size;
         }
 
-        private async Task<string> GetDefaultBranchAsync()
+        public async Task<string> GetDefaultBranchAsync()
         {
             var request = new RestRequest($"/repos/{_login}/{_reposName}", Method.GET)
             {
@@ -177,7 +177,7 @@ namespace GitRemote.GitHub.Managers
             return repos["default_branch"].ToString();
         }
 
-        private async Task<List<string>> GetBranchesAsync()
+        public async Task<List<string>> GetBranchesAsync()
         {
             var request = new RestRequest($"/repos/{_login}/{_reposName}/branches", Method.GET)
             {
@@ -192,7 +192,7 @@ namespace GitRemote.GitHub.Managers
             return branches;
         }
 
-        private async Task<IEnumerable<string>> GetTagsNamesAsync()
+        public async Task<List<string>> GetTagsNamesAsync()
         {
             var request = new RestRequest($"/repos/{_login}/{_reposName}/tags", Method.GET)
             {
@@ -201,7 +201,7 @@ namespace GitRemote.GitHub.Managers
 
             var responceResult = await _restClient.Execute(request);
             var tags = JArray.Parse(responceResult.Content);
-            var tagsNames = tags.Select(tag => tag["name"].ToString());
+            var tagsNames = tags.Select(tag => tag["name"].ToString()).ToList();
 
             return tagsNames;
         }

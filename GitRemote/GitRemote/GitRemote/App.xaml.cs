@@ -50,6 +50,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<GistsListPage, GistsListPageViewModel>();
             Container.RegisterTypeForNavigation<RepositoryNewsPage>();
             Container.RegisterTypeForNavigation<FileExplorerPage>();
+            Container.RegisterTypeForNavigation<SelectBranchPopUpPage>();
         }
 
         protected override void OnSleep()

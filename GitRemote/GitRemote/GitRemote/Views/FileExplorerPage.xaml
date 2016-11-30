@@ -6,7 +6,7 @@
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FileExplorerPage">
-  <StackLayout>
+  <StackLayout Spacing="5">
     <Grid x:Name="PathParts"
           VerticalOptions="Start"
           HorizontalOptions="FillAndExpand"
@@ -15,7 +15,7 @@
           IsVisible="{Binding PathPartsGridIsVisible}"
           IsEnabled="{Binding PathPartsGridIsVisible}"
           Margin="5, 5, 0, 0">
-      
+
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="40"/>
         <ColumnDefinition Width="{Binding PathPartsRowWidth}"/>
@@ -37,7 +37,7 @@
                            FlowItemsSource="{Binding FileTree}"
                            HasUnevenRows="True"
                            FlowColumnCount="1"
-                           Margin="15, 5, 15, 0"
+                           Margin="15, 0, 15, 0"
                            FlowItemTappedCommand="{Binding ListItemTappedCommand}"
                            FlowLastTappedItem="{Binding LastTappedItem}">
 
@@ -147,8 +147,63 @@
           </Grid>
         </DataTemplate>
       </controls:FlowListView.FlowColumnTemplate>
-
-
     </controls:FlowListView>
-  </StackLayout>
+
+    <Grid x:Name="BotPanel"
+          VerticalOptions="End"
+          HorizontalOptions="FillAndExpand"
+          ColumnSpacing="4"
+          RowSpacing="0">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+      </Grid.RowDefinitions>
+
+      <BoxView BackgroundColor="#7B5687"
+               HeightRequest="50"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               InputTransparent="True">
+        <!--BoxView.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding BotPanelTapped}"
+                                NumberOfTapsRequired="1"/>
+        </BoxView.GestureRecognizers>-->
+      </BoxView>
+
+      <customClasses:FontIcon x:Name="BranchIcon"
+                              Text="{Binding BranchIcon}"
+                              FontSize="24"
+                              FontFamily="Octicons"
+                              TextColor="White"
+                              VerticalOptions="CenterAndExpand"
+                              HorizontalOptions="EndAndExpand"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              InputTransparent="True"/>
+
+      <Label x:Name="NameOfCurrentBranch"
+             Text="{Binding CurrentBranch}"
+             FontSize="18"
+             TextColor="White"
+             Grid.Column="1"
+             Grid.Row="0"
+             VerticalOptions="CenterAndExpand"
+             HorizontalOptions="StartAndExpand"
+             InputTransparent="True"/>
+
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding BotPanelTapped}"
+                              NumberOfTapsRequired="1"/>
+      </Grid.GestureRecognizers>
+      
+    </Grid>
+
+    </StackLayout>
 </ContentPage>

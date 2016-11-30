@@ -23,6 +23,9 @@ namespace GitRemote.Services
             public const string HardwareBackPressed = "HardwareBackPressed";
             public const string PressHardwareBack = "PressHardwareBack";
             public const string TakePathPartsGrid = "TakePathPartsGrid";
+            public const string TakeBranchModelFromPopUpPage = "TakeBranchModelFromPopUpPage";
+            public const string SendManagerToBranchPopUpPage = "SendManagerToBranchPopUpPage";
+            public const string ScrollToActivatedBranchItem = "ScrollToActivatedBranchItem";
         }
     }
 }
