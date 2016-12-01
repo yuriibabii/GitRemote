@@ -27,7 +27,6 @@ namespace GitRemote.GitHub.Managers
         public FileExplorerManager(string login, string reposName)
         {
             _restClient = new RestClient(ConstantsService.GitHubApiLink);
-            //_restClient.Authenticator = new HttpBasicAuthenticator(new NetworkCredential("UniorDev", "Komikcvest2010"), AuthHeader.Www);
             _restClient.Authenticator = new HttpBasicAuthenticator(new NetworkCredential("UniorDev", "a97b7689fafdc010a4dc6ae634e8b9cd1bc17eca"), AuthHeader.Www);
             _login = login;
             _reposName = reposName;
