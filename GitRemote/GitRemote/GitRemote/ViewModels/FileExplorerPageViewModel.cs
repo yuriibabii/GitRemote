@@ -87,6 +87,9 @@ namespace GitRemote.ViewModels
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
         {
             _currentSourceType = selectBranchPopUpModel.Type;
+            OnPropertyChanged(nameof(BranchIcon));
+            CurrentBranch = selectBranchPopUpModel.Name;
+            _manager.CurrentBranch = selectBranchPopUpModel.Name;
             await _manager.SetCurrentBranchAsync(selectBranchPopUpModel.Name);
         }
 

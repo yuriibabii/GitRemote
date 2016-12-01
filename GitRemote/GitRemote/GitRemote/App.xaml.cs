@@ -1,4 +1,5 @@
 ﻿using GitRemote.GitHub.Managers;
+using GitRemote.Services;
 using GitRemote.ViewModels;
 using GitRemote.ViewModels.Authentication;
 using GitRemote.ViewModels.MasterPageViews;

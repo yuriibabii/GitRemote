@@ -5,6 +5,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace GitRemote.ViewModels
@@ -28,41 +29,46 @@ namespace GitRemote.ViewModels
         {
             ListItemTapped = new DelegateCommand(OnListItemTapped);
             CancelButtonTapped = new DelegateCommand(OnCancelButtonTapped);
-            MessagingCenter.Subscribe<FileExplorerManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
+            MessagingCenter.Subscribe<FileExplorerManager>(this, 
+                ConstantsService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
         }
 
         private async void OnSendManager(FileExplorerManager fileExplorerManager)
         {
             var branchesTask = fileExplorerManager.GetBranchesAsync();
-            await branchesTask.ContinueWith(task =>
+            var tagsTask = fileExplorerManager.GetTagsNamesAsync();
+            await Task.WhenAll(branchesTask, tagsTask);
+
+            Items = new ObservableCollection<SelectBranchPopUpModel>();
+            var index = 0;
+            var counter = 0;
+
+            foreach ( var branch in branchesTask.Result )
             {
-                var tagsTask = fileExplorerManager.GetTagsNamesAsync();
-                tagsTask.ContinueWith(t =>
+                var model = new SelectBranchPopUpModel { Name = branch, Type = "Branch", IsActivated = false };
+                if ( model.Name == fileExplorerManager.CurrentBranch )
                 {
-                    Items = new ObservableCollection<SelectBranchPopUpModel>();
+                    index = counter;
+                    model.IsActivated = true;
+                }
+                Items.Add(model);
+                counter++;
+            }
 
-                    foreach ( var branch in branchesTask.Result )
-                    {
-                        var model = new SelectBranchPopUpModel { Name = branch, Type = "Branch", IsActivated = false };
-                        if ( model.Name == fileExplorerManager.CurrentBranch )
-                            model.IsActivated = true;
-                        Items.Add(model);
-                    }
+            foreach ( var tag in tagsTask.Result )
+            {
+                var model = new SelectBranchPopUpModel { Name = tag, Type = "Tag", IsActivated = false };
+                if ( model.Name == fileExplorerManager.CurrentBranch )
+                {
+                    index = counter;
+                    model.IsActivated = true;
+                }
+                Items.Add(model);
+                counter++;
+            }
 
-                    foreach ( var tag in tagsTask.Result )
-                    {
-                        var model = new SelectBranchPopUpModel { Name = tag, Type = "Tag", IsActivated = false };
-                        if ( model.Name == fileExplorerManager.CurrentBranch )
-                            model.IsActivated = true;
-                        Items.Add(model);
-                    }
-
-                    OnPropertyChanged(nameof(Items));
-                    MessagingCenter.Send(fileExplorerManager.CurrentBranch, ConstantsService.Messages.ScrollToActivatedBranchItem);
-                });
-            });
-
-
+            OnPropertyChanged(nameof(Items));
+            MessagingCenter.Send(index.ToString(), ConstantsService.Messages.ScrollToActivatedBranchItem);
         }
 
         private async void OnCancelButtonTapped()
@@ -73,6 +79,7 @@ namespace GitRemote.ViewModels
 
         private async void OnListItemTapped()
         {
+            MessagingCenter.Unsubscribe<FileExplorerManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
             MessagingCenter.Send(TappedItem, ConstantsService.Messages.TakeBranchModelFromPopUpPage);
             await PopupNavigation.PopAsync();
         }

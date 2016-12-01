@@ -147,7 +147,7 @@
           </Grid>
         </DataTemplate>
       </controls:FlowListView.FlowColumnTemplate>
-    </controls:FlowListView>
+    </controls:FlowListView> 
 
     <Grid x:Name="BotPanel"
           VerticalOptions="End"
@@ -171,10 +171,7 @@
                Grid.Row="0"
                Grid.ColumnSpan="2"
                InputTransparent="True">
-        <!--BoxView.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding BotPanelTapped}"
-                                NumberOfTapsRequired="1"/>
-        </BoxView.GestureRecognizers>-->
+        
       </BoxView>
 
       <customClasses:FontIcon x:Name="BranchIcon"

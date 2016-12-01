@@ -3,11 +3,13 @@ using GitRemote.Services;
 using Microsoft.Practices.ObjectBuilder2;
 using Newtonsoft.Json.Linq;
 using RestSharp.Portable;
+using RestSharp.Portable.Authenticators;
 using RestSharp.Portable.HttpClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace GitRemote.GitHub.Managers
@@ -18,13 +20,15 @@ namespace GitRemote.GitHub.Managers
         private readonly string _reposName;
         private readonly RestClient _restClient;
         private List<string> _branches;
-        public string CurrentBranch { get; private set; }
+        public string CurrentBranch { get; set; }
         private readonly List<string> _currentPath;
         private List<Dictionary<string, List<FileExplorerModel>>> _tree;
 
         public FileExplorerManager(string login, string reposName)
         {
             _restClient = new RestClient(ConstantsService.GitHubApiLink);
+            //_restClient.Authenticator = new HttpBasicAuthenticator(new NetworkCredential("UniorDev", "Komikcvest2010"), AuthHeader.Www);
+            _restClient.Authenticator = new HttpBasicAuthenticator(new NetworkCredential("UniorDev", "a97b7689fafdc010a4dc6ae634e8b9cd1bc17eca"), AuthHeader.Www);
             _login = login;
             _reposName = reposName;
             _currentPath = new List<string>();
