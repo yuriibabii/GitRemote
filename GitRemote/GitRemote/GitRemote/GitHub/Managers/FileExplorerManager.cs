@@ -11,7 +11,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Nito.Mvvm;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -20,15 +19,18 @@ namespace GitRemote.GitHub.Managers
         private readonly string _login;
         private readonly string _reposName;
         private readonly RestClient _restClient;
-        private List<string> _branches;
-        public string CurrentBranch { get; set; }
+        public string CurrentBranch { get; private set; }
         private readonly List<string> _currentPath;
         private List<Dictionary<string, List<FileExplorerModel>>> _tree;
 
         public FileExplorerManager(string login, string reposName)
         {
-            _restClient = new RestClient(ConstantsService.GitHubApiLink);
-           
+            _restClient = new RestClient(ConstantsService.GitHubApiLink)
+            {
+                Authenticator = new HttpBasicAuthenticator
+                    (new NetworkCredential("UniorDev", "token"), AuthHeader.Www)
+            };
+
             _login = login;
             _reposName = reposName;
             _currentPath = new List<string>();
@@ -77,6 +79,7 @@ namespace GitRemote.GitHub.Managers
                 CurrentBranch = branch;
             else
                 CurrentBranch = await GetDefaultBranchAsync();
+            _currentPath.RemoveAll(el => true);
         }
 
         public async Task SetTreeAsync()

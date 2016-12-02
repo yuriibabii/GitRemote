@@ -61,8 +61,8 @@ namespace GitRemote.ViewModels
 
         public FileExplorerPageViewModel(INavigationService navigationService)
         {
-            _manager = new FileExplorerManager("UniorDev", "GitRemote");
-            //_manager = new FileExplorerManager("UniorDev", "ForkHub");
+            //_manager = new FileExplorerManager("UniorDev", "GitRemote");
+            _manager = new FileExplorerManager("UniorDev", "ForkHub");
             SetCurrentBranchTask = NotifyTask.Create(_manager.SetCurrentBranchAsync());
             SetCurrentBranchTask.TaskCompleted.ContinueWith(branchTask =>
             {
@@ -70,8 +70,8 @@ namespace GitRemote.ViewModels
                 SetTreeTask = NotifyTask.Create(_manager.SetTreeAsync());
                 SetTreeTask.TaskCompleted.ContinueWith(treeTask =>
                 {
-                    FileTree = _manager.GetFiles("GitRemote/");
-                    //FileTree = _manager.GetFiles("ForkHub/");
+                    //FileTree = _manager.GetFiles("GitRemote/");
+                    FileTree = _manager.GetFiles("ForkHub/");
                     OnPropertyChanged(nameof(FileTree));
                 });
             });
@@ -88,21 +88,33 @@ namespace GitRemote.ViewModels
         {
             _currentSourceType = selectBranchPopUpModel.Type;
             OnPropertyChanged(nameof(BranchIcon));
-            CurrentBranch = selectBranchPopUpModel.Name;
-            _manager.CurrentBranch = selectBranchPopUpModel.Name;
-            await _manager.SetCurrentBranchAsync(selectBranchPopUpModel.Name);
+            var branchTask = _manager.SetCurrentBranchAsync(selectBranchPopUpModel.Name);
+            await branchTask;
+            var treeTask = _manager.SetTreeAsync();
+            CurrentBranch = _manager.CurrentBranch;
+            _partsIndexes.RemoveAll(el => true);
+            PathPartsGridIsVisible = false;
+            _layoutIsFull.RemoveAll(el => true);
+            _partsCount = 0;
+            await treeTask;
+            FileTree = _manager.GetFiles("ForkHub/");
+            OnPropertyChanged(nameof(FileTree));
+            SetPathPartsGrid(_pathPartsGrid);
         }
 
         private void OnBotPanelTapped()
         {
             PopupNavigation.PushAsync(new SelectBranchPopUpPage());
             MessagingCenter.Send(_manager, ConstantsService.Messages.SendManagerToBranchPopUpPage);
-
         }
 
         private void SetPathPartsGrid(Grid grid)
         {
             _pathPartsGrid = grid;
+
+            for ( var i = 1; i < _pathPartsGrid.Children.Count; i++ )
+                _pathPartsGrid.Children.RemoveAt(i);
+
             _partsIndexes.Add(0);
 
             var layout = new StackLayout
@@ -162,7 +174,7 @@ namespace GitRemote.ViewModels
             var layout = ( StackLayout )_pathPartsGrid.Children[i + 1];
             _layoutIsFull[_layoutIsFull.Count - 1] = false;
 
-            for ( var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2 ) // * 2 - Cause slashes
+            for ( var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2 ) // "* 2" - Cause slashes
             {
                 _partsCount--;
                 layout.Children.RemoveAt(j);
