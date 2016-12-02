@@ -37,7 +37,6 @@
                            FlowItemsSource="{Binding FileTree}"
                            HasUnevenRows="True"
                            FlowColumnCount="1"
-                           Margin="15, 0, 15, 0"
                            FlowItemTappedCommand="{Binding ListItemTappedCommand}"
                            FlowLastTappedItem="{Binding LastTappedItem}">
 
@@ -46,10 +45,10 @@
           <Grid VerticalOptions="Start"
                 HorizontalOptions="FillAndExpand"
                 ColumnSpacing="0"
-                RowSpacing="5">
+                RowSpacing="5"
+                Margin="15, 0, 15, 0">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="30"/>
-              <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="*"/>
               <ColumnDefinition Width="{Binding FolderWidth}"/>
               <ColumnDefinition Width="{Binding FolderWidth}"/>
@@ -71,24 +70,26 @@
                                     Grid.Column="0"
                                     Grid.Row="0"/>
 
+
             <Label x:Name="Name"
                    Text="{Binding Name}"
                    FontSize="18"
                    TextColor="Black"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"
                    FontAttributes="{Binding IsBold}"
                    LineBreakMode="TailTruncation"
-                   Margin="0, 0, 15, 0"
                    Grid.Column="1"
-                   Grid.Row="0"/>
+                   Grid.Row="0"
+                   HorizontalOptions="Start"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0, 0, 20, 0"/>
+
 
             <customClasses:FontIcon x:Name="FolderIcon"
                                     Text="{Binding FolderIcon}"
                                     FontSize="14"
                                     FontFamily="Octicons"
                                     TextColor="Gray"
-                                    Grid.Column="3"
+                                    Grid.Column="2"
                                     Grid.Row="0"
                                     VerticalOptions="Center"
                                     HorizontalOptions="End"
@@ -100,7 +101,7 @@
                    Text="{Binding FoldersCount}"
                    FontSize="14"
                    TextColor="Black"
-                   Grid.Column="4"
+                   Grid.Column="3"
                    Grid.Row="0"
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
@@ -113,7 +114,7 @@
                                     FontSize="14"
                                     FontFamily="Octicons"
                                     TextColor="Gray"
-                                    Grid.Column="5"
+                                    Grid.Column="4"
                                     Grid.Row="0"
                                     VerticalOptions="Center"
                                     HorizontalOptions="End"
@@ -121,15 +122,16 @@
                                     IsVisible="{Binding IsFolder}"
                                     IsEnabled="{Binding IsFolder}"/>
 
+
             <Label x:Name="FilesCount"
                    Text="{Binding FilesCount}"
                    FontSize="14"
                    TextColor="Black"
-                   Grid.Column="6"
+                   Grid.Column="5"
                    Grid.Row="0"
-                   VerticalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0, 3, 10, 0"
+                   Margin="0, 3, 0, 0"
                    IsVisible="{Binding IsFolder}"
                    IsEnabled="{Binding IsFolder}"/>
 
@@ -137,17 +139,18 @@
                    Text="{Binding FileSize}"
                    FontSize="14"
                    TextColor="Black"
-                   Grid.Column="7"
+                   Grid.Column="6"
                    Grid.Row="0"
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0, 3, 10, 0"
+                   Margin="0, 3, 0, 0"
                    IsVisible="{Binding IsFile}"
-                   IsEnabled="{Binding IsFile}"/>
+                   IsEnabled="{Binding IsFile}"
+                   HeightRequest="16"/>
           </Grid>
         </DataTemplate>
       </controls:FlowListView.FlowColumnTemplate>
-    </controls:FlowListView> 
+    </controls:FlowListView>
 
     <Grid x:Name="BotPanel"
           VerticalOptions="End"
@@ -171,7 +174,7 @@
                Grid.Row="0"
                Grid.ColumnSpan="2"
                InputTransparent="True">
-        
+
       </BoxView>
 
       <customClasses:FontIcon x:Name="BranchIcon"
@@ -193,14 +196,15 @@
              Grid.Row="0"
              VerticalOptions="CenterAndExpand"
              HorizontalOptions="StartAndExpand"
-             InputTransparent="True"/>
+             InputTransparent="True"
+             LineBreakMode="TailTruncation"/>
 
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding BotPanelTapped}"
                               NumberOfTapsRequired="1"/>
       </Grid.GestureRecognizers>
-      
+
     </Grid>
 
-    </StackLayout>
+  </StackLayout>
 </ContentPage>

@@ -20,12 +20,16 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
+            
             //if User didn't exit from last session, then opens last session, otherwise opens start page
             //NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
             //? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
             //: $"{nameof(StartPage)}");
-
+            
+            //NavigationService.NavigateAsync(nameof(StartPage));
+            
             //NavigationService.NavigateAsync($"{nameof(RepositoryNewsPage)}");
+
             NavigationService.NavigateAsync($"{nameof(FileExplorerPage)}");
         }
 

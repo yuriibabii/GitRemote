@@ -61,8 +61,8 @@ namespace GitRemote.ViewModels
 
         public FileExplorerPageViewModel(INavigationService navigationService)
         {
-            //_manager = new FileExplorerManager("UniorDev", "GitRemote");
-            _manager = new FileExplorerManager("UniorDev", "ForkHub");
+            _manager = new FileExplorerManager("UniorDev", "GitRemote");
+            //_manager = new FileExplorerManager("UniorDev", "ForkHub");
             SetCurrentBranchTask = NotifyTask.Create(_manager.SetCurrentBranchAsync());
             SetCurrentBranchTask.TaskCompleted.ContinueWith(branchTask =>
             {
@@ -70,8 +70,8 @@ namespace GitRemote.ViewModels
                 SetTreeTask = NotifyTask.Create(_manager.SetTreeAsync());
                 SetTreeTask.TaskCompleted.ContinueWith(treeTask =>
                 {
-                    //FileTree = _manager.GetFiles("GitRemote/");
-                    FileTree = _manager.GetFiles("ForkHub/");
+                    FileTree = _manager.GetFiles("GitRemote/");
+                    //FileTree = _manager.GetFiles("ForkHub/");
                     OnPropertyChanged(nameof(FileTree));
                 });
             });
