@@ -29,8 +29,51 @@ namespace GitRemote.ViewModels
         {
             ListItemTapped = new DelegateCommand(OnListItemTapped);
             CancelButtonTapped = new DelegateCommand(OnCancelButtonTapped);
-            MessagingCenter.Subscribe<FileExplorerManager>(this, 
+
+            MessagingCenter.Subscribe<FileExplorerManager>(this,
                 ConstantsService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
+
+            MessagingCenter.Subscribe<CommitsManager>(this,
+                ConstantsService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
+        }
+
+
+        private async void OnSendManager(CommitsManager commitsManager)
+        {
+            var branchesTask = commitsManager.GetBranchesAsync();
+            var tagsTask = commitsManager.GetTagsAsync();
+            await Task.WhenAll(branchesTask, tagsTask);
+
+            Items = new ObservableCollection<SelectBranchPopUpModel>();
+            var index = 0;
+            var counter = 0;
+
+            foreach ( var branch in branchesTask.Result )
+            {
+                var model = new SelectBranchPopUpModel { Name = branch.Name, Type = "Branch", IsActivated = false };
+                if ( model.Name == commitsManager.CurrentBranch )
+                {
+                    index = counter;
+                    model.IsActivated = true;
+                }
+                Items.Add(model);
+                counter++;
+            }
+
+            foreach ( var tag in tagsTask.Result )
+            {
+                var model = new SelectBranchPopUpModel { Name = tag.Name, Type = "Tag", IsActivated = false };
+                if ( model.Name == commitsManager.CurrentBranch )
+                {
+                    index = counter;
+                    model.IsActivated = true;
+                }
+                Items.Add(model);
+                counter++;
+            }
+
+            OnPropertyChanged(nameof(Items));
+            MessagingCenter.Send(index.ToString(), ConstantsService.Messages.ScrollToActivatedBranchItem);
         }
 
         private async void OnSendManager(FileExplorerManager fileExplorerManager)
@@ -73,12 +116,14 @@ namespace GitRemote.ViewModels
 
         private async void OnCancelButtonTapped()
         {
+            MessagingCenter.Unsubscribe<CommitsManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
             MessagingCenter.Unsubscribe<FileExplorerManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
             await PopupNavigation.PopAsync();
         }
 
         private async void OnListItemTapped()
         {
+            MessagingCenter.Unsubscribe<CommitsManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
             MessagingCenter.Unsubscribe<FileExplorerManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
             MessagingCenter.Send(TappedItem, ConstantsService.Messages.TakeBranchModelFromPopUpPage);
             await PopupNavigation.PopAsync();

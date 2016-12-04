@@ -20,42 +20,45 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
-            
+
             //if User didn't exit from last session, then opens last session, otherwise opens start page
             //NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
             //? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
             //: $"{nameof(StartPage)}");
-            
+
             //NavigationService.NavigateAsync(nameof(StartPage));
-            
+
             //NavigationService.NavigateAsync($"{nameof(RepositoryNewsPage)}");
 
-            NavigationService.NavigateAsync($"{nameof(FileExplorerPage)}");
+            //NavigationService.NavigateAsync($"{nameof(FileExplorerPage)}");
+
+            NavigationService.NavigateAsync($"{nameof(CommitsPage)}");
         }
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<BookmarksPage, BookmarksPageViewModel>();
-            Container.RegisterTypeForNavigation<GistsPage, GistsPageViewModel>();
-            Container.RegisterTypeForNavigation<IssueDashboardPage, IssueDashboardPageViewModel>();
-            Container.RegisterTypeForNavigation<ReportAnIssuePage, ReportAnIssuePageViewModel>();
-            Container.RegisterTypeForNavigation<DetailPage, DetailPageViewModel>();
-            Container.RegisterTypeForNavigation<FollowPage, FollowPageViewModel>();
-            Container.RegisterTypeForNavigation<LoginingPage, LoginingPageViewModel>();
-            Container.RegisterTypeForNavigation<MasterPage, MasterPageViewModel>();
-            Container.RegisterTypeForNavigation<PrivateNewsPage, PrivateNewsPageViewModel>();
-            Container.RegisterTypeForNavigation<PrivateProfilePage, PrivateProfilePageViewModel>();
-            Container.RegisterTypeForNavigation<RepositoriesPage, RepositoriesPageViewModel>();
-            Container.RegisterTypeForNavigation<StarsPage, StarsPageViewModel>();
+            Container.RegisterTypeForNavigation<BookmarksPage>();
+            Container.RegisterTypeForNavigation<GistsPage>();
+            Container.RegisterTypeForNavigation<IssueDashboardPage>();
+            Container.RegisterTypeForNavigation<ReportAnIssuePage>();
+            Container.RegisterTypeForNavigation<DetailPage>();
+            Container.RegisterTypeForNavigation<FollowPage>();
+            Container.RegisterTypeForNavigation<LoginingPage>();
+            Container.RegisterTypeForNavigation<MasterPage>();
+            Container.RegisterTypeForNavigation<PrivateNewsPage>();
+            Container.RegisterTypeForNavigation<PrivateProfilePage>();
+            Container.RegisterTypeForNavigation<RepositoriesPage>();
+            Container.RegisterTypeForNavigation<StarsPage>();
             Container.RegisterTypeForNavigation<NavigationBarPage>();
-            Container.RegisterTypeForNavigation<StartPage, StartPageViewModel>();
-            Container.RegisterTypeForNavigation<ChooseUserPage, ChooseUserPageViewModel>();
-            Container.RegisterTypeForNavigation<TwoFactorAuthPage, TwoFactorAuthPageViewModel>();
-            Container.RegisterTypeForNavigation<NotificationsPage, NotificationsPageViewModel>();
-            Container.RegisterTypeForNavigation<GistsListPage, GistsListPageViewModel>();
+            Container.RegisterTypeForNavigation<StartPage>();
+            Container.RegisterTypeForNavigation<ChooseUserPage>();
+            Container.RegisterTypeForNavigation<TwoFactorAuthPage>();
+            Container.RegisterTypeForNavigation<NotificationsPage>();
+            Container.RegisterTypeForNavigation<GistsListPage>();
             Container.RegisterTypeForNavigation<RepositoryNewsPage>();
             Container.RegisterTypeForNavigation<FileExplorerPage>();
             Container.RegisterTypeForNavigation<SelectBranchPopUpPage>();
+            Container.RegisterTypeForNavigation<CommitsPage>();
         }
 
         protected override void OnSleep()
