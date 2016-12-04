@@ -1,5 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using Nito.Mvvm;
@@ -8,7 +9,6 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using GitRemote.GitHub.Managers;
 
 namespace GitRemote.ViewModels.MasterPageViews
 {
@@ -16,19 +16,19 @@ namespace GitRemote.ViewModels.MasterPageViews
     {
         private readonly INavigationService _navigationService;
         public NotifyTask<ObservableCollection<IssueModel>> Issues { get; set; }
-        private readonly IssuesManager _issuesManager;
+        private readonly IssueDashboardManager _issuesManager;
 
         public IssuesListPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
         {
-            if ( IssuesManager.IsGitHubClient == false )
+            if ( IssueDashboardManager.IsGitHubClient == false )
             {
                 var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
                 var session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
-                IssuesManager.SetGitHubClient(session);
+                IssueDashboardManager.SetGitHubClient(session);
             }
 
             _navigationService = navigationService;
-            _issuesManager = new IssuesManager();
+            _issuesManager = new IssueDashboardManager();
             Issues = NotifyTask.Create(GetIssuesAsync());
         }
 

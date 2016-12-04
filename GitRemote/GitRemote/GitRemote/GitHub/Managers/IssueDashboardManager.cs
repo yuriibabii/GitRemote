@@ -1,18 +1,18 @@
-﻿using System;
+﻿using GitRemote.Models;
+using GitRemote.Services;
+using Octokit;
+using Octokit.Internal;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using GitRemote.Models;
-using GitRemote.Services;
-using Octokit;
-using Octokit.Internal;
 using Xamarin.Forms;
 
 namespace GitRemote.GitHub.Managers
 {
-    public class IssuesManager
+    public class IssueDashboardManager
     {
         public static string Tab = "Watched";
         private static GitHubClient _gitHubClient;
@@ -74,6 +74,7 @@ namespace GitRemote.GitHub.Managers
                         ImageUrl = issue.User.AvatarUrl,
                         CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(issue.CreatedAt)),
                         Nomer = Convert.ToString(issue.Number),
+                        IsPullRequest = issue.PullRequest != null
                     };
 
                     CopyColors(issueModel.Labels, issue.Labels.Select(l => l.Color));

@@ -50,9 +50,10 @@
     <Compile Include="GitHub\Managers\FileExplorerManager.cs" />
     <Compile Include="GitHub\Managers\FollowManager.cs" />
     <Compile Include="GitHub\Managers\GistsManager.cs" />
-    <Compile Include="GitHub\Managers\IssuesManager.cs" />
+    <Compile Include="GitHub\Managers\IssueDashboardManager.cs" />
     <Compile Include="GitHub\Managers\NotificationsManager.cs" />
     <Compile Include="GitHub\Managers\PrivateNewsManager.cs" />
+    <Compile Include="GitHub\Managers\PublicIssuesManager.cs" />
     <Compile Include="GitHub\Managers\PublicNewsManager.cs" />
     <Compile Include="GitHub\Managers\RepositoriesManager.cs" />
     <Compile Include="GitHub\Managers\RepositoryNewsManager.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="ViewModels\PrivateNewsPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
     <Compile Include="ViewModels\PrivateProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PublicIssuesPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoryNewsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\SelectBranchPopUpPageViewModel.cs" />
@@ -122,6 +124,9 @@
     </Compile>
     <Compile Include="Views\MasterPageViews\IssuesListPage.xaml.cs">
       <DependentUpon>IssuesListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PublicIssuesPage.xaml.cs">
+      <DependentUpon>PublicIssuesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationBarPage.xaml.cs">
       <DependentUpon>NavigationBarPage.xaml</DependentUpon>
@@ -466,6 +471,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CommitsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PublicIssuesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -1,8 +1,4 @@
 ﻿using GitRemote.GitHub.Managers;
-using GitRemote.Services;
-using GitRemote.ViewModels;
-using GitRemote.ViewModels.Authentication;
-using GitRemote.ViewModels.MasterPageViews;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
@@ -32,7 +28,9 @@ namespace GitRemote
 
             //NavigationService.NavigateAsync($"{nameof(FileExplorerPage)}");
 
-            NavigationService.NavigateAsync($"{nameof(CommitsPage)}");
+            //NavigationService.NavigateAsync($"{nameof(CommitsPage)}");
+
+            NavigationService.NavigateAsync($"{nameof(PublicIssuesPage)}");
         }
 
         protected override void RegisterTypes()
@@ -59,6 +57,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<FileExplorerPage>();
             Container.RegisterTypeForNavigation<SelectBranchPopUpPage>();
             Container.RegisterTypeForNavigation<CommitsPage>();
+            Container.RegisterTypeForNavigation<PublicIssuesPage>();
         }
 
         protected override void OnSleep()
