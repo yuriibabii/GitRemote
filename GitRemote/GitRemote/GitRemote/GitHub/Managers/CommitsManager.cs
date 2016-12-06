@@ -14,8 +14,8 @@ namespace GitRemote.GitHub.Managers
         private readonly GitHubClient _gitHubClient;
         public string CurrentBranch { get; private set; }
         private Repository _currentRepo;
-        private readonly string _ownerName = string.Empty;
-        private readonly string _reposName = string.Empty;
+        private readonly string _ownerName;
+        private readonly string _reposName;
 
         public CommitsManager(Session session, string ownerName, string reposName)
         {

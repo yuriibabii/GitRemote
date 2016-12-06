@@ -55,6 +55,7 @@
     <Compile Include="GitHub\Managers\PrivateNewsManager.cs" />
     <Compile Include="GitHub\Managers\PublicIssuesManager.cs" />
     <Compile Include="GitHub\Managers\PublicNewsManager.cs" />
+    <Compile Include="GitHub\Managers\PullRequestsManager.cs" />
     <Compile Include="GitHub\Managers\RepositoriesManager.cs" />
     <Compile Include="GitHub\Managers\RepositoryNewsManager.cs" />
     <Compile Include="GitHub\Managers\StarredRepositoriesManager.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PrivateNewsModel.cs" />
     <Compile Include="Models\PublicNewsModel.cs" />
+    <Compile Include="Models\PullRequestModel.cs" />
     <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\RepositoryNewsModel.cs" />
     <Compile Include="Models\SelectBranchPopUpModel.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="ViewModels\Authentication\LoginingPageViewModel.cs" />
     <Compile Include="ViewModels\FileExplorerPageViewModel.cs" />
     <Compile Include="ViewModels\FollowPageViewModel.cs" />
+    <Compile Include="ViewModels\ForkedRepositoryPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\IssuesListPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\BookmarksPageViewModel.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="ViewModels\PrivateProfilePageViewModel.cs" />
     <Compile Include="ViewModels\PublicIssuesPageViewModel.cs" />
     <Compile Include="ViewModels\PublicRepositoryPageViewModel.cs" />
+    <Compile Include="ViewModels\PullRequestsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoryNewsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\SelectBranchPopUpPageViewModel.cs" />
@@ -120,6 +124,9 @@
     </Compile>
     <Compile Include="Views\FollowPage.xaml.cs">
       <DependentUpon>FollowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ForkedRepositoryPage.xaml.cs">
+      <DependentUpon>ForkedRepositoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterPageViews\GistsListPage.xaml.cs">
       <DependentUpon>GistsListPage.xaml</DependentUpon>
@@ -169,6 +176,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\PublicRepositoryPage.xaml.cs">
       <DependentUpon>PublicRepositoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PullRequestsPage.xaml.cs">
+      <DependentUpon>PullRequestsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RepositoryNewsPage.xaml.cs">
       <DependentUpon>RepositoryNewsPage.xaml</DependentUpon>
@@ -488,6 +498,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PublicRepositoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PullRequestsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ForkedRepositoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

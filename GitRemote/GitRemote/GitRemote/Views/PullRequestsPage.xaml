@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="GitRemote.Views.MasterPageViews.IssuesListPage">
+             x:Class="GitRemote.Views.PullRequestsPage">
 
-  <controls:FlowListView x:Name="IssuesList"
+   <controls:FlowListView x:Name="IssuesList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Issues.Result}"
+                         FlowItemsSource="{Binding PullRequests}"
                          HasUnevenRows="True"
                          FlowColumnCount="1">
 
@@ -20,7 +20,7 @@
       <DataTemplate>
         <Grid VerticalOptions="Start"
               HorizontalOptions="FillAndExpand"
-              Margin="0, 15, 0, 20"
+              Margin="0, 15, 5, 15"
               ColumnSpacing="0"
               RowSpacing="5">
           <Grid.ColumnDefinitions>
@@ -35,7 +35,6 @@
 
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
           </Grid.RowDefinitions>
@@ -46,7 +45,7 @@
                    Grid.Column="0"
                    Grid.Row="0"
                    Margin="0, 0, 15, 0"/>
-          
+
           <Label Text="{Binding Nomer}"
                  FontSize="12"
                  TextColor="Black"
@@ -55,54 +54,6 @@
                  Grid.Column="0"
                  Grid.Row="0"
                  Margin="0, 0, 15, 0"/>
-          
-          <StackLayout x:Name="Stack"
-                       Grid.Column="0"
-                       Grid.Row="1"
-                       Grid.RowSpan="2"
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       Spacing="3"
-                       Margin="0, 0, 15, 0">
-
-            <BoxView BackgroundColor="{Binding Labels[0]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-            <BoxView BackgroundColor="{Binding Labels[1]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-            <BoxView BackgroundColor="{Binding Labels[2]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-            <BoxView BackgroundColor="{Binding Labels[3]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-            <BoxView BackgroundColor="{Binding Labels[4]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-            <BoxView BackgroundColor="{Binding Labels[5]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-            <BoxView BackgroundColor="{Binding Labels[6]}"
-                     HorizontalOptions="FillAndExpand"
-                     HeightRequest="2"/>
-
-          </StackLayout>
-
-          <Label x:Name="ReposPath"
-                 FormattedText="{Binding Repository}"
-                 TextColor="Gray"
-                 FontSize="14"
-                 LineBreakMode="TailTruncation"
-                 Grid.Column="1"
-                 Grid.Row="0"
-                 Grid.ColumnSpan="6"/>
 
           <Label x:Name="Title"
                  FormattedText="{Binding Title}"
@@ -120,7 +71,7 @@
             HeightRequest="25"
             WidthRequest="25"
             Grid.Column="1"
-            Grid.Row="2"
+            Grid.Row="1"
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand"
             CacheDuration = "5"
@@ -134,8 +85,6 @@
 
           </forms:CachedImage>
 
-
-
           <Label x:Name="OwnerName"
                  FormattedText="{Binding OwnerName}"
                  TextColor="Gray"
@@ -143,7 +92,7 @@
                  FontSize="14"
                  LineBreakMode="TailTruncation"
                  Grid.Column="2"
-                 Grid.Row="2"
+                 Grid.Row="1"
                  VerticalOptions="CenterAndExpand"
                  HorizontalOptions="Start"/>
 
@@ -153,7 +102,7 @@
                  FontSize="14"
                  LineBreakMode="TailTruncation"
                  Grid.Column="3"
-                 Grid.Row="2"
+                 Grid.Row="1"
                  VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Margin="10, 0, 5, 0"/>
@@ -164,19 +113,18 @@
                                   FontSize="12"
                                   FontFamily="Octicons"
                                   Grid.Column="4"
-                                  Grid.Row="2"
+                                  Grid.Row="1"
                                   VerticalOptions="Center"
                                   HorizontalOptions="End"
-                                  Margin="0, 5, 0, 0"
-                                  Opacity="{Binding PullRequestOpacity}"/>
-          
+                                  Margin="0, 5, 0, 0"/>
+
           <customClasses:FontIcon x:Name="CommentFontIcon"
                                   Text="{Binding CommentFontIcon}"
                                   TextColor="Gray"
                                   FontSize="12"
                                   FontFamily="Octicons"
                                   Grid.Column="5"
-                                  Grid.Row="2"
+                                  Grid.Row="1"
                                   VerticalOptions="Center"
                                   HorizontalOptions="End"
                                   Margin="0, 5, 0, 0"
@@ -187,7 +135,7 @@
                  FontSize="12"
                  TextColor="#A8A8A8"
                  Grid.Column="6"
-                 Grid.Row="2"
+                 Grid.Row="1"
                  VerticalOptions="Center"
                  HorizontalOptions="CenterAndExpand"
                  Margin="0, 3, 0, 0"
@@ -199,5 +147,5 @@
 
 
   </controls:FlowListView>
-
+  
 </ContentPage>

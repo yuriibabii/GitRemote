@@ -15,8 +15,8 @@ namespace GitRemote.GitHub.Managers
     public class PublicIssuesManager
     {
         private readonly GitHubClient _gitHubClient;
-        private readonly string _ownerName = string.Empty;
-        private readonly string _reposName = string.Empty;
+        private readonly string _ownerName;
+        private readonly string _reposName;
 
         public PublicIssuesManager(Session session, string ownerName, string reposName)
         {

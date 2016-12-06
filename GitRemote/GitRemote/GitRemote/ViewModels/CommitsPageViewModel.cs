@@ -1,5 +1,4 @@
-﻿using GitRemote.DI;
-using GitRemote.GitHub.Managers;
+﻿using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
@@ -38,7 +37,7 @@ namespace GitRemote.ViewModels
 
         private string _currentBranch = string.Empty;
 
-        public CommitsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        public CommitsPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 

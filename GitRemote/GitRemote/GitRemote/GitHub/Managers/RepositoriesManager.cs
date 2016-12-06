@@ -1,13 +1,13 @@
-﻿using System;
+﻿using GitRemote.Models;
+using GitRemote.Services;
+using Octokit;
+using Octokit.Internal;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using GitRemote.Models;
-using GitRemote.Services;
-using Octokit;
-using Octokit.Internal;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -37,8 +37,9 @@ namespace GitRemote.GitHub.Managers
                 {
                     var repos = new RepositoryModel
                     {
-                        RepositoryTypeIcon = GetRepositoryTypeIcon(repository),
                         RepositoryName = repository.Name,
+                        RepositoryType = GetRepositoryType(repository),
+                        OwnerName = repository.Owner.Login,
                         RepositoryDescription = repository.Description,
                         IsDescription = !string.IsNullOrEmpty(repository.Description),
                         RepositoryLanguage = repository.Language ?? " ",
@@ -52,7 +53,7 @@ namespace GitRemote.GitHub.Managers
                 }
 
                 var groupedGitRemoteRepos = from model in gitRemoteRepos //foreach rep
-                                            orderby model.RepositoryName // sort by OwnerName
+                                            orderby model.RepositoryName // sort by RepoName
                                             group model by Convert.ToString(model.RepositoryName[0]).ToUpper() into modelGroup //Save each group and its key
                                             select new GroupingModel<string, RepositoryModel>(modelGroup.Key.ToUpper(), modelGroup); //Convert it to collection
 
@@ -68,17 +69,11 @@ namespace GitRemote.GitHub.Managers
             }
         }
 
-        /// <summary>
-        /// Decides what is repos type and return Icon for it
-        /// </summary>
-        /// <param name="repos">Repository</param>
-        /// <returns>Octicon FontIcon code</returns>
-        private string GetRepositoryTypeIcon(Repository repos)
+        private string GetRepositoryType(Repository repos)
         {
-            return repos.Fork ? FontIconsService.Octicons.RepoForked
-                              : ( repos.Private ? FontIconsService.Octicons.Lock
-                                                : FontIconsService.Octicons.Repo );
-
+            return repos.Fork ? "Fork"
+                              : ( repos.Private ? "Private"
+                                                : "Public" );
         }
 
     }
