@@ -15,17 +15,21 @@ namespace GitRemote.GitHub.Managers
     public class RepositoryNewsManager
     {
         private readonly Session _session;
+        private readonly string _ownerName;
+        private readonly string _reposName;
 
-        public RepositoryNewsManager(Session session)
+        public RepositoryNewsManager(Session session, string ownerName, string reposName)
         {
             _session = session;
+            _ownerName = ownerName;
+            _reposName = reposName;
         }
 
-        public async Task<IEnumerable<RepositoryNewsModel>> GetRepositoryNews(string login, string reposName)
+        public async Task<IEnumerable<RepositoryNewsModel>> GetRepositoryNews()
         {
             try
             {
-                var gitHubReposNewsItems = await GetRepositoryNewsItems(login, reposName);
+                var gitHubReposNewsItems = await GetRepositoryNewsItems(_ownerName, _reposName);
 
                 var gitRemoteNewsItems = new List<RepositoryNewsModel>();
 

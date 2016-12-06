@@ -12,7 +12,7 @@
   <controls:FlowListView x:Name="NewsList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding News.Result}"
+                         FlowItemsSource="{Binding News}"
                          HasUnevenRows="True"
                          FlowColumnCount="1"
                          Margin="15, 0, 0, 0">

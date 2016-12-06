@@ -1,7 +1,6 @@
 ﻿using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
-using Nito.Mvvm;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
@@ -15,7 +14,7 @@ namespace GitRemote.ViewModels
     public class RepositoryNewsPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
-        public NotifyTask<ObservableCollection<RepositoryNewsModel>> News { get; set; }
+        public ObservableCollection<RepositoryNewsModel> News { get; set; }
         private RepositoryNewsManager _manager;
         public GridLength ColumnWidth { get; set; }
 
@@ -32,24 +31,23 @@ namespace GitRemote.ViewModels
                 (this, SendDataToPublicReposParticularPages, OnDataReceived);
         }
 
-        private void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
+        private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
         {
-            var session = data.Session;
-            _manager = new RepositoryNewsManager(session);
+            _manager = new RepositoryNewsManager(data.Session, data.OwnerName, data.ReposName);
 
             var ownerName = data.OwnerName;
             var reposName = data.ReposName;
 
-            News = NotifyTask.Create(GetRepositoryNewsAsync(ownerName, reposName));
+            News = await GetRepositoryNewsAsync();
             OnPropertyChanged(nameof(News));
             MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages);
         }
 
-        private async Task<ObservableCollection<RepositoryNewsModel>> GetRepositoryNewsAsync(string login, string reposName)
+        private async Task<ObservableCollection<RepositoryNewsModel>> GetRepositoryNewsAsync()
         {
             return new ObservableCollection<RepositoryNewsModel>
-                (await _manager.GetRepositoryNews(login, reposName));
+                (await _manager.GetRepositoryNews());
         }
 
     }
