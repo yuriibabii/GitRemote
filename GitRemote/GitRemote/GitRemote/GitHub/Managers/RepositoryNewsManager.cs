@@ -2,6 +2,7 @@
 using GitRemote.Services;
 using Newtonsoft.Json.Linq;
 using RestSharp.Portable;
+using RestSharp.Portable.Authenticators;
 using RestSharp.Portable.HttpClient;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,13 @@ namespace GitRemote.GitHub.Managers
 {
     public class RepositoryNewsManager
     {
+        private readonly Session _session;
+
+        public RepositoryNewsManager(Session session)
+        {
+            _session = session;
+        }
+
         public async Task<IEnumerable<RepositoryNewsModel>> GetRepositoryNews(string login, string reposName)
         {
             try
@@ -50,10 +58,17 @@ namespace GitRemote.GitHub.Managers
 
         private async Task<JArray> GetRepositoryNewsItems(string login, string reposName)
         {
-            using ( var client = new RestClient(ConstantsService.GitHubApiLink) )
+            var client = new RestClient(ConstantsService.GitHubApiLink)
+            {
+                Authenticator = new HttpBasicAuthenticator
+                    (new NetworkCredential(_session.Login, _session.GetToken()), AuthHeader.Www)
+            };
+
+            using ( client )
             {
                 var request = new RestRequest($"/repos/{login}/{reposName}/events", Method.GET)
                 {
+
                     Serializer = { ContentType = "application/json" }
                 };
 

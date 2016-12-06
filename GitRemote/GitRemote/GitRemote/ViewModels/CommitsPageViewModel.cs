@@ -62,7 +62,7 @@ namespace GitRemote.ViewModels
             });
 
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
-            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, ConstantsService.Messages.TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, MessageService.Messages.TakeBranchModelFromPopUpPage, OnBranchSelected);
         }
 
         private void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
@@ -78,7 +78,7 @@ namespace GitRemote.ViewModels
         private void OnBotPanelTapped()
         {
             PopupNavigation.PushAsync(new SelectBranchPopUpPage());
-            MessagingCenter.Send(_commitsManager, ConstantsService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Send(_commitsManager, MessageService.Messages.SendManagerToBranchPopUpPage);
         }
 
         private async Task<ObservableCollection<CommitModel>> GetCommitsAsync()
@@ -89,7 +89,7 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, ConstantsService.Messages.TakeBranchModelFromPopUpPage);
+            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, MessageService.Messages.TakeBranchModelFromPopUpPage);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)

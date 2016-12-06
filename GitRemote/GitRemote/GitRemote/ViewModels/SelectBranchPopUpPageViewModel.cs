@@ -31,10 +31,10 @@ namespace GitRemote.ViewModels
             CancelButtonTapped = new DelegateCommand(OnCancelButtonTapped);
 
             MessagingCenter.Subscribe<FileExplorerManager>(this,
-                ConstantsService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
+                MessageService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
 
             MessagingCenter.Subscribe<CommitsManager>(this,
-                ConstantsService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
+                MessageService.Messages.SendManagerToBranchPopUpPage, OnSendManager);
         }
 
 
@@ -73,7 +73,7 @@ namespace GitRemote.ViewModels
             }
 
             OnPropertyChanged(nameof(Items));
-            MessagingCenter.Send(index.ToString(), ConstantsService.Messages.ScrollToActivatedBranchItem);
+            MessagingCenter.Send(index.ToString(), MessageService.Messages.ScrollToActivatedBranchItem);
         }
 
         private async void OnSendManager(FileExplorerManager fileExplorerManager)
@@ -111,21 +111,21 @@ namespace GitRemote.ViewModels
             }
 
             OnPropertyChanged(nameof(Items));
-            MessagingCenter.Send(index.ToString(), ConstantsService.Messages.ScrollToActivatedBranchItem);
+            MessagingCenter.Send(index.ToString(), MessageService.Messages.ScrollToActivatedBranchItem);
         }
 
         private async void OnCancelButtonTapped()
         {
-            MessagingCenter.Unsubscribe<CommitsManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
-            MessagingCenter.Unsubscribe<FileExplorerManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Unsubscribe<CommitsManager>(this, MessageService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Unsubscribe<FileExplorerManager>(this, MessageService.Messages.SendManagerToBranchPopUpPage);
             await PopupNavigation.PopAsync();
         }
 
         private async void OnListItemTapped()
         {
-            MessagingCenter.Unsubscribe<CommitsManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
-            MessagingCenter.Unsubscribe<FileExplorerManager>(this, ConstantsService.Messages.SendManagerToBranchPopUpPage);
-            MessagingCenter.Send(TappedItem, ConstantsService.Messages.TakeBranchModelFromPopUpPage);
+            MessagingCenter.Unsubscribe<CommitsManager>(this, MessageService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Unsubscribe<FileExplorerManager>(this, MessageService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Send(TappedItem, MessageService.Messages.TakeBranchModelFromPopUpPage);
             await PopupNavigation.PopAsync();
         }
     }

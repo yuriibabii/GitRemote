@@ -4,7 +4,6 @@ using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
-using Nito.Mvvm;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -13,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using static GitRemote.Services.MessageService.MessageModels;
+using static GitRemote.Services.MessageService.Messages;
 using static System.String;
 
 namespace GitRemote.ViewModels
@@ -45,9 +46,7 @@ namespace GitRemote.ViewModels
 
         #region Fields
         private readonly INavigationService _navigationService;
-        public NotifyTask SetCurrentBranchTask;
-        public NotifyTask SetTreeTask;
-        private readonly FileExplorerManager _manager;
+        private FileExplorerManager _manager;
         private Grid _pathPartsGrid;
         private bool _pathPartsGridIsVisible;
         private readonly List<bool> _layoutIsFull = new List<bool>();
@@ -57,31 +56,41 @@ namespace GitRemote.ViewModels
         private readonly Color _hyperLinkColor = Color.FromHex("3366BB");
         private string _currentSourceType = "Branch";
         private string _currentBranch = Empty;
+        private string _reposName = Empty;
         #endregion
 
         public FileExplorerPageViewModel(INavigationService navigationService)
         {
-            //_manager = new FileExplorerManager("UniorDev", "GitRemote");
-            _manager = new FileExplorerManager("UniorDev", "ForkHub");
-            SetCurrentBranchTask = NotifyTask.Create(_manager.SetCurrentBranchAsync());
-            SetCurrentBranchTask.TaskCompleted.ContinueWith(branchTask =>
-            {
-                CurrentBranch = _manager.CurrentBranch;
-                SetTreeTask = NotifyTask.Create(_manager.SetTreeAsync());
-                SetTreeTask.TaskCompleted.ContinueWith(treeTask =>
-                {
-                    //FileTree = _manager.GetFiles("GitRemote/");
-                    FileTree = _manager.GetFiles("ForkHub/");
-                    OnPropertyChanged(nameof(FileTree));
-                });
-            });
-
             _navigationService = navigationService;
             ListItemTappedCommand = new DelegateCommand(OnListItemTapped);
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
-            MessagingCenter.Subscribe<string>(this, ConstantsService.Messages.HardwareBackPressed, OnHardwareBackPressed);
-            MessagingCenter.Subscribe<Grid>(this, ConstantsService.Messages.TakePathPartsGrid, SetPathPartsGrid);
-            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, ConstantsService.Messages.TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<string>(this, PublicReposCurrentTabChanged, OnTabChanged);
+            MessagingCenter.Subscribe<Grid>(this, TakePathPartsGrid, SetPathPartsGrid);
+            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>(this, SendDataToPublicReposParticularPages, OnDataReceived);
+        }
+
+        private void OnTabChanged(string s)
+        {
+            if ( s == "Code" )
+                MessagingCenter.Subscribe<string>(this, HardwareBackPressed, OnHardwareBackPressed);
+            else
+                MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
+        }
+
+        private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
+        {
+            _manager = new FileExplorerManager(data.Session, data.OwnerName, data.ReposName);
+            _reposName = data.ReposName;
+            ( ( HyperLinkLabel )( ( StackLayout )_pathPartsGrid.Children[1] ).Children[0] ).Text = _reposName;
+            await _manager.SetCurrentBranchAsync();
+            CurrentBranch = _manager.CurrentBranch;
+            await _manager.SetTreeAsync();
+            FileTree = _manager.GetFiles(data.ReposName + '/');
+            OnPropertyChanged(nameof(FileTree));
+
+            MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
+                (this, SendDataToPublicReposParticularPages);
         }
 
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
@@ -97,7 +106,7 @@ namespace GitRemote.ViewModels
             _layoutIsFull.RemoveAll(el => true);
             _partsCount = 0;
             await treeTask;
-            FileTree = _manager.GetFiles("ForkHub/");
+            FileTree = _manager.GetFiles(_reposName + '/');
             OnPropertyChanged(nameof(FileTree));
             SetPathPartsGrid(_pathPartsGrid);
         }
@@ -105,7 +114,7 @@ namespace GitRemote.ViewModels
         private void OnBotPanelTapped()
         {
             PopupNavigation.PushAsync(new SelectBranchPopUpPage());
-            MessagingCenter.Send(_manager, ConstantsService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Send(_manager, SendManagerToBranchPopUpPage);
         }
 
         private void SetPathPartsGrid(Grid grid)
@@ -131,7 +140,7 @@ namespace GitRemote.ViewModels
 
             var pathPart = new HyperLinkLabel
             {
-                Text = "GitRemote",
+                Text = _reposName,
                 FontSize = 16,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -317,6 +326,7 @@ namespace GitRemote.ViewModels
         {
             if ( _manager.PopUpExplorer() ) // if there is something to PopUp
             {
+                MessagingCenter.Send("false", SetIsExecuteHardwareBack);
                 FileTree = _manager.GetFiles(Empty);
                 OnPropertyChanged(nameof(FileTree));
                 _partsCount--;
@@ -365,11 +375,9 @@ namespace GitRemote.ViewModels
             }
             else
             {
-                MessagingCenter.Send("JustIgnore", ConstantsService.Messages.PressHardwareBack);
-
-                MessagingCenter.Unsubscribe<string>(this, ConstantsService.Messages.HardwareBackPressed);
-                MessagingCenter.Unsubscribe<Grid>(this, ConstantsService.Messages.TakePathPartsGrid);
-                MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, ConstantsService.Messages.TakeBranchModelFromPopUpPage);
+                MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
+                MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
+                MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
             }
         }
 
@@ -383,9 +391,9 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            MessagingCenter.Unsubscribe<string>(this, ConstantsService.Messages.HardwareBackPressed);
-            MessagingCenter.Unsubscribe<Grid>(this, ConstantsService.Messages.TakePathPartsGrid);
-            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, ConstantsService.Messages.TakeBranchModelFromPopUpPage);
+            MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
+            MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
+            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
         }
     }
 }

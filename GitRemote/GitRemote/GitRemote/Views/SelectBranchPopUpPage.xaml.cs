@@ -11,14 +11,14 @@ namespace GitRemote.Views
         public SelectBranchPopUpPage()
         {
             InitializeComponent();
-            MessagingCenter.Subscribe<string>(this, ConstantsService.Messages.ScrollToActivatedBranchItem, ScrollToElement);
+            MessagingCenter.Subscribe<string>(this, MessageService.Messages.ScrollToActivatedBranchItem, ScrollToElement);
         }
 
         private void ScrollToElement(string index)
         {
             _index = Convert.ToInt32(index);
             BranchesAndTagsList.FlowItemAppearing += Scroll;
-            MessagingCenter.Unsubscribe<string>(this, ConstantsService.Messages.ScrollToActivatedBranchItem);
+            MessagingCenter.Unsubscribe<string>(this, MessageService.Messages.ScrollToActivatedBranchItem);
         }
 
         private void Scroll(object sender, ItemVisibilityEventArgs args)

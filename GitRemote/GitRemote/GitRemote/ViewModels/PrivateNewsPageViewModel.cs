@@ -3,7 +3,9 @@ using GitRemote.GitHub;
 using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
+using GitRemote.Views;
 using Nito.Mvvm;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
@@ -19,12 +21,14 @@ namespace GitRemote.ViewModels
         private readonly Session _session;
         public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
-
         public GridLength ColumnWidth { get; set; }
+        public DelegateCommand ItemTappedCommand { get; }
+        public PrivateNewsModel TappedItem { get; set; }
 
         public PrivateNewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
         {
             _navigationService = navigationService;
+            ItemTappedCommand = new DelegateCommand(OnItemTapped);
 
             var store = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
 
@@ -42,6 +46,28 @@ namespace GitRemote.ViewModels
                 ? App.ScreenWidth - ConstantsService.OtherWidth
                 : ConstantsService.MaxNormalWidthForTitle);
 
+        }
+
+        private void OnItemTapped()
+        {
+            var splited = TappedItem.Target.Split('/');
+
+            var ownerName = TappedItem.ActionType == "forked"
+                ? TappedItem.Perfomer
+                : splited[0];
+
+            var reposName = splited[1];
+
+            //Missing issue view page implementation//
+
+            var parameters = new NavigationParameters
+            {
+                { "OwnerName", ownerName},
+                { "ReposName", reposName},
+                { "Session", _session}
+            };
+
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}", parameters);
         }
 
         private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()

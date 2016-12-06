@@ -6,7 +6,7 @@
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FileExplorerPage">
-  <StackLayout Spacing="5">
+  <StackLayout Spacing="0">
     <Grid x:Name="PathParts"
           VerticalOptions="Start"
           HorizontalOptions="FillAndExpand"
@@ -14,7 +14,7 @@
           RowSpacing="0"
           IsVisible="{Binding PathPartsGridIsVisible}"
           IsEnabled="{Binding PathPartsGridIsVisible}"
-          Margin="5, 5, 0, 0">
+          Margin="10, 5, 0, 5">
 
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="40"/>

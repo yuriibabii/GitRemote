@@ -18,14 +18,5 @@ namespace GitRemote.Services
         public const int OtherWidth = 95;
         public const string GitHubApiLink = "https://api.github.com";
 
-        public static class Messages
-        {
-            public const string HardwareBackPressed = "HardwareBackPressed";
-            public const string PressHardwareBack = "PressHardwareBack";
-            public const string TakePathPartsGrid = "TakePathPartsGrid";
-            public const string TakeBranchModelFromPopUpPage = "TakeBranchModelFromPopUpPage";
-            public const string SendManagerToBranchPopUpPage = "SendManagerToBranchPopUpPage";
-            public const string ScrollToActivatedBranchItem = "ScrollToActivatedBranchItem";
-        }
     }
 }

@@ -8,7 +8,7 @@ namespace GitRemote.Views
         public FileExplorerPage()
         {
             InitializeComponent();
-            MessagingCenter.Send(PathParts, ConstantsService.Messages.TakePathPartsGrid);
+            MessagingCenter.Send(PathParts, MessageService.Messages.TakePathPartsGrid);
         }
     }
 }

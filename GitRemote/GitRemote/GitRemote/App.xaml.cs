@@ -1,4 +1,5 @@
 ﻿using GitRemote.GitHub.Managers;
+using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
 using Prism.Unity;
@@ -18,9 +19,9 @@ namespace GitRemote
             InitializeComponent();
 
             //if User didn't exit from last session, then opens last session, otherwise opens start page
-            //NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-            //? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
-            //: $"{nameof(StartPage)}");
+            NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
+            ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+            : $"{nameof(StartPage)}");
 
             //NavigationService.NavigateAsync(nameof(StartPage));
 
@@ -30,7 +31,7 @@ namespace GitRemote
 
             //NavigationService.NavigateAsync($"{nameof(CommitsPage)}");
 
-            NavigationService.NavigateAsync($"{nameof(PublicIssuesPage)}");
+            //NavigationService.NavigateAsync($"{nameof(PublicIssuesPage)}");
         }
 
         protected override void RegisterTypes()
@@ -58,6 +59,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<SelectBranchPopUpPage>();
             Container.RegisterTypeForNavigation<CommitsPage>();
             Container.RegisterTypeForNavigation<PublicIssuesPage>();
+            Container.RegisterTypeForNavigation<PublicRepositoryPage>();
         }
 
         protected override void OnSleep()

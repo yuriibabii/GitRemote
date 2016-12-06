@@ -23,12 +23,12 @@ namespace GitRemote.GitHub.Managers
         private readonly List<string> _currentPath;
         private List<Dictionary<string, List<FileExplorerModel>>> _tree;
 
-        public FileExplorerManager(string login, string reposName)
+        public FileExplorerManager(Session session, string login, string reposName)
         {
             _restClient = new RestClient(ConstantsService.GitHubApiLink)
             {
                 Authenticator = new HttpBasicAuthenticator
-                    (new NetworkCredential("UniorDev", "token"), AuthHeader.Www)
+                    (new NetworkCredential(session.Login, session.GetToken()), AuthHeader.Www)
             };
 
             _login = login;
@@ -113,6 +113,7 @@ namespace GitRemote.GitHub.Managers
                 foreach ( var element in jsonTree )
                 {
                     var fileType = element["type"].ToString();
+                    if (fileType == "commit") continue;
 
                     fileType = fileType == "blob" ? "file" : "dir";
 
