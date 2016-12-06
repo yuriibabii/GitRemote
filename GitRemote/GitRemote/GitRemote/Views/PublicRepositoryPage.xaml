@@ -6,12 +6,11 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="GitRemote.Views.PublicRepositoryPage"
             >
-<!--CurrentPage="{Binding CurrentTabPage, Mode=OneWayToSource}"-->
-  
+  <!--CurrentPage="{Binding CurrentTabPage, Mode=OneWayToSource}"-->
+
   <views:RepositoryNewsPage Title="News"/>
   <views:FileExplorerPage Title="Code"/>
   <views:CommitsPage Title="Commits"/>
+  <views:PublicIssuesPage Title="Issues"/>
 
-  <!--<views:PublicIssuesPage/>-->
-  
 </TabbedPage>

@@ -1,39 +1,47 @@
 ﻿using GitRemote.DI;
-using GitRemote.GitHub;
 using GitRemote.GitHub.Managers;
 using GitRemote.Models;
-using GitRemote.Services;
-using Nito.Mvvm;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using static GitRemote.Services.MessageService;
+using static GitRemote.Services.MessageService.MessageModels;
 
 namespace GitRemote.ViewModels
 {
-    public class PublicIssuesPageViewModel
+    public class PublicIssuesPageViewModel : BindableBase
     {
         private readonly INavigationService _navigationService;
-        public NotifyTask<ObservableCollection<IssueModel>> Issues { get; set; }
-        private readonly PublicIssuesManager _publicIssuesManager;
+        public ObservableCollection<IssueModel> Issues { get; set; }
+        private PublicIssuesManager _manager;
 
         public PublicIssuesPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
         {
             _navigationService = navigationService;
-            var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
-            var session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
-            _publicIssuesManager = new PublicIssuesManager(session);
-            Issues = NotifyTask.Create(GetPublicIssuesAsync("gitrem2", "NormalRepos"));
+
+
+
+            MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
+                (this, Messages.SendDataToPublicReposParticularPages, OnDataReceived);
+        }
+
+        private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
+        {
+            _manager = new PublicIssuesManager(data.Session, data.OwnerName, data.ReposName);
+            Issues = await GetPublicIssuesAsync();
+            OnPropertyChanged(nameof(Issues));
         }
 
         /// <summary>
         /// "Converts" task to observ collection
         /// </summary>
         /// <returns>Collection of issues</returns>
-        private async Task<ObservableCollection<IssueModel>> GetPublicIssuesAsync(string ownerName, string reposName)
+        private async Task<ObservableCollection<IssueModel>> GetPublicIssuesAsync()
         {
             return new ObservableCollection<IssueModel>
-                (await _publicIssuesManager.GetPublicIssuesAsync(ownerName, reposName));
+                (await _manager.GetPublicIssuesAsync());
         }
     }
 }

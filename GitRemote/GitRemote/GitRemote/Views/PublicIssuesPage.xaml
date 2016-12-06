@@ -12,16 +12,15 @@
   <controls:FlowListView x:Name="IssuesList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Issues.Result}"
+                         FlowItemsSource="{Binding Issues}"
                          HasUnevenRows="True"
-                         FlowColumnCount="1"
-                         Margin="0, 10, 0, 0">
+                         FlowColumnCount="1">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
         <Grid VerticalOptions="Start"
               HorizontalOptions="FillAndExpand"
-              Margin="0, 0, 5, 20"
+              Margin="0, 10, 5, 20"
               ColumnSpacing="0"
               RowSpacing="5">
           <Grid.ColumnDefinitions>

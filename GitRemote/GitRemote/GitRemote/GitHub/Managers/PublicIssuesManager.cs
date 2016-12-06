@@ -15,14 +15,18 @@ namespace GitRemote.GitHub.Managers
     public class PublicIssuesManager
     {
         private readonly GitHubClient _gitHubClient;
+        private readonly string _ownerName = string.Empty;
+        private readonly string _reposName = string.Empty;
 
-        public PublicIssuesManager(Session session)
+        public PublicIssuesManager(Session session, string ownerName, string reposName)
         {
             _gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
                    new InMemoryCredentialStore(new Credentials(session?.GetToken())));
+            _ownerName = ownerName;
+            _reposName = reposName;
         }
 
-        public async Task<IEnumerable<IssueModel>> GetPublicIssuesAsync(string ownerName, string reposName)
+        public async Task<IEnumerable<IssueModel>> GetPublicIssuesAsync()
         {
             try
             {
@@ -35,7 +39,7 @@ namespace GitRemote.GitHub.Managers
 
                 var options = new ApiOptions { PageCount = 1, PageSize = 30 };
 
-                var gitHubPublicIssues = await _gitHubClient.Issue.GetAllForRepository(ownerName, reposName, request, options);
+                var gitHubPublicIssues = await _gitHubClient.Issue.GetAllForRepository(_ownerName, _reposName, request, options);
 
                 var gitRemotePublicIssues = new List<IssueModel>();
 
