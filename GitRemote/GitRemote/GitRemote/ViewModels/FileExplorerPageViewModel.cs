@@ -67,7 +67,8 @@ namespace GitRemote.ViewModels
             MessagingCenter.Subscribe<string>(this, PublicReposCurrentTabChanged, OnTabChanged);
             MessagingCenter.Subscribe<Grid>(this, TakePathPartsGrid, SetPathPartsGrid);
             MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
-            MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>(this, SendDataToPublicReposParticularPages, OnDataReceived);
+            MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
+                (this, SendDataToPublicReposParticularPages, OnDataReceived);
         }
 
         private void OnTabChanged(string s)

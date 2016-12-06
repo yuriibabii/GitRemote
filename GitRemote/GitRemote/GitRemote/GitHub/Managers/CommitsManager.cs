@@ -14,16 +14,20 @@ namespace GitRemote.GitHub.Managers
         private readonly GitHubClient _gitHubClient;
         public string CurrentBranch { get; private set; }
         private Repository _currentRepo;
+        private readonly string _ownerName = string.Empty;
+        private readonly string _reposName = string.Empty;
 
-        public CommitsManager(Session session)
+        public CommitsManager(Session session, string ownerName, string reposName)
         {
             _gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
                 new InMemoryCredentialStore(new Credentials(session.GetToken())));
+            _ownerName = ownerName;
+            _reposName = reposName;
         }
 
-        public async Task SetCurrentRepo(string repoOwner, string repoName)
+        public async Task SetCurrentRepo()
         {
-            _currentRepo = await _gitHubClient.Repository.Get(repoOwner, repoName);
+            _currentRepo = await _gitHubClient.Repository.Get(_ownerName, _reposName);
         }
 
         public void SetCurrentBranch(string branch)

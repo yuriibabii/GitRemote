@@ -1,5 +1,4 @@
 ﻿using GitRemote.DI;
-using GitRemote.GitHub;
 using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
@@ -10,19 +9,19 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static GitRemote.Services.MessageService.MessageModels;
+using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.ViewModels
 {
     public class CommitsPageViewModel : BindableBase, INavigationAware
     {
         private INavigationService _navigationService;
-        private readonly Session _session;
+        private CommitsManager _manager;
         public DelegateCommand BotPanelTapped { get; }
-        public NotifyTask<ObservableCollection<CommitModel>> Commits { get; set; }
-        private readonly CommitsManager _commitsManager;
+        public ObservableCollection<CommitModel> Commits { get; set; }
         public string BranchIcon => _currentSourceType == "Branch"
             ? FontIconsService.Octicons.Branch
             : FontIconsService.Octicons.Tag;
@@ -43,53 +42,50 @@ namespace GitRemote.ViewModels
         {
             _navigationService = navigationService;
 
-            var store = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
-
-            _session = new Session(UserManager.GetLastUser(), store.Properties.First().Value,
-                store.Properties["PrivateFeedUrl"]);
-
-            var navigationParameters = new NavigationParameters { { "Session", _session } };
-
-            _commitsManager = new CommitsManager(_session);
-            //SetCurrentRepoTask = NotifyTask.Create(_commitsManager.SetCurrentRepo("UniorDev", "GitRemote"));
-            SetCurrentRepoTask = NotifyTask.Create(_commitsManager.SetCurrentRepo("UniorDev", "ForkHub"));
-            SetCurrentRepoTask.TaskCompleted.ContinueWith(repoTask =>
-            {
-                _commitsManager.SetDefaultBranch();
-                CurrentBranch = _commitsManager.CurrentBranch;
-                Commits = NotifyTask.Create(GetCommitsAsync);
-                OnPropertyChanged(nameof(Commits));
-            });
-
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
-            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, MessageService.Messages.TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
+                (this, SendDataToPublicReposParticularPages, OnDataReceived);
         }
 
-        private void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
+        private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
+        {
+            _manager = new CommitsManager(data.Session, data.OwnerName, data.ReposName);
+            await _manager.SetCurrentRepo();
+            _manager.SetDefaultBranch();
+            CurrentBranch = _manager.CurrentBranch;
+            Commits = await GetCommitsAsync();
+            OnPropertyChanged(nameof(Commits));
+
+            MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
+                (this, SendDataToPublicReposParticularPages);
+        }
+
+        private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
         {
             _currentSourceType = selectBranchPopUpModel.Type;
             OnPropertyChanged(nameof(BranchIcon));
-            _commitsManager.SetCurrentBranch(selectBranchPopUpModel.Name);
-            CurrentBranch = _commitsManager.CurrentBranch;
-            Commits = NotifyTask.Create(GetCommitsAsync);
+            _manager.SetCurrentBranch(selectBranchPopUpModel.Name);
+            CurrentBranch = _manager.CurrentBranch;
+            Commits = await GetCommitsAsync();
             OnPropertyChanged(nameof(Commits));
         }
 
         private void OnBotPanelTapped()
         {
             PopupNavigation.PushAsync(new SelectBranchPopUpPage());
-            MessagingCenter.Send(_commitsManager, MessageService.Messages.SendManagerToBranchPopUpPage);
+            MessagingCenter.Send(_manager, SendManagerToBranchPopUpPage);
         }
 
         private async Task<ObservableCollection<CommitModel>> GetCommitsAsync()
         {
             return new ObservableCollection<CommitModel>
-                (await _commitsManager.GetCommitsAsync());
+                (await _manager.GetCommitsAsync());
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, MessageService.Messages.TakeBranchModelFromPopUpPage);
+            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)

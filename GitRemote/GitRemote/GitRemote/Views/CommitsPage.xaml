@@ -9,186 +9,184 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.CommitsPage">
 
-  <StackLayout Orientation="Vertical" Spacing="0">
-    
-  <controls:FlowListView x:Name="CommitsList"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Commits.Result}"
-                         FlowColumnCount="1"
-                         HasUnevenRows="True">
+  <StackLayout Orientation="Vertical"
+               Spacing="0">
 
-    <controls:FlowListView.FlowColumnTemplate>
-      <DataTemplate>
-        <Grid VerticalOptions="Start"
-              HorizontalOptions="FillAndExpand"
-              Margin="15, 15, 10, 15"
-              ColumnSpacing="0"
-              RowSpacing="5">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-          </Grid.ColumnDefinitions>
+    <controls:FlowListView x:Name="CommitsList"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           FlowItemsSource="{Binding Commits}"
+                           FlowColumnCount="1"
+                           HasUnevenRows="True">
 
-          <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="25"/>
-          </Grid.RowDefinitions>
+      <controls:FlowListView.FlowColumnTemplate>
+        <DataTemplate>
+          <Grid VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                Margin="15, 15, 5, 15"
+                ColumnSpacing="0"
+                RowSpacing="5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="40"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="15"/>
+              <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
 
-          <forms:CachedImage
-            x:Name="Avatar"
-            Source="{Binding AvatarImageUrl}"
-            HeightRequest="40"
-            WidthRequest="40"
-            Grid.Column="0"
-            Grid.Row="0"
-            Grid.RowSpan="3"
-            VerticalOptions="Start"
-            HorizontalOptions="Start"
-            Margin="0, 5, 10, 0"
-            CacheDuration = "5"
-            DownsampleToViewSize ="True"
-            LoadingPlaceholder="ic_list_NoAvatar.png"
-            BitmapOptimizations="True">
-            <forms:CachedImage.Transformations>
-              <transformations:RoundedTransformation Radius="100"/>
-            </forms:CachedImage.Transformations>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
 
-          </forms:CachedImage>
+            <forms:CachedImage
+              x:Name="Avatar"
+              Source="{Binding AvatarImageUrl}"
+              HeightRequest="40"
+              WidthRequest="40"
+              Grid.Column="0"
+              Grid.Row="0"
+              Grid.RowSpan="3"
+              VerticalOptions="Start"
+              HorizontalOptions="Start"
+              Margin="0, 5, 10, 0"
+              CacheDuration = "5"
+              DownsampleToViewSize ="True"
+              LoadingPlaceholder="ic_list_NoAvatar.png"
+              BitmapOptimizations="True">
+              <forms:CachedImage.Transformations>
+                <transformations:RoundedTransformation Radius="100"/>
+              </forms:CachedImage.Transformations>
+
+            </forms:CachedImage>
 
 
-          <Label x:Name="Id"
-                 Text="{Binding Id}"
-                 TextColor="#A8A8A8"
-                 LineBreakMode="TailTruncation"
-                 Grid.Column="1"
-                 Grid.Row="0"
-                 FontSize="14"
-                 Grid.ColumnSpan="5"
-                 VerticalOptions="End"
-                 HorizontalOptions="FillAndExpand"/>
+            <Label x:Name="Id"
+                   Text="{Binding Id}"
+                   TextColor="#A8A8A8"
+                   LineBreakMode="TailTruncation"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   FontSize="14"
+                   Grid.ColumnSpan="2"
+                   VerticalOptions="End"
+                   HorizontalOptions="FillAndExpand"/>
 
-          <StackLayout  Grid.Column="1"
-                        Grid.ColumnSpan="5"
-                        Grid.Row="1"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
             <Label x:Name="Title"
                    Text="{Binding Title}"
-                   FontSize="16"
+                   FontSize="14"
                    TextColor="Black"
                    FontAttributes="Bold"
                    LineBreakMode="TailTruncation"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="1"
                    VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"/>
-          </StackLayout>
+                   HorizontalOptions="Start"/>
 
-          <Label x:Name="OwnerName"
-                 Text="{Binding OwnerName}"
-                 FontSize="14"
-                 TextColor="#A8A8A8"
-                 FontAttributes="Bold"
-                 Grid.Column="1"
-                 LineBreakMode="TailTruncation"
-                 VerticalOptions="Center"
-                 HorizontalOptions="Start"
-                 Grid.Row="2"/>
+            <Label x:Name="OwnerName"
+                   Text="{Binding OwnerName}"
+                   FontSize="14"
+                   TextColor="#A8A8A8"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   LineBreakMode="TailTruncation"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Grid.Row="2"/>
 
-          <Label x:Name="CreatedTime"
-                 Text="{Binding CreatedTime}"
-                 FontSize="14"
-                 TextColor="#A8A8A8"
-                 Grid.ColumnSpan="2"
-                 Grid.Column="2"
-                 VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"
-                 Grid.Row="2"
-                 Margin="5, 0, 5, 0"/>
+            <Label x:Name="CreatedTime"
+                   Text="{Binding CreatedTime}"
+                   FontSize="14"
+                   TextColor="#A8A8A8"
+                   Grid.ColumnSpan="2"
+                   Grid.Column="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="2"
+                   Margin="5, 0, 5, 0"/>
 
-          <customClasses:FontIcon x:Name="CommentFontIcon"
-                                  Text="{Binding CommentFontIcon}"
-                                  TextColor="Gray"
-                                  FontSize="12"
-                                  FontFamily="Octicons"
-                                  Grid.Column="4"
-                                  Grid.Row="2"
-                                  VerticalOptions="Center"
-                                  HorizontalOptions="EndAndExpand"
-                                  Opacity="{Binding CommentOpacity}"
-                                  Margin="0, 0, 2, 0"/>
+            <customClasses:FontIcon x:Name="CommentFontIcon"
+                                    Text="{Binding CommentFontIcon}"
+                                    TextColor="Gray"
+                                    FontSize="12"
+                                    FontFamily="Octicons"
+                                    Grid.Column="4"
+                                    Grid.Row="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="EndAndExpand"
+                                    Opacity="{Binding CommentOpacity}"
+                                    Margin="0, 0, 2, 0"/>
 
-          <Label x:Name="Count"
-                 Text="{Binding CommentsCount}"
-                 FontSize="12"
-                 TextColor="#A8A8A8"
-                 Grid.Column="5"
-                 Grid.Row="2"
-                 VerticalOptions="Center"
-                 HorizontalOptions="Start"
-                 Opacity="{Binding CommentOpacity}"/>
-        </Grid>
-      </DataTemplate>
-    </controls:FlowListView.FlowColumnTemplate>
+            <Label x:Name="Count"
+                   Text="{Binding CommentsCount}"
+                   FontSize="12"
+                   TextColor="#A8A8A8"
+                   Grid.Column="5"
+                   Grid.Row="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Opacity="{Binding CommentOpacity}"/>
+          </Grid>
+        </DataTemplate>
+      </controls:FlowListView.FlowColumnTemplate>
 
-  </controls:FlowListView>
+    </controls:FlowListView>
 
-  <Grid x:Name="BotPanel"
-        VerticalOptions="End"
-        HorizontalOptions="FillAndExpand"
-        ColumnSpacing="4"
-        RowSpacing="0">
+    <Grid x:Name="BotPanel"
+          VerticalOptions="End"
+          HorizontalOptions="FillAndExpand"
+          ColumnSpacing="4"
+          RowSpacing="0">
 
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="40"/>
-      <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50"/>
-    </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+      </Grid.RowDefinitions>
 
-    <BoxView BackgroundColor="#7B5687"
-             HeightRequest="50"
-             HorizontalOptions="FillAndExpand"
-             VerticalOptions="FillAndExpand"
-             Grid.Column="0"
+      <BoxView BackgroundColor="#7B5687"
+               HeightRequest="50"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               InputTransparent="True">
+
+      </BoxView>
+
+      <customClasses:FontIcon x:Name="BranchIcon"
+                              Text="{Binding BranchIcon}"
+                              FontSize="24"
+                              FontFamily="Octicons"
+                              TextColor="White"
+                              VerticalOptions="CenterAndExpand"
+                              HorizontalOptions="EndAndExpand"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              InputTransparent="True"/>
+
+      <Label x:Name="NameOfCurrentBranch"
+             Text="{Binding CurrentBranch}"
+             FontSize="18"
+             TextColor="White"
+             Grid.Column="1"
              Grid.Row="0"
-             Grid.ColumnSpan="2"
-             InputTransparent="True">
+             VerticalOptions="CenterAndExpand"
+             HorizontalOptions="StartAndExpand"
+             InputTransparent="True"
+             LineBreakMode="TailTruncation"/>
 
-    </BoxView>
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding BotPanelTapped}"
+                              NumberOfTapsRequired="1"/>
+      </Grid.GestureRecognizers>
 
-    <customClasses:FontIcon x:Name="BranchIcon"
-                            Text="{Binding BranchIcon}"
-                            FontSize="24"
-                            FontFamily="Octicons"
-                            TextColor="White"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="EndAndExpand"
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            InputTransparent="True"/>
-
-    <Label x:Name="NameOfCurrentBranch"
-           Text="{Binding CurrentBranch}"
-           FontSize="18"
-           TextColor="White"
-           Grid.Column="1"
-           Grid.Row="0"
-           VerticalOptions="CenterAndExpand"
-           HorizontalOptions="StartAndExpand"
-           InputTransparent="True"
-           LineBreakMode="TailTruncation"/>
-
-    <Grid.GestureRecognizers>
-      <TapGestureRecognizer Command="{Binding BotPanelTapped}"
-                            NumberOfTapsRequired="1"/>
-    </Grid.GestureRecognizers>
-
-  </Grid>
+    </Grid>
   </StackLayout>
 </ContentPage>

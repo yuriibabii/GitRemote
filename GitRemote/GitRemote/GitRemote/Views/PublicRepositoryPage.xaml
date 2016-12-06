@@ -10,7 +10,8 @@
   
   <views:RepositoryNewsPage Title="News"/>
   <views:FileExplorerPage Title="Code"/>
-  <!--<views:CommitsPage/>
-  <views:PublicIssuesPage/>-->
+  <views:CommitsPage Title="Commits"/>
+
+  <!--<views:PublicIssuesPage/>-->
   
 </TabbedPage>
