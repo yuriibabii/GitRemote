@@ -13,13 +13,13 @@
                          VerticalOptions="FillAndExpand"
                          FlowItemsSource="{Binding Follows.Result}"
                          HasUnevenRows="True"
-                         FlowColumnCount="1"
-                         Margin="15, 15, 15, 0">
+                         FlowColumnCount="1">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
         <AbsoluteLayout HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="CenterAndExpand"
+                        Margin="15, 15, 15, 0">
           <ffimageloading:CachedImage
             x:Name="Avatar"
             Source="{Binding ImageUrl}"
