@@ -16,7 +16,7 @@ namespace GitRemote.ViewModels
 {
     public class StarsPageViewModel : BindableBase
     {
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private readonly Session _session;
         public NotifyTask<ObservableCollection<StarredRepositoryModel>> StarredRepositories { get; }
         private readonly StarredRepositoriesManager _starsManager;
@@ -39,8 +39,6 @@ namespace GitRemote.ViewModels
                 if ( StarredRepositories.Exception != null )
                     foreach ( var exception in StarredRepositories.Exception.InnerExceptions )
                         throw exception;
-
-
         }
 
         private void OnItemTapped()

@@ -9,19 +9,6 @@ namespace GitRemote.ViewModels
 {
     public class PublicRepositoryPageViewModel : BindableBase, INavigationAware
     {
-        private Page _currentTabPage;
-
-        public Page CurrentTabPage
-        {
-            get { return _currentTabPage; }
-            set
-            {
-                SetProperty(ref _currentTabPage, value);
-                MessagingCenter.Send(_currentTabPage, PublicReposCurrentTabChanged);
-            }
-        }
-
-
         public PublicRepositoryPageViewModel()
         {
 

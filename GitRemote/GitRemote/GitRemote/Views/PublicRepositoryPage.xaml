@@ -4,9 +4,7 @@
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
             prism:ViewModelLocator.AutowireViewModel="True"
-            x:Class="GitRemote.Views.PublicRepositoryPage"
-            >
-  <!--CurrentPage="{Binding CurrentTabPage, Mode=OneWayToSource}"-->
+            x:Class="GitRemote.Views.PublicRepositoryPage">
 
   <views:RepositoryNewsPage Title="News"/>
   <views:FileExplorerPage Title="Code"/>

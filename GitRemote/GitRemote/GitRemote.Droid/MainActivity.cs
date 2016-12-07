@@ -51,6 +51,11 @@ namespace GitRemote.Droid
             base.OnBackPressed();
         }
 
+        protected override void OnDestroy()
+        {
+            MessagingCenter.Unsubscribe<string>(this, SetIsExecuteHardwareBack);
+            base.OnDestroy();
+        }
     }
 }
 

@@ -376,6 +376,7 @@ namespace GitRemote.ViewModels
             }
             else
             {
+                MessagingCenter.Unsubscribe<string>(this, PublicReposCurrentTabChanged);
                 MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
                 MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
                 MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
@@ -392,6 +393,7 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
+            MessagingCenter.Unsubscribe<string>(this, PublicReposCurrentTabChanged);
             MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
             MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
             MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
