@@ -1,4 +1,5 @@
 ﻿using GitRemote.GitHub;
+using GitRemote.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Xamarin.Forms;

@@ -13,6 +13,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using Xamarin.Forms;
 using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels
@@ -123,13 +124,17 @@ namespace GitRemote.ViewModels
                 _navigationParameters, animated: false);
         }
 
-        private async void OnIssueTapped()
+        private void OnIssueTapped()
         {
-            _navigationParameters.Add("OwnerName", "UniorDev");
-            _navigationParameters.Add("ReposName", "GitRemote");
+            if ( !_navigationParameters.ContainsKey("OwnerName") )
+                _navigationParameters.Add("OwnerName", "UniorDev");
 
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}",
-                _navigationParameters, animated: false);
+            if ( !_navigationParameters.ContainsKey("ReposName") )
+                _navigationParameters.Add("ReposName", "GitRemote");
+
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}",
+               _navigationParameters, animated: false);
+            MessagingCenter.Send("Issues", MessageService.Messages.SetCurrentTabWithTitle);
         }
 
         private async void OnExitTapped()

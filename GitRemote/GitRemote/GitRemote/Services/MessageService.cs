@@ -14,6 +14,7 @@ namespace GitRemote.Services
             public const string SendDataToPublicReposParticularPages = "SendDataToPublicReposParticularPages";
             public const string SetIsExecuteHardwareBack = "SetIsExecuteHardwareBack";
             public const string PublicReposCurrentTabChanged = "PublicReposCurrentTabChanged";
+            public const string SetCurrentTabWithTitle = "SetCurrentTabWithTitle";
         }
 
         public static class MessageModels
