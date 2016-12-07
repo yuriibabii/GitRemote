@@ -91,12 +91,15 @@ namespace GitRemote.GitHub.Managers
                 case "PushEvent":
                     model.Target = payload["ref"].ToString().Split('/')[2];
                     model.CommitsCount = payload["size"].ToString();
-                    model.Comment = payload["commits"][0]["message"].ToString();
-                    model.ShaCode = payload["commits"][0]["sha"].ToString().Substring(0, 7);
+                    if (Convert.ToInt32(model.CommitsCount.Split(' ')[0]) > 0)
+                    {
+                        model.Comment = payload["commits"][0]["message"].ToString();
+                        model.ShaCode = payload["commits"][0]["sha"].ToString().Substring(0, 7);
+                        model.IsBody = true;
+                        model.IsSubtitle = true;
+                    }
                     model.ActionType = "pushed";
                     model.ActionTypeFontIcon = Commit;
-                    model.IsBody = true;
-                    model.IsSubtitle = true;
                     break;
 
                 case "PullRequestEvent":

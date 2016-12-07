@@ -23,15 +23,7 @@ namespace GitRemote
             ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
             : $"{nameof(StartPage)}");
 
-            //NavigationService.NavigateAsync(nameof(StartPage));
-
-            //NavigationService.NavigateAsync($"{nameof(RepositoryNewsPage)}");
-
-            //NavigationService.NavigateAsync($"{nameof(FileExplorerPage)}");
-
-            //NavigationService.NavigateAsync($"{nameof(CommitsPage)}");
-
-            //NavigationService.NavigateAsync($"{nameof(PublicIssuesPage)}");
+            
         }
 
         protected override void RegisterTypes()
@@ -39,7 +31,6 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<BookmarksPage>();
             Container.RegisterTypeForNavigation<GistsPage>();
             Container.RegisterTypeForNavigation<IssueDashboardPage>();
-            Container.RegisterTypeForNavigation<ReportAnIssuePage>();
             Container.RegisterTypeForNavigation<DetailPage>();
             Container.RegisterTypeForNavigation<FollowPage>();
             Container.RegisterTypeForNavigation<LoginingPage>();

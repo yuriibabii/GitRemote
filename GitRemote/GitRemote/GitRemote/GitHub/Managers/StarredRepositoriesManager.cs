@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
-using GitRemote.Models;
+﻿using GitRemote.Models;
 using GitRemote.Services;
 using Octokit;
 using Octokit.Internal;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -31,7 +31,7 @@ namespace GitRemote.GitHub.Managers
                 {
                     var starredReposModel = new StarredRepositoryModel
                     {
-                        StarredRepositoryTypeIcon = GetStarredRepositoryTypeIcon(starredRepos),
+                        StarredRepositoryType = GetStarredRepositoryType(starredRepos),
                         StarredRepositoryDescription = starredRepos.Description,
                         IsDescription = !string.IsNullOrEmpty(starredRepos.Description),
                         StarredRepositoryLanguage = starredRepos.Language,
@@ -46,7 +46,8 @@ namespace GitRemote.GitHub.Managers
                     var separateIndex = fullName.LastIndexOf('/') + 1;
                     starredReposModel.StarredRepositoryName = fullName.Substring(separateIndex);
                     starredReposModel.StarredRepositoryPath = fullName.Substring(0, separateIndex);
-
+                    starredReposModel.OwnerName = starredReposModel.StarredRepositoryPath.Substring(0,
+                        starredReposModel.StarredRepositoryPath.Length - 1);
                     gitRemoteStarredRepos.Add(starredReposModel);
                 }
 
@@ -62,17 +63,11 @@ namespace GitRemote.GitHub.Managers
             }
         }
 
-        /// <summary>
-        /// Decides what is starredRepos type and return Icon for it
-        /// </summary>
-        /// <param name="repos">starredRepos</param>
-        /// <returns>Octicon FontIcon code</returns>
-        private string GetStarredRepositoryTypeIcon(Repository repos)
+        private string GetStarredRepositoryType(Repository repos)
         {
-            return repos.Fork ? FontIconsService.Octicons.RepoForked
-                              : ( repos.Private ? FontIconsService.Octicons.Lock
-                                                : FontIconsService.Octicons.Repo );
-
+            return repos.Fork ? "Fork"
+                              : ( repos.Private ? "Private"
+                                                : "Public" );
         }
     }
 }

@@ -15,7 +15,8 @@
                          SeparatorVisibility="None"
                          HasUnevenRows="True"
                          FlowColumnCount="1"
-                         Margin="0, 15, 0, 0">
+                         FlowLastTappedItem="{Binding TappedItem}"
+                         FlowItemTappedCommand="{Binding ItemTappedCommand}">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
@@ -24,18 +25,18 @@
               Margin="15, 15, 15, 15"
               ColumnSpacing="0">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="33"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="33"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
           </Grid.RowDefinitions>
 
           <customClasses:FontIcon x:Name="TypeIcon"

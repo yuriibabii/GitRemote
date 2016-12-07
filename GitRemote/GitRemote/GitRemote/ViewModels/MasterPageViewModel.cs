@@ -1,5 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterPageViews;
@@ -12,7 +13,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using GitRemote.GitHub.Managers;
 using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels
@@ -88,7 +88,9 @@ namespace GitRemote.ViewModels
             {
                 var user = await gitHubClient.User.Current();
                 ProfileImageUrl = user?.AvatarUrl;
-                ProfileNickName = StringService.CheckForNullOrEmpty(user?.Name) ? user?.Name : user?.Login;
+                ProfileNickName = StringService.CheckForNullOrEmpty(user?.Name)
+                    ? user?.Name
+                    : user?.Login;
             }
             catch ( WebException )
             {
@@ -123,7 +125,10 @@ namespace GitRemote.ViewModels
 
         private async void OnIssueTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ReportAnIssuePage)}",
+            _navigationParameters.Add("OwnerName", "UniorDev");
+            _navigationParameters.Add("ReposName", "GitRemote");
+
+            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}",
                 _navigationParameters, animated: false);
         }
 

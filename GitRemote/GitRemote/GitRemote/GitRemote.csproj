@@ -54,7 +54,6 @@
     <Compile Include="GitHub\Managers\NotificationsManager.cs" />
     <Compile Include="GitHub\Managers\PrivateNewsManager.cs" />
     <Compile Include="GitHub\Managers\PublicIssuesManager.cs" />
-    <Compile Include="GitHub\Managers\PublicNewsManager.cs" />
     <Compile Include="GitHub\Managers\PullRequestsManager.cs" />
     <Compile Include="GitHub\Managers\RepositoriesManager.cs" />
     <Compile Include="GitHub\Managers\RepositoryNewsManager.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="GitHub\Session.cs" />
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PrivateNewsModel.cs" />
-    <Compile Include="Models\PublicNewsModel.cs" />
     <Compile Include="Models\PullRequestModel.cs" />
     <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\RepositoryNewsModel.cs" />
@@ -100,7 +98,6 @@
     <Compile Include="ViewModels\MasterPageViews\GistsListPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\ReportAnIssuePageViewModel.cs" />
     <Compile Include="ViewModels\PrivateNewsPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
     <Compile Include="ViewModels\PrivateProfilePageViewModel.cs" />
@@ -157,9 +154,6 @@
     </Compile>
     <Compile Include="Views\MasterPageViews\IssueDashboardPage.xaml.cs">
       <DependentUpon>IssueDashboardPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MasterPageViews\ReportAnIssuePage.xaml.cs">
-      <DependentUpon>ReportAnIssuePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrivateNewsPage.xaml.cs">
       <DependentUpon>PrivateNewsPage.xaml</DependentUpon>
@@ -396,12 +390,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterPageViews\BookmarksPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\ReportAnIssuePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
