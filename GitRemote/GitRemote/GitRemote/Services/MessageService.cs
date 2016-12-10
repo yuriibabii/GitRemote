@@ -1,4 +1,5 @@
 ﻿using GitRemote.GitHub;
+using Prism.Navigation;
 
 namespace GitRemote.Services
 {
@@ -15,6 +16,7 @@ namespace GitRemote.Services
             public const string SetIsExecuteHardwareBack = "SetIsExecuteHardwareBack";
             public const string PublicReposCurrentTabChanged = "PublicReposCurrentTabChanged";
             public const string SetCurrentTabWithTitle = "SetCurrentTabWithTitle";
+            public const string DoNavigation = "DoNavigation";
         }
 
         public static class MessageModels
@@ -30,6 +32,18 @@ namespace GitRemote.Services
                     Session = session;
                     OwnerName = ownerName;
                     ReposName = reposName;
+                }
+            }
+
+            public class DoNavigationModel
+            {
+                public string Path { get; private set; }
+                public NavigationParameters Parameters { get; private set; }
+
+                public DoNavigationModel(string path, NavigationParameters parameters)
+                {
+                    Path = path;
+                    Parameters = parameters;
                 }
             }
         }

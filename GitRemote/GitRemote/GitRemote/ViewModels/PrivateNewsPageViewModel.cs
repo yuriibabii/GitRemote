@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static GitRemote.Services.MessageService.MessageModels;
+using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.ViewModels
 {
@@ -64,10 +66,11 @@ namespace GitRemote.ViewModels
             {
                 { "OwnerName", ownerName},
                 { "ReposName", reposName},
-                { "Session", _session}
+                { "Session", _session},
             };
 
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}", parameters);
+            var path = $"{nameof(PublicRepositoryPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, parameters), DoNavigation);
         }
 
         private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()

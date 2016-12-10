@@ -1,13 +1,15 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Services;
 using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Linq;
-using GitRemote.GitHub.Managers;
-using GitRemote.Views.MasterPageViews;
+using Xamarin.Forms;
+using static GitRemote.Services.MessageService.MessageModels;
+using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.ViewModels
 {
@@ -23,6 +25,13 @@ namespace GitRemote.ViewModels
             NotificationsCommand = new DelegateCommand(OnNotificationsTapped);
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
+
+            MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
+        }
+
+        private void OnDoNavigation(DoNavigationModel model)
+        {
+            _navigationService.NavigateAsync(model.Path, model.Parameters);
         }
 
         private async void OnNotificationsTapped()
@@ -44,7 +53,7 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-
+            MessagingCenter.Unsubscribe<DoNavigationModel>(this, DoNavigation);
         }
 
     }

@@ -98,6 +98,7 @@
     <Compile Include="ViewModels\MasterPageViews\GistsListPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\NavigationBarPageViewModel.cs" />
     <Compile Include="ViewModels\PrivateNewsPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
     <Compile Include="ViewModels\PrivateProfilePageViewModel.cs" />

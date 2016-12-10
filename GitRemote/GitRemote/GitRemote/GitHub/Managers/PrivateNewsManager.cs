@@ -55,8 +55,7 @@ namespace GitRemote.GitHub.Managers
                         Title = item?.Element(XName.Get("title", ConstantsService.AtomNamespace))?.Value,
                         Published = TimeService.ConvertToFriendly(
                                 item?.Element(XName.Get("published", ConstantsService.AtomNamespace))?.Value),
-                        ImageUrl = item?.Elements().ElementAtOrDefault(6).Attribute("url").Value // Hardcoded, but happy cuz works
-
+                        ImageUrl = item?.Elements().ElementAtOrDefault(6).Attribute("url").Value, // Hardcoded, but happy cuz works
                     };
 
                     var splitedTitle = newsItem.Title?.Split(' ');

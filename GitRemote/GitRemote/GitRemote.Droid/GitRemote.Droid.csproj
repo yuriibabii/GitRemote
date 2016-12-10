@@ -231,6 +231,7 @@
     <Compile Include="Renderers\HyperLinkLabelRenderer.cs" />
     <Compile Include="Renderers\FloatingEntryRenderer.cs" />
     <Compile Include="Renderers\FontIconRenderer.cs" />
+    <Compile Include="Renderers\PublicRepositoryPageRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
