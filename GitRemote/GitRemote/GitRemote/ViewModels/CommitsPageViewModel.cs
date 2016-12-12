@@ -49,15 +49,15 @@ namespace GitRemote.ViewModels
 
         private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
         {
+            MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
+                (this, SendDataToPublicReposParticularPages);
+
             _manager = new CommitsManager(data.Session, data.OwnerName, data.ReposName);
-            await _manager.SetCurrentRepo();
-            _manager.SetDefaultBranch();
+            var task = _manager.SetCurrentRepo();
+            await task.ContinueWith(t => _manager.SetDefaultBranch());
             CurrentBranch = _manager.CurrentBranch;
             Commits = await GetCommitsAsync();
             OnPropertyChanged(nameof(Commits));
-
-            MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
-                (this, SendDataToPublicReposParticularPages);
         }
 
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)

@@ -26,12 +26,14 @@ namespace GitRemote.ViewModels
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
 
-            MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
+            //MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
         }
 
-        private void OnDoNavigation(DoNavigationModel model)
+        private async void OnDoNavigation(DoNavigationModel model)
         {
-            _navigationService.NavigateAsync(model.Path, model.Parameters);
+            MessagingCenter.Unsubscribe<DoNavigationModel>(this, DoNavigation);
+
+            await _navigationService.NavigateAsync(model.Path, model.Parameters);
         }
 
         private async void OnNotificationsTapped()
@@ -45,6 +47,8 @@ namespace GitRemote.ViewModels
         {
             if ( parameters.ContainsKey("Session") )
                 _session = parameters["Session"] as Session;
+
+            MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

@@ -62,8 +62,8 @@ namespace GitRemote.ViewModels
             var ownerName = parameters["OwnerName"] as string;
             var reposName = parameters["ReposName"] as string;
 
-            Title = ownerName;
-            SubTitle = reposName;
+            Title = reposName;
+            SubTitle = ownerName;
 
             var client = new UsersClient
                 (new ApiConnection
@@ -80,10 +80,6 @@ namespace GitRemote.ViewModels
 
             MessagingCenter.Send(model, SendDataToPublicReposParticularPages);
 
-            //owner.ContinueWith(task =>
-            //{
-                
-            //});
         }
     }
 }
