@@ -228,6 +228,7 @@
     <Compile Include="DependencyServices\ViewSaver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\CodeEntryRenderer.cs" />
+    <Compile Include="Renderers\ForkedRepositoryPageRenderer.cs" />
     <Compile Include="Renderers\HyperLinkLabelRenderer.cs" />
     <Compile Include="Renderers\FloatingEntryRenderer.cs" />
     <Compile Include="Renderers\FontIconRenderer.cs" />

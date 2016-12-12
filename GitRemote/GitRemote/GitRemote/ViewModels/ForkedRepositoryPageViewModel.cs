@@ -1,4 +1,7 @@
 ﻿using GitRemote.GitHub;
+using GitRemote.Services;
+using Octokit;
+using Octokit.Internal;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Xamarin.Forms;
@@ -9,6 +12,30 @@ namespace GitRemote.ViewModels
 {
     public class ForkedRepositoryPageViewModel : BindableBase, INavigationAware
     {
+        private string _title = string.Empty;
+
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
+        private string _subTitle = string.Empty;
+
+        public string SubTitle
+        {
+            get { return _subTitle; }
+            set { SetProperty(ref _subTitle, value); }
+        }
+
+        private string _avatarUrl = string.Empty;
+
+        public string AvatarUrl
+        {
+            get { return _avatarUrl; }
+            set { SetProperty(ref _avatarUrl, value); }
+        }
+
         public ForkedRepositoryPageViewModel()
         {
 
@@ -32,6 +59,20 @@ namespace GitRemote.ViewModels
             var session = parameters["Session"] as Session;
             var ownerName = parameters["OwnerName"] as string;
             var reposName = parameters["ReposName"] as string;
+
+            Title = reposName;
+            SubTitle = ownerName;
+
+            var client = new UsersClient
+                (new ApiConnection
+                (new Connection
+                (new ProductHeaderValue
+                (ConstantsService.AppName), new InMemoryCredentialStore
+                (new Credentials(session?.GetToken())))));
+
+            var owner = client.Get(ownerName);
+
+            AvatarUrl = owner.Result.AvatarUrl;
 
             var model = new SendDataToPublicReposParticularPagesModel(session, ownerName, reposName);
 
