@@ -107,23 +107,27 @@ namespace GitRemote.ViewModels
 
         #region CommandHandlers
 
-        private async void OnGistsTapped()
+        private void OnGistsTapped()
         {
             GistsManager.SetTabsTitles(_metricsHelper);
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(GistsPage)}",
-                _navigationParameters, animated: false);
+
+            var path = $"{nameof(GistsPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private async void OnDashboardTapped()
+        private void OnDashboardTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(IssueDashboardPage)}",
-                _navigationParameters, animated: false);
+            var path = $"{nameof(IssueDashboardPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private async void OnBookmarksTapped()
+        private void OnBookmarksTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(BookmarksPage)}",
-                _navigationParameters, animated: false);
+            var path = $"{nameof(BookmarksPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
         private void OnIssueTapped()
@@ -133,9 +137,6 @@ namespace GitRemote.ViewModels
 
             if ( !_navigationParameters.ContainsKey("ReposName") )
                 _navigationParameters.Add("ReposName", "GitRemote");
-
-            //_navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}",
-            //   _navigationParameters, animated: false);
 
             var path = $"{nameof(PublicRepositoryPage)}";
 

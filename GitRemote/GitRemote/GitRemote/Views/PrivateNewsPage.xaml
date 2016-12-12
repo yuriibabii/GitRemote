@@ -23,7 +23,7 @@
       <DataTemplate>
         <Grid VerticalOptions="Start"
               HorizontalOptions="Start"
-              Margin="15, 15, 15, 20"
+              Margin="15, 15, 15, 15"
               ColumnSpacing="0"
               RowSpacing="5">
           <Grid.ColumnDefinitions>
