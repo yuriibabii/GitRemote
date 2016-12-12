@@ -19,7 +19,6 @@ namespace GitRemote.ViewModels
 {
     public class PrivateNewsPageViewModel : BindableBase
     {
-        private INavigationService _navigationService;
         private readonly Session _session;
         public NotifyTask<ObservableCollection<PrivateNewsModel>> PrivateNews { get; }
         private readonly PrivateNewsManager _privateNewsManager;
@@ -27,17 +26,14 @@ namespace GitRemote.ViewModels
         public DelegateCommand ItemTappedCommand { get; }
         public PrivateNewsModel TappedItem { get; set; }
 
-        public PrivateNewsPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        public PrivateNewsPageViewModel(ISecuredDataProvider securedDataProvider)
         {
-            _navigationService = navigationService;
             ItemTappedCommand = new DelegateCommand(OnItemTapped);
 
             var store = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
 
             _session = new Session(UserManager.GetLastUser(), store.Properties.First().Value,
                 store.Properties["PrivateFeedUrl"]);
-
-            var navigationParameters = new NavigationParameters { { "Session", _session } };
 
             _privateNewsManager = new PrivateNewsManager(_session);
 

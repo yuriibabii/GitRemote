@@ -14,6 +14,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using Xamarin.Forms;
+using static GitRemote.Services.MessageService.MessageModels;
+using static GitRemote.Services.MessageService.Messages;
 using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels
@@ -132,9 +134,14 @@ namespace GitRemote.ViewModels
             if ( !_navigationParameters.ContainsKey("ReposName") )
                 _navigationParameters.Add("ReposName", "GitRemote");
 
-            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}",
-               _navigationParameters, animated: false);
-            MessagingCenter.Send("Issues", MessageService.Messages.SetCurrentTabWithTitle);
+            //_navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(PublicRepositoryPage)}",
+            //   _navigationParameters, animated: false);
+
+            var path = $"{nameof(PublicRepositoryPage)}";
+
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("Issues", SetCurrentTabWithTitle);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
         private async void OnExitTapped()
