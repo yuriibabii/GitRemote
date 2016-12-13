@@ -200,6 +200,11 @@ namespace GitRemote.GitHub.Managers
             return true;
         }
 
+        public async Task<bool> CheckStar()
+        {
+            return await _gitHubClient.Activity.Starring.CheckStarred(_ownerName, _reposName);
+        }
+
         public async Task StarRepository()
         {
             await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);

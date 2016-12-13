@@ -1,6 +1,7 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub.Managers;
 using GitRemote.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
@@ -13,18 +14,51 @@ namespace GitRemote.ViewModels
 {
     public class PublicIssuesPageViewModel : BindableBase
     {
+        #region Commands
+        public DelegateCommand AddCommand { get; }
+        public DelegateCommand StarCommand { get; }
+        public DelegateCommand ForkCommand { get; }
+        public DelegateCommand ContributorsCommand { get; }
+        public DelegateCommand ShareCommand { get; }
+        public DelegateCommand OpenInBrowserCommand { get; }
+        public DelegateCommand FilterCommand { get; }
+        public DelegateCommand BookmarkCommand { get; }
+        public DelegateCommand RefreshCommand { get; }
+        #endregion
+
         private readonly INavigationService _navigationService;
+        private readonly IDevice _device;
         public ObservableCollection<IssueModel> Issues { get; set; }
         private PublicIssuesManager _manager;
 
-        public PublicIssuesPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        private string _starText = string.Empty;
+        public string StarText
+        {
+            get { return _starText; }
+            set { SetProperty(ref _starText, value); }
+        }
+
+        public PublicIssuesPageViewModel(INavigationService navigationService, IDevice device)
         {
             _navigationService = navigationService;
-
-
+            _device = device;
 
             MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
                 (this, Messages.SendDataToPublicReposParticularPages, OnDataReceived);
+
+            #region CommandsInitialization
+
+            AddCommand = new DelegateCommand(OnAdd);
+            StarCommand = new DelegateCommand(OnStar);
+            ForkCommand = new DelegateCommand(OnFork);
+            ContributorsCommand = new DelegateCommand(OnContributors);
+            ShareCommand = new DelegateCommand(OnShare);
+            OpenInBrowserCommand = new DelegateCommand(OnOpenInBrowser);
+            BookmarkCommand = new DelegateCommand(OnBookmark);
+            FilterCommand = new DelegateCommand(OnFilter);
+            RefreshCommand = new DelegateCommand(OnRefresh);
+
+            #endregion
         }
 
         private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
@@ -32,6 +66,10 @@ namespace GitRemote.ViewModels
             _manager = new PublicIssuesManager(data.Session, data.OwnerName, data.ReposName);
             Issues = await GetPublicIssuesAsync();
             OnPropertyChanged(nameof(Issues));
+
+            StarText = await _manager.CheckStar()
+             ? StarText = "Unstar"
+             : StarText = "Star";
         }
 
         /// <summary>
@@ -43,5 +81,64 @@ namespace GitRemote.ViewModels
             return new ObservableCollection<IssueModel>
                 (await _manager.GetPublicIssuesAsync());
         }
+
+        #region ToolbarCommandHandlers
+
+        private void OnAdd()
+        {
+            //Waits Implementation
+        }
+
+        private async void OnStar()
+        {
+            if ( await _manager.CheckStar() )
+            {
+                await _manager.UnstarRepository();
+                StarText = "Star";
+            }
+            else
+            {
+                await _manager.StarRepository();
+                StarText = "Unstar";
+            }
+        }
+
+        private async void OnFork()
+        {
+            await _manager.ForkRepository();
+        }
+
+        private void OnContributors()
+        {
+            //Waits for implementation
+        }
+
+        private void OnShare()
+        {
+            //Waits for implementation
+        }
+
+        private async void OnOpenInBrowser()
+        {
+            await _manager.OpenInBrowser(_device);
+        }
+
+        private void OnBookmark()
+        {
+            //Waits for implementation
+        }
+
+        private void OnFilter()
+        {
+            //Waits for implementation
+        }
+
+        private async void OnRefresh()
+        {
+            Issues = new ObservableCollection<IssueModel>(await _manager.GetPublicIssuesAsync());
+            OnPropertyChanged(nameof(Issues));
+        }
+
+        #endregion
     }
 }

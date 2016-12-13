@@ -28,7 +28,7 @@ namespace GitRemote.ViewModels
         private RepositoryNewsManager _manager;
         public GridLength ColumnWidth { get; set; }
         private readonly IDevice _device;
-        private string _starText = "Star";
+        private string _starText = string.Empty;
 
         public string StarText
         {
@@ -59,13 +59,13 @@ namespace GitRemote.ViewModels
         {
             _manager = new RepositoryNewsManager(data.Session, data.OwnerName, data.ReposName);
 
-            var ownerName = data.OwnerName;
-            var reposName = data.ReposName;
-
             News = await GetRepositoryNewsAsync();
             OnPropertyChanged(nameof(News));
             MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages);
+            StarText = await _manager.CheckStar()
+                ? StarText = "Unstar"
+                : StarText = "Star";
         }
 
         private async Task<ObservableCollection<RepositoryNewsModel>> GetRepositoryNewsAsync()
@@ -79,15 +79,15 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if ( StarText == "Star" )
-            {
-                await _manager.StarRepository();
-                StarText = "Unstar";
-            }
-            else
+            if ( await _manager.CheckStar() )
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";
+            }
+            else
+            {
+                await _manager.StarRepository();
+                StarText = "Unstar";
             }
         }
 

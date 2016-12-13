@@ -92,6 +92,11 @@ namespace GitRemote.GitHub.Managers
             return await _gitHubClient.Repository.GetAllTags(_currentRepo.Owner.Login, _currentRepo.Name);
         }
 
+        public async Task<bool> CheckStar()
+        {
+            return await _gitHubClient.Activity.Starring.CheckStarred(_ownerName, _reposName);
+        }
+
         public async Task StarRepository()
         {
             await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);

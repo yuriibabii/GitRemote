@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
+using static System.String;
 
 namespace GitRemote.ViewModels
 {
@@ -39,14 +40,14 @@ namespace GitRemote.ViewModels
 
         private string _currentSourceType = "Branch";
 
-        private string _currentBranch = string.Empty;
+        private string _currentBranch = Empty;
         public string CurrentBranch
         {
             get { return _currentBranch; }
             set { SetProperty(ref _currentBranch, value); }
         }
 
-        private string _starText = "Star";
+        private string _starText = Empty;
         public string StarText
         {
             get { return _starText; }
@@ -80,6 +81,9 @@ namespace GitRemote.ViewModels
             CurrentBranch = _manager.CurrentBranch;
             Commits = await GetCommitsAsync();
             OnPropertyChanged(nameof(Commits));
+            StarText = await _manager.CheckStar()
+                ? StarText = "Unstar"
+                : StarText = "Star";
         }
 
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
@@ -108,15 +112,15 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if ( StarText == "Star" )
-            {
-                await _manager.StarRepository();
-                StarText = "Unstar";
-            }
-            else
+            if ( await _manager.CheckStar() )
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";
+            }
+            else
+            {
+                await _manager.StarRepository();
+                StarText = "Unstar";
             }
         }
 

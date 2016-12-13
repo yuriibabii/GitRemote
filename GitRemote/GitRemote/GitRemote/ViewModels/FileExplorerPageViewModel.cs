@@ -73,7 +73,7 @@ namespace GitRemote.ViewModels
         private string _currentSourceType = "Branch";
         private string _currentBranch = Empty;
         private string _reposName = Empty;
-        private string _starText = "Star";
+        private string _starText = Empty;
         #endregion
 
         public FileExplorerPageViewModel(INavigationService navigationService, IDevice device)
@@ -101,15 +101,15 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if ( StarText == "Star" )
-            {
-                await _manager.StarRepository();
-                StarText = "Unstar";
-            }
-            else
+            if ( await _manager.CheckStar() )
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";
+            }
+            else
+            {
+                await _manager.StarRepository();
+                StarText = "Unstar";
             }
         }
 
@@ -169,9 +169,12 @@ namespace GitRemote.ViewModels
             await _manager.SetTreeAsync();
             FileTree = _manager.GetFiles(data.ReposName + '/');
             OnPropertyChanged(nameof(FileTree));
-
             MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages);
+            StarText = await _manager.CheckStar()
+                ? StarText = "Unstar"
+                : StarText = "Star";
+            
         }
 
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)

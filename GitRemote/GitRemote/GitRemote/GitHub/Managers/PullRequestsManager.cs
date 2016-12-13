@@ -1,4 +1,5 @@
-﻿using GitRemote.Models;
+﻿using GitRemote.DI;
+using GitRemote.Models;
 using GitRemote.Services;
 using Octokit;
 using Octokit.Internal;
@@ -67,6 +68,31 @@ namespace GitRemote.GitHub.Managers
             {
                 throw new Exception("Getting pullRequests from github failed! " + ex.Message);
             }
+        }
+
+        public async Task<bool> CheckStar()
+        {
+            return await _gitHubClient.Activity.Starring.CheckStarred(_ownerName, _reposName);
+        }
+
+        public async Task StarRepository()
+        {
+            await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);
+        }
+
+        public async Task UnstarRepository()
+        {
+            await _gitHubClient.Activity.Starring.RemoveStarFromRepo(_ownerName, _reposName);
+        }
+
+        public async Task ForkRepository()
+        {
+            await _gitHubClient.Repository.Forks.Create(_ownerName, _reposName, new NewRepositoryFork());
+        }
+
+        public async Task OpenInBrowser(IDevice device)
+        {
+            await device.LaunchUriAsync(new Uri($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}"));
         }
     }
 }

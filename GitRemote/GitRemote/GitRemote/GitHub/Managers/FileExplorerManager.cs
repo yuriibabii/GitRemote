@@ -260,6 +260,11 @@ namespace GitRemote.GitHub.Managers
             _currentPath.RemoveRange(index, _currentPath.Count - index);
         }
 
+        public async Task<bool> CheckStar()
+        {
+            return await _gitHubClient.Activity.Starring.CheckStarred(_ownerName, _reposName);
+        }
+
         public async Task StarRepository()
         {
             await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);
