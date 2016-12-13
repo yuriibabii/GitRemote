@@ -1,4 +1,5 @@
-﻿using GitRemote.Models;
+﻿using GitRemote.DI;
+using GitRemote.Models;
 using GitRemote.Services;
 using Octokit;
 using Octokit.Internal;
@@ -89,6 +90,26 @@ namespace GitRemote.GitHub.Managers
         public async Task<IReadOnlyList<RepositoryTag>> GetTagsAsync()
         {
             return await _gitHubClient.Repository.GetAllTags(_currentRepo.Owner.Login, _currentRepo.Name);
+        }
+
+        public async Task StarRepository()
+        {
+            await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);
+        }
+
+        public async Task UnstarRepository()
+        {
+            await _gitHubClient.Activity.Starring.RemoveStarFromRepo(_ownerName, _reposName);
+        }
+
+        public async Task ForkRepository()
+        {
+            await _gitHubClient.Repository.Forks.Create(_ownerName, _reposName, new NewRepositoryFork());
+        }
+
+        public async Task OpenInBrowser(IDevice device)
+        {
+            await device.LaunchUriAsync(new Uri($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}"));
         }
     }
 }

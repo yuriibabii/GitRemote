@@ -20,6 +20,15 @@ namespace GitRemote.ViewModels
 {
     public class FileExplorerPageViewModel : BindableBase, INavigationAware
     {
+        #region Commands
+        public DelegateCommand StarCommand { get; }
+        public DelegateCommand ForkCommand { get; }
+        public DelegateCommand ContributorsCommand { get; }
+        public DelegateCommand ShareCommand { get; }
+        public DelegateCommand OpenInBrowserCommand { get; }
+        public DelegateCommand RefreshCommand { get; }
+        #endregion
+
         #region Props
         public ObservableCollection<FileExplorerModel> FileTree { get; set; }
         public DelegateCommand BotPanelTapped { get; }
@@ -42,10 +51,17 @@ namespace GitRemote.ViewModels
             get { return _pathPartsGridIsVisible; }
             set { SetProperty(ref _pathPartsGridIsVisible, value); }
         }
+
+        public string StarText
+        {
+            get { return _starText; }
+            set { SetProperty(ref _starText, value); }
+        }
         #endregion
 
         #region Fields
         private readonly INavigationService _navigationService;
+        private readonly IDevice _device;
         private FileExplorerManager _manager;
         private Grid _pathPartsGrid;
         private bool _pathPartsGridIsVisible;
@@ -57,11 +73,13 @@ namespace GitRemote.ViewModels
         private string _currentSourceType = "Branch";
         private string _currentBranch = Empty;
         private string _reposName = Empty;
+        private string _starText = "Star";
         #endregion
 
-        public FileExplorerPageViewModel(INavigationService navigationService)
+        public FileExplorerPageViewModel(INavigationService navigationService, IDevice device)
         {
             _navigationService = navigationService;
+            _device = device;
             ListItemTappedCommand = new DelegateCommand(OnListItemTapped);
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
             MessagingCenter.Subscribe<string>(this, PublicReposCurrentTabChanged, OnTabChanged);
@@ -69,7 +87,68 @@ namespace GitRemote.ViewModels
             MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
             MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages, OnDataReceived);
+
+            StarCommand = new DelegateCommand(OnStar);
+            ForkCommand = new DelegateCommand(OnFork);
+            ContributorsCommand = new DelegateCommand(OnContributors);
+            ShareCommand = new DelegateCommand(OnShare);
+            OpenInBrowserCommand = new DelegateCommand(OnOpenInBrowser);
+            RefreshCommand = new DelegateCommand(OnRefresh);
         }
+
+
+        #region ToolbarCommandHandlers
+
+        private async void OnStar()
+        {
+            if ( StarText == "Star" )
+            {
+                await _manager.StarRepository();
+                StarText = "Unstar";
+            }
+            else
+            {
+                await _manager.UnstarRepository();
+                StarText = "Star";
+            }
+        }
+
+        private async void OnFork()
+        {
+            await _manager.ForkRepository();
+        }
+
+        private void OnContributors()
+        {
+            //Waits for implementation
+        }
+
+        private void OnShare()
+        {
+            //Waits for implementation
+        }
+
+        private async void OnOpenInBrowser()
+        {
+            await _manager.OpenInBrowser(_device);
+        }
+
+        private async void OnRefresh()
+        {
+            var treeTask = _manager.SetTreeAsync();
+            CurrentBranch = _manager.CurrentBranch;
+            _partsIndexes.RemoveAll(el => true);
+            PathPartsGridIsVisible = false;
+            _layoutIsFull.RemoveAll(el => true);
+            _partsCount = 0;
+            _manager.ClearCurrentPath();
+            await treeTask;
+            FileTree = _manager.GetFiles(_reposName + '/');
+            OnPropertyChanged(nameof(FileTree));
+            SetPathPartsGrid(_pathPartsGrid);
+        }
+
+        #endregion
 
         private void OnTabChanged(string s)
         {
@@ -86,6 +165,7 @@ namespace GitRemote.ViewModels
             ( ( HyperLinkLabel )( ( StackLayout )_pathPartsGrid.Children[1] ).Children[0] ).Text = _reposName;
             await _manager.SetCurrentBranchAsync();
             CurrentBranch = _manager.CurrentBranch;
+            _manager.ClearCurrentPath();
             await _manager.SetTreeAsync();
             FileTree = _manager.GetFiles(data.ReposName + '/');
             OnPropertyChanged(nameof(FileTree));
@@ -106,6 +186,7 @@ namespace GitRemote.ViewModels
             PathPartsGridIsVisible = false;
             _layoutIsFull.RemoveAll(el => true);
             _partsCount = 0;
+            _manager.ClearCurrentPath();
             await treeTask;
             FileTree = _manager.GetFiles(_reposName + '/');
             OnPropertyChanged(nameof(FileTree));
@@ -399,4 +480,6 @@ namespace GitRemote.ViewModels
             MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
         }
     }
+
+
 }

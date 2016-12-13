@@ -1,6 +1,9 @@
-﻿using GitRemote.Models;
+﻿using GitRemote.DI;
+using GitRemote.Models;
 using GitRemote.Services;
 using Newtonsoft.Json.Linq;
+using Octokit;
+using Octokit.Internal;
 using RestSharp.Portable;
 using RestSharp.Portable.Authenticators;
 using RestSharp.Portable.HttpClient;
@@ -17,12 +20,15 @@ namespace GitRemote.GitHub.Managers
         private readonly Session _session;
         private readonly string _ownerName;
         private readonly string _reposName;
+        private readonly GitHubClient _gitHubClient;
 
         public RepositoryNewsManager(Session session, string ownerName, string reposName)
         {
             _session = session;
             _ownerName = ownerName;
             _reposName = reposName;
+            _gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
+                new InMemoryCredentialStore(new Credentials(session.GetToken())));
         }
 
         public async Task<IEnumerable<RepositoryNewsModel>> GetRepositoryNews()
@@ -91,7 +97,7 @@ namespace GitRemote.GitHub.Managers
                 case "PushEvent":
                     model.Target = payload["ref"].ToString().Split('/')[2];
                     model.CommitsCount = payload["size"].ToString();
-                    if (Convert.ToInt32(model.CommitsCount.Split(' ')[0]) > 0)
+                    if ( Convert.ToInt32(model.CommitsCount.Split(' ')[0]) > 0 )
                     {
                         model.Comment = payload["commits"][0]["message"].ToString();
                         model.ShaCode = payload["commits"][0]["sha"].ToString().Substring(0, 7);
@@ -99,7 +105,7 @@ namespace GitRemote.GitHub.Managers
                         model.IsSubtitle = true;
                     }
                     model.ActionType = "pushed";
-                    model.ActionTypeFontIcon = Commit;
+                    model.ActionTypeFontIcon = FontIconsService.Octicons.Commit;
                     break;
 
                 case "PullRequestEvent":
@@ -110,7 +116,7 @@ namespace GitRemote.GitHub.Managers
                         model.IsBody = true;
                         model.Body = payload["pull_request"]["title"].ToString();
                     }
-                    model.ActionTypeFontIcon = PullRequest;
+                    model.ActionTypeFontIcon = FontIconsService.Octicons.PullRequest;
                     break;
 
                 case "IssuesEvent":
@@ -146,7 +152,7 @@ namespace GitRemote.GitHub.Managers
                         model.Nomer = payload["ref"].ToString();
                     else
                         model.Target = payload["ref"].ToString();
-                    model.ActionTypeFontIcon = model.ActionType == "branch" ? Branch
+                    model.ActionTypeFontIcon = model.ActionType == "branch" ? FontIconsService.Octicons.Branch
                                               : ( model.ActionType == "repository" ? Repo
                                               : Tag );
                     break;
@@ -192,6 +198,26 @@ namespace GitRemote.GitHub.Managers
             }
 
             return true;
+        }
+
+        public async Task StarRepository()
+        {
+            await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);
+        }
+
+        public async Task UnstarRepository()
+        {
+            await _gitHubClient.Activity.Starring.RemoveStarFromRepo(_ownerName, _reposName);
+        }
+
+        public async Task ForkRepository()
+        {
+            await _gitHubClient.Repository.Forks.Create(_ownerName, _reposName, new NewRepositoryFork());
+        }
+
+        public async Task OpenInBrowser(IDevice device)
+        {
+            await device.LaunchUriAsync(new Uri($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}"));
         }
     }
 }

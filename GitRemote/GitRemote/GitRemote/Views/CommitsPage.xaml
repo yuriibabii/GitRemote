@@ -6,9 +6,28 @@
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.CommitsPage">
 
+  <views:CommitsPage.ToolbarItems>
+     <ToolbarItem Text="{Binding StarText}"
+                 Order="Secondary"
+                 Command="{Binding StarCommand}"/>
+    <ToolbarItem Text="Fork"
+                 Order="Secondary"
+                 Command="{Binding ForkCommand}"/>
+    <ToolbarItem Text="Contributors"
+                 Order="Secondary"
+                 Command="{Binding ContributorsCommand}"/>
+    <ToolbarItem Text="Share"
+                 Order="Secondary"
+                 Command="{Binding ShareCommand}"/>
+    <ToolbarItem Text="Open in browser"
+                 Order="Secondary"
+                 Command="{Binding OpenInBrowserCommand}"/>
+  </views:CommitsPage.ToolbarItems>
+  
   <StackLayout Orientation="Vertical"
                Spacing="0">
 

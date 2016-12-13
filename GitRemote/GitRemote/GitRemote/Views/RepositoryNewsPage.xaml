@@ -6,8 +6,27 @@
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.RepositoryNewsPage">
+
+  <views:RepositoryNewsPage.ToolbarItems>
+    <ToolbarItem Text="{Binding StarText}"
+                 Order="Secondary"
+                 Command="{Binding StarCommand}"/>
+    <ToolbarItem Text="Fork"
+                 Order="Secondary"
+                 Command="{Binding ForkCommand}"/>
+    <ToolbarItem Text="Contributors"
+                 Order="Secondary"
+                 Command="{Binding ContributorsCommand}"/>
+    <ToolbarItem Text="Share"
+                 Order="Secondary"
+                 Command="{Binding ShareCommand}"/>
+    <ToolbarItem Text="Open in browser"
+                 Order="Secondary"
+                 Command="{Binding OpenInBrowserCommand}"/>
+  </views:RepositoryNewsPage.ToolbarItems>
 
   <controls:FlowListView x:Name="NewsList"
                          HorizontalOptions="FillAndExpand"
@@ -25,7 +44,7 @@
               ColumnSpacing="0"
               RowSpacing="0">
           <Grid.ColumnDefinitions>
-            
+
             <ColumnDefinition Width="35"/>
             <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="{Binding Source={x:Reference Name=NewsList}, Path=BindingContext.ColumnWidth}"/>
@@ -104,7 +123,7 @@
                                   VerticalOptions="Center"
                                   HorizontalOptions="StartAndExpand"
                                   Margin="0, 0, 5, 0"/>
-          
+
           <Label x:Name="PublishedTime"
                  FormattedText="{Binding PublishedTime}"
                  FontSize="13"
@@ -119,5 +138,5 @@
 
 
   </controls:FlowListView>
-  
+
 </ContentPage>

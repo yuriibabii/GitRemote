@@ -4,8 +4,31 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FileExplorerPage">
+
+  <views:FileExplorerPage.ToolbarItems>
+    <ToolbarItem Text="{Binding StarText}"
+                 Order="Secondary"
+                 Command="{Binding StarCommand}"/>
+    <ToolbarItem Text="Fork"
+                 Order="Secondary"
+                 Command="{Binding ForkCommand}"/>
+    <ToolbarItem Text="Contributors"
+                 Order="Secondary"
+                 Command="{Binding ContributorsCommand}"/>
+    <ToolbarItem Text="Share"
+                 Order="Secondary"
+                 Command="{Binding ShareCommand}"/>
+    <ToolbarItem Text="Open in browser"
+                 Order="Secondary"
+                 Command="{Binding OpenInBrowserCommand}"/>
+    <ToolbarItem Text="Refresh"
+                 Order="Secondary"
+                 Command="{Binding RefreshCommand}"/>
+  </views:FileExplorerPage.ToolbarItems>
+  
   <StackLayout Spacing="0">
     <Grid x:Name="PathParts"
           VerticalOptions="Start"

@@ -1,4 +1,5 @@
-﻿using GitRemote.GitHub.Managers;
+﻿using GitRemote.DI;
+using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
@@ -17,7 +18,16 @@ namespace GitRemote.ViewModels
 {
     public class CommitsPageViewModel : BindableBase, INavigationAware
     {
+        #region Commands
+        public DelegateCommand StarCommand { get; }
+        public DelegateCommand ForkCommand { get; }
+        public DelegateCommand ContributorsCommand { get; }
+        public DelegateCommand ShareCommand { get; }
+        public DelegateCommand OpenInBrowserCommand { get; }
+        #endregion
+
         private INavigationService _navigationService;
+        private readonly IDevice _device;
         private CommitsManager _manager;
         public DelegateCommand BotPanelTapped { get; }
         public ObservableCollection<CommitModel> Commits { get; set; }
@@ -29,22 +39,34 @@ namespace GitRemote.ViewModels
 
         private string _currentSourceType = "Branch";
 
+        private string _currentBranch = string.Empty;
         public string CurrentBranch
         {
             get { return _currentBranch; }
             set { SetProperty(ref _currentBranch, value); }
         }
 
-        private string _currentBranch = string.Empty;
+        private string _starText = "Star";
+        public string StarText
+        {
+            get { return _starText; }
+            set { SetProperty(ref _starText, value); }
+        }
 
-        public CommitsPageViewModel(INavigationService navigationService)
+        public CommitsPageViewModel(INavigationService navigationService, IDevice device)
         {
             _navigationService = navigationService;
-
+            _device = device;
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
             MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
             MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages, OnDataReceived);
+
+            StarCommand = new DelegateCommand(OnStar);
+            ForkCommand = new DelegateCommand(OnFork);
+            ContributorsCommand = new DelegateCommand(OnContributors);
+            ShareCommand = new DelegateCommand(OnShare);
+            OpenInBrowserCommand = new DelegateCommand(OnOpenInBrowser);
         }
 
         private async void OnDataReceived(SendDataToPublicReposParticularPagesModel data)
@@ -81,6 +103,44 @@ namespace GitRemote.ViewModels
             return new ObservableCollection<CommitModel>
                 (await _manager.GetCommitsAsync());
         }
+
+        #region CommandHandlers
+
+        private async void OnStar()
+        {
+            if ( StarText == "Star" )
+            {
+                await _manager.StarRepository();
+                StarText = "Unstar";
+            }
+            else
+            {
+                await _manager.UnstarRepository();
+                StarText = "Star";
+            }
+        }
+
+        private async void OnFork()
+        {
+            await _manager.ForkRepository();
+        }
+
+        private void OnContributors()
+        {
+            //Waits for implementation
+        }
+
+        private void OnShare()
+        {
+            //Waits for implementation
+        }
+
+        private async void OnOpenInBrowser()
+        {
+            await _manager.OpenInBrowser(_device);
+        }
+
+        #endregion
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {

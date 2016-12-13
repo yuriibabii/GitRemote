@@ -1,7 +1,10 @@
-﻿using GitRemote.Models;
+﻿using GitRemote.DI;
+using GitRemote.Models;
 using GitRemote.Services;
 using Microsoft.Practices.ObjectBuilder2;
 using Newtonsoft.Json.Linq;
+using Octokit;
+using Octokit.Internal;
 using RestSharp.Portable;
 using RestSharp.Portable.Authenticators;
 using RestSharp.Portable.HttpClient;
@@ -16,14 +19,15 @@ namespace GitRemote.GitHub.Managers
 {
     public class FileExplorerManager
     {
-        private readonly string _login;
+        private readonly string _ownerName;
         private readonly string _reposName;
         private readonly RestClient _restClient;
+        private readonly GitHubClient _gitHubClient;
         public string CurrentBranch { get; private set; }
         private readonly List<string> _currentPath;
         private List<Dictionary<string, List<FileExplorerModel>>> _tree;
 
-        public FileExplorerManager(Session session, string login, string reposName)
+        public FileExplorerManager(Session session, string ownerName, string reposName)
         {
             _restClient = new RestClient(ConstantsService.GitHubApiLink)
             {
@@ -31,9 +35,12 @@ namespace GitRemote.GitHub.Managers
                     (new NetworkCredential(session.Login, session.GetToken()), AuthHeader.Www)
             };
 
-            _login = login;
+            _ownerName = ownerName;
             _reposName = reposName;
             _currentPath = new List<string>();
+
+            _gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
+                new InMemoryCredentialStore(new Credentials(session.GetToken())));
         }
 
         /// <summary>
@@ -79,6 +86,10 @@ namespace GitRemote.GitHub.Managers
                 CurrentBranch = branch;
             else
                 CurrentBranch = await GetDefaultBranchAsync();
+        }
+
+        public void ClearCurrentPath()
+        {
             _currentPath.RemoveAll(el => true);
         }
 
@@ -89,7 +100,7 @@ namespace GitRemote.GitHub.Managers
 
         private async Task<JArray> GetJsonTreeAsync()
         {
-            var request = new RestRequest($"/repos/{_login}/{_reposName}/git/trees/{CurrentBranch}?recursive=1", Method.GET)
+            var request = new RestRequest($"/repos/{_ownerName}/{_reposName}/git/trees/{CurrentBranch}?recursive=1", Method.GET)
             {
                 Serializer = { ContentType = "application/json" }
             };
@@ -113,7 +124,7 @@ namespace GitRemote.GitHub.Managers
                 foreach ( var element in jsonTree )
                 {
                     var fileType = element["type"].ToString();
-                    if (fileType == "commit") continue;
+                    if ( fileType == "commit" ) continue;
 
                     fileType = fileType == "blob" ? "file" : "dir";
 
@@ -174,7 +185,7 @@ namespace GitRemote.GitHub.Managers
 
         public async Task<string> GetDefaultBranchAsync()
         {
-            var request = new RestRequest($"/repos/{_login}/{_reposName}", Method.GET)
+            var request = new RestRequest($"/repos/{_ownerName}/{_reposName}", Method.GET)
             {
                 Serializer = { ContentType = "application/json" }
             };
@@ -187,7 +198,7 @@ namespace GitRemote.GitHub.Managers
 
         public async Task<List<string>> GetBranchesAsync()
         {
-            var request = new RestRequest($"/repos/{_login}/{_reposName}/branches", Method.GET)
+            var request = new RestRequest($"/repos/{_ownerName}/{_reposName}/branches", Method.GET)
             {
                 Serializer = { ContentType = "application/json" }
             };
@@ -202,7 +213,7 @@ namespace GitRemote.GitHub.Managers
 
         public async Task<List<string>> GetTagsNamesAsync()
         {
-            var request = new RestRequest($"/repos/{_login}/{_reposName}/tags", Method.GET)
+            var request = new RestRequest($"/repos/{_ownerName}/{_reposName}/tags", Method.GET)
             {
                 Serializer = { ContentType = "application/json" }
             };
@@ -248,5 +259,26 @@ namespace GitRemote.GitHub.Managers
         {
             _currentPath.RemoveRange(index, _currentPath.Count - index);
         }
+
+        public async Task StarRepository()
+        {
+            await _gitHubClient.Activity.Starring.StarRepo(_ownerName, _reposName);
+        }
+
+        public async Task UnstarRepository()
+        {
+            await _gitHubClient.Activity.Starring.RemoveStarFromRepo(_ownerName, _reposName);
+        }
+
+        public async Task ForkRepository()
+        {
+            await _gitHubClient.Repository.Forks.Create(_ownerName, _reposName, new NewRepositoryFork());
+        }
+
+        public async Task OpenInBrowser(IDevice device)
+        {
+            await device.LaunchUriAsync(new Uri($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}"));
+        }
+
     }
 }

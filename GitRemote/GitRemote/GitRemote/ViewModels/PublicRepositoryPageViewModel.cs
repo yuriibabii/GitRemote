@@ -74,7 +74,7 @@ namespace GitRemote.ViewModels
 
             var owner = client.Get(ownerName);
 
-            AvatarUrl = owner.Result.AvatarUrl;
+            AvatarUrl = owner.Result.AvatarUrl; // Blocks task, can be dangerous
 
             var model = new SendDataToPublicReposParticularPagesModel(session, ownerName, reposName);
 
