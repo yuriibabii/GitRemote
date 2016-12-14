@@ -121,8 +121,8 @@ namespace GitRemote.Droid.Renderers
             var actionBarSize = ( int )styledAttributes.GetDimension(0, 100);
             styledAttributes.Recycle();
 
-            if ( actionBarSize - 40 > 0 )
-                return actionBarSize - 40;
+            if ( actionBarSize - 35 > 0 )
+                return actionBarSize - 35;
 
             return actionBarSize;
         }

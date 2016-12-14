@@ -1,6 +1,7 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub.Managers;
 using GitRemote.Models;
+using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -38,6 +39,8 @@ namespace GitRemote.ViewModels
             set { SetProperty(ref _starText, value); }
         }
 
+        private NavigationParameters _parameters;
+
         public PublicIssuesPageViewModel(INavigationService navigationService, IDevice device)
         {
             _navigationService = navigationService;
@@ -70,6 +73,13 @@ namespace GitRemote.ViewModels
             StarText = await _manager.CheckStar()
              ? StarText = "Unstar"
              : StarText = "Star";
+
+            _parameters = new NavigationParameters
+            {
+                {"Session", data.Session },
+                {"OwnerName", data.OwnerName },
+                {"ReposName", data.ReposName }
+            };
         }
 
         /// <summary>
@@ -110,7 +120,9 @@ namespace GitRemote.ViewModels
 
         private void OnContributors()
         {
-            //Waits for implementation
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(RepositoryContributorsPage)}",
+               _parameters,
+               animated: false);
         }
 
         private void OnShare()

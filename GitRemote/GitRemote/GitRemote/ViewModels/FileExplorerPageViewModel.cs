@@ -74,6 +74,7 @@ namespace GitRemote.ViewModels
         private string _currentBranch = Empty;
         private string _reposName = Empty;
         private string _starText = Empty;
+        private NavigationParameters _parameters;
         #endregion
 
         public FileExplorerPageViewModel(INavigationService navigationService, IDevice device)
@@ -120,7 +121,9 @@ namespace GitRemote.ViewModels
 
         private void OnContributors()
         {
-            //Waits for implementation
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(RepositoryContributorsPage)}",
+                _parameters,
+                animated: false);
         }
 
         private void OnShare()
@@ -174,7 +177,13 @@ namespace GitRemote.ViewModels
             StarText = await _manager.CheckStar()
                 ? StarText = "Unstar"
                 : StarText = "Star";
-            
+
+            _parameters = new NavigationParameters
+            {
+                {"Session", data.Session },
+                {"OwnerName", data.OwnerName },
+                {"ReposName", data.ReposName }
+            };
         }
 
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)

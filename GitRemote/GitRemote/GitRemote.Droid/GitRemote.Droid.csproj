@@ -105,6 +105,10 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Octokit, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.23.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PCLCrypto, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
       <Private>True</Private>

@@ -54,6 +54,8 @@ namespace GitRemote.ViewModels
             set { SetProperty(ref _starText, value); }
         }
 
+        private NavigationParameters _parameters;
+
         public CommitsPageViewModel(INavigationService navigationService, IDevice device)
         {
             _navigationService = navigationService;
@@ -84,6 +86,13 @@ namespace GitRemote.ViewModels
             StarText = await _manager.CheckStar()
                 ? StarText = "Unstar"
                 : StarText = "Star";
+
+            _parameters = new NavigationParameters
+            {
+                {"Session", data.Session },
+                {"OwnerName", data.OwnerName },
+                {"ReposName", data.ReposName }
+            };
         }
 
         private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
@@ -131,7 +140,9 @@ namespace GitRemote.ViewModels
 
         private void OnContributors()
         {
-            //Waits for implementation
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(RepositoryContributorsPage)}",
+                _parameters,
+                animated: false);
         }
 
         private void OnShare()

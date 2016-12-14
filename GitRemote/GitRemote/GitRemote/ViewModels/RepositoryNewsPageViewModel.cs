@@ -2,6 +2,7 @@
 using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
+using GitRemote.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -23,13 +24,13 @@ namespace GitRemote.ViewModels
         public DelegateCommand OpenInBrowserCommand { get; }
         #endregion
 
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         public ObservableCollection<RepositoryNewsModel> News { get; set; }
         private RepositoryNewsManager _manager;
         public GridLength ColumnWidth { get; set; }
         private readonly IDevice _device;
         private string _starText = string.Empty;
-
+        private NavigationParameters _parameters;
         public string StarText
         {
             get { return _starText; }
@@ -66,6 +67,13 @@ namespace GitRemote.ViewModels
             StarText = await _manager.CheckStar()
                 ? StarText = "Unstar"
                 : StarText = "Star";
+
+            _parameters = new NavigationParameters
+            {
+                {"Session", data.Session },
+                {"OwnerName", data.OwnerName },
+                {"ReposName", data.ReposName }
+            };
         }
 
         private async Task<ObservableCollection<RepositoryNewsModel>> GetRepositoryNewsAsync()
@@ -98,7 +106,9 @@ namespace GitRemote.ViewModels
 
         private void OnContributors()
         {
-            //Waits for implementation
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(RepositoryContributorsPage)}",
+                _parameters,
+                animated: false);
         }
 
         private void OnShare()

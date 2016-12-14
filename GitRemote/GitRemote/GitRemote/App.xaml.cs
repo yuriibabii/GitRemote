@@ -53,6 +53,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<PublicRepositoryPage>();
             Container.RegisterTypeForNavigation<PullRequestsPage>();
             Container.RegisterTypeForNavigation<ForkedRepositoryPage>();
+            Container.RegisterTypeForNavigation<RepositoryContributorsPage>();
         }
 
         protected override void OnSleep()

@@ -56,6 +56,7 @@
     <Compile Include="GitHub\Managers\PublicIssuesManager.cs" />
     <Compile Include="GitHub\Managers\PullRequestsManager.cs" />
     <Compile Include="GitHub\Managers\RepositoriesManager.cs" />
+    <Compile Include="GitHub\Managers\RepositoryContributorsManager.cs" />
     <Compile Include="GitHub\Managers\RepositoryNewsManager.cs" />
     <Compile Include="GitHub\Managers\StarredRepositoriesManager.cs" />
     <Compile Include="GitHub\Managers\UserManager.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PrivateNewsModel.cs" />
     <Compile Include="Models\PullRequestModel.cs" />
+    <Compile Include="Models\RepositoryContributorModel.cs" />
     <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\RepositoryNewsModel.cs" />
     <Compile Include="Models\SelectBranchPopUpModel.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="ViewModels\PublicIssuesPageViewModel.cs" />
     <Compile Include="ViewModels\PublicRepositoryPageViewModel.cs" />
     <Compile Include="ViewModels\PullRequestsPageViewModel.cs" />
+    <Compile Include="ViewModels\RepositoryContributorsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoryNewsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
     <Compile Include="ViewModels\SelectBranchPopUpPageViewModel.cs" />
@@ -174,6 +177,9 @@
     </Compile>
     <Compile Include="Views\PullRequestsPage.xaml.cs">
       <DependentUpon>PullRequestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepositoryContributorsPage.xaml.cs">
+      <DependentUpon>RepositoryContributorsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RepositoryNewsPage.xaml.cs">
       <DependentUpon>RepositoryNewsPage.xaml</DependentUpon>
@@ -499,6 +505,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ForkedRepositoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RepositoryContributorsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
