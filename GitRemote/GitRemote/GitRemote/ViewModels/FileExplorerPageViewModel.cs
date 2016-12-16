@@ -126,9 +126,9 @@ namespace GitRemote.ViewModels
                 animated: false);
         }
 
-        private void OnShare()
+        private async void OnShare()
         {
-            //Waits for implementation
+            await _manager.ShareLinkOnRepository();
         }
 
         private async void OnOpenInBrowser()

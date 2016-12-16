@@ -4,6 +4,7 @@ using GitRemote.Services;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Octokit.Internal;
+using Plugin.Share;
 using RestSharp.Portable;
 using RestSharp.Portable.Authenticators;
 using RestSharp.Portable.HttpClient;
@@ -223,6 +224,11 @@ namespace GitRemote.GitHub.Managers
         public async Task OpenInBrowser(IDevice device)
         {
             await device.LaunchUriAsync(new Uri($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}"));
+        }
+
+        public async Task ShareLinkOnRepository()
+        {
+            await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
         }
     }
 }

@@ -3,6 +3,7 @@ using GitRemote.Models;
 using GitRemote.Services;
 using Octokit;
 using Octokit.Internal;
+using Plugin.Share;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -115,6 +116,11 @@ namespace GitRemote.GitHub.Managers
         public async Task OpenInBrowser(IDevice device)
         {
             await device.LaunchUriAsync(new Uri($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}"));
+        }
+
+        public async Task ShareLinkOnRepository()
+        {
+            await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
         }
     }
 }
