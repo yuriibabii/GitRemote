@@ -3,12 +3,12 @@ using System;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace GitRemote.Views
+namespace GitRemote.Views.PopUp
 {
-    public partial class SelectBranchPopUpPage
+    public partial class BranchSelectPage
     {
         private int _index;
-        public SelectBranchPopUpPage()
+        public BranchSelectPage()
         {
             InitializeComponent();
             MessagingCenter.Subscribe<string>(this, MessageService.Messages.ScrollToActivatedBranchItem, ScrollToElement);

@@ -3,6 +3,7 @@ using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using GitRemote.Views;
+using GitRemote.Views.PopUp;
 using Nito.Mvvm;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -61,7 +62,7 @@ namespace GitRemote.ViewModels
             _navigationService = navigationService;
             _device = device;
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
-            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
             MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages, OnDataReceived);
 
@@ -95,7 +96,7 @@ namespace GitRemote.ViewModels
             };
         }
 
-        private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
+        private async void OnBranchSelected(BranchSelectModel selectBranchPopUpModel)
         {
             _currentSourceType = selectBranchPopUpModel.Type;
             OnPropertyChanged(nameof(BranchIcon));
@@ -107,7 +108,7 @@ namespace GitRemote.ViewModels
 
         private void OnBotPanelTapped()
         {
-            PopupNavigation.PushAsync(new SelectBranchPopUpPage());
+            PopupNavigation.PushAsync(new BranchSelectPage());
             MessagingCenter.Send(_manager, SendManagerToBranchPopUpPage);
         }
 
@@ -159,7 +160,7 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
+            MessagingCenter.Unsubscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)

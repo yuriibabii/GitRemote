@@ -1,5 +1,6 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Models;
 using GitRemote.Services;
 using Nito.Mvvm;
@@ -8,9 +9,8 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using GitRemote.GitHub.Managers;
 
-namespace GitRemote.ViewModels.MasterPageViews
+namespace GitRemote.ViewModels.MasterMenuPage
 {
     public class GistsListPageViewModel : BindableBase
     {

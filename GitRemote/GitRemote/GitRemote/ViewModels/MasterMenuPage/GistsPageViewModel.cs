@@ -1,7 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 
-namespace GitRemote.ViewModels.MasterPageViews
+namespace GitRemote.ViewModels.MasterMenuPage
 {
     public class GistsPageViewModel : BindableBase
     {

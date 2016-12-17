@@ -100,5 +100,6 @@ namespace GitRemote.GitHub.Managers
         {
             await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
         }
+
     }
 }

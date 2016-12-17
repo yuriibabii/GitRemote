@@ -39,7 +39,7 @@
                  Order="Secondary"
                  Command="{Binding RefreshCommand}"/>
   </views:PublicIssuesPage.ToolbarItems>
-  
+
   <controls:FlowListView x:Name="IssuesList"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
@@ -47,6 +47,9 @@
                          HasUnevenRows="True"
                          FlowColumnCount="1">
 
+    <!--<controls:FlowListView.Header>
+        <Label Text="Open Issues" TextColor="Black" FontAttributes="Bold" FontSize="16" Margin="5, 5, 5, 5" />
+    </controls:FlowListView.Header>-->
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
         <Grid VerticalOptions="Start"

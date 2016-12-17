@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace GitRemote.Views.MasterPageViews
+namespace GitRemote.Views.MasterMenuPage
 {
     public partial class IssuesListPage : ContentPage
     {

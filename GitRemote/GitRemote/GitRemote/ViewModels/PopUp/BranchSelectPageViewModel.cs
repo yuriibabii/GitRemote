@@ -8,15 +8,15 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace GitRemote.ViewModels
+namespace GitRemote.ViewModels.PopUp
 {
-    public class SelectBranchPopUpPageViewModel : BindableBase
+    public class SelectBranchPageViewModel : BindableBase
     {
         public DelegateCommand ListItemTapped { get; }
         public DelegateCommand CancelButtonTapped { get; }
-        public ObservableCollection<SelectBranchPopUpModel> Items { get; set; }
-        private SelectBranchPopUpModel _tappedItem;
-        public SelectBranchPopUpModel TappedItem
+        public ObservableCollection<BranchSelectModel> Items { get; set; }
+        private BranchSelectModel _tappedItem;
+        public BranchSelectModel TappedItem
         {
             get { return _tappedItem; }
             set
@@ -25,7 +25,7 @@ namespace GitRemote.ViewModels
             }
         }
 
-        public SelectBranchPopUpPageViewModel()
+        public SelectBranchPageViewModel()
         {
             ListItemTapped = new DelegateCommand(OnListItemTapped);
             CancelButtonTapped = new DelegateCommand(OnCancelButtonTapped);
@@ -44,13 +44,13 @@ namespace GitRemote.ViewModels
             var tagsTask = commitsManager.GetTagsAsync();
             await Task.WhenAll(branchesTask, tagsTask);
 
-            Items = new ObservableCollection<SelectBranchPopUpModel>();
+            Items = new ObservableCollection<BranchSelectModel>();
             var index = 0;
             var counter = 0;
 
             foreach ( var branch in branchesTask.Result )
             {
-                var model = new SelectBranchPopUpModel { Name = branch.Name, Type = "Branch", IsActivated = false };
+                var model = new BranchSelectModel { Name = branch.Name, Type = "Branch", IsActivated = false };
                 if ( model.Name == commitsManager.CurrentBranch )
                 {
                     index = counter;
@@ -62,7 +62,7 @@ namespace GitRemote.ViewModels
 
             foreach ( var tag in tagsTask.Result )
             {
-                var model = new SelectBranchPopUpModel { Name = tag.Name, Type = "Tag", IsActivated = false };
+                var model = new BranchSelectModel { Name = tag.Name, Type = "Tag", IsActivated = false };
                 if ( model.Name == commitsManager.CurrentBranch )
                 {
                     index = counter;
@@ -82,13 +82,13 @@ namespace GitRemote.ViewModels
             var tagsTask = fileExplorerManager.GetTagsNamesAsync();
             await Task.WhenAll(branchesTask, tagsTask);
 
-            Items = new ObservableCollection<SelectBranchPopUpModel>();
+            Items = new ObservableCollection<BranchSelectModel>();
             var index = 0;
             var counter = 0;
 
             foreach ( var branch in branchesTask.Result )
             {
-                var model = new SelectBranchPopUpModel { Name = branch, Type = "Branch", IsActivated = false };
+                var model = new BranchSelectModel { Name = branch, Type = "Branch", IsActivated = false };
                 if ( model.Name == fileExplorerManager.CurrentBranch )
                 {
                     index = counter;
@@ -100,7 +100,7 @@ namespace GitRemote.ViewModels
 
             foreach ( var tag in tagsTask.Result )
             {
-                var model = new SelectBranchPopUpModel { Name = tag, Type = "Tag", IsActivated = false };
+                var model = new BranchSelectModel { Name = tag, Type = "Tag", IsActivated = false };
                 if ( model.Name == fileExplorerManager.CurrentBranch )
                 {
                     index = counter;

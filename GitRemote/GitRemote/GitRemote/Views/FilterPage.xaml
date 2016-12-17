@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.FilterPage"
+             Title="{Binding Title}">
+
+  <Grid
+    VerticalOptions="Start"
+    HorizontalOptions="FillAndExpand"
+    Margin="5, 10, 5, 0"
+    ColumnSpacing="0"
+    RowSpacing="5">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="25"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+
+    <Label Text="Status:"
+           FontSize="16"
+           TextColor="Black"
+           FontAttributes="Bold"
+           Margin="5, 0, 0, 2"
+           Grid.Column="0"
+           Grid.Row="0"/>
+
+    <Frame Grid.Column="0"
+           Grid.Row="1"
+           Padding="10"
+           OutlineColor="Black"
+           HasShadow="True">
+
+      <StackLayout Orientation="Horizontal"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"
+                   Spacing="20">
+
+        <StackLayout Orientation="Horizontal"
+                     Spacing="3">
+
+          <forms:CachedImage Source="{Binding OpenStatusImage}"
+                             HeightRequest="17"
+                             WidthRequest="17"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand"
+                             BitmapOptimizations="True"/>
+
+          <Label Text="Open"
+                 FontSize="14"
+                 TextColor="Black"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"/>
+
+        </StackLayout>
+
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding OpenStatusTapped}"
+                                NumberOfTapsRequired="1"/>
+        </StackLayout.GestureRecognizers>
+
+        <StackLayout Orientation="Horizontal"
+                     Spacing="3">
+
+          <forms:CachedImage Source="{Binding ClosedStatusImage}"
+                             HeightRequest="17"
+                             WidthRequest="17"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand"
+                             BitmapOptimizations="True"/>
+
+          <Label Text="Closed"
+                 FontSize="14"
+                 TextColor="Black"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"/>
+
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ClosedStatusTapped}"
+                                  NumberOfTapsRequired="1"/>
+          </StackLayout.GestureRecognizers>
+
+        </StackLayout>
+
+      </StackLayout>
+
+    </Frame>
+
+
+    <Label Text="Assigned To:"
+           FontSize="16"
+           TextColor="Black"
+           FontAttributes="Bold"
+           Margin="5, 0, 0, 2"
+           Grid.Column="0"
+           Grid.Row="2"/>
+
+    <Frame Grid.Column="0"
+           Grid.Row="3"
+           Padding="10"
+           OutlineColor="Black"
+           HasShadow="True">
+
+      <StackLayout Orientation="Horizontal"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Spacing="20">
+
+          <Label Text="{Binding AssignedName}"
+                 FontSize="14"
+                 TextColor="Black"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="StartAndExpand"/>
+
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding OpenAssignTapped}"
+                                NumberOfTapsRequired="1"/>
+        </StackLayout.GestureRecognizers>
+
+      </StackLayout>
+
+    </Frame>
+
+  </Grid>
+
+</ContentPage>

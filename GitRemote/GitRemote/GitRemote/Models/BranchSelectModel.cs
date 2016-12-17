@@ -3,7 +3,7 @@ using Prism.Mvvm;
 
 namespace GitRemote.Models
 {
-    public class SelectBranchPopUpModel : BindableBase
+    public class BranchSelectModel : BindableBase
     {
         public string SelectTypeIcon => Type == "Branch"
             ? FontIconsService.Octicons.Branch

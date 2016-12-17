@@ -128,7 +128,11 @@ namespace GitRemote.ViewModels
 
         private void OnFilter()
         {
-            //Waits for implementation
+            _parameters.Add("Type", "Pull Requests");
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(FilterPage)}",
+                _parameters,
+                animated: false);
+            _parameters.Remove("Type");
         }
 
         private async void OnRefresh()

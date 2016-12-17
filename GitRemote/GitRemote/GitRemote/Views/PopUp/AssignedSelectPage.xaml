@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+                 xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                 prism:ViewModelLocator.AutowireViewModel="True"
+                 x:Class="GitRemote.Views.PopUp.AssignedSelectPage">
+
+  <pages:PopupPage.Animation>
+    <animations:ScaleAnimation
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True"/>
+  </pages:PopupPage.Animation>
+
+  <StackLayout Orientation="Vertical"
+               Spacing="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               BackgroundColor="White"
+               Margin="20, 5, 20, 5">
+
+    <Label Text="Select Assignee"
+           FontSize="26"
+           TextColor="#91D7E5"
+           HorizontalOptions="StartAndExpand"
+           VerticalOptions="Start"
+           Margin="15, 5, 5, 5"/>
+    <BoxView BackgroundColor="#91D7E5"
+             HeightRequest="2"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="Start"
+             Margin="0, 0, 0, 5"/>
+
+    <controls:FlowListView x:Name="AssigneeList"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Start"
+                           FlowItemsSource="{Binding Assignees}"
+                           HasUnevenRows="True"
+                           FlowColumnCount="1"
+                           Margin="5, 0, 2, 0"
+                           FlowItemTappedCommand="{Binding ListItemTapped}"
+                           FlowLastTappedItem="{Binding TappedItem}"
+                           FlowTappedBackgroundColor="#EEEEEE">
+
+      <controls:FlowListView.FlowColumnTemplate>
+        <DataTemplate>
+          <Grid VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                Margin="0, 15, 0, 0"
+                ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="40"/>
+              <ColumnDefinition Width="35"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <forms:CachedImage x:Name="RadioButtonOnIcon"
+                               Source="ic_radio_button_on_24px.png"
+                               IsVisible="{Binding IsActivated}"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               BitmapOptimizations="True"
+                               Margin="0, 0, 0, 15"/>
+
+            <forms:CachedImage x:Name="RadioButtonOffIcon"
+                               Source="ic_radio_button_unchecked_black_24dp.png"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               BitmapOptimizations="True"
+                               Margin="0, 0, 0, 15"/>
+
+            <forms:CachedImage
+              x:Name="Avatar"
+              Source="{Binding AvatarUrl}"
+              HeightRequest="30"
+              WidthRequest="30"
+              Grid.Column="1"
+              Grid.Row="0"
+              Margin="0, 0, 0, 7"
+              CacheDuration ="5"
+              DownsampleToViewSize = "True"
+              LoadingPlaceholder="ic_list_NoAvatar.png">
+              <forms:CachedImage.Transformations>
+                <transformations:RoundedTransformation Radius="100"/>
+              </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+
+            <Label x:Name="Name"
+                   Text="{Binding Name}"
+                   FontSize="18"
+                   TextColor="Black"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"
+                   LineBreakMode="WordWrap"
+                   Grid.Column="2"
+                   Grid.Row="0"
+                   Margin="3, 0, 0, 15"/>
+          </Grid>
+        </DataTemplate>
+      </controls:FlowListView.FlowColumnTemplate>
+    </controls:FlowListView>
+
+    <BoxView  HorizontalOptions="FillAndExpand"
+              VerticalOptions="CenterAndExpand"
+              HeightRequest="1"
+              Color="#EEEEEE"/>
+
+    <Grid VerticalOptions="End"
+          HorizontalOptions="FillAndExpand">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+      </Grid.RowDefinitions>
+
+      <Label VerticalOptions="FillAndExpand"
+             HorizontalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             Text="Clear"
+             FontSize="14"
+             TextColor="Black"
+             Grid.Column="0"
+             Grid.Row="0">
+
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding ClearButtonTapped}"
+                                NumberOfTapsRequired="1"/>
+        </Label.GestureRecognizers>
+      </Label>
+
+      <BoxView
+        Grid.Column="0"
+        Grid.Row="0"
+        HorizontalOptions="EndAndExpand"
+        VerticalOptions="FillAndExpand"
+        WidthRequest="1"
+        Color="#EEEEEE"/>
+
+      <Label VerticalOptions="FillAndExpand"
+             HorizontalOptions="FillAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             Text="Cancel"
+             FontSize="14"
+             TextColor="Black"
+             Grid.Column="1"
+             Grid.Row="0">
+
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding CancelButtonTapped}"
+                                NumberOfTapsRequired="1"/>
+        </Label.GestureRecognizers>
+
+      </Label>
+
+    </Grid>
+
+  </StackLayout>
+
+</pages:PopupPage>

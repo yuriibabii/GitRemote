@@ -11,6 +11,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using GitRemote.Views.PopUp;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
@@ -85,7 +86,7 @@ namespace GitRemote.ViewModels
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
             MessagingCenter.Subscribe<string>(this, PublicReposCurrentTabChanged, OnTabChanged);
             MessagingCenter.Subscribe<Grid>(this, TakePathPartsGrid, SetPathPartsGrid);
-            MessagingCenter.Subscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
+            MessagingCenter.Subscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
             MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages, OnDataReceived);
 
@@ -186,7 +187,7 @@ namespace GitRemote.ViewModels
             };
         }
 
-        private async void OnBranchSelected(SelectBranchPopUpModel selectBranchPopUpModel)
+        private async void OnBranchSelected(BranchSelectModel selectBranchPopUpModel)
         {
             _currentSourceType = selectBranchPopUpModel.Type;
             OnPropertyChanged(nameof(BranchIcon));
@@ -207,7 +208,7 @@ namespace GitRemote.ViewModels
 
         private void OnBotPanelTapped()
         {
-            PopupNavigation.PushAsync(new SelectBranchPopUpPage());
+            PopupNavigation.PushAsync(new BranchSelectPage());
             MessagingCenter.Send(_manager, SendManagerToBranchPopUpPage);
         }
 
@@ -472,7 +473,7 @@ namespace GitRemote.ViewModels
                 MessagingCenter.Unsubscribe<string>(this, PublicReposCurrentTabChanged);
                 MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
                 MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
-                MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
+                MessagingCenter.Unsubscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage);
             }
         }
 
@@ -489,7 +490,7 @@ namespace GitRemote.ViewModels
             MessagingCenter.Unsubscribe<string>(this, PublicReposCurrentTabChanged);
             MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
             MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
-            MessagingCenter.Unsubscribe<SelectBranchPopUpModel>(this, TakeBranchModelFromPopUpPage);
+            MessagingCenter.Unsubscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage);
         }
     }
 

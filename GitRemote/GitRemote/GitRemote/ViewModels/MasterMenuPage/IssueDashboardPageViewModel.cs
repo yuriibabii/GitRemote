@@ -1,7 +1,7 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
 
-namespace GitRemote.ViewModels.MasterPageViews
+namespace GitRemote.ViewModels.MasterMenuPage
 {
     public class IssueDashboardPageViewModel : BindableBase
     {

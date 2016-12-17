@@ -118,5 +118,10 @@ namespace GitRemote.GitHub.Managers
         {
             await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
         }
+
+        public async Task<IReadOnlyList<User>> GetAssigneesAsync()
+        {
+            return await _gitHubClient.Repository.Collaborator.GetAll(_ownerName, _reposName);
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using GitRemote.GitHub.Managers;
 using GitRemote.Services;
 using GitRemote.Views;
-using GitRemote.Views.MasterPageViews;
+using GitRemote.Views.MasterMenuPage;
+using GitRemote.Views.PopUp;
 using Prism.Unity;
 using ChooseUserPage = GitRemote.Views.Authentication.ChooseUserPage;
 using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
@@ -23,7 +24,7 @@ namespace GitRemote
             ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
             : $"{nameof(StartPage)}");
 
-            
+            //NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(FilterPage)}");
         }
 
         protected override void RegisterTypes()
@@ -47,13 +48,15 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<GistsListPage>();
             Container.RegisterTypeForNavigation<RepositoryNewsPage>();
             Container.RegisterTypeForNavigation<FileExplorerPage>();
-            Container.RegisterTypeForNavigation<SelectBranchPopUpPage>();
+            Container.RegisterTypeForNavigation<BranchSelectPage>();
             Container.RegisterTypeForNavigation<CommitsPage>();
             Container.RegisterTypeForNavigation<PublicIssuesPage>();
             Container.RegisterTypeForNavigation<PublicRepositoryPage>();
             Container.RegisterTypeForNavigation<PullRequestsPage>();
             Container.RegisterTypeForNavigation<ForkedRepositoryPage>();
             Container.RegisterTypeForNavigation<RepositoryContributorsPage>();
+            Container.RegisterTypeForNavigation<FilterPage>();
+            Container.RegisterTypeForNavigation<AssignedSelectPage>();
         }
 
         protected override void OnSleep()

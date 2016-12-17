@@ -1,4 +1,4 @@
-﻿namespace GitRemote.Views.MasterPageViews
+﻿namespace GitRemote.Views.MasterMenuPage
 {
     public partial class IssueDashboardPage
     {

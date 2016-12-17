@@ -7,7 +7,7 @@
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="GitRemote.Views.MasterPageViews.IssuesListPage">
+             x:Class="GitRemote.Views.MasterMenuPage.IssuesListPage">
 
   <controls:FlowListView x:Name="IssuesList"
                          HorizontalOptions="FillAndExpand"

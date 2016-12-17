@@ -2,9 +2,9 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:masterPageViews="clr-namespace:GitRemote.Views.MasterPageViews;assembly=GitRemote"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="GitRemote.Views.MasterPageViews.GistsPage"
+            xmlns:masterMenuPage="clr-namespace:GitRemote.Views.MasterMenuPage;assembly=GitRemote"
+            prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.MasterMenuPage.GistsPage"
              Title = "Gists">
   
   <TabbedPage.ToolbarItems>
@@ -21,8 +21,8 @@
 
   </TabbedPage.ToolbarItems>
   
-  <masterPageViews:GistsListPage/>
-  <masterPageViews:GistsListPage/>
-  <masterPageViews:GistsListPage/>
+  <masterMenuPage:GistsListPage/>
+  <masterMenuPage:GistsListPage/>
+  <masterMenuPage:GistsListPage/>
   
 </TabbedPage>

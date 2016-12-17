@@ -18,6 +18,8 @@ namespace GitRemote.Services
             public const string SetCurrentTabWithTitle = "SetCurrentTabWithTitle";
             public const string DoNavigation = "DoNavigation";
             public const string HideMasterPage = "HideMasterPage";
+            public const string SendManagerToFilterPage = "SendManagerToFilterPage";
+            public const string TakeAssigneeNameFromPopUpPage = "TakeAssigneeNameFromPopUpPage";
         }
 
         public static class MessageModels
