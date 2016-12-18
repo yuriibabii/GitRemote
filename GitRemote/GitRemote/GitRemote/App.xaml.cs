@@ -57,6 +57,7 @@ namespace GitRemote
             Container.RegisterTypeForNavigation<RepositoryContributorsPage>();
             Container.RegisterTypeForNavigation<FilterPage>();
             Container.RegisterTypeForNavigation<AssignedSelectPage>();
+            Container.RegisterTypeForNavigation<MilestoneSelectPage>();
         }
 
         protected override void OnSleep()

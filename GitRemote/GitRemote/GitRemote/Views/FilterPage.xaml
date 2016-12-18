@@ -25,6 +25,7 @@
       <RowDefinition Height="50"/>
       <RowDefinition Height="20"/>
       <RowDefinition Height="50"/>
+      <RowDefinition Height="20"/>
     </Grid.RowDefinitions>
 
     <Label Text="Status:"
@@ -120,10 +121,46 @@
                  FontSize="14"
                  TextColor="Black"
                  VerticalOptions="CenterAndExpand"
-                 HorizontalOptions="StartAndExpand"/>
+                 HorizontalOptions="StartAndExpand"
+                 LineBreakMode="TailTruncation"/>
 
         <StackLayout.GestureRecognizers>
           <TapGestureRecognizer Command="{Binding OpenAssignTapped}"
+                                NumberOfTapsRequired="1"/>
+        </StackLayout.GestureRecognizers>
+
+      </StackLayout>
+
+    </Frame>
+
+    <Label Text="Milestone:"
+           FontSize="16"
+           TextColor="Black"
+           FontAttributes="Bold"
+           Margin="5, 0, 0, 2"
+           Grid.Column="0"
+           Grid.Row="4"/>
+
+    <Frame Grid.Column="0"
+           Grid.Row="5"
+           Padding="10"
+           OutlineColor="Black"
+           HasShadow="True">
+
+      <StackLayout Orientation="Horizontal"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Spacing="20">
+
+        <Label Text="{Binding MilestoneName}"
+               FontSize="14"
+               TextColor="Black"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="StartAndExpand"
+               LineBreakMode="TailTruncation"/>
+
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding OpenMilestoneTapped}"
                                 NumberOfTapsRequired="1"/>
         </StackLayout.GestureRecognizers>
 

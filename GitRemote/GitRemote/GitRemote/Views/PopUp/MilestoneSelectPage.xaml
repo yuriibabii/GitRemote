@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-                 xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-                 xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-                 xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-                 prism:ViewModelLocator.AutowireViewModel="True"
-                 x:Class="GitRemote.Views.PopUp.AssignedSelectPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.PopUp.MilestoneSelectPage">
 
   <pages:PopupPage.Animation>
     <animations:ScaleAnimation
@@ -30,7 +29,7 @@
                BackgroundColor="White"
                Margin="20, 5, 20, 5">
 
-    <Label Text="Select Assignee"
+    <Label Text="Select Milestone"
            FontSize="26"
            TextColor="#91D7E5"
            HorizontalOptions="StartAndExpand"
@@ -42,10 +41,10 @@
              VerticalOptions="Start"
              Margin="0, 0, 0, 5"/>
 
-    <controls:FlowListView x:Name="AssigneesList"
+    <controls:FlowListView x:Name="MilestonesList"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start"
-                           FlowItemsSource="{Binding Assignees}"
+                           FlowItemsSource="{Binding Milestones}"
                            HasUnevenRows="True"
                            FlowColumnCount="1"
                            Margin="5, 0, 2, 0"
@@ -58,14 +57,15 @@
           <Grid VerticalOptions="Start"
                 HorizontalOptions="FillAndExpand"
                 Margin="0, 15, 0, 0"
-                ColumnSpacing="10">
+                ColumnSpacing="5"
+                RowSpacing="18">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="40"/>
-              <ColumnDefinition Width="35"/>
               <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="{Binding DescriptionHeight}"/>
             </Grid.RowDefinitions>
 
             <forms:CachedImage x:Name="RadioButtonOnIcon"
@@ -78,7 +78,7 @@
                                HeightRequest="20"
                                WidthRequest="20"
                                BitmapOptimizations="True"
-                               Margin="0, 0, 0, 15"/>
+                               Grid.RowSpan="2"/>
 
             <forms:CachedImage x:Name="RadioButtonOffIcon"
                                Source="ic_radio_button_unchecked_black_24dp.png"
@@ -89,34 +89,29 @@
                                HeightRequest="20"
                                WidthRequest="20"
                                BitmapOptimizations="True"
-                               Margin="0, 0, 0, 15"/>
-
-            <forms:CachedImage
-              x:Name="Avatar"
-              Source="{Binding AvatarUrl}"
-              HeightRequest="30"
-              WidthRequest="30"
-              Grid.Column="1"
-              Grid.Row="0"
-              Margin="0, 0, 0, 7"
-              CacheDuration ="5"
-              DownsampleToViewSize = "True"
-              LoadingPlaceholder="ic_list_NoAvatar.png">
-              <forms:CachedImage.Transformations>
-                <transformations:RoundedTransformation Radius="100"/>
-              </forms:CachedImage.Transformations>
-            </forms:CachedImage>
+                               Grid.RowSpan="2"/>
 
             <Label x:Name="Name"
-                   Text="{Binding Name}"
-                   FontSize="18"
+                   Text="{Binding Title}"
+                   FontSize="16"
                    TextColor="Black"
+                   FontAttributes="Bold"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="Center"
                    LineBreakMode="TailTruncation"
-                   Grid.Column="2"
+                   Grid.Column="1"
                    Grid.Row="0"
-                   Margin="3, 0, 0, 15"/>
+                   Margin="0, 0, 0, -18"/>
+
+            <Label x:Name="Description"
+                   Text="{Binding Description}"
+                   FontSize="14"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"
+                   LineBreakMode="TailTruncation"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Margin="0, -8, 0, 0"/>
           </Grid>
         </DataTemplate>
       </controls:FlowListView.FlowColumnTemplate>
@@ -181,5 +176,5 @@
     </Grid>
 
   </StackLayout>
-
+  
 </pages:PopupPage>

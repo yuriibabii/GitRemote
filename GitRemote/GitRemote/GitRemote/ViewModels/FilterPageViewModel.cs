@@ -55,6 +55,13 @@ namespace GitRemote.ViewModels
             get { return _assignedName; }
             set { SetProperty(ref _assignedName, value); }
         }
+
+        private string _milestoneName = "None";
+        public string MilestoneName
+        {
+            get { return _milestoneName; }
+            set { SetProperty(ref _milestoneName, value); }
+        }
         #endregion
 
         #region Commands
@@ -62,6 +69,7 @@ namespace GitRemote.ViewModels
         public DelegateCommand OpenStatusTapped { get; }
         public DelegateCommand ClosedStatusTapped { get; }
         public DelegateCommand OpenAssignTapped { get; }
+        public DelegateCommand OpenMilestoneTapped { get; }
 
         #endregion
 
@@ -70,13 +78,19 @@ namespace GitRemote.ViewModels
             OpenStatusTapped = new DelegateCommand(OnOpenStatusTapped);
             ClosedStatusTapped = new DelegateCommand(OnClosedStatusTapped);
             OpenAssignTapped = new DelegateCommand(OnOpenAssignedTapped);
-
+            OpenMilestoneTapped = new DelegateCommand(OnOpenMilestoneTapped);
         }
 
         private void OnAssigneeReceived(string assigneeName)
         {
             MessagingCenter.Unsubscribe<string>(this, TakeAssigneeNameFromPopUpPage);
             AssignedName = assigneeName;
+        }
+
+        private void OnMilestoneReceived(string milestoneName)
+        {
+            MessagingCenter.Unsubscribe<string>(this, TakeMilestoneNameFromPopUpPage);
+            MilestoneName = milestoneName;
         }
 
         private void OnOpenStatusTapped()
@@ -101,9 +115,15 @@ namespace GitRemote.ViewModels
         {
             MessagingCenter.Subscribe<string>(this, TakeAssigneeNameFromPopUpPage, OnAssigneeReceived);
             PopupNavigation.PushAsync(new AssignedSelectPage());
-            MessagingCenter.Send(_manager, SendManagerToFilterPage);
+            MessagingCenter.Send(_manager, SendManagerToFilterPopUp);
         }
 
+        private void OnOpenMilestoneTapped()
+        {
+            MessagingCenter.Subscribe<string>(this, TakeMilestoneNameFromPopUpPage, OnMilestoneReceived);
+            PopupNavigation.PushAsync(new MilestoneSelectPage());
+            MessagingCenter.Send(_manager, SendManagerToFilterPopUp);
+        }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {

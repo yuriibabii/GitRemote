@@ -1,5 +1,6 @@
 ﻿using GitRemote.GitHub.Managers;
 using GitRemote.Models;
+using GitRemote.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Rg.Plugins.Popup.Services;
@@ -9,14 +10,14 @@ using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.ViewModels.PopUp
 {
-    public class AssignedSelectPageViewModel : BindableBase
+    public class MilestoneSelectPageViewModel : BindableBase
     {
         public DelegateCommand ListItemTapped { get; }
         public DelegateCommand ClearButtonTapped { get; }
         public DelegateCommand CancelButtonTapped { get; }
-        public ObservableCollection<AssigneeModel> Assignees { get; set; }
-        private AssigneeModel _tappedItem;
-        public AssigneeModel TappedItem
+        public ObservableCollection<MilestoneModel> Milestones { get; set; }
+        private MilestoneModel _tappedItem;
+        public MilestoneModel TappedItem
         {
             get { return _tappedItem; }
             set
@@ -27,7 +28,7 @@ namespace GitRemote.ViewModels.PopUp
 
         private FilterManager _manager;
 
-        public AssignedSelectPageViewModel()
+        public MilestoneSelectPageViewModel()
         {
             ListItemTapped = new DelegateCommand(OnListItemTapped);
             CancelButtonTapped = new DelegateCommand(OnCancelButtonTapped);
@@ -39,30 +40,31 @@ namespace GitRemote.ViewModels.PopUp
         private async void OnSendManager(FilterManager manager)
         {
             _manager = manager;
-            var assignees = await _manager.GetAssigneesAsync();
-            Assignees = new ObservableCollection<AssigneeModel>();
+            var milestones = await _manager.GetMilestonesAsync();
+            Milestones = new ObservableCollection<MilestoneModel>();
 
-            foreach ( var assignee in assignees )
+            foreach ( var milestone in milestones )
             {
-                var model = new AssigneeModel
+                var model = new MilestoneModel()
                 {
-                    Name = assignee.Name ?? assignee.Login,
-                    AvatarUrl = assignee.AvatarUrl
+                    Title = milestone.Title,
+                    Description = milestone.Description,
+                    IsDescription = StringService.CheckForNullOrEmpty(milestone.Description)
                 };
 
-                if ( manager.AssignedName == model.Name ) model.IsActivated = true;
+                if ( manager.MilestoneName == model.Title ) model.IsActivated = true;
 
-                Assignees.Add(model);
+                Milestones.Add(model);
             }
 
-            OnPropertyChanged(nameof(Assignees));
+            OnPropertyChanged(nameof(Milestones));
         }
 
         private async void OnClearButtonTapped()
         {
             MessagingCenter.Unsubscribe<FilterManager>(this, SendManagerToFilterPopUp);
-            _manager.AssignedName = "Anyone";
-            MessagingCenter.Send(_manager.AssignedName, TakeAssigneeNameFromPopUpPage);
+            _manager.MilestoneName = "None";
+            MessagingCenter.Send(_manager.MilestoneName, TakeMilestoneNameFromPopUpPage);
             await PopupNavigation.PopAsync();
         }
 
@@ -75,8 +77,8 @@ namespace GitRemote.ViewModels.PopUp
         private async void OnListItemTapped()
         {
             MessagingCenter.Unsubscribe<FilterManager>(this, SendManagerToFilterPopUp);
-            _manager.AssignedName = TappedItem.Name;
-            MessagingCenter.Send(_manager.AssignedName, TakeAssigneeNameFromPopUpPage);
+            _manager.MilestoneName = TappedItem.Title;
+            MessagingCenter.Send(_manager.MilestoneName, TakeMilestoneNameFromPopUpPage);
             await PopupNavigation.PopAsync();
         }
     }

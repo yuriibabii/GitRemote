@@ -72,6 +72,7 @@
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
     <Compile Include="GitHub\Session.cs" />
+    <Compile Include="Models\MilestoneModel.cs" />
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PrivateNewsModel.cs" />
     <Compile Include="Models\PullRequestModel.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\StringService.cs" />
     <Compile Include="Services\TimeService.cs" />
+    <Compile Include="ViewModels\PopUp\MilestoneSelectPageViewModel.cs" />
     <Compile Include="ViewModels\PopUp\AssignedSelectPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\ChooseUserPageViewModel.cs" />
     <Compile Include="ViewModels\CommitsPageViewModel.cs" />
@@ -144,6 +146,9 @@
     </Compile>
     <Compile Include="Views\PopUp\AssignedSelectPage.xaml.cs">
       <DependentUpon>AssignedSelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp\MilestoneSelectPage.xaml.cs">
+      <DependentUpon>MilestoneSelectPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PublicIssuesPage.xaml.cs">
       <DependentUpon>PublicIssuesPage.xaml</DependentUpon>
@@ -541,6 +546,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PopUp\AssignedSelectPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUp\MilestoneSelectPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
