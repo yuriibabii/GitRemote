@@ -27,5 +27,11 @@
             public const string SubModule = "\uf017";
 
         }
+
+        public static class FontAwesome
+        {
+            public const string UnCheckedSquare = "\uf096";
+            public const string CheckedSquare = "\uf14a";
+        }
     }
 }

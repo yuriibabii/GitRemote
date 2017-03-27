@@ -3,86 +3,105 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:converters="clr-namespace:GitRemote.Converters;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.Authentication.LoginingPage"
-             Title="Logining">
+             Title="Logining"
+             Padding="10, 0, 10, 0">
 
-  <ContentPage.ToolbarItems>
-    <ToolbarItem  x:Name ="LogInButton"
-                  Text="Log in"
-                  Command="{Binding LogInCommand}">
-    </ToolbarItem>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  x:Name="LogInButton"
+                      Text="Log in"
+                      Command="{Binding LogInCommand}">
+        </ToolbarItem>
 
-  </ContentPage.ToolbarItems>
-<StackLayout Orientation="Vertical">
-  <StackLayout Orientation="Horizontal"
-               BackgroundColor="#E7E5E5"
-               HorizontalOptions="Fill"
-               VerticalOptions="Start"
-               HeightRequest="30">
-    <Label Text="New to GitHub?"
-           FontSize="15"
-           HorizontalOptions="EndAndExpand"
-           VerticalOptions="Center"/>
-    <customClasses:HyperLinkLabel x:Name="GetSomeHelpHyperLink"
-                                  Text="Click here"
-                                  FontSize="15"
-                                  HorizontalOptions="Start"
-                                  VerticalOptions="Center"
-                                  IsUnderline="True"
-                                  TextColor="#3366BB">
-      <customClasses:HyperLinkLabel.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding HyperLinkTappedCommand}"
-                              NumberOfTapsRequired="1"/>
-      </customClasses:HyperLinkLabel.GestureRecognizers>
-    </customClasses:HyperLinkLabel>
-    <Label Text="to sign up."
-           FontSize="15"
-           HorizontalOptions="StartAndExpand"
-           VerticalOptions="Center"/>
-  </StackLayout>
-  
-  <StackLayout Orientation="Vertical"
-               HorizontalOptions="Fill"
-               VerticalOptions="Start"
-               Padding="5, 0, 5, 5">
-    <customClasses:FloatingEntry ClassId ="LoginEntry"
-                                 x:Name="LoginEntry"
-                                 Text="{Binding LoginEntryText, Mode=OneWayToSource}"
-                                 Placeholder = "Username or Email"
-                                 Margin="5, 10, 5, 5"
-                                 />
+    </ContentPage.ToolbarItems>
 
-    <customClasses:FloatingEntry ClassId = "PasswordEntry"
-                                 x:Name="PasswordEntry"
-                                 Text="{Binding PasswordEntryText, Mode=OneWayToSource}"
-                                 IsPassword="{Binding IsUnChecked}"
-                                 Placeholder = "Password"
-                                 Margin="5, 10, 5, 5"
-                                 />
+    <Grid RowSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
 
-    <StackLayout Orientation="Horizontal"
-                 x:Name="ShowPasswordLayout"
-                 HorizontalOptions="Start"
-                 VerticalOptions="Start"
-                 Padding="10, 5, 5, 5">
+        <StackLayout Orientation="Horizontal"
+                     BackgroundColor="#E7E5E5"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="Start"
+                     HeightRequest="30"
+                     Grid.Column="0"
+                     Grid.Row="0"
+                     Margin="-10, 0, -10, 0">
+            <Label Text="New to GitHub?"
+                   FontSize="15"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="Center" />
+            <customClasses:HyperLinkLabel x:Name="GetSomeHelpHyperLink"
+                                          Text="Click here"
+                                          FontSize="15"
+                                          HorizontalOptions="Start"
+                                          VerticalOptions="Center"
+                                          IsUnderline="True"
+                                          TextColor="#3366BB">
+                <customClasses:HyperLinkLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HyperLinkTappedCommand}"
+                                          NumberOfTapsRequired="1" />
+                </customClasses:HyperLinkLabel.GestureRecognizers>
+            </customClasses:HyperLinkLabel>
+            <Label Text="to sign up."
+                   FontSize="15"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center" />
+        </StackLayout>
 
-      <StackLayout.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding CheckedCommand}"
-                              NumberOfTapsRequired="1"/>
-      </StackLayout.GestureRecognizers>
+        <customClasses:FloatingEntry ClassId="LoginEntry"
+                                     x:Name="LoginEntry"
+                                     Text="{Binding LoginEntryText, Mode=OneWayToSource}"
+                                     Placeholder="Username or Email"
+                                     Grid.Column="0"
+                                     Grid.Row="1" />
 
-      <Image x:Name="ShowPasswordImage"
-             Source="{Binding CheckBoxImagePath}"
-             HeightRequest="20"
-             WidthRequest="20"/>
+        <customClasses:FloatingEntry ClassId="PasswordEntry"
+                                     x:Name="PasswordEntry"
+                                     Text="{Binding PasswordEntryText, Mode=OneWayToSource}"
+                                     IsPassword="{Binding IsPasswordVisible, Converter={x:Static converters:InvertBoolConverter.Instance}}"
+                                     Placeholder="Password"
+                                     Grid.Column="0"
+                                     Grid.Row="2" />
 
-      <Label x:Name="ShowPasswordLabel"
-             Text="Show Password"
-             VerticalTextAlignment="Center"/>
+        <StackLayout Orientation="Horizontal"
+                     x:Name="ShowPasswordLayout"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Grid.Column="0"
+                     Grid.Row="3">
 
-    </StackLayout>
-  </StackLayout>
-</StackLayout>
-  
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CheckedCommand}"
+                                      NumberOfTapsRequired="1" />
+            </StackLayout.GestureRecognizers>
+
+            <!--<Image x:Name="ShowPasswordImage"
+                   Source="{Binding CheckBoxImagePath}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   VerticalOptions="CenterAndExpand" />-->
+
+            <customClasses:FontIcon Text="{Binding CheckBoxIcon}"
+                                    FontSize="20"
+                                    TextColor="{Binding CheckBoxColor}"
+                                    FontFamily="FontAwesome"
+                                    VerticalOptions="CenterAndExpand"/>
+            <Label x:Name="ShowPasswordLabel"
+                   Text="Show Password"
+                   VerticalOptions="FillAndExpand"
+                   VerticalTextAlignment="Center" />
+        </StackLayout>
+
+    </Grid>
+
 </ContentPage>

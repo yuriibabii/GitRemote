@@ -3,6 +3,7 @@ using GitRemote.Services;
 using GitRemote.Views;
 using GitRemote.Views.MasterMenuPage;
 using GitRemote.Views.PopUp;
+using Prism.Navigation;
 using Prism.Unity;
 using ChooseUserPage = GitRemote.Views.Authentication.ChooseUserPage;
 using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
@@ -19,10 +20,11 @@ namespace GitRemote
         {
             InitializeComponent();
 
-            //if User didn't exit from last session, then opens last session, otherwise opens start page
-            NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-            ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
-            : $"{nameof(StartPage)}");
+            var path = StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
+                    ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+                    : $"{nameof(StartPage)}";
+
+            NavigationService.NavigateAsync(path);
 
             //NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(FilterPage)}");
         }

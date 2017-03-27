@@ -10,23 +10,37 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using Xamarin.Forms;
+using static GitRemote.Services.FontIconsService.FontAwesome;
 
 namespace GitRemote.ViewModels.Authentication
 {
     public class LoginingPageViewModel : BindableBase
     {
-        private readonly ShowPasswordCheckBoxModel _checkBox;
-        private readonly LogInPageEntriesModel _entries;
+        private readonly LogInPageEntriesModel _entries = new LogInPageEntriesModel();
         private readonly INavigationService _navigationService;
         private readonly IKeyboardHelper _keyboardHelper;
         private readonly AccountManager _accountManager;
         private readonly IDevice _device;
-        public DelegateCommand CheckedCommand { get; }
-        public DelegateCommand LogInCommand { get; }
-        public DelegateCommand HyperLinkTappedCommand { get; }
+        public DelegateCommand CheckedCommand => new DelegateCommand(OnCheckBoxTapped);
+        public DelegateCommand LogInCommand => new DelegateCommand(OnLogInTapped,
+            () => StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText));
+        public DelegateCommand HyperLinkTappedCommand => new DelegateCommand(OnHyperLinkTapped);
 
-        public bool IsUnChecked => _checkBox.IsUnChecked;
-        public string CheckBoxImagePath => _checkBox.ImageSource;
+        private bool _isPasswordVisible;
+        public bool IsPasswordVisible
+        {
+            get { return _isPasswordVisible; }
+            set
+            {
+                SetProperty(ref _isPasswordVisible, value);
+                OnPropertyChanged(nameof(CheckBoxIcon));
+                OnPropertyChanged(nameof(CheckBoxColor));
+            }
+        }
+
+        public string CheckBoxIcon => IsPasswordVisible ? CheckedSquare : UnCheckedSquare;
+        public Color CheckBoxColor => IsPasswordVisible ? Color.Green : Color.Black;
 
         public string LoginEntryText
         {
@@ -54,33 +68,19 @@ namespace GitRemote.ViewModels.Authentication
             _device = device;
             _navigationService = navigationService;
             _keyboardHelper = keyboardHelper;
-            _checkBox = new ShowPasswordCheckBoxModel();
-            _entries = new LogInPageEntriesModel();
-
             _accountManager = new AccountManager(new ClientAuthorization(_navigationService), securedDataProvider);
-
-
-            Func<bool> isLogInCommandEnable = () =>
-                StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText);
-
-
-            CheckedCommand = new DelegateCommand(OnCheckBoxTapped);
-            LogInCommand = new DelegateCommand(OnLogInTapped, isLogInCommandEnable);
-            HyperLinkTappedCommand = new DelegateCommand(OnHyperLinkTapped);
-            //_keyboardHelper.ShowKeyboard();
         }
 
         public void OnCheckBoxTapped()
         {
             _keyboardHelper.ShowKeyboard();
-            _checkBox.ChangeCheckedProperty();
-            _checkBox.ChangeImageState();
-            OnPropertyChanged(nameof(IsUnChecked));
-            OnPropertyChanged(nameof(CheckBoxImagePath));
+            IsPasswordVisible = !IsPasswordVisible;
         }
 
         public async void OnLogInTapped()
         {
+            _keyboardHelper.HideKeyboard();
+
             var newsManager = new PrivateNewsManager();
 
             var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
@@ -92,9 +92,7 @@ namespace GitRemote.ViewModels.Authentication
 
             var session = new Session(LoginEntryText, token, privateFeedUrl);
 
-            _keyboardHelper.HideKeyboard();
-
-            if ( token == "2FA" ) return; // If account hasn't 2FA then I working with it and do below job later
+            if (token == "2FA") return; // If account hasn't 2FA then I working with it and do below job later
 
             _accountManager.AddAccount(LoginEntryText, token, privateFeedUrl);
 
@@ -108,9 +106,9 @@ namespace GitRemote.ViewModels.Authentication
             await _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }
 
-        private async void OnHyperLinkTapped()
+        private void OnHyperLinkTapped()
         {
-            await _device.LaunchUriAsync(new Uri(ConstantsService.GitHubOfficialPageUrl));
+            _device.LaunchUriAsync(new Uri(ConstantsService.GitHubOfficialPageUrl));
         }
     }
 }

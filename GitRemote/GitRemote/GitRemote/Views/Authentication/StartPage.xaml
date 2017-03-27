@@ -3,40 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="GitRemote.Views.Authentication.StartPage">
+             x:Class="GitRemote.Views.Authentication.StartPage"
+             Padding="15, 30, 15, 0">
 
-  <StackLayout HorizontalOptions="FillAndExpand"
-               VerticalOptions="StartAndExpand"
-               Padding="15, 30, 15, 0">
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="20">
 
-    <Image Source="{Binding StartPageImagePath}"
-           HorizontalOptions="CenterAndExpand"
-           VerticalOptions="Start"
-           WidthRequest="300"
-           HeightRequest="300"
-           Margin="0, 20, 0, 0"/>
+        <Image Source="gitremote_logo.png"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Start"
+               WidthRequest="300"
+               HeightRequest="300" />
 
-    <Button x:Name="LogInWithExistUserButton"
-            WidthRequest="300"
-            HeightRequest="70"
-            HorizontalOptions="CenterAndExpand"
-            Text="Log in with existing user"
-            TextColor="White"
-            BackgroundColor="{StaticResource LogInWithExistUserBackgroundColor}"
-            Command="{Binding LogInWithExistUserButtonCommand}"
-            Margin="0, 20, 0, 0"/>
+        <Button x:Name="LogInWithExistUserButton"
+                WidthRequest="300"
+                HeightRequest="70"
+                HorizontalOptions="CenterAndExpand"
+                Text="Log in with existing user"
+                TextColor="White"
+                BackgroundColor="{StaticResource LogInWithExistUserBackgroundColor}"
+                Command="{Binding LogInWithExistUserButtonCommand}" />
 
-    <Button x:Name="CreateNewUserButton"
-            WidthRequest="300"
-            HeightRequest="70"
-            HorizontalOptions="CenterAndExpand"
-            Text="Create new user"
-            TextColor="White"
-            BackgroundColor="{StaticResource CreateNewUserButtonBackgroundColor}"
-            Command="{Binding CreateNewUserButtonCommand}"
-            Margin="0, 20, 0, 0"/>
+        <Button x:Name="CreateNewUserButton"
+                WidthRequest="300"
+                HeightRequest="70"
+                HorizontalOptions="CenterAndExpand"
+                Text="Create new user"
+                TextColor="White"
+                BackgroundColor="{StaticResource CreateNewUserButtonBackgroundColor}"
+                Command="{Binding CreateNewUserButtonCommand}" />
 
-
-  </StackLayout>
+    </StackLayout>
 
 </ContentPage>

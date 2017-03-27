@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\InvertBoolConverter.cs" />
     <Compile Include="CustomClasses\CodeEntry.cs" />
     <Compile Include="CustomClasses\FontIcon.cs" />
     <Compile Include="CustomClasses\HyperLinkLabel.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Models\RepositoryModel.cs" />
     <Compile Include="Models\RepositoryNewsModel.cs" />
     <Compile Include="Models\BranchSelectModel.cs" />
-    <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
     <Compile Include="Models\StarredRepositoryModel.cs" />
     <Compile Include="Services\ConstantsService.cs" />
     <Compile Include="DI\IKeyboardHelper.cs" />

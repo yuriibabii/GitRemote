@@ -9,26 +9,23 @@ namespace GitRemote.ViewModels.Authentication
 {
     public class StartPageViewModel : BindableBase
     {
-        public string StartPageImagePath => "gitremote_logo.png";
-        public DelegateCommand LogInWithExistUserButtonCommand { get; }
-        public DelegateCommand CreateNewUserButtonCommand { get; }
+        public DelegateCommand LogInWithExistUserButtonCommand => new DelegateCommand(OnLogInWithExistUserButtonTapped);
+        public DelegateCommand CreateNewUserButtonCommand => new DelegateCommand(OnCreateNewUserButtonTapped);
         private readonly INavigationService _navigationService;
 
         public StartPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            LogInWithExistUserButtonCommand = new DelegateCommand(OnLogInWithExistUserButtonTapped);
-            CreateNewUserButtonCommand = new DelegateCommand(OnCreateNewUserButtonTapped);
         }
 
-        private async void OnLogInWithExistUserButtonTapped()
+        private void OnLogInWithExistUserButtonTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ChooseUserPage)}");
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ChooseUserPage)}", animated: false);
         }
 
-        private async void OnCreateNewUserButtonTapped()
+        private void OnCreateNewUserButtonTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(LoginingPage)}");
+            _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(LoginingPage)}", animated: false);
         }
     }
 }
