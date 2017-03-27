@@ -81,9 +81,6 @@ namespace GitRemote.ViewModels.Authentication
 
         public async void OnLogInTapped()
         {
-            LoginEntryText = "UniorDev";
-            PasswordEntryText = "Komikcvest2010";
-
             var newsManager = new PrivateNewsManager();
 
             var gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),

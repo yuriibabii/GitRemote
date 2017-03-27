@@ -5,12 +5,14 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
+using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace GitRemote.ViewModels.PopUp
 {
-    public class SelectBranchPageViewModel : BindableBase
+    public class SelectBranchPageViewModel : BindableBase, INavigationAware
     {
         public DelegateCommand ListItemTapped { get; }
         public DelegateCommand CancelButtonTapped { get; }
@@ -27,6 +29,7 @@ namespace GitRemote.ViewModels.PopUp
 
         public SelectBranchPageViewModel()
         {
+            Debug.WriteLine("IN VIEW MODEL");
             ListItemTapped = new DelegateCommand(OnListItemTapped);
             CancelButtonTapped = new DelegateCommand(OnCancelButtonTapped);
 
@@ -127,6 +130,21 @@ namespace GitRemote.ViewModels.PopUp
             MessagingCenter.Unsubscribe<FileExplorerManager>(this, MessageService.Messages.SendManagerToBranchPopUpPage);
             MessagingCenter.Send(TappedItem, MessageService.Messages.TakeBranchModelFromPopUpPage);
             await PopupNavigation.PopAsync();
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            Debug.WriteLine("FROM");
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            Debug.WriteLine("NAVIGATED");
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+            Debug.WriteLine("NAVIGATING");
         }
     }
 }

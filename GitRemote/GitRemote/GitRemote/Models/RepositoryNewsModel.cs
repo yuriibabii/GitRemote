@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
 using Xamarin.Forms;
 
 namespace GitRemote.Models

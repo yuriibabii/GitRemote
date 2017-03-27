@@ -29,6 +29,11 @@ namespace GitRemote.Droid
             Forms.Init(this, bundle);
             LoadApplication(new App());
 
+#if DEBUG
+            UISleuth.Inspector.Init();
+            // optional
+            UISleuth.Inspector.ShowAcceptingConnections();
+#endif
             MessagingCenter.Subscribe<string>(this, SetIsExecuteHardwareBack, OnSetExecuteHardwareBack);
         }
 
@@ -42,7 +47,7 @@ namespace GitRemote.Droid
         {
             MessagingCenter.Send("JustIgnore", HardwareBackPressed);
 
-            if (!_isExecuteHardwareBack)
+            if ( !_isExecuteHardwareBack )
             {
                 _isExecuteHardwareBack = true;
                 return;

@@ -67,6 +67,7 @@ namespace GitRemote.ViewModels
 
             var path = $"{nameof(PublicRepositoryPage)}";
             MessagingCenter.Send(new DoNavigationModel(path, parameters), DoNavigation);
+
         }
 
         private async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNewsAsync()
