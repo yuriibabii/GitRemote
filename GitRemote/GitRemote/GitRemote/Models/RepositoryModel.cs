@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using GitRemote.Services;
+using Prism.Mvvm;
 
 namespace GitRemote.Models
 {
@@ -8,12 +9,18 @@ namespace GitRemote.Models
 
         public bool IsDescription { get; set; }
 
-        private string _repositoryTypeIcon;
+        public string RepositoryTypeIcon => RepositoryType == "Fork"
+            ? FontIconsService.Octicons.RepoForked
+            : ( RepositoryType == "Private"
+                ? FontIconsService.Octicons.Lock
+                : FontIconsService.Octicons.Repo );
 
-        public string RepositoryTypeIcon
+        private string _repositoryType;
+
+        public string RepositoryType
         {
-            get { return _repositoryTypeIcon; }
-            set { SetProperty(ref _repositoryTypeIcon, value); }
+            get { return _repositoryType; }
+            set { SetProperty(ref _repositoryType, value); }
         }
 
         private string _repositoryName;
@@ -22,6 +29,14 @@ namespace GitRemote.Models
         {
             get { return _repositoryName; }
             set { SetProperty(ref _repositoryName, value); }
+        }
+
+        private string _ownerName;
+
+        public string OwnerName
+        {
+            get { return _ownerName; }
+            set { SetProperty(ref _ownerName, value); }
         }
 
         private string _repositoryDescription;

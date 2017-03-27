@@ -1,8 +1,8 @@
 ﻿using GitRemote.DI;
 using GitRemote.GitHub;
+using GitRemote.GitHub.Managers;
 using GitRemote.Services;
 using GitRemote.Views;
-using GitRemote.Views.MasterPageViews;
 using Octokit;
 using Octokit.Internal;
 using Prism.Commands;
@@ -12,6 +12,10 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using GitRemote.Views.MasterMenuPage;
+using Xamarin.Forms;
+using static GitRemote.Services.MessageService.MessageModels;
+using static GitRemote.Services.MessageService.Messages;
 using StartPage = GitRemote.Views.Authentication.StartPage;
 
 namespace GitRemote.ViewModels
@@ -87,7 +91,9 @@ namespace GitRemote.ViewModels
             {
                 var user = await gitHubClient.User.Current();
                 ProfileImageUrl = user?.AvatarUrl;
-                ProfileNickName = StringService.CheckForNullOrEmpty(user?.Name) ? user?.Name : user?.Login;
+                ProfileNickName = StringService.CheckForNullOrEmpty(user?.Name)
+                    ? user?.Name
+                    : user?.Login;
             }
             catch ( WebException )
             {
@@ -101,29 +107,42 @@ namespace GitRemote.ViewModels
 
         #region CommandHandlers
 
-        private async void OnGistsTapped()
+        private void OnGistsTapped()
         {
             GistsManager.SetTabsTitles(_metricsHelper);
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(GistsPage)}",
-                _navigationParameters, animated: false);
+
+            var path = $"{nameof(GistsPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private async void OnDashboardTapped()
+        private void OnDashboardTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(IssueDashboardPage)}",
-                _navigationParameters, animated: false);
+            var path = $"{nameof(IssueDashboardPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private async void OnBookmarksTapped()
+        private void OnBookmarksTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(BookmarksPage)}",
-                _navigationParameters, animated: false);
+            var path = $"{nameof(BookmarksPage)}";
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private async void OnIssueTapped()
+        private void OnIssueTapped()
         {
-            await _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(ReportAnIssuePage)}",
-                _navigationParameters, animated: false);
+            if ( !_navigationParameters.ContainsKey("OwnerName") )
+                _navigationParameters.Add("OwnerName", "UniorDev");
+
+            if ( !_navigationParameters.ContainsKey("ReposName") )
+                _navigationParameters.Add("ReposName", "GitRemote");
+
+            var path = $"{nameof(PublicRepositoryPage)}";
+
+            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            MessagingCenter.Send("Issues", SetCurrentTabWithTitle);
+            MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
         private async void OnExitTapped()

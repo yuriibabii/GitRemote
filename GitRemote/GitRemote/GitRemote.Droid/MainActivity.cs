@@ -1,11 +1,13 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V7.Widget;
 using DLToolkit.Forms.Controls;
 using FFImageLoading.Forms.Droid;
+using GitRemote.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.Droid
 {
@@ -13,6 +15,8 @@ namespace GitRemote.Droid
         ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : FormsAppCompatActivity
     {
+        private bool _isExecuteHardwareBack = true;
+
         protected override void OnCreate(Bundle bundle)
         {
             App.ScreenWidth = ( int )( Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density );
@@ -25,9 +29,37 @@ namespace GitRemote.Droid
             Forms.Init(this, bundle);
             LoadApplication(new App());
 
-            //var tv = FindViewById(Resource.Repository.mySearchView) as SearchView;
-            //var tb = ( Toolbar )tv?.Parent;
-            //if ( tb != null ) tb.Elevation = 20f;
+#if DEBUG
+            UISleuth.Inspector.Init();
+            // optional
+            UISleuth.Inspector.ShowAcceptingConnections();
+#endif
+            MessagingCenter.Subscribe<string>(this, SetIsExecuteHardwareBack, OnSetExecuteHardwareBack);
+        }
+
+        private void OnSetExecuteHardwareBack(string s)
+        {
+            if ( StringService.CheckForNullOrEmpty(s) )
+                _isExecuteHardwareBack = Convert.ToBoolean(s);
+        }
+
+        public override void OnBackPressed()
+        {
+            MessagingCenter.Send("JustIgnore", HardwareBackPressed);
+
+            if ( !_isExecuteHardwareBack )
+            {
+                _isExecuteHardwareBack = true;
+                return;
+            }
+
+            base.OnBackPressed();
+        }
+
+        protected override void OnDestroy()
+        {
+            MessagingCenter.Unsubscribe<string>(this, SetIsExecuteHardwareBack);
+            base.OnDestroy();
         }
     }
 }

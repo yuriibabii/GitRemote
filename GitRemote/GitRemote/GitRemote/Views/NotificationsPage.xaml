@@ -13,14 +13,13 @@
                          VerticalOptions="FillAndExpand"
                          FlowItemsSource="{Binding Notifications}"
                          HasUnevenRows="True"
-                         FlowColumnCount="1"
-                         Margin="15, 15, 15, 0">
+                         FlowColumnCount="1">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
         <Grid VerticalOptions="Start"
               HorizontalOptions="Start"
-              Margin="0, 0, 0, 25"
+              Margin="15, 15, 15, 25"
               ColumnSpacing="0"
               RowSpacing="5">
           <Grid.ColumnDefinitions>
