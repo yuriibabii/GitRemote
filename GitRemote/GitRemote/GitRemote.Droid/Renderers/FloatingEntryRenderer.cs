@@ -89,6 +89,8 @@ namespace GitRemote.Droid.Renderers
         private void EditTextOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             Element.Text = textChangedEventArgs.Text.ToString();
+
+            //Sets cursor to the end of entry
             NativeView.EditText.SetSelection(Element.Text.Length);
         }
 
