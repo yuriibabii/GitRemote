@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:masterPageViews="clr-namespace:GitRemote.Views.MasterPageViews;assembly=GitRemote"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.MasterPageViews.IssueDashboardPage"
+             Title="Issue Dashboard">
+  
+  <masterPageViews:IssuesListPage Title="Watched"/>
+  <masterPageViews:IssuesListPage Title="Assigned"/>
+  <masterPageViews:IssuesListPage Title="Created"/>
+  <masterPageViews:IssuesListPage Title="Mentioned"/>
+
+</TabbedPage>

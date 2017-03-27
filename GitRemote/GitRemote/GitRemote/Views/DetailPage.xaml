@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="GitRemote.Views.DetailPage"
+            xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
+            Title="GitRemote">
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem x:Name="Notifications"
+                 Icon="ic_menu_bell.png"
+                 Command="{Binding NotificationsCommand}"/>
+  </TabbedPage.ToolbarItems>
+  
+  <views:NewsPage/>
+  <views:RepositoriesPage/>
+  <views:StarsPage/>
+  <views:FollowPage Title="Followers"/>
+  <views:FollowPage Title="Following"/>
+</TabbedPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.TextInputLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:id="@+id/textInputLayout"
+  android:theme="@style/ThemeForFloatingEntry"
+  app:hintTextAppearance="@style/FloatingEntryHint">
+
+  <EditText
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:singleLine="true"
+    android:textSize ="20sp"
+    android:textCursorDrawable="@drawable/color_cursor"
+    android:inputType="textNoSuggestions"
+    android:imeOptions="actionSend"
+    />
+  <!--"With help of textNoSuggestions in input type we deleted Spell Check underline-->
+</android.support.design.widget.TextInputLayout>
