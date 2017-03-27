@@ -17,14 +17,15 @@
                          FlowColumnCount="1"
                          IsGroupingEnabled="True"
                          FlowGroupDisplayBinding="{Binding Key}"
-                         Margin="0, 15, 0, 0">
+                         FlowLastTappedItem="{Binding TappedItem}"
+                         FlowItemTappedCommand="{Binding ItemTappedCommand}">
     
     <controls:FlowListView.GroupHeaderTemplate>
       <DataTemplate>
         <ViewCell Height="50">
           <StackLayout Orientation="Vertical"
                        VerticalOptions="FillAndExpand"
-                       Padding="0, 5, 0, 20">
+                       Padding="0, 20, 0, 20">
             <Label Text="{Binding Key}"
                    TextColor="#054678"
                    VerticalOptions="Center"

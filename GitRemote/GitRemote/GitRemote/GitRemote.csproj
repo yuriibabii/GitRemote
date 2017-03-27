@@ -44,17 +44,27 @@
     <Compile Include="CustomClasses\FloatingEntry.cs" />
     <Compile Include="DI\IDevice.cs" />
     <Compile Include="DI\IMetricsHelper.cs" />
-    <Compile Include="GitHub\AccountManager.cs" />
+    <Compile Include="GitHub\Managers\AccountManager.cs" />
     <Compile Include="GitHub\ClientAuthorization.cs" />
-    <Compile Include="GitHub\FollowManager.cs" />
-    <Compile Include="GitHub\GistsManager.cs" />
-    <Compile Include="GitHub\IssuesManager.cs" />
-    <Compile Include="GitHub\NotificationsManager.cs" />
-    <Compile Include="GitHub\PrivateNewsManager.cs" />
-    <Compile Include="GitHub\RepositoriesManager.cs" />
-    <Compile Include="GitHub\StarredRepositoriesManager.cs" />
-    <Compile Include="GitHub\UserManager.cs" />
+    <Compile Include="GitHub\Managers\CommitsManager.cs" />
+    <Compile Include="GitHub\Managers\FileExplorerManager.cs" />
+    <Compile Include="GitHub\Managers\FilterManager.cs" />
+    <Compile Include="GitHub\Managers\FollowManager.cs" />
+    <Compile Include="GitHub\Managers\GistsManager.cs" />
+    <Compile Include="GitHub\Managers\IssueDashboardManager.cs" />
+    <Compile Include="GitHub\Managers\NotificationsManager.cs" />
+    <Compile Include="GitHub\Managers\PrivateNewsManager.cs" />
+    <Compile Include="GitHub\Managers\PublicIssuesManager.cs" />
+    <Compile Include="GitHub\Managers\PullRequestsManager.cs" />
+    <Compile Include="GitHub\Managers\RepositoriesManager.cs" />
+    <Compile Include="GitHub\Managers\RepositoryContributorsManager.cs" />
+    <Compile Include="GitHub\Managers\RepositoryNewsManager.cs" />
+    <Compile Include="GitHub\Managers\StarredRepositoriesManager.cs" />
+    <Compile Include="GitHub\Managers\UserManager.cs" />
+    <Compile Include="Models\AssigneeModel.cs" />
     <Compile Include="Models\CodePageEntryModel.cs" />
+    <Compile Include="Models\CommitModel.cs" />
+    <Compile Include="Models\FileExplorerModel.cs" />
     <Compile Include="Models\FollowModel.cs" />
     <Compile Include="Models\GistModel.cs" />
     <Compile Include="Models\GroupingModel.cs" />
@@ -62,9 +72,14 @@
     <Compile Include="Models\LogInPageEntriesModel.cs" />
     <Compile Include="Models\MasterPageMenuItemModel.cs" />
     <Compile Include="GitHub\Session.cs" />
+    <Compile Include="Models\MilestoneModel.cs" />
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PrivateNewsModel.cs" />
+    <Compile Include="Models\PullRequestModel.cs" />
+    <Compile Include="Models\RepositoryContributorModel.cs" />
     <Compile Include="Models\RepositoryModel.cs" />
+    <Compile Include="Models\RepositoryNewsModel.cs" />
+    <Compile Include="Models\BranchSelectModel.cs" />
     <Compile Include="Models\ShowPasswordCheckBoxModel.cs" />
     <Compile Include="Models\StarredRepositoryModel.cs" />
     <Compile Include="Services\ConstantsService.cs" />
@@ -72,37 +87,71 @@
     <Compile Include="DI\ISecuredDataProvider.cs" />
     <Compile Include="DI\IViewSaver.cs" />
     <Compile Include="Services\FontIconsService.cs" />
+    <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\StringService.cs" />
     <Compile Include="Services\TimeService.cs" />
+    <Compile Include="ViewModels\PopUp\MilestoneSelectPageViewModel.cs" />
+    <Compile Include="ViewModels\PopUp\AssignedSelectPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\ChooseUserPageViewModel.cs" />
+    <Compile Include="ViewModels\CommitsPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\LoginingPageViewModel.cs" />
+    <Compile Include="ViewModels\FileExplorerPageViewModel.cs" />
+    <Compile Include="ViewModels\FilterPageViewModel.cs" />
     <Compile Include="ViewModels\FollowPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\IssuesListPageViewModel.cs" />
+    <Compile Include="ViewModels\ForkedRepositoryPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterMenuPage\IssuesListPageViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\BookmarksPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\GistsListPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\GistsPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\IssueDashboardPageViewModel.cs" />
-    <Compile Include="ViewModels\MasterPageViews\ReportAnIssuePageViewModel.cs" />
-    <Compile Include="ViewModels\NewsPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterMenuPage\BookmarksPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterMenuPage\GistsListPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterMenuPage\GistsPageViewModel.cs" />
+    <Compile Include="ViewModels\MasterMenuPage\IssueDashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\NavigationBarPageViewModel.cs" />
+    <Compile Include="ViewModels\PrivateNewsPageViewModel.cs" />
     <Compile Include="ViewModels\NotificationsPageViewModel.cs" />
-    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PrivateProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PublicIssuesPageViewModel.cs" />
+    <Compile Include="ViewModels\PublicRepositoryPageViewModel.cs" />
+    <Compile Include="ViewModels\PullRequestsPageViewModel.cs" />
+    <Compile Include="ViewModels\RepositoryContributorsPageViewModel.cs" />
+    <Compile Include="ViewModels\RepositoryNewsPageViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\PopUp\BranchSelectPageViewModel.cs" />
     <Compile Include="ViewModels\StarsPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\StartPageViewModel.cs" />
     <Compile Include="ViewModels\Authentication\TwoFactorAuthPageViewModel.cs" />
     <Compile Include="Views\Authentication\ChooseUserPage.xaml.cs">
       <DependentUpon>ChooseUserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommitsPage.xaml.cs">
+      <DependentUpon>CommitsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FileExplorerPage.xaml.cs">
+      <DependentUpon>FileExplorerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FollowPage.xaml.cs">
       <DependentUpon>FollowPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPageViews\GistsListPage.xaml.cs">
+    <Compile Include="Views\ForkedRepositoryPage.xaml.cs">
+      <DependentUpon>ForkedRepositoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterMenuPage\GistsListPage.xaml.cs">
       <DependentUpon>GistsListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPageViews\IssuesListPage.xaml.cs">
+    <Compile Include="Views\MasterMenuPage\IssuesListPage.xaml.cs">
       <DependentUpon>IssuesListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp\AssignedSelectPage.xaml.cs">
+      <DependentUpon>AssignedSelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp\MilestoneSelectPage.xaml.cs">
+      <DependentUpon>MilestoneSelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PublicIssuesPage.xaml.cs">
+      <DependentUpon>PublicIssuesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationBarPage.xaml.cs">
       <DependentUpon>NavigationBarPage.xaml</DependentUpon>
@@ -116,20 +165,17 @@
     <Compile Include="Views\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPageViews\BookmarksPage.xaml.cs">
+    <Compile Include="Views\MasterMenuPage\BookmarksPage.xaml.cs">
       <DependentUpon>BookmarksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPageViews\GistsPage.xaml.cs">
+    <Compile Include="Views\MasterMenuPage\GistsPage.xaml.cs">
       <DependentUpon>GistsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPageViews\IssueDashboardPage.xaml.cs">
+    <Compile Include="Views\MasterMenuPage\IssueDashboardPage.xaml.cs">
       <DependentUpon>IssueDashboardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPageViews\ReportAnIssuePage.xaml.cs">
-      <DependentUpon>ReportAnIssuePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NewsPage.xaml.cs">
-      <DependentUpon>NewsPage.xaml</DependentUpon>
+    <Compile Include="Views\PrivateNewsPage.xaml.cs">
+      <DependentUpon>PrivateNewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Authentication\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
@@ -137,12 +183,27 @@
     <Compile Include="Views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    <Compile Include="Views\PrivateProfilePage.xaml.cs">
+      <DependentUpon>PrivateProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PublicRepositoryPage.xaml.cs">
+      <DependentUpon>PublicRepositoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PullRequestsPage.xaml.cs">
+      <DependentUpon>PullRequestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepositoryContributorsPage.xaml.cs">
+      <DependentUpon>RepositoryContributorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepositoryNewsPage.xaml.cs">
+      <DependentUpon>RepositoryNewsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RepositoriesPage.xaml.cs">
       <DependentUpon>RepositoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUp\BranchSelectPage.xaml.cs">
+      <DependentUpon>BranchSelectPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StarsPage.xaml.cs">
       <DependentUpon>StarsPage.xaml</DependentUpon>
@@ -152,8 +213,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DLToolkit.Forms.Controls.FlowListView, Version=1.0.6124.18177, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DLToolkit.Forms.Controls.FlowListView.2.0.0-alpha2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\DLToolkit.Forms.Controls.FlowListView.dll</HintPath>
+    <Reference Include="DLToolkit.Forms.Controls.FlowListView, Version=1.0.6155.36080, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DLToolkit.Forms.Controls.FlowListView.2.0.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\DLToolkit.Forms.Controls.FlowListView.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FeedParserPCL, Version=0.1.5749.31894, Culture=neutral, processorArchitecture=MSIL">
@@ -161,19 +222,27 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.2.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.2.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.2.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Transformations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.1.8\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.2.6-pre-241\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FubarCoder.RestSharp.Portable.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=be81bb0f53eab22f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FubarCoder.RestSharp.Portable.Core.4.0.7\lib\portable45-net45+win8+wp8+wpa81\FubarCoder.RestSharp.Portable.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FubarCoder.RestSharp.Portable.HttpClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=be81bb0f53eab22f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FubarCoder.RestSharp.Portable.HttpClient.4.0.7\lib\portable45-net45+win8+wp8+wpa81\FubarCoder.RestSharp.Portable.HttpClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -184,8 +253,20 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.2-beta1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Nito.Disposables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -193,15 +274,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Nito.Mvvm.Async, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Nito.Mvvm.Async.1.0.0-eta-02\lib\portable45-net45+win8+wp8+wpa81\Nito.Mvvm.Async.dll</HintPath>
+      <HintPath>..\..\packages\Nito.Mvvm.Async.1.0.0-eta-05\lib\portable45-net45+win8+wp8+wpa81\Nito.Mvvm.Async.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Nito.Mvvm.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Nito.Mvvm.Core.1.1.0\lib\portable45-net45+win8+wp8+wpa81\Nito.Mvvm.Core.dll</HintPath>
+    <Reference Include="Nito.Mvvm.Core, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.Mvvm.Core.1.2.0-alpha-03\lib\portable45-net45+win8+wp8+wpa81\Nito.Mvvm.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Octokit, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Octokit.0.22.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
+    <Reference Include="Octokit, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.23.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PCLCrypto, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
@@ -209,31 +290,47 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PInvoke.BCrypt, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.BCrypt.0.3.90\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.BCrypt.dll</HintPath>
+      <HintPath>..\..\packages\PInvoke.BCrypt.0.3.152\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.BCrypt.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PInvoke.Kernel32, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.Kernel32.0.3.90\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Kernel32.dll</HintPath>
+      <HintPath>..\..\packages\PInvoke.Kernel32.0.3.152\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Kernel32.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PInvoke.NCrypt, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.NCrypt.0.3.90\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
+      <HintPath>..\..\packages\PInvoke.NCrypt.0.3.152\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PInvoke.Windows.Core, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.Windows.Core.0.3.90\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
+      <HintPath>..\..\packages\PInvoke.Windows.Core.0.3.152\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Core.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
+    <Reference Include="Plugin.Share, Version=4.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.Share.4.0.3\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Share.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism.Forms, Version=6.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Forms.6.1.0-pre7\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Forms.dll</HintPath>
+    <Reference Include="Plugin.Share.Abstractions, Version=4.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.Share.4.0.3\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Share.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism.Unity.Forms, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0-pre7\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
+    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Core.6.3.0-pre1\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Forms.6.3.0-pre1\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0-pre1\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -249,7 +346,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Auth, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Auth.1.3.1.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10\Xamarin.Auth.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Auth.1.3.2-alpha-01\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10\Xamarin.Auth.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Behaviors, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -257,15 +354,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.168\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.168\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.168\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -274,7 +371,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ProfilePage.xaml">
+    <EmbeddedResource Include="Views\PrivateProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -292,7 +389,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\NewsPage.xaml">
+    <EmbeddedResource Include="Views\PrivateNewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -310,25 +407,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\GistsPage.xaml">
+    <EmbeddedResource Include="Views\MasterMenuPage\GistsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\IssueDashboardPage.xaml">
+    <EmbeddedResource Include="Views\MasterMenuPage\IssueDashboardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\BookmarksPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\ReportAnIssuePage.xaml">
+    <EmbeddedResource Include="Views\MasterMenuPage\BookmarksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -382,13 +473,85 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\GistsListPage.xaml">
+    <EmbeddedResource Include="Views\MasterMenuPage\GistsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPageViews\IssuesListPage.xaml">
+    <EmbeddedResource Include="Views\MasterMenuPage\IssuesListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RepositoryNewsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FileExplorerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUp\BranchSelectPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CommitsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PublicIssuesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PublicRepositoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PullRequestsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ForkedRepositoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RepositoryContributorsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FilterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUp\AssignedSelectPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PopUp\MilestoneSelectPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -399,10 +562,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.168\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.168\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
   </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.3.168\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.168\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

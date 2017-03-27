@@ -24,7 +24,5 @@ namespace GitRemote.Models
                 new Span { Text = ActionType == "added" ? "to " : "", FontSize = 16},
                 new Span { Text = Target, FontAttributes=FontAttributes.Bold, FontSize = 16} }
         };
-
-        public PrivateNewsModel() { }
     }
 }

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.FileExplorerPage">
+
+  <views:FileExplorerPage.ToolbarItems>
+    <ToolbarItem Text="{Binding StarText}"
+                 Order="Secondary"
+                 Command="{Binding StarCommand}"/>
+    <ToolbarItem Text="Fork"
+                 Order="Secondary"
+                 Command="{Binding ForkCommand}"/>
+    <ToolbarItem Text="Contributors"
+                 Order="Secondary"
+                 Command="{Binding ContributorsCommand}"/>
+    <ToolbarItem Text="Share"
+                 Order="Secondary"
+                 Command="{Binding ShareCommand}"/>
+    <ToolbarItem Text="Open in browser"
+                 Order="Secondary"
+                 Command="{Binding OpenInBrowserCommand}"/>
+    <ToolbarItem Text="Refresh"
+                 Order="Secondary"
+                 Command="{Binding RefreshCommand}"/>
+  </views:FileExplorerPage.ToolbarItems>
+  
+  <StackLayout Spacing="0">
+    <Grid x:Name="PathParts"
+          VerticalOptions="Start"
+          HorizontalOptions="FillAndExpand"
+          ColumnSpacing="0"
+          RowSpacing="0"
+          IsVisible="{Binding PathPartsGridIsVisible}"
+          IsEnabled="{Binding PathPartsGridIsVisible}"
+          Margin="10, 5, 0, 5">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="{Binding PathPartsRowWidth}"/>
+      </Grid.ColumnDefinitions>
+
+      <customClasses:FontIcon FontFamily="Octicons"
+                              FontSize="22"
+                              TextColor="Black"
+                              Text="{Binding PathPartsIcon}"
+                              HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="CenterAndExpand"
+                              Grid.Column="0"
+                              Grid.Row="0"/>
+    </Grid>
+
+    <controls:FlowListView x:Name="FilesList"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           FlowItemsSource="{Binding FileTree}"
+                           HasUnevenRows="True"
+                           FlowColumnCount="1"
+                           FlowItemTappedCommand="{Binding ListItemTappedCommand}"
+                           FlowLastTappedItem="{Binding LastTappedItem}">
+
+      <controls:FlowListView.FlowColumnTemplate>
+        <DataTemplate>
+          <Grid VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                ColumnSpacing="0"
+                RowSpacing="5"
+                Margin="15, 0, 15, 0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="30"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FolderWidth}"/>
+              <ColumnDefinition Width="{Binding FileWidth}"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <customClasses:FontIcon Text="{Binding FileTypeIcon}"
+                                    FontSize="18"
+                                    FontFamily="Octicons"
+                                    TextColor="Black"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Grid.Column="0"
+                                    Grid.Row="0"/>
+
+
+            <Label x:Name="Name"
+                   Text="{Binding Name}"
+                   FontSize="18"
+                   TextColor="Black"
+                   FontAttributes="{Binding IsBold}"
+                   LineBreakMode="TailTruncation"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   HorizontalOptions="Start"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0, 0, 20, 0"/>
+
+
+            <customClasses:FontIcon x:Name="FolderIcon"
+                                    Text="{Binding FolderIcon}"
+                                    FontSize="14"
+                                    FontFamily="Octicons"
+                                    TextColor="Gray"
+                                    Grid.Column="2"
+                                    Grid.Row="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Margin="0, 5, 0, 0"
+                                    IsVisible="{Binding IsFolder}"
+                                    IsEnabled="{Binding IsFolder}"/>
+
+            <Label x:Name="FoldersCount"
+                   Text="{Binding FoldersCount}"
+                   FontSize="14"
+                   TextColor="Black"
+                   Grid.Column="3"
+                   Grid.Row="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0, 3, 10, 0"
+                   IsVisible="{Binding IsFolder}"
+                   IsEnabled="{Binding IsFolder}"/>
+
+            <customClasses:FontIcon x:Name="FileIcon"
+                                    Text="{Binding FileIcon}"
+                                    FontSize="14"
+                                    FontFamily="Octicons"
+                                    TextColor="Gray"
+                                    Grid.Column="4"
+                                    Grid.Row="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Margin="0, 5, 0, 0"
+                                    IsVisible="{Binding IsFolder}"
+                                    IsEnabled="{Binding IsFolder}"/>
+
+
+            <Label x:Name="FilesCount"
+                   Text="{Binding FilesCount}"
+                   FontSize="14"
+                   TextColor="Black"
+                   Grid.Column="5"
+                   Grid.Row="0"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0, 3, 0, 0"
+                   IsVisible="{Binding IsFolder}"
+                   IsEnabled="{Binding IsFolder}"/>
+
+            <Label x:Name="FileSize"
+                   Text="{Binding FileSize}"
+                   FontSize="14"
+                   TextColor="Black"
+                   Grid.Column="6"
+                   Grid.Row="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0, 3, 0, 0"
+                   IsVisible="{Binding IsFile}"
+                   IsEnabled="{Binding IsFile}"
+                   HeightRequest="16"/>
+          </Grid>
+        </DataTemplate>
+      </controls:FlowListView.FlowColumnTemplate>
+    </controls:FlowListView>
+
+    <Grid x:Name="BotPanel"
+          VerticalOptions="End"
+          HorizontalOptions="FillAndExpand"
+          ColumnSpacing="4"
+          RowSpacing="0">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+      </Grid.RowDefinitions>
+
+      <BoxView BackgroundColor="#7B5687"
+               HeightRequest="50"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               InputTransparent="True">
+
+      </BoxView>
+
+      <customClasses:FontIcon x:Name="BranchIcon"
+                              Text="{Binding BranchIcon}"
+                              FontSize="24"
+                              FontFamily="Octicons"
+                              TextColor="White"
+                              VerticalOptions="CenterAndExpand"
+                              HorizontalOptions="EndAndExpand"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              InputTransparent="True"/>
+
+      <Label x:Name="NameOfCurrentBranch"
+             Text="{Binding CurrentBranch}"
+             FontSize="18"
+             TextColor="White"
+             Grid.Column="1"
+             Grid.Row="0"
+             VerticalOptions="CenterAndExpand"
+             HorizontalOptions="StartAndExpand"
+             InputTransparent="True"
+             LineBreakMode="TailTruncation"/>
+
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding BotPanelTapped}"
+                              NumberOfTapsRequired="1"/>
+      </Grid.GestureRecognizers>
+
+    </Grid>
+
+  </StackLayout>
+</ContentPage>

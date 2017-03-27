@@ -13,13 +13,13 @@
                          VerticalOptions="FillAndExpand"
                          FlowItemsSource="{Binding Follows.Result}"
                          HasUnevenRows="True"
-                         FlowColumnCount="1"
-                         Margin="15, 15, 15, 0">
+                         FlowColumnCount="1">
 
     <controls:FlowListView.FlowColumnTemplate>
       <DataTemplate>
         <AbsoluteLayout HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="CenterAndExpand"
+                        Margin="15, 15, 15, 0">
           <ffimageloading:CachedImage
             x:Name="Avatar"
             Source="{Binding ImageUrl}"
@@ -29,7 +29,8 @@
             AbsoluteLayout.LayoutFlags="None"
             Margin="0, 0, 15, 10"
             CacheDuration ="5"
-            DownsampleToViewSize ="True">
+            DownsampleToViewSize = "True"
+            LoadingPlaceholder="ic_list_NoAvatar.png">
             <ffimageloading:CachedImage.Transformations>
               <transformations:RoundedTransformation Radius="100"/>
             </ffimageloading:CachedImage.Transformations>

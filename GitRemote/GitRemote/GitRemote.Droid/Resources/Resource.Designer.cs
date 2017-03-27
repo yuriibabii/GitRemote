@@ -28,6 +28,1791 @@ namespace GitRemote.Droid
 		{
 			global::PCLCrypto.Resource.String.ApplicationName = global::GitRemote.Droid.Resource.String.ApplicationName;
 			global::PCLCrypto.Resource.String.Hello = global::GitRemote.Droid.Resource.String.Hello;
+			global::UISleuth.Android.Resource.Animation.abc_fade_in = global::GitRemote.Droid.Resource.Animation.abc_fade_in;
+			global::UISleuth.Android.Resource.Animation.abc_fade_out = global::GitRemote.Droid.Resource.Animation.abc_fade_out;
+			global::UISleuth.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::GitRemote.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::UISleuth.Android.Resource.Animation.abc_popup_enter = global::GitRemote.Droid.Resource.Animation.abc_popup_enter;
+			global::UISleuth.Android.Resource.Animation.abc_popup_exit = global::GitRemote.Droid.Resource.Animation.abc_popup_exit;
+			global::UISleuth.Android.Resource.Animation.abc_shrink_fade_out_from_bottom = global::GitRemote.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::UISleuth.Android.Resource.Animation.abc_slide_in_bottom = global::GitRemote.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::UISleuth.Android.Resource.Animation.abc_slide_in_top = global::GitRemote.Droid.Resource.Animation.abc_slide_in_top;
+			global::UISleuth.Android.Resource.Animation.abc_slide_out_bottom = global::GitRemote.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::UISleuth.Android.Resource.Animation.abc_slide_out_top = global::GitRemote.Droid.Resource.Animation.abc_slide_out_top;
+			global::UISleuth.Android.Resource.Animation.design_bottom_sheet_slide_in = global::GitRemote.Droid.Resource.Animation.design_bottom_sheet_slide_in;
+			global::UISleuth.Android.Resource.Animation.design_bottom_sheet_slide_out = global::GitRemote.Droid.Resource.Animation.design_bottom_sheet_slide_out;
+			global::UISleuth.Android.Resource.Animation.design_fab_in = global::GitRemote.Droid.Resource.Animation.design_fab_in;
+			global::UISleuth.Android.Resource.Animation.design_fab_out = global::GitRemote.Droid.Resource.Animation.design_fab_out;
+			global::UISleuth.Android.Resource.Animation.design_snackbar_in = global::GitRemote.Droid.Resource.Animation.design_snackbar_in;
+			global::UISleuth.Android.Resource.Animation.design_snackbar_out = global::GitRemote.Droid.Resource.Animation.design_snackbar_out;
+			global::UISleuth.Android.Resource.Attribute.MediaRouteControllerWindowBackground = global::GitRemote.Droid.Resource.Attribute.MediaRouteControllerWindowBackground;
+			global::UISleuth.Android.Resource.Attribute.actionBarDivider = global::GitRemote.Droid.Resource.Attribute.actionBarDivider;
+			global::UISleuth.Android.Resource.Attribute.actionBarItemBackground = global::GitRemote.Droid.Resource.Attribute.actionBarItemBackground;
+			global::UISleuth.Android.Resource.Attribute.actionBarPopupTheme = global::GitRemote.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::UISleuth.Android.Resource.Attribute.actionBarSize = global::GitRemote.Droid.Resource.Attribute.actionBarSize;
+			global::UISleuth.Android.Resource.Attribute.actionBarSplitStyle = global::GitRemote.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::UISleuth.Android.Resource.Attribute.actionBarStyle = global::GitRemote.Droid.Resource.Attribute.actionBarStyle;
+			global::UISleuth.Android.Resource.Attribute.actionBarTabBarStyle = global::GitRemote.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::UISleuth.Android.Resource.Attribute.actionBarTabStyle = global::GitRemote.Droid.Resource.Attribute.actionBarTabStyle;
+			global::UISleuth.Android.Resource.Attribute.actionBarTabTextStyle = global::GitRemote.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::UISleuth.Android.Resource.Attribute.actionBarTheme = global::GitRemote.Droid.Resource.Attribute.actionBarTheme;
+			global::UISleuth.Android.Resource.Attribute.actionBarWidgetTheme = global::GitRemote.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::UISleuth.Android.Resource.Attribute.actionButtonStyle = global::GitRemote.Droid.Resource.Attribute.actionButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.actionDropDownStyle = global::GitRemote.Droid.Resource.Attribute.actionDropDownStyle;
+			global::UISleuth.Android.Resource.Attribute.actionLayout = global::GitRemote.Droid.Resource.Attribute.actionLayout;
+			global::UISleuth.Android.Resource.Attribute.actionMenuTextAppearance = global::GitRemote.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.actionMenuTextColor = global::GitRemote.Droid.Resource.Attribute.actionMenuTextColor;
+			global::UISleuth.Android.Resource.Attribute.actionModeBackground = global::GitRemote.Droid.Resource.Attribute.actionModeBackground;
+			global::UISleuth.Android.Resource.Attribute.actionModeCloseButtonStyle = global::GitRemote.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.actionModeCloseDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModeCopyDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModeCutDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModeFindDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModePasteDrawable = global::GitRemote.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModePopupWindowStyle = global::GitRemote.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::UISleuth.Android.Resource.Attribute.actionModeSelectAllDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModeShareDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionModeSplitBackground = global::GitRemote.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::UISleuth.Android.Resource.Attribute.actionModeStyle = global::GitRemote.Droid.Resource.Attribute.actionModeStyle;
+			global::UISleuth.Android.Resource.Attribute.actionModeWebSearchDrawable = global::GitRemote.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::UISleuth.Android.Resource.Attribute.actionOverflowButtonStyle = global::GitRemote.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.actionOverflowMenuStyle = global::GitRemote.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::UISleuth.Android.Resource.Attribute.actionProviderClass = global::GitRemote.Droid.Resource.Attribute.actionProviderClass;
+			global::UISleuth.Android.Resource.Attribute.actionViewClass = global::GitRemote.Droid.Resource.Attribute.actionViewClass;
+			global::UISleuth.Android.Resource.Attribute.activityChooserViewStyle = global::GitRemote.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::UISleuth.Android.Resource.Attribute.alertDialogButtonGroupStyle = global::GitRemote.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::UISleuth.Android.Resource.Attribute.alertDialogCenterButtons = global::GitRemote.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::UISleuth.Android.Resource.Attribute.alertDialogStyle = global::GitRemote.Droid.Resource.Attribute.alertDialogStyle;
+			global::UISleuth.Android.Resource.Attribute.alertDialogTheme = global::GitRemote.Droid.Resource.Attribute.alertDialogTheme;
+			global::UISleuth.Android.Resource.Attribute.allowStacking = global::GitRemote.Droid.Resource.Attribute.allowStacking;
+			global::UISleuth.Android.Resource.Attribute.arrowHeadLength = global::GitRemote.Droid.Resource.Attribute.arrowHeadLength;
+			global::UISleuth.Android.Resource.Attribute.arrowShaftLength = global::GitRemote.Droid.Resource.Attribute.arrowShaftLength;
+			global::UISleuth.Android.Resource.Attribute.autoCompleteTextViewStyle = global::GitRemote.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::UISleuth.Android.Resource.Attribute.background = global::GitRemote.Droid.Resource.Attribute.background;
+			global::UISleuth.Android.Resource.Attribute.backgroundSplit = global::GitRemote.Droid.Resource.Attribute.backgroundSplit;
+			global::UISleuth.Android.Resource.Attribute.backgroundStacked = global::GitRemote.Droid.Resource.Attribute.backgroundStacked;
+			global::UISleuth.Android.Resource.Attribute.backgroundTint = global::GitRemote.Droid.Resource.Attribute.backgroundTint;
+			global::UISleuth.Android.Resource.Attribute.backgroundTintMode = global::GitRemote.Droid.Resource.Attribute.backgroundTintMode;
+			global::UISleuth.Android.Resource.Attribute.barLength = global::GitRemote.Droid.Resource.Attribute.barLength;
+			global::UISleuth.Android.Resource.Attribute.behavior_hideable = global::GitRemote.Droid.Resource.Attribute.behavior_hideable;
+			global::UISleuth.Android.Resource.Attribute.behavior_overlapTop = global::GitRemote.Droid.Resource.Attribute.behavior_overlapTop;
+			global::UISleuth.Android.Resource.Attribute.behavior_peekHeight = global::GitRemote.Droid.Resource.Attribute.behavior_peekHeight;
+			global::UISleuth.Android.Resource.Attribute.borderWidth = global::GitRemote.Droid.Resource.Attribute.borderWidth;
+			global::UISleuth.Android.Resource.Attribute.borderlessButtonStyle = global::GitRemote.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.bottomSheetDialogTheme = global::GitRemote.Droid.Resource.Attribute.bottomSheetDialogTheme;
+			global::UISleuth.Android.Resource.Attribute.bottomSheetStyle = global::GitRemote.Droid.Resource.Attribute.bottomSheetStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonBarButtonStyle = global::GitRemote.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonBarNegativeButtonStyle = global::GitRemote.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonBarNeutralButtonStyle = global::GitRemote.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonBarPositiveButtonStyle = global::GitRemote.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonBarStyle = global::GitRemote.Droid.Resource.Attribute.buttonBarStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonPanelSideLayout = global::GitRemote.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::UISleuth.Android.Resource.Attribute.buttonStyle = global::GitRemote.Droid.Resource.Attribute.buttonStyle;
+			global::UISleuth.Android.Resource.Attribute.buttonStyleSmall = global::GitRemote.Droid.Resource.Attribute.buttonStyleSmall;
+			global::UISleuth.Android.Resource.Attribute.buttonTint = global::GitRemote.Droid.Resource.Attribute.buttonTint;
+			global::UISleuth.Android.Resource.Attribute.buttonTintMode = global::GitRemote.Droid.Resource.Attribute.buttonTintMode;
+			global::UISleuth.Android.Resource.Attribute.cardBackgroundColor = global::GitRemote.Droid.Resource.Attribute.cardBackgroundColor;
+			global::UISleuth.Android.Resource.Attribute.cardCornerRadius = global::GitRemote.Droid.Resource.Attribute.cardCornerRadius;
+			global::UISleuth.Android.Resource.Attribute.cardElevation = global::GitRemote.Droid.Resource.Attribute.cardElevation;
+			global::UISleuth.Android.Resource.Attribute.cardMaxElevation = global::GitRemote.Droid.Resource.Attribute.cardMaxElevation;
+			global::UISleuth.Android.Resource.Attribute.cardPreventCornerOverlap = global::GitRemote.Droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::UISleuth.Android.Resource.Attribute.cardUseCompatPadding = global::GitRemote.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::UISleuth.Android.Resource.Attribute.checkboxStyle = global::GitRemote.Droid.Resource.Attribute.checkboxStyle;
+			global::UISleuth.Android.Resource.Attribute.checkedTextViewStyle = global::GitRemote.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::UISleuth.Android.Resource.Attribute.closeIcon = global::GitRemote.Droid.Resource.Attribute.closeIcon;
+			global::UISleuth.Android.Resource.Attribute.closeItemLayout = global::GitRemote.Droid.Resource.Attribute.closeItemLayout;
+			global::UISleuth.Android.Resource.Attribute.collapseContentDescription = global::GitRemote.Droid.Resource.Attribute.collapseContentDescription;
+			global::UISleuth.Android.Resource.Attribute.collapseIcon = global::GitRemote.Droid.Resource.Attribute.collapseIcon;
+			global::UISleuth.Android.Resource.Attribute.collapsedTitleGravity = global::GitRemote.Droid.Resource.Attribute.collapsedTitleGravity;
+			global::UISleuth.Android.Resource.Attribute.collapsedTitleTextAppearance = global::GitRemote.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.color = global::GitRemote.Droid.Resource.Attribute.color;
+			global::UISleuth.Android.Resource.Attribute.colorAccent = global::GitRemote.Droid.Resource.Attribute.colorAccent;
+			global::UISleuth.Android.Resource.Attribute.colorButtonNormal = global::GitRemote.Droid.Resource.Attribute.colorButtonNormal;
+			global::UISleuth.Android.Resource.Attribute.colorControlActivated = global::GitRemote.Droid.Resource.Attribute.colorControlActivated;
+			global::UISleuth.Android.Resource.Attribute.colorControlHighlight = global::GitRemote.Droid.Resource.Attribute.colorControlHighlight;
+			global::UISleuth.Android.Resource.Attribute.colorControlNormal = global::GitRemote.Droid.Resource.Attribute.colorControlNormal;
+			global::UISleuth.Android.Resource.Attribute.colorPrimary = global::GitRemote.Droid.Resource.Attribute.colorPrimary;
+			global::UISleuth.Android.Resource.Attribute.colorPrimaryDark = global::GitRemote.Droid.Resource.Attribute.colorPrimaryDark;
+			global::UISleuth.Android.Resource.Attribute.colorSwitchThumbNormal = global::GitRemote.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::UISleuth.Android.Resource.Attribute.commitIcon = global::GitRemote.Droid.Resource.Attribute.commitIcon;
+			global::UISleuth.Android.Resource.Attribute.contentInsetEnd = global::GitRemote.Droid.Resource.Attribute.contentInsetEnd;
+			global::UISleuth.Android.Resource.Attribute.contentInsetLeft = global::GitRemote.Droid.Resource.Attribute.contentInsetLeft;
+			global::UISleuth.Android.Resource.Attribute.contentInsetRight = global::GitRemote.Droid.Resource.Attribute.contentInsetRight;
+			global::UISleuth.Android.Resource.Attribute.contentInsetStart = global::GitRemote.Droid.Resource.Attribute.contentInsetStart;
+			global::UISleuth.Android.Resource.Attribute.contentPadding = global::GitRemote.Droid.Resource.Attribute.contentPadding;
+			global::UISleuth.Android.Resource.Attribute.contentPaddingBottom = global::GitRemote.Droid.Resource.Attribute.contentPaddingBottom;
+			global::UISleuth.Android.Resource.Attribute.contentPaddingLeft = global::GitRemote.Droid.Resource.Attribute.contentPaddingLeft;
+			global::UISleuth.Android.Resource.Attribute.contentPaddingRight = global::GitRemote.Droid.Resource.Attribute.contentPaddingRight;
+			global::UISleuth.Android.Resource.Attribute.contentPaddingTop = global::GitRemote.Droid.Resource.Attribute.contentPaddingTop;
+			global::UISleuth.Android.Resource.Attribute.contentScrim = global::GitRemote.Droid.Resource.Attribute.contentScrim;
+			global::UISleuth.Android.Resource.Attribute.controlBackground = global::GitRemote.Droid.Resource.Attribute.controlBackground;
+			global::UISleuth.Android.Resource.Attribute.counterEnabled = global::GitRemote.Droid.Resource.Attribute.counterEnabled;
+			global::UISleuth.Android.Resource.Attribute.counterMaxLength = global::GitRemote.Droid.Resource.Attribute.counterMaxLength;
+			global::UISleuth.Android.Resource.Attribute.counterOverflowTextAppearance = global::GitRemote.Droid.Resource.Attribute.counterOverflowTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.counterTextAppearance = global::GitRemote.Droid.Resource.Attribute.counterTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.customNavigationLayout = global::GitRemote.Droid.Resource.Attribute.customNavigationLayout;
+			global::UISleuth.Android.Resource.Attribute.defaultQueryHint = global::GitRemote.Droid.Resource.Attribute.defaultQueryHint;
+			global::UISleuth.Android.Resource.Attribute.dialogPreferredPadding = global::GitRemote.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::UISleuth.Android.Resource.Attribute.dialogTheme = global::GitRemote.Droid.Resource.Attribute.dialogTheme;
+			global::UISleuth.Android.Resource.Attribute.displayOptions = global::GitRemote.Droid.Resource.Attribute.displayOptions;
+			global::UISleuth.Android.Resource.Attribute.divider = global::GitRemote.Droid.Resource.Attribute.divider;
+			global::UISleuth.Android.Resource.Attribute.dividerHorizontal = global::GitRemote.Droid.Resource.Attribute.dividerHorizontal;
+			global::UISleuth.Android.Resource.Attribute.dividerPadding = global::GitRemote.Droid.Resource.Attribute.dividerPadding;
+			global::UISleuth.Android.Resource.Attribute.dividerVertical = global::GitRemote.Droid.Resource.Attribute.dividerVertical;
+			global::UISleuth.Android.Resource.Attribute.drawableSize = global::GitRemote.Droid.Resource.Attribute.drawableSize;
+			global::UISleuth.Android.Resource.Attribute.drawerArrowStyle = global::GitRemote.Droid.Resource.Attribute.drawerArrowStyle;
+			global::UISleuth.Android.Resource.Attribute.dropDownListViewStyle = global::GitRemote.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::UISleuth.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::GitRemote.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::UISleuth.Android.Resource.Attribute.editTextBackground = global::GitRemote.Droid.Resource.Attribute.editTextBackground;
+			global::UISleuth.Android.Resource.Attribute.editTextColor = global::GitRemote.Droid.Resource.Attribute.editTextColor;
+			global::UISleuth.Android.Resource.Attribute.editTextStyle = global::GitRemote.Droid.Resource.Attribute.editTextStyle;
+			global::UISleuth.Android.Resource.Attribute.elevation = global::GitRemote.Droid.Resource.Attribute.elevation;
+			global::UISleuth.Android.Resource.Attribute.errorEnabled = global::GitRemote.Droid.Resource.Attribute.errorEnabled;
+			global::UISleuth.Android.Resource.Attribute.errorTextAppearance = global::GitRemote.Droid.Resource.Attribute.errorTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.expandActivityOverflowButtonDrawable = global::GitRemote.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::UISleuth.Android.Resource.Attribute.expanded = global::GitRemote.Droid.Resource.Attribute.expanded;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleGravity = global::GitRemote.Droid.Resource.Attribute.expandedTitleGravity;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleMargin = global::GitRemote.Droid.Resource.Attribute.expandedTitleMargin;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleMarginBottom = global::GitRemote.Droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleMarginEnd = global::GitRemote.Droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleMarginStart = global::GitRemote.Droid.Resource.Attribute.expandedTitleMarginStart;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleMarginTop = global::GitRemote.Droid.Resource.Attribute.expandedTitleMarginTop;
+			global::UISleuth.Android.Resource.Attribute.expandedTitleTextAppearance = global::GitRemote.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.externalRouteEnabledDrawable = global::GitRemote.Droid.Resource.Attribute.externalRouteEnabledDrawable;
+			global::UISleuth.Android.Resource.Attribute.fabSize = global::GitRemote.Droid.Resource.Attribute.fabSize;
+			global::UISleuth.Android.Resource.Attribute.foregroundInsidePadding = global::GitRemote.Droid.Resource.Attribute.foregroundInsidePadding;
+			global::UISleuth.Android.Resource.Attribute.gapBetweenBars = global::GitRemote.Droid.Resource.Attribute.gapBetweenBars;
+			global::UISleuth.Android.Resource.Attribute.goIcon = global::GitRemote.Droid.Resource.Attribute.goIcon;
+			global::UISleuth.Android.Resource.Attribute.headerLayout = global::GitRemote.Droid.Resource.Attribute.headerLayout;
+			global::UISleuth.Android.Resource.Attribute.height = global::GitRemote.Droid.Resource.Attribute.height;
+			global::UISleuth.Android.Resource.Attribute.hideOnContentScroll = global::GitRemote.Droid.Resource.Attribute.hideOnContentScroll;
+			global::UISleuth.Android.Resource.Attribute.hintAnimationEnabled = global::GitRemote.Droid.Resource.Attribute.hintAnimationEnabled;
+			global::UISleuth.Android.Resource.Attribute.hintEnabled = global::GitRemote.Droid.Resource.Attribute.hintEnabled;
+			global::UISleuth.Android.Resource.Attribute.hintTextAppearance = global::GitRemote.Droid.Resource.Attribute.hintTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.homeAsUpIndicator = global::GitRemote.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::UISleuth.Android.Resource.Attribute.homeLayout = global::GitRemote.Droid.Resource.Attribute.homeLayout;
+			global::UISleuth.Android.Resource.Attribute.icon = global::GitRemote.Droid.Resource.Attribute.icon;
+			global::UISleuth.Android.Resource.Attribute.iconifiedByDefault = global::GitRemote.Droid.Resource.Attribute.iconifiedByDefault;
+			global::UISleuth.Android.Resource.Attribute.imageButtonStyle = global::GitRemote.Droid.Resource.Attribute.imageButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.indeterminateProgressStyle = global::GitRemote.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::UISleuth.Android.Resource.Attribute.initialActivityCount = global::GitRemote.Droid.Resource.Attribute.initialActivityCount;
+			global::UISleuth.Android.Resource.Attribute.insetForeground = global::GitRemote.Droid.Resource.Attribute.insetForeground;
+			global::UISleuth.Android.Resource.Attribute.isLightTheme = global::GitRemote.Droid.Resource.Attribute.isLightTheme;
+			global::UISleuth.Android.Resource.Attribute.itemBackground = global::GitRemote.Droid.Resource.Attribute.itemBackground;
+			global::UISleuth.Android.Resource.Attribute.itemIconTint = global::GitRemote.Droid.Resource.Attribute.itemIconTint;
+			global::UISleuth.Android.Resource.Attribute.itemPadding = global::GitRemote.Droid.Resource.Attribute.itemPadding;
+			global::UISleuth.Android.Resource.Attribute.itemTextAppearance = global::GitRemote.Droid.Resource.Attribute.itemTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.itemTextColor = global::GitRemote.Droid.Resource.Attribute.itemTextColor;
+			global::UISleuth.Android.Resource.Attribute.keylines = global::GitRemote.Droid.Resource.Attribute.keylines;
+			global::UISleuth.Android.Resource.Attribute.layout = global::GitRemote.Droid.Resource.Attribute.layout;
+			global::UISleuth.Android.Resource.Attribute.layoutManager = global::GitRemote.Droid.Resource.Attribute.layoutManager;
+			global::UISleuth.Android.Resource.Attribute.layout_anchor = global::GitRemote.Droid.Resource.Attribute.layout_anchor;
+			global::UISleuth.Android.Resource.Attribute.layout_anchorGravity = global::GitRemote.Droid.Resource.Attribute.layout_anchorGravity;
+			global::UISleuth.Android.Resource.Attribute.layout_behavior = global::GitRemote.Droid.Resource.Attribute.layout_behavior;
+			global::UISleuth.Android.Resource.Attribute.layout_collapseMode = global::GitRemote.Droid.Resource.Attribute.layout_collapseMode;
+			global::UISleuth.Android.Resource.Attribute.layout_collapseParallaxMultiplier = global::GitRemote.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::UISleuth.Android.Resource.Attribute.layout_keyline = global::GitRemote.Droid.Resource.Attribute.layout_keyline;
+			global::UISleuth.Android.Resource.Attribute.layout_scrollFlags = global::GitRemote.Droid.Resource.Attribute.layout_scrollFlags;
+			global::UISleuth.Android.Resource.Attribute.layout_scrollInterpolator = global::GitRemote.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::UISleuth.Android.Resource.Attribute.listChoiceBackgroundIndicator = global::GitRemote.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::UISleuth.Android.Resource.Attribute.listDividerAlertDialog = global::GitRemote.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::UISleuth.Android.Resource.Attribute.listItemLayout = global::GitRemote.Droid.Resource.Attribute.listItemLayout;
+			global::UISleuth.Android.Resource.Attribute.listLayout = global::GitRemote.Droid.Resource.Attribute.listLayout;
+			global::UISleuth.Android.Resource.Attribute.listPopupWindowStyle = global::GitRemote.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::UISleuth.Android.Resource.Attribute.listPreferredItemHeight = global::GitRemote.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::UISleuth.Android.Resource.Attribute.listPreferredItemHeightLarge = global::GitRemote.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::UISleuth.Android.Resource.Attribute.listPreferredItemHeightSmall = global::GitRemote.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::UISleuth.Android.Resource.Attribute.listPreferredItemPaddingLeft = global::GitRemote.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::UISleuth.Android.Resource.Attribute.listPreferredItemPaddingRight = global::GitRemote.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::UISleuth.Android.Resource.Attribute.logo = global::GitRemote.Droid.Resource.Attribute.logo;
+			global::UISleuth.Android.Resource.Attribute.logoDescription = global::GitRemote.Droid.Resource.Attribute.logoDescription;
+			global::UISleuth.Android.Resource.Attribute.maxActionInlineWidth = global::GitRemote.Droid.Resource.Attribute.maxActionInlineWidth;
+			global::UISleuth.Android.Resource.Attribute.maxButtonHeight = global::GitRemote.Droid.Resource.Attribute.maxButtonHeight;
+			global::UISleuth.Android.Resource.Attribute.measureWithLargestChild = global::GitRemote.Droid.Resource.Attribute.measureWithLargestChild;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteAudioTrackDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteBluetoothIconDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteBluetoothIconDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteButtonStyle = global::GitRemote.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteCastDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteCastDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteChooserPrimaryTextStyle = global::GitRemote.Droid.Resource.Attribute.mediaRouteChooserPrimaryTextStyle;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteChooserSecondaryTextStyle = global::GitRemote.Droid.Resource.Attribute.mediaRouteChooserSecondaryTextStyle;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteCloseDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteCloseDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteCollapseGroupDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteCollapseGroupDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteConnectingDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteConnectingDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteControllerPrimaryTextStyle = global::GitRemote.Droid.Resource.Attribute.mediaRouteControllerPrimaryTextStyle;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteControllerSecondaryTextStyle = global::GitRemote.Droid.Resource.Attribute.mediaRouteControllerSecondaryTextStyle;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteControllerTitleTextStyle = global::GitRemote.Droid.Resource.Attribute.mediaRouteControllerTitleTextStyle;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteDefaultIconDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteExpandGroupDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteExpandGroupDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteOffDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteOffDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteOnDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteOnDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRoutePauseDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRoutePauseDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRoutePlayDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRoutePlayDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
+			global::UISleuth.Android.Resource.Attribute.mediaRouteTvIconDrawable = global::GitRemote.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
+			global::UISleuth.Android.Resource.Attribute.menu = global::GitRemote.Droid.Resource.Attribute.menu;
+			global::UISleuth.Android.Resource.Attribute.multiChoiceItemLayout = global::GitRemote.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::UISleuth.Android.Resource.Attribute.navigationContentDescription = global::GitRemote.Droid.Resource.Attribute.navigationContentDescription;
+			global::UISleuth.Android.Resource.Attribute.navigationIcon = global::GitRemote.Droid.Resource.Attribute.navigationIcon;
+			global::UISleuth.Android.Resource.Attribute.navigationMode = global::GitRemote.Droid.Resource.Attribute.navigationMode;
+			global::UISleuth.Android.Resource.Attribute.overlapAnchor = global::GitRemote.Droid.Resource.Attribute.overlapAnchor;
+			global::UISleuth.Android.Resource.Attribute.paddingEnd = global::GitRemote.Droid.Resource.Attribute.paddingEnd;
+			global::UISleuth.Android.Resource.Attribute.paddingStart = global::GitRemote.Droid.Resource.Attribute.paddingStart;
+			global::UISleuth.Android.Resource.Attribute.panelBackground = global::GitRemote.Droid.Resource.Attribute.panelBackground;
+			global::UISleuth.Android.Resource.Attribute.panelMenuListTheme = global::GitRemote.Droid.Resource.Attribute.panelMenuListTheme;
+			global::UISleuth.Android.Resource.Attribute.panelMenuListWidth = global::GitRemote.Droid.Resource.Attribute.panelMenuListWidth;
+			global::UISleuth.Android.Resource.Attribute.popupMenuStyle = global::GitRemote.Droid.Resource.Attribute.popupMenuStyle;
+			global::UISleuth.Android.Resource.Attribute.popupTheme = global::GitRemote.Droid.Resource.Attribute.popupTheme;
+			global::UISleuth.Android.Resource.Attribute.popupWindowStyle = global::GitRemote.Droid.Resource.Attribute.popupWindowStyle;
+			global::UISleuth.Android.Resource.Attribute.preserveIconSpacing = global::GitRemote.Droid.Resource.Attribute.preserveIconSpacing;
+			global::UISleuth.Android.Resource.Attribute.pressedTranslationZ = global::GitRemote.Droid.Resource.Attribute.pressedTranslationZ;
+			global::UISleuth.Android.Resource.Attribute.progressBarPadding = global::GitRemote.Droid.Resource.Attribute.progressBarPadding;
+			global::UISleuth.Android.Resource.Attribute.progressBarStyle = global::GitRemote.Droid.Resource.Attribute.progressBarStyle;
+			global::UISleuth.Android.Resource.Attribute.queryBackground = global::GitRemote.Droid.Resource.Attribute.queryBackground;
+			global::UISleuth.Android.Resource.Attribute.queryHint = global::GitRemote.Droid.Resource.Attribute.queryHint;
+			global::UISleuth.Android.Resource.Attribute.radioButtonStyle = global::GitRemote.Droid.Resource.Attribute.radioButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.ratingBarStyle = global::GitRemote.Droid.Resource.Attribute.ratingBarStyle;
+			global::UISleuth.Android.Resource.Attribute.ratingBarStyleIndicator = global::GitRemote.Droid.Resource.Attribute.ratingBarStyleIndicator;
+			global::UISleuth.Android.Resource.Attribute.ratingBarStyleSmall = global::GitRemote.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::UISleuth.Android.Resource.Attribute.reverseLayout = global::GitRemote.Droid.Resource.Attribute.reverseLayout;
+			global::UISleuth.Android.Resource.Attribute.rippleColor = global::GitRemote.Droid.Resource.Attribute.rippleColor;
+			global::UISleuth.Android.Resource.Attribute.searchHintIcon = global::GitRemote.Droid.Resource.Attribute.searchHintIcon;
+			global::UISleuth.Android.Resource.Attribute.searchIcon = global::GitRemote.Droid.Resource.Attribute.searchIcon;
+			global::UISleuth.Android.Resource.Attribute.searchViewStyle = global::GitRemote.Droid.Resource.Attribute.searchViewStyle;
+			global::UISleuth.Android.Resource.Attribute.seekBarStyle = global::GitRemote.Droid.Resource.Attribute.seekBarStyle;
+			global::UISleuth.Android.Resource.Attribute.selectableItemBackground = global::GitRemote.Droid.Resource.Attribute.selectableItemBackground;
+			global::UISleuth.Android.Resource.Attribute.selectableItemBackgroundBorderless = global::GitRemote.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::UISleuth.Android.Resource.Attribute.showAsAction = global::GitRemote.Droid.Resource.Attribute.showAsAction;
+			global::UISleuth.Android.Resource.Attribute.showDividers = global::GitRemote.Droid.Resource.Attribute.showDividers;
+			global::UISleuth.Android.Resource.Attribute.showText = global::GitRemote.Droid.Resource.Attribute.showText;
+			global::UISleuth.Android.Resource.Attribute.singleChoiceItemLayout = global::GitRemote.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::UISleuth.Android.Resource.Attribute.spanCount = global::GitRemote.Droid.Resource.Attribute.spanCount;
+			global::UISleuth.Android.Resource.Attribute.spinBars = global::GitRemote.Droid.Resource.Attribute.spinBars;
+			global::UISleuth.Android.Resource.Attribute.spinnerDropDownItemStyle = global::GitRemote.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::UISleuth.Android.Resource.Attribute.spinnerStyle = global::GitRemote.Droid.Resource.Attribute.spinnerStyle;
+			global::UISleuth.Android.Resource.Attribute.splitTrack = global::GitRemote.Droid.Resource.Attribute.splitTrack;
+			global::UISleuth.Android.Resource.Attribute.srcCompat = global::GitRemote.Droid.Resource.Attribute.srcCompat;
+			global::UISleuth.Android.Resource.Attribute.stackFromEnd = global::GitRemote.Droid.Resource.Attribute.stackFromEnd;
+			global::UISleuth.Android.Resource.Attribute.state_above_anchor = global::GitRemote.Droid.Resource.Attribute.state_above_anchor;
+			global::UISleuth.Android.Resource.Attribute.statusBarBackground = global::GitRemote.Droid.Resource.Attribute.statusBarBackground;
+			global::UISleuth.Android.Resource.Attribute.statusBarScrim = global::GitRemote.Droid.Resource.Attribute.statusBarScrim;
+			global::UISleuth.Android.Resource.Attribute.submitBackground = global::GitRemote.Droid.Resource.Attribute.submitBackground;
+			global::UISleuth.Android.Resource.Attribute.subtitle = global::GitRemote.Droid.Resource.Attribute.subtitle;
+			global::UISleuth.Android.Resource.Attribute.subtitleTextAppearance = global::GitRemote.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.subtitleTextColor = global::GitRemote.Droid.Resource.Attribute.subtitleTextColor;
+			global::UISleuth.Android.Resource.Attribute.subtitleTextStyle = global::GitRemote.Droid.Resource.Attribute.subtitleTextStyle;
+			global::UISleuth.Android.Resource.Attribute.suggestionRowLayout = global::GitRemote.Droid.Resource.Attribute.suggestionRowLayout;
+			global::UISleuth.Android.Resource.Attribute.switchMinWidth = global::GitRemote.Droid.Resource.Attribute.switchMinWidth;
+			global::UISleuth.Android.Resource.Attribute.switchPadding = global::GitRemote.Droid.Resource.Attribute.switchPadding;
+			global::UISleuth.Android.Resource.Attribute.switchStyle = global::GitRemote.Droid.Resource.Attribute.switchStyle;
+			global::UISleuth.Android.Resource.Attribute.switchTextAppearance = global::GitRemote.Droid.Resource.Attribute.switchTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.tabBackground = global::GitRemote.Droid.Resource.Attribute.tabBackground;
+			global::UISleuth.Android.Resource.Attribute.tabContentStart = global::GitRemote.Droid.Resource.Attribute.tabContentStart;
+			global::UISleuth.Android.Resource.Attribute.tabGravity = global::GitRemote.Droid.Resource.Attribute.tabGravity;
+			global::UISleuth.Android.Resource.Attribute.tabIndicatorColor = global::GitRemote.Droid.Resource.Attribute.tabIndicatorColor;
+			global::UISleuth.Android.Resource.Attribute.tabIndicatorHeight = global::GitRemote.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::UISleuth.Android.Resource.Attribute.tabMaxWidth = global::GitRemote.Droid.Resource.Attribute.tabMaxWidth;
+			global::UISleuth.Android.Resource.Attribute.tabMinWidth = global::GitRemote.Droid.Resource.Attribute.tabMinWidth;
+			global::UISleuth.Android.Resource.Attribute.tabMode = global::GitRemote.Droid.Resource.Attribute.tabMode;
+			global::UISleuth.Android.Resource.Attribute.tabPadding = global::GitRemote.Droid.Resource.Attribute.tabPadding;
+			global::UISleuth.Android.Resource.Attribute.tabPaddingBottom = global::GitRemote.Droid.Resource.Attribute.tabPaddingBottom;
+			global::UISleuth.Android.Resource.Attribute.tabPaddingEnd = global::GitRemote.Droid.Resource.Attribute.tabPaddingEnd;
+			global::UISleuth.Android.Resource.Attribute.tabPaddingStart = global::GitRemote.Droid.Resource.Attribute.tabPaddingStart;
+			global::UISleuth.Android.Resource.Attribute.tabPaddingTop = global::GitRemote.Droid.Resource.Attribute.tabPaddingTop;
+			global::UISleuth.Android.Resource.Attribute.tabSelectedTextColor = global::GitRemote.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::UISleuth.Android.Resource.Attribute.tabTextAppearance = global::GitRemote.Droid.Resource.Attribute.tabTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.tabTextColor = global::GitRemote.Droid.Resource.Attribute.tabTextColor;
+			global::UISleuth.Android.Resource.Attribute.textAllCaps = global::GitRemote.Droid.Resource.Attribute.textAllCaps;
+			global::UISleuth.Android.Resource.Attribute.textAppearanceLargePopupMenu = global::GitRemote.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::UISleuth.Android.Resource.Attribute.textAppearanceListItem = global::GitRemote.Droid.Resource.Attribute.textAppearanceListItem;
+			global::UISleuth.Android.Resource.Attribute.textAppearanceListItemSmall = global::GitRemote.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::UISleuth.Android.Resource.Attribute.textAppearanceSearchResultSubtitle = global::GitRemote.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::UISleuth.Android.Resource.Attribute.textAppearanceSearchResultTitle = global::GitRemote.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::UISleuth.Android.Resource.Attribute.textAppearanceSmallPopupMenu = global::GitRemote.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::UISleuth.Android.Resource.Attribute.textColorAlertDialogListItem = global::GitRemote.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::UISleuth.Android.Resource.Attribute.textColorError = global::GitRemote.Droid.Resource.Attribute.textColorError;
+			global::UISleuth.Android.Resource.Attribute.textColorSearchUrl = global::GitRemote.Droid.Resource.Attribute.textColorSearchUrl;
+			global::UISleuth.Android.Resource.Attribute.theme = global::GitRemote.Droid.Resource.Attribute.theme;
+			global::UISleuth.Android.Resource.Attribute.thickness = global::GitRemote.Droid.Resource.Attribute.thickness;
+			global::UISleuth.Android.Resource.Attribute.thumbTextPadding = global::GitRemote.Droid.Resource.Attribute.thumbTextPadding;
+			global::UISleuth.Android.Resource.Attribute.title = global::GitRemote.Droid.Resource.Attribute.title;
+			global::UISleuth.Android.Resource.Attribute.titleEnabled = global::GitRemote.Droid.Resource.Attribute.titleEnabled;
+			global::UISleuth.Android.Resource.Attribute.titleMarginBottom = global::GitRemote.Droid.Resource.Attribute.titleMarginBottom;
+			global::UISleuth.Android.Resource.Attribute.titleMarginEnd = global::GitRemote.Droid.Resource.Attribute.titleMarginEnd;
+			global::UISleuth.Android.Resource.Attribute.titleMarginStart = global::GitRemote.Droid.Resource.Attribute.titleMarginStart;
+			global::UISleuth.Android.Resource.Attribute.titleMarginTop = global::GitRemote.Droid.Resource.Attribute.titleMarginTop;
+			global::UISleuth.Android.Resource.Attribute.titleMargins = global::GitRemote.Droid.Resource.Attribute.titleMargins;
+			global::UISleuth.Android.Resource.Attribute.titleTextAppearance = global::GitRemote.Droid.Resource.Attribute.titleTextAppearance;
+			global::UISleuth.Android.Resource.Attribute.titleTextColor = global::GitRemote.Droid.Resource.Attribute.titleTextColor;
+			global::UISleuth.Android.Resource.Attribute.titleTextStyle = global::GitRemote.Droid.Resource.Attribute.titleTextStyle;
+			global::UISleuth.Android.Resource.Attribute.toolbarId = global::GitRemote.Droid.Resource.Attribute.toolbarId;
+			global::UISleuth.Android.Resource.Attribute.toolbarNavigationButtonStyle = global::GitRemote.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::UISleuth.Android.Resource.Attribute.toolbarStyle = global::GitRemote.Droid.Resource.Attribute.toolbarStyle;
+			global::UISleuth.Android.Resource.Attribute.track = global::GitRemote.Droid.Resource.Attribute.track;
+			global::UISleuth.Android.Resource.Attribute.useCompatPadding = global::GitRemote.Droid.Resource.Attribute.useCompatPadding;
+			global::UISleuth.Android.Resource.Attribute.voiceIcon = global::GitRemote.Droid.Resource.Attribute.voiceIcon;
+			global::UISleuth.Android.Resource.Attribute.windowActionBar = global::GitRemote.Droid.Resource.Attribute.windowActionBar;
+			global::UISleuth.Android.Resource.Attribute.windowActionBarOverlay = global::GitRemote.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::UISleuth.Android.Resource.Attribute.windowActionModeOverlay = global::GitRemote.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::UISleuth.Android.Resource.Attribute.windowFixedHeightMajor = global::GitRemote.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::UISleuth.Android.Resource.Attribute.windowFixedHeightMinor = global::GitRemote.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::UISleuth.Android.Resource.Attribute.windowFixedWidthMajor = global::GitRemote.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::UISleuth.Android.Resource.Attribute.windowFixedWidthMinor = global::GitRemote.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::UISleuth.Android.Resource.Attribute.windowMinWidthMajor = global::GitRemote.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::UISleuth.Android.Resource.Attribute.windowMinWidthMinor = global::GitRemote.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::UISleuth.Android.Resource.Attribute.windowNoTitle = global::GitRemote.Droid.Resource.Attribute.windowNoTitle;
+			global::UISleuth.Android.Resource.Boolean.abc_action_bar_embed_tabs = global::GitRemote.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::UISleuth.Android.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::GitRemote.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
+			global::UISleuth.Android.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::GitRemote.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
+			global::UISleuth.Android.Resource.Boolean.abc_allow_stacked_button_bar = global::GitRemote.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::UISleuth.Android.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::GitRemote.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::UISleuth.Android.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::GitRemote.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
+			global::UISleuth.Android.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::GitRemote.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::UISleuth.Android.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::GitRemote.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::UISleuth.Android.Resource.Color.abc_background_cache_hint_selector_material_dark = global::GitRemote.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::UISleuth.Android.Resource.Color.abc_background_cache_hint_selector_material_light = global::GitRemote.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::UISleuth.Android.Resource.Color.abc_color_highlight_material = global::GitRemote.Droid.Resource.Color.abc_color_highlight_material;
+			global::UISleuth.Android.Resource.Color.abc_input_method_navigation_guard = global::GitRemote.Droid.Resource.Color.abc_input_method_navigation_guard;
+			global::UISleuth.Android.Resource.Color.abc_primary_text_disable_only_material_dark = global::GitRemote.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::UISleuth.Android.Resource.Color.abc_primary_text_disable_only_material_light = global::GitRemote.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::UISleuth.Android.Resource.Color.abc_primary_text_material_dark = global::GitRemote.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::UISleuth.Android.Resource.Color.abc_primary_text_material_light = global::GitRemote.Droid.Resource.Color.abc_primary_text_material_light;
+			global::UISleuth.Android.Resource.Color.abc_search_url_text = global::GitRemote.Droid.Resource.Color.abc_search_url_text;
+			global::UISleuth.Android.Resource.Color.abc_search_url_text_normal = global::GitRemote.Droid.Resource.Color.abc_search_url_text_normal;
+			global::UISleuth.Android.Resource.Color.abc_search_url_text_pressed = global::GitRemote.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::UISleuth.Android.Resource.Color.abc_search_url_text_selected = global::GitRemote.Droid.Resource.Color.abc_search_url_text_selected;
+			global::UISleuth.Android.Resource.Color.abc_secondary_text_material_dark = global::GitRemote.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::UISleuth.Android.Resource.Color.abc_secondary_text_material_light = global::GitRemote.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::UISleuth.Android.Resource.Color.accent_material_dark = global::GitRemote.Droid.Resource.Color.accent_material_dark;
+			global::UISleuth.Android.Resource.Color.accent_material_light = global::GitRemote.Droid.Resource.Color.accent_material_light;
+			global::UISleuth.Android.Resource.Color.background_floating_material_dark = global::GitRemote.Droid.Resource.Color.background_floating_material_dark;
+			global::UISleuth.Android.Resource.Color.background_floating_material_light = global::GitRemote.Droid.Resource.Color.background_floating_material_light;
+			global::UISleuth.Android.Resource.Color.background_material_dark = global::GitRemote.Droid.Resource.Color.background_material_dark;
+			global::UISleuth.Android.Resource.Color.background_material_light = global::GitRemote.Droid.Resource.Color.background_material_light;
+			global::UISleuth.Android.Resource.Color.bright_foreground_disabled_material_dark = global::GitRemote.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::UISleuth.Android.Resource.Color.bright_foreground_disabled_material_light = global::GitRemote.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::UISleuth.Android.Resource.Color.bright_foreground_inverse_material_dark = global::GitRemote.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::UISleuth.Android.Resource.Color.bright_foreground_inverse_material_light = global::GitRemote.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::UISleuth.Android.Resource.Color.bright_foreground_material_dark = global::GitRemote.Droid.Resource.Color.bright_foreground_material_dark;
+			global::UISleuth.Android.Resource.Color.bright_foreground_material_light = global::GitRemote.Droid.Resource.Color.bright_foreground_material_light;
+			global::UISleuth.Android.Resource.Color.button_material_dark = global::GitRemote.Droid.Resource.Color.button_material_dark;
+			global::UISleuth.Android.Resource.Color.button_material_light = global::GitRemote.Droid.Resource.Color.button_material_light;
+			global::UISleuth.Android.Resource.Color.cardview_dark_background = global::GitRemote.Droid.Resource.Color.cardview_dark_background;
+			global::UISleuth.Android.Resource.Color.cardview_light_background = global::GitRemote.Droid.Resource.Color.cardview_light_background;
+			global::UISleuth.Android.Resource.Color.cardview_shadow_end_color = global::GitRemote.Droid.Resource.Color.cardview_shadow_end_color;
+			global::UISleuth.Android.Resource.Color.cardview_shadow_start_color = global::GitRemote.Droid.Resource.Color.cardview_shadow_start_color;
+			global::UISleuth.Android.Resource.Color.design_fab_shadow_end_color = global::GitRemote.Droid.Resource.Color.design_fab_shadow_end_color;
+			global::UISleuth.Android.Resource.Color.design_fab_shadow_mid_color = global::GitRemote.Droid.Resource.Color.design_fab_shadow_mid_color;
+			global::UISleuth.Android.Resource.Color.design_fab_shadow_start_color = global::GitRemote.Droid.Resource.Color.design_fab_shadow_start_color;
+			global::UISleuth.Android.Resource.Color.design_fab_stroke_end_inner_color = global::GitRemote.Droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::UISleuth.Android.Resource.Color.design_fab_stroke_end_outer_color = global::GitRemote.Droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::UISleuth.Android.Resource.Color.design_fab_stroke_top_inner_color = global::GitRemote.Droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::UISleuth.Android.Resource.Color.design_fab_stroke_top_outer_color = global::GitRemote.Droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::UISleuth.Android.Resource.Color.design_snackbar_background_color = global::GitRemote.Droid.Resource.Color.design_snackbar_background_color;
+			global::UISleuth.Android.Resource.Color.design_textinput_error_color_dark = global::GitRemote.Droid.Resource.Color.design_textinput_error_color_dark;
+			global::UISleuth.Android.Resource.Color.design_textinput_error_color_light = global::GitRemote.Droid.Resource.Color.design_textinput_error_color_light;
+			global::UISleuth.Android.Resource.Color.dim_foreground_disabled_material_dark = global::GitRemote.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::UISleuth.Android.Resource.Color.dim_foreground_disabled_material_light = global::GitRemote.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::UISleuth.Android.Resource.Color.dim_foreground_material_dark = global::GitRemote.Droid.Resource.Color.dim_foreground_material_dark;
+			global::UISleuth.Android.Resource.Color.dim_foreground_material_light = global::GitRemote.Droid.Resource.Color.dim_foreground_material_light;
+			global::UISleuth.Android.Resource.Color.foreground_material_dark = global::GitRemote.Droid.Resource.Color.foreground_material_dark;
+			global::UISleuth.Android.Resource.Color.foreground_material_light = global::GitRemote.Droid.Resource.Color.foreground_material_light;
+			global::UISleuth.Android.Resource.Color.highlighted_text_material_dark = global::GitRemote.Droid.Resource.Color.highlighted_text_material_dark;
+			global::UISleuth.Android.Resource.Color.highlighted_text_material_light = global::GitRemote.Droid.Resource.Color.highlighted_text_material_light;
+			global::UISleuth.Android.Resource.Color.hint_foreground_material_dark = global::GitRemote.Droid.Resource.Color.hint_foreground_material_dark;
+			global::UISleuth.Android.Resource.Color.hint_foreground_material_light = global::GitRemote.Droid.Resource.Color.hint_foreground_material_light;
+			global::UISleuth.Android.Resource.Color.material_blue_grey_800 = global::GitRemote.Droid.Resource.Color.material_blue_grey_800;
+			global::UISleuth.Android.Resource.Color.material_blue_grey_900 = global::GitRemote.Droid.Resource.Color.material_blue_grey_900;
+			global::UISleuth.Android.Resource.Color.material_blue_grey_950 = global::GitRemote.Droid.Resource.Color.material_blue_grey_950;
+			global::UISleuth.Android.Resource.Color.material_deep_teal_200 = global::GitRemote.Droid.Resource.Color.material_deep_teal_200;
+			global::UISleuth.Android.Resource.Color.material_deep_teal_500 = global::GitRemote.Droid.Resource.Color.material_deep_teal_500;
+			global::UISleuth.Android.Resource.Color.material_grey_100 = global::GitRemote.Droid.Resource.Color.material_grey_100;
+			global::UISleuth.Android.Resource.Color.material_grey_300 = global::GitRemote.Droid.Resource.Color.material_grey_300;
+			global::UISleuth.Android.Resource.Color.material_grey_50 = global::GitRemote.Droid.Resource.Color.material_grey_50;
+			global::UISleuth.Android.Resource.Color.material_grey_600 = global::GitRemote.Droid.Resource.Color.material_grey_600;
+			global::UISleuth.Android.Resource.Color.material_grey_800 = global::GitRemote.Droid.Resource.Color.material_grey_800;
+			global::UISleuth.Android.Resource.Color.material_grey_850 = global::GitRemote.Droid.Resource.Color.material_grey_850;
+			global::UISleuth.Android.Resource.Color.material_grey_900 = global::GitRemote.Droid.Resource.Color.material_grey_900;
+			global::UISleuth.Android.Resource.Color.primary_dark_material_dark = global::GitRemote.Droid.Resource.Color.primary_dark_material_dark;
+			global::UISleuth.Android.Resource.Color.primary_dark_material_light = global::GitRemote.Droid.Resource.Color.primary_dark_material_light;
+			global::UISleuth.Android.Resource.Color.primary_material_dark = global::GitRemote.Droid.Resource.Color.primary_material_dark;
+			global::UISleuth.Android.Resource.Color.primary_material_light = global::GitRemote.Droid.Resource.Color.primary_material_light;
+			global::UISleuth.Android.Resource.Color.primary_text_default_material_dark = global::GitRemote.Droid.Resource.Color.primary_text_default_material_dark;
+			global::UISleuth.Android.Resource.Color.primary_text_default_material_light = global::GitRemote.Droid.Resource.Color.primary_text_default_material_light;
+			global::UISleuth.Android.Resource.Color.primary_text_disabled_material_dark = global::GitRemote.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::UISleuth.Android.Resource.Color.primary_text_disabled_material_light = global::GitRemote.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::UISleuth.Android.Resource.Color.ripple_material_dark = global::GitRemote.Droid.Resource.Color.ripple_material_dark;
+			global::UISleuth.Android.Resource.Color.ripple_material_light = global::GitRemote.Droid.Resource.Color.ripple_material_light;
+			global::UISleuth.Android.Resource.Color.secondary_text_default_material_dark = global::GitRemote.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::UISleuth.Android.Resource.Color.secondary_text_default_material_light = global::GitRemote.Droid.Resource.Color.secondary_text_default_material_light;
+			global::UISleuth.Android.Resource.Color.secondary_text_disabled_material_dark = global::GitRemote.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::UISleuth.Android.Resource.Color.secondary_text_disabled_material_light = global::GitRemote.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::UISleuth.Android.Resource.Color.switch_thumb_disabled_material_dark = global::GitRemote.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::UISleuth.Android.Resource.Color.switch_thumb_disabled_material_light = global::GitRemote.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::UISleuth.Android.Resource.Color.switch_thumb_material_dark = global::GitRemote.Droid.Resource.Color.switch_thumb_material_dark;
+			global::UISleuth.Android.Resource.Color.switch_thumb_material_light = global::GitRemote.Droid.Resource.Color.switch_thumb_material_light;
+			global::UISleuth.Android.Resource.Color.switch_thumb_normal_material_dark = global::GitRemote.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::UISleuth.Android.Resource.Color.switch_thumb_normal_material_light = global::GitRemote.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_content_inset_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_default_height_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_default_padding_end_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_default_padding_start_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_progress_bar_size = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_stacked_max_height = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::GitRemote.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_button_min_height_material = global::GitRemote.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_button_min_width_material = global::GitRemote.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::UISleuth.Android.Resource.Dimension.abc_action_button_min_width_overflow_material = global::GitRemote.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::UISleuth.Android.Resource.Dimension.abc_alert_dialog_button_bar_height = global::GitRemote.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::UISleuth.Android.Resource.Dimension.abc_button_inset_horizontal_material = global::GitRemote.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::UISleuth.Android.Resource.Dimension.abc_button_inset_vertical_material = global::GitRemote.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::UISleuth.Android.Resource.Dimension.abc_button_padding_horizontal_material = global::GitRemote.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::UISleuth.Android.Resource.Dimension.abc_button_padding_vertical_material = global::GitRemote.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::UISleuth.Android.Resource.Dimension.abc_config_prefDialogWidth = global::GitRemote.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::UISleuth.Android.Resource.Dimension.abc_control_corner_material = global::GitRemote.Droid.Resource.Dimension.abc_control_corner_material;
+			global::UISleuth.Android.Resource.Dimension.abc_control_inset_material = global::GitRemote.Droid.Resource.Dimension.abc_control_inset_material;
+			global::UISleuth.Android.Resource.Dimension.abc_control_padding_material = global::GitRemote.Droid.Resource.Dimension.abc_control_padding_material;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_fixed_height_major = global::GitRemote.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_fixed_height_minor = global::GitRemote.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_fixed_width_major = global::GitRemote.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_fixed_width_minor = global::GitRemote.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::GitRemote.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_min_width_major = global::GitRemote.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_min_width_minor = global::GitRemote.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_padding_material = global::GitRemote.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::UISleuth.Android.Resource.Dimension.abc_dialog_padding_top_material = global::GitRemote.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::UISleuth.Android.Resource.Dimension.abc_disabled_alpha_material_dark = global::GitRemote.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::UISleuth.Android.Resource.Dimension.abc_disabled_alpha_material_light = global::GitRemote.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::UISleuth.Android.Resource.Dimension.abc_dropdownitem_icon_width = global::GitRemote.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::UISleuth.Android.Resource.Dimension.abc_dropdownitem_text_padding_left = global::GitRemote.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::UISleuth.Android.Resource.Dimension.abc_dropdownitem_text_padding_right = global::GitRemote.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::UISleuth.Android.Resource.Dimension.abc_edit_text_inset_bottom_material = global::GitRemote.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::UISleuth.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::GitRemote.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::UISleuth.Android.Resource.Dimension.abc_edit_text_inset_top_material = global::GitRemote.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::UISleuth.Android.Resource.Dimension.abc_floating_window_z = global::GitRemote.Droid.Resource.Dimension.abc_floating_window_z;
+			global::UISleuth.Android.Resource.Dimension.abc_list_item_padding_horizontal_material = global::GitRemote.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::UISleuth.Android.Resource.Dimension.abc_panel_menu_list_width = global::GitRemote.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::UISleuth.Android.Resource.Dimension.abc_search_view_preferred_width = global::GitRemote.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::UISleuth.Android.Resource.Dimension.abc_search_view_text_min_width = global::GitRemote.Droid.Resource.Dimension.abc_search_view_text_min_width;
+			global::UISleuth.Android.Resource.Dimension.abc_seekbar_track_background_height_material = global::GitRemote.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::UISleuth.Android.Resource.Dimension.abc_seekbar_track_progress_height_material = global::GitRemote.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::UISleuth.Android.Resource.Dimension.abc_select_dialog_padding_start_material = global::GitRemote.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::UISleuth.Android.Resource.Dimension.abc_switch_padding = global::GitRemote.Droid.Resource.Dimension.abc_switch_padding;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_body_1_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_body_2_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_button_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_caption_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_display_1_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_display_2_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_display_3_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_display_4_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_headline_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_large_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_medium_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_menu_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_small_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_subhead_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::GitRemote.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_title_material = global::GitRemote.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::UISleuth.Android.Resource.Dimension.abc_text_size_title_material_toolbar = global::GitRemote.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::UISleuth.Android.Resource.Dimension.cardview_compat_inset_shadow = global::GitRemote.Droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::UISleuth.Android.Resource.Dimension.cardview_default_elevation = global::GitRemote.Droid.Resource.Dimension.cardview_default_elevation;
+			global::UISleuth.Android.Resource.Dimension.cardview_default_radius = global::GitRemote.Droid.Resource.Dimension.cardview_default_radius;
+			global::UISleuth.Android.Resource.Dimension.design_appbar_elevation = global::GitRemote.Droid.Resource.Dimension.design_appbar_elevation;
+			global::UISleuth.Android.Resource.Dimension.design_bottom_sheet_modal_elevation = global::GitRemote.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::UISleuth.Android.Resource.Dimension.design_bottom_sheet_modal_peek_height = global::GitRemote.Droid.Resource.Dimension.design_bottom_sheet_modal_peek_height;
+			global::UISleuth.Android.Resource.Dimension.design_fab_border_width = global::GitRemote.Droid.Resource.Dimension.design_fab_border_width;
+			global::UISleuth.Android.Resource.Dimension.design_fab_elevation = global::GitRemote.Droid.Resource.Dimension.design_fab_elevation;
+			global::UISleuth.Android.Resource.Dimension.design_fab_image_size = global::GitRemote.Droid.Resource.Dimension.design_fab_image_size;
+			global::UISleuth.Android.Resource.Dimension.design_fab_size_mini = global::GitRemote.Droid.Resource.Dimension.design_fab_size_mini;
+			global::UISleuth.Android.Resource.Dimension.design_fab_size_normal = global::GitRemote.Droid.Resource.Dimension.design_fab_size_normal;
+			global::UISleuth.Android.Resource.Dimension.design_fab_translation_z_pressed = global::GitRemote.Droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::UISleuth.Android.Resource.Dimension.design_navigation_elevation = global::GitRemote.Droid.Resource.Dimension.design_navigation_elevation;
+			global::UISleuth.Android.Resource.Dimension.design_navigation_icon_padding = global::GitRemote.Droid.Resource.Dimension.design_navigation_icon_padding;
+			global::UISleuth.Android.Resource.Dimension.design_navigation_icon_size = global::GitRemote.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::UISleuth.Android.Resource.Dimension.design_navigation_max_width = global::GitRemote.Droid.Resource.Dimension.design_navigation_max_width;
+			global::UISleuth.Android.Resource.Dimension.design_navigation_padding_bottom = global::GitRemote.Droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::UISleuth.Android.Resource.Dimension.design_navigation_separator_vertical_padding = global::GitRemote.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_action_inline_max_width = global::GitRemote.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_background_corner_radius = global::GitRemote.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_elevation = global::GitRemote.Droid.Resource.Dimension.design_snackbar_elevation;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::GitRemote.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_max_width = global::GitRemote.Droid.Resource.Dimension.design_snackbar_max_width;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_min_width = global::GitRemote.Droid.Resource.Dimension.design_snackbar_min_width;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_padding_horizontal = global::GitRemote.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_padding_vertical = global::GitRemote.Droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::GitRemote.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::UISleuth.Android.Resource.Dimension.design_snackbar_text_size = global::GitRemote.Droid.Resource.Dimension.design_snackbar_text_size;
+			global::UISleuth.Android.Resource.Dimension.design_tab_max_width = global::GitRemote.Droid.Resource.Dimension.design_tab_max_width;
+			global::UISleuth.Android.Resource.Dimension.design_tab_scrollable_min_width = global::GitRemote.Droid.Resource.Dimension.design_tab_scrollable_min_width;
+			global::UISleuth.Android.Resource.Dimension.design_tab_text_size = global::GitRemote.Droid.Resource.Dimension.design_tab_text_size;
+			global::UISleuth.Android.Resource.Dimension.design_tab_text_size_2line = global::GitRemote.Droid.Resource.Dimension.design_tab_text_size_2line;
+			global::UISleuth.Android.Resource.Dimension.disabled_alpha_material_dark = global::GitRemote.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::UISleuth.Android.Resource.Dimension.disabled_alpha_material_light = global::GitRemote.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::UISleuth.Android.Resource.Dimension.highlight_alpha_material_colored = global::GitRemote.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::UISleuth.Android.Resource.Dimension.highlight_alpha_material_dark = global::GitRemote.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::UISleuth.Android.Resource.Dimension.highlight_alpha_material_light = global::GitRemote.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::UISleuth.Android.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::GitRemote.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::UISleuth.Android.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::GitRemote.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::UISleuth.Android.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::GitRemote.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::UISleuth.Android.Resource.Dimension.mr_controller_volume_group_list_item_height = global::GitRemote.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
+			global::UISleuth.Android.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::GitRemote.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
+			global::UISleuth.Android.Resource.Dimension.mr_controller_volume_group_list_max_height = global::GitRemote.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
+			global::UISleuth.Android.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::GitRemote.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
+			global::UISleuth.Android.Resource.Dimension.mr_dialog_fixed_width_major = global::GitRemote.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
+			global::UISleuth.Android.Resource.Dimension.mr_dialog_fixed_width_minor = global::GitRemote.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
+			global::UISleuth.Android.Resource.Dimension.notification_large_icon_height = global::GitRemote.Droid.Resource.Dimension.notification_large_icon_height;
+			global::UISleuth.Android.Resource.Dimension.notification_large_icon_width = global::GitRemote.Droid.Resource.Dimension.notification_large_icon_width;
+			global::UISleuth.Android.Resource.Dimension.notification_subtext_size = global::GitRemote.Droid.Resource.Dimension.notification_subtext_size;
+			global::UISleuth.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_action_bar_item_background_material = global::GitRemote.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_borderless_material = global::GitRemote.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_check_material = global::GitRemote.Droid.Resource.Drawable.abc_btn_check_material;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::GitRemote.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::GitRemote.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_colored_material = global::GitRemote.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_default_mtrl_shape = global::GitRemote.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_radio_material = global::GitRemote.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::GitRemote.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::GitRemote.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::GitRemote.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::UISleuth.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::GitRemote.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::UISleuth.Android.Resource.Drawable.abc_cab_background_internal_bg = global::GitRemote.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::UISleuth.Android.Resource.Drawable.abc_cab_background_top_material = global::GitRemote.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::UISleuth.Android.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_control_background_material = global::GitRemote.Droid.Resource.Drawable.abc_control_background_material;
+			global::UISleuth.Android.Resource.Drawable.abc_dialog_material_background_dark = global::GitRemote.Droid.Resource.Drawable.abc_dialog_material_background_dark;
+			global::UISleuth.Android.Resource.Drawable.abc_dialog_material_background_light = global::GitRemote.Droid.Resource.Drawable.abc_dialog_material_background_light;
+			global::UISleuth.Android.Resource.Drawable.abc_edit_text_material = global::GitRemote.Droid.Resource.Drawable.abc_edit_text_material;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_star_black_16dp = global::GitRemote.Droid.Resource.Drawable.abc_ic_star_black_16dp;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_star_black_36dp = global::GitRemote.Droid.Resource.Drawable.abc_ic_star_black_36dp;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_star_half_black_16dp = global::GitRemote.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_star_half_black_36dp = global::GitRemote.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::UISleuth.Android.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_item_background_holo_dark = global::GitRemote.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::UISleuth.Android.Resource.Drawable.abc_item_background_holo_light = global::GitRemote.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::UISleuth.Android.Resource.Drawable.abc_list_divider_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_list_focused_holo = global::GitRemote.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::UISleuth.Android.Resource.Drawable.abc_list_longpressed_holo = global::GitRemote.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::UISleuth.Android.Resource.Drawable.abc_list_pressed_holo_dark = global::GitRemote.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::UISleuth.Android.Resource.Drawable.abc_list_pressed_holo_light = global::GitRemote.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::UISleuth.Android.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::GitRemote.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::UISleuth.Android.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::GitRemote.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::UISleuth.Android.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::GitRemote.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::UISleuth.Android.Resource.Drawable.abc_list_selector_disabled_holo_light = global::GitRemote.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::UISleuth.Android.Resource.Drawable.abc_list_selector_holo_dark = global::GitRemote.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::UISleuth.Android.Resource.Drawable.abc_list_selector_holo_light = global::GitRemote.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::UISleuth.Android.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::GitRemote.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::UISleuth.Android.Resource.Drawable.abc_popup_background_mtrl_mult = global::GitRemote.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::UISleuth.Android.Resource.Drawable.abc_ratingbar_full_material = global::GitRemote.Droid.Resource.Drawable.abc_ratingbar_full_material;
+			global::UISleuth.Android.Resource.Drawable.abc_ratingbar_indicator_material = global::GitRemote.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::UISleuth.Android.Resource.Drawable.abc_ratingbar_small_material = global::GitRemote.Droid.Resource.Drawable.abc_ratingbar_small_material;
+			global::UISleuth.Android.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::GitRemote.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::UISleuth.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::GitRemote.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::UISleuth.Android.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_seekbar_thumb_material = global::GitRemote.Droid.Resource.Drawable.abc_seekbar_thumb_material;
+			global::UISleuth.Android.Resource.Drawable.abc_seekbar_track_material = global::GitRemote.Droid.Resource.Drawable.abc_seekbar_track_material;
+			global::UISleuth.Android.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::GitRemote.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_spinner_textfield_background_material = global::GitRemote.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::UISleuth.Android.Resource.Drawable.abc_switch_thumb_material = global::GitRemote.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::UISleuth.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_tab_indicator_material = global::GitRemote.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::UISleuth.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_text_cursor_material = global::GitRemote.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::UISleuth.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::GitRemote.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::UISleuth.Android.Resource.Drawable.abc_textfield_search_material = global::GitRemote.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::UISleuth.Android.Resource.Drawable.design_fab_background = global::GitRemote.Droid.Resource.Drawable.design_fab_background;
+			global::UISleuth.Android.Resource.Drawable.design_snackbar_background = global::GitRemote.Droid.Resource.Drawable.design_snackbar_background;
+			global::UISleuth.Android.Resource.Drawable.ic_audiotrack = global::GitRemote.Droid.Resource.Drawable.ic_audiotrack;
+			global::UISleuth.Android.Resource.Drawable.ic_audiotrack_light = global::GitRemote.Droid.Resource.Drawable.ic_audiotrack_light;
+			global::UISleuth.Android.Resource.Drawable.ic_bluetooth_grey = global::GitRemote.Droid.Resource.Drawable.ic_bluetooth_grey;
+			global::UISleuth.Android.Resource.Drawable.ic_bluetooth_white = global::GitRemote.Droid.Resource.Drawable.ic_bluetooth_white;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_dark = global::GitRemote.Droid.Resource.Drawable.ic_cast_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_disabled_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_disabled_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_grey = global::GitRemote.Droid.Resource.Drawable.ic_cast_grey;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_off_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_off_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_on_0_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_on_0_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_on_1_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_on_1_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_on_2_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_on_2_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_on_light = global::GitRemote.Droid.Resource.Drawable.ic_cast_on_light;
+			global::UISleuth.Android.Resource.Drawable.ic_cast_white = global::GitRemote.Droid.Resource.Drawable.ic_cast_white;
+			global::UISleuth.Android.Resource.Drawable.ic_close_dark = global::GitRemote.Droid.Resource.Drawable.ic_close_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_close_light = global::GitRemote.Droid.Resource.Drawable.ic_close_light;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse = global::GitRemote.Droid.Resource.Drawable.ic_collapse;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00000 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00000;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00001 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00001;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00002 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00002;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00003 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00003;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00004 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00004;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00005 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00005;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00006 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00006;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00007 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00007;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00008 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00008;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00009 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00009;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00010 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00010;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00011 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00011;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00012 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00012;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00013 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00013;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00014 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00014;
+			global::UISleuth.Android.Resource.Drawable.ic_collapse_00015 = global::GitRemote.Droid.Resource.Drawable.ic_collapse_00015;
+			global::UISleuth.Android.Resource.Drawable.ic_expand = global::GitRemote.Droid.Resource.Drawable.ic_expand;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00000 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00000;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00001 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00001;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00002 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00002;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00003 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00003;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00004 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00004;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00005 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00005;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00006 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00006;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00007 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00007;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00008 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00008;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00009 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00009;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00010 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00010;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00011 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00011;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00012 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00012;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00013 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00013;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00014 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00014;
+			global::UISleuth.Android.Resource.Drawable.ic_expand_00015 = global::GitRemote.Droid.Resource.Drawable.ic_expand_00015;
+			global::UISleuth.Android.Resource.Drawable.ic_media_pause = global::GitRemote.Droid.Resource.Drawable.ic_media_pause;
+			global::UISleuth.Android.Resource.Drawable.ic_media_play = global::GitRemote.Droid.Resource.Drawable.ic_media_play;
+			global::UISleuth.Android.Resource.Drawable.ic_media_route_disabled_mono_dark = global::GitRemote.Droid.Resource.Drawable.ic_media_route_disabled_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_media_route_off_mono_dark = global::GitRemote.Droid.Resource.Drawable.ic_media_route_off_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_media_route_on_0_mono_dark = global::GitRemote.Droid.Resource.Drawable.ic_media_route_on_0_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_media_route_on_1_mono_dark = global::GitRemote.Droid.Resource.Drawable.ic_media_route_on_1_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_media_route_on_2_mono_dark = global::GitRemote.Droid.Resource.Drawable.ic_media_route_on_2_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_media_route_on_mono_dark = global::GitRemote.Droid.Resource.Drawable.ic_media_route_on_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_pause_dark = global::GitRemote.Droid.Resource.Drawable.ic_pause_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_pause_light = global::GitRemote.Droid.Resource.Drawable.ic_pause_light;
+			global::UISleuth.Android.Resource.Drawable.ic_play_dark = global::GitRemote.Droid.Resource.Drawable.ic_play_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_play_light = global::GitRemote.Droid.Resource.Drawable.ic_play_light;
+			global::UISleuth.Android.Resource.Drawable.ic_speaker_dark = global::GitRemote.Droid.Resource.Drawable.ic_speaker_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_speaker_group_dark = global::GitRemote.Droid.Resource.Drawable.ic_speaker_group_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_speaker_group_light = global::GitRemote.Droid.Resource.Drawable.ic_speaker_group_light;
+			global::UISleuth.Android.Resource.Drawable.ic_speaker_light = global::GitRemote.Droid.Resource.Drawable.ic_speaker_light;
+			global::UISleuth.Android.Resource.Drawable.ic_tv_dark = global::GitRemote.Droid.Resource.Drawable.ic_tv_dark;
+			global::UISleuth.Android.Resource.Drawable.ic_tv_light = global::GitRemote.Droid.Resource.Drawable.ic_tv_light;
+			global::UISleuth.Android.Resource.Drawable.mr_dialog_material_background_dark = global::GitRemote.Droid.Resource.Drawable.mr_dialog_material_background_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_dialog_material_background_light = global::GitRemote.Droid.Resource.Drawable.mr_dialog_material_background_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_audiotrack_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_audiotrack_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_cast_dark = global::GitRemote.Droid.Resource.Drawable.mr_ic_cast_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_cast_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_cast_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_close_dark = global::GitRemote.Droid.Resource.Drawable.mr_ic_close_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_close_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_close_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_media_route_connecting_mono_dark = global::GitRemote.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_media_route_connecting_mono_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_media_route_mono_dark = global::GitRemote.Droid.Resource.Drawable.mr_ic_media_route_mono_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_media_route_mono_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_media_route_mono_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_pause_dark = global::GitRemote.Droid.Resource.Drawable.mr_ic_pause_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_pause_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_pause_light;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_play_dark = global::GitRemote.Droid.Resource.Drawable.mr_ic_play_dark;
+			global::UISleuth.Android.Resource.Drawable.mr_ic_play_light = global::GitRemote.Droid.Resource.Drawable.mr_ic_play_light;
+			global::UISleuth.Android.Resource.Drawable.notification_template_icon_bg = global::GitRemote.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::UISleuth.Android.Resource.Id.action0 = global::GitRemote.Droid.Resource.Id.action0;
+			global::UISleuth.Android.Resource.Id.action_bar = global::GitRemote.Droid.Resource.Id.action_bar;
+			global::UISleuth.Android.Resource.Id.action_bar_activity_content = global::GitRemote.Droid.Resource.Id.action_bar_activity_content;
+			global::UISleuth.Android.Resource.Id.action_bar_container = global::GitRemote.Droid.Resource.Id.action_bar_container;
+			global::UISleuth.Android.Resource.Id.action_bar_root = global::GitRemote.Droid.Resource.Id.action_bar_root;
+			global::UISleuth.Android.Resource.Id.action_bar_spinner = global::GitRemote.Droid.Resource.Id.action_bar_spinner;
+			global::UISleuth.Android.Resource.Id.action_bar_subtitle = global::GitRemote.Droid.Resource.Id.action_bar_subtitle;
+			global::UISleuth.Android.Resource.Id.action_bar_title = global::GitRemote.Droid.Resource.Id.action_bar_title;
+			global::UISleuth.Android.Resource.Id.action_context_bar = global::GitRemote.Droid.Resource.Id.action_context_bar;
+			global::UISleuth.Android.Resource.Id.action_divider = global::GitRemote.Droid.Resource.Id.action_divider;
+			global::UISleuth.Android.Resource.Id.action_menu_divider = global::GitRemote.Droid.Resource.Id.action_menu_divider;
+			global::UISleuth.Android.Resource.Id.action_menu_presenter = global::GitRemote.Droid.Resource.Id.action_menu_presenter;
+			global::UISleuth.Android.Resource.Id.action_mode_bar = global::GitRemote.Droid.Resource.Id.action_mode_bar;
+			global::UISleuth.Android.Resource.Id.action_mode_bar_stub = global::GitRemote.Droid.Resource.Id.action_mode_bar_stub;
+			global::UISleuth.Android.Resource.Id.action_mode_close_button = global::GitRemote.Droid.Resource.Id.action_mode_close_button;
+			global::UISleuth.Android.Resource.Id.activity_chooser_view_content = global::GitRemote.Droid.Resource.Id.activity_chooser_view_content;
+			global::UISleuth.Android.Resource.Id.alertTitle = global::GitRemote.Droid.Resource.Id.alertTitle;
+			global::UISleuth.Android.Resource.Id.always = global::GitRemote.Droid.Resource.Id.always;
+			global::UISleuth.Android.Resource.Id.beginning = global::GitRemote.Droid.Resource.Id.beginning;
+			global::UISleuth.Android.Resource.Id.bottom = global::GitRemote.Droid.Resource.Id.bottom;
+			global::UISleuth.Android.Resource.Id.buttonPanel = global::GitRemote.Droid.Resource.Id.buttonPanel;
+			global::UISleuth.Android.Resource.Id.cancel_action = global::GitRemote.Droid.Resource.Id.cancel_action;
+			global::UISleuth.Android.Resource.Id.center = global::GitRemote.Droid.Resource.Id.center;
+			global::UISleuth.Android.Resource.Id.center_horizontal = global::GitRemote.Droid.Resource.Id.center_horizontal;
+			global::UISleuth.Android.Resource.Id.center_vertical = global::GitRemote.Droid.Resource.Id.center_vertical;
+			global::UISleuth.Android.Resource.Id.checkbox = global::GitRemote.Droid.Resource.Id.checkbox;
+			global::UISleuth.Android.Resource.Id.chronometer = global::GitRemote.Droid.Resource.Id.chronometer;
+			global::UISleuth.Android.Resource.Id.clip_horizontal = global::GitRemote.Droid.Resource.Id.clip_horizontal;
+			global::UISleuth.Android.Resource.Id.clip_vertical = global::GitRemote.Droid.Resource.Id.clip_vertical;
+			global::UISleuth.Android.Resource.Id.collapseActionView = global::GitRemote.Droid.Resource.Id.collapseActionView;
+			global::UISleuth.Android.Resource.Id.contentPanel = global::GitRemote.Droid.Resource.Id.contentPanel;
+			global::UISleuth.Android.Resource.Id.custom = global::GitRemote.Droid.Resource.Id.custom;
+			global::UISleuth.Android.Resource.Id.customPanel = global::GitRemote.Droid.Resource.Id.customPanel;
+			global::UISleuth.Android.Resource.Id.decor_content_parent = global::GitRemote.Droid.Resource.Id.decor_content_parent;
+			global::UISleuth.Android.Resource.Id.default_activity_button = global::GitRemote.Droid.Resource.Id.default_activity_button;
+			global::UISleuth.Android.Resource.Id.design_bottom_sheet = global::GitRemote.Droid.Resource.Id.design_bottom_sheet;
+			global::UISleuth.Android.Resource.Id.design_menu_item_action_area = global::GitRemote.Droid.Resource.Id.design_menu_item_action_area;
+			global::UISleuth.Android.Resource.Id.design_menu_item_action_area_stub = global::GitRemote.Droid.Resource.Id.design_menu_item_action_area_stub;
+			global::UISleuth.Android.Resource.Id.design_menu_item_text = global::GitRemote.Droid.Resource.Id.design_menu_item_text;
+			global::UISleuth.Android.Resource.Id.design_navigation_view = global::GitRemote.Droid.Resource.Id.design_navigation_view;
+			global::UISleuth.Android.Resource.Id.disableHome = global::GitRemote.Droid.Resource.Id.disableHome;
+			global::UISleuth.Android.Resource.Id.edit_query = global::GitRemote.Droid.Resource.Id.edit_query;
+			global::UISleuth.Android.Resource.Id.end = global::GitRemote.Droid.Resource.Id.end;
+			global::UISleuth.Android.Resource.Id.end_padder = global::GitRemote.Droid.Resource.Id.end_padder;
+			global::UISleuth.Android.Resource.Id.enterAlways = global::GitRemote.Droid.Resource.Id.enterAlways;
+			global::UISleuth.Android.Resource.Id.enterAlwaysCollapsed = global::GitRemote.Droid.Resource.Id.enterAlwaysCollapsed;
+			global::UISleuth.Android.Resource.Id.exitUntilCollapsed = global::GitRemote.Droid.Resource.Id.exitUntilCollapsed;
+			global::UISleuth.Android.Resource.Id.expand_activities_button = global::GitRemote.Droid.Resource.Id.expand_activities_button;
+			global::UISleuth.Android.Resource.Id.expanded_menu = global::GitRemote.Droid.Resource.Id.expanded_menu;
+			global::UISleuth.Android.Resource.Id.fill = global::GitRemote.Droid.Resource.Id.fill;
+			global::UISleuth.Android.Resource.Id.fill_horizontal = global::GitRemote.Droid.Resource.Id.fill_horizontal;
+			global::UISleuth.Android.Resource.Id.fill_vertical = global::GitRemote.Droid.Resource.Id.fill_vertical;
+			global::UISleuth.Android.Resource.Id.@fixed = global::GitRemote.Droid.Resource.Id.@fixed;
+			global::UISleuth.Android.Resource.Id.home = global::GitRemote.Droid.Resource.Id.home;
+			global::UISleuth.Android.Resource.Id.homeAsUp = global::GitRemote.Droid.Resource.Id.homeAsUp;
+			global::UISleuth.Android.Resource.Id.icon = global::GitRemote.Droid.Resource.Id.icon;
+			global::UISleuth.Android.Resource.Id.ifRoom = global::GitRemote.Droid.Resource.Id.ifRoom;
+			global::UISleuth.Android.Resource.Id.image = global::GitRemote.Droid.Resource.Id.image;
+			global::UISleuth.Android.Resource.Id.info = global::GitRemote.Droid.Resource.Id.info;
+			global::UISleuth.Android.Resource.Id.item_touch_helper_previous_elevation = global::GitRemote.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::UISleuth.Android.Resource.Id.left = global::GitRemote.Droid.Resource.Id.left;
+			global::UISleuth.Android.Resource.Id.line1 = global::GitRemote.Droid.Resource.Id.line1;
+			global::UISleuth.Android.Resource.Id.line3 = global::GitRemote.Droid.Resource.Id.line3;
+			global::UISleuth.Android.Resource.Id.listMode = global::GitRemote.Droid.Resource.Id.listMode;
+			global::UISleuth.Android.Resource.Id.list_item = global::GitRemote.Droid.Resource.Id.list_item;
+			global::UISleuth.Android.Resource.Id.media_actions = global::GitRemote.Droid.Resource.Id.media_actions;
+			global::UISleuth.Android.Resource.Id.middle = global::GitRemote.Droid.Resource.Id.middle;
+			global::UISleuth.Android.Resource.Id.mini = global::GitRemote.Droid.Resource.Id.mini;
+			global::UISleuth.Android.Resource.Id.mr_art = global::GitRemote.Droid.Resource.Id.mr_art;
+			global::UISleuth.Android.Resource.Id.mr_chooser_list = global::GitRemote.Droid.Resource.Id.mr_chooser_list;
+			global::UISleuth.Android.Resource.Id.mr_chooser_route_desc = global::GitRemote.Droid.Resource.Id.mr_chooser_route_desc;
+			global::UISleuth.Android.Resource.Id.mr_chooser_route_icon = global::GitRemote.Droid.Resource.Id.mr_chooser_route_icon;
+			global::UISleuth.Android.Resource.Id.mr_chooser_route_name = global::GitRemote.Droid.Resource.Id.mr_chooser_route_name;
+			global::UISleuth.Android.Resource.Id.mr_close = global::GitRemote.Droid.Resource.Id.mr_close;
+			global::UISleuth.Android.Resource.Id.mr_control_divider = global::GitRemote.Droid.Resource.Id.mr_control_divider;
+			global::UISleuth.Android.Resource.Id.mr_control_play_pause = global::GitRemote.Droid.Resource.Id.mr_control_play_pause;
+			global::UISleuth.Android.Resource.Id.mr_control_subtitle = global::GitRemote.Droid.Resource.Id.mr_control_subtitle;
+			global::UISleuth.Android.Resource.Id.mr_control_title = global::GitRemote.Droid.Resource.Id.mr_control_title;
+			global::UISleuth.Android.Resource.Id.mr_control_title_container = global::GitRemote.Droid.Resource.Id.mr_control_title_container;
+			global::UISleuth.Android.Resource.Id.mr_custom_control = global::GitRemote.Droid.Resource.Id.mr_custom_control;
+			global::UISleuth.Android.Resource.Id.mr_default_control = global::GitRemote.Droid.Resource.Id.mr_default_control;
+			global::UISleuth.Android.Resource.Id.mr_dialog_area = global::GitRemote.Droid.Resource.Id.mr_dialog_area;
+			global::UISleuth.Android.Resource.Id.mr_expandable_area = global::GitRemote.Droid.Resource.Id.mr_expandable_area;
+			global::UISleuth.Android.Resource.Id.mr_group_expand_collapse = global::GitRemote.Droid.Resource.Id.mr_group_expand_collapse;
+			global::UISleuth.Android.Resource.Id.mr_media_main_control = global::GitRemote.Droid.Resource.Id.mr_media_main_control;
+			global::UISleuth.Android.Resource.Id.mr_name = global::GitRemote.Droid.Resource.Id.mr_name;
+			global::UISleuth.Android.Resource.Id.mr_playback_control = global::GitRemote.Droid.Resource.Id.mr_playback_control;
+			global::UISleuth.Android.Resource.Id.mr_title_bar = global::GitRemote.Droid.Resource.Id.mr_title_bar;
+			global::UISleuth.Android.Resource.Id.mr_volume_control = global::GitRemote.Droid.Resource.Id.mr_volume_control;
+			global::UISleuth.Android.Resource.Id.mr_volume_group_list = global::GitRemote.Droid.Resource.Id.mr_volume_group_list;
+			global::UISleuth.Android.Resource.Id.mr_volume_item_icon = global::GitRemote.Droid.Resource.Id.mr_volume_item_icon;
+			global::UISleuth.Android.Resource.Id.mr_volume_slider = global::GitRemote.Droid.Resource.Id.mr_volume_slider;
+			global::UISleuth.Android.Resource.Id.multiply = global::GitRemote.Droid.Resource.Id.multiply;
+			global::UISleuth.Android.Resource.Id.navigation_header_container = global::GitRemote.Droid.Resource.Id.navigation_header_container;
+			global::UISleuth.Android.Resource.Id.never = global::GitRemote.Droid.Resource.Id.never;
+			global::UISleuth.Android.Resource.Id.none = global::GitRemote.Droid.Resource.Id.none;
+			global::UISleuth.Android.Resource.Id.normal = global::GitRemote.Droid.Resource.Id.normal;
+			global::UISleuth.Android.Resource.Id.parallax = global::GitRemote.Droid.Resource.Id.parallax;
+			global::UISleuth.Android.Resource.Id.parentPanel = global::GitRemote.Droid.Resource.Id.parentPanel;
+			global::UISleuth.Android.Resource.Id.pin = global::GitRemote.Droid.Resource.Id.pin;
+			global::UISleuth.Android.Resource.Id.progress_circular = global::GitRemote.Droid.Resource.Id.progress_circular;
+			global::UISleuth.Android.Resource.Id.progress_horizontal = global::GitRemote.Droid.Resource.Id.progress_horizontal;
+			global::UISleuth.Android.Resource.Id.radio = global::GitRemote.Droid.Resource.Id.radio;
+			global::UISleuth.Android.Resource.Id.right = global::GitRemote.Droid.Resource.Id.right;
+			global::UISleuth.Android.Resource.Id.screen = global::GitRemote.Droid.Resource.Id.screen;
+			global::UISleuth.Android.Resource.Id.scroll = global::GitRemote.Droid.Resource.Id.scroll;
+			global::UISleuth.Android.Resource.Id.scrollIndicatorDown = global::GitRemote.Droid.Resource.Id.scrollIndicatorDown;
+			global::UISleuth.Android.Resource.Id.scrollIndicatorUp = global::GitRemote.Droid.Resource.Id.scrollIndicatorUp;
+			global::UISleuth.Android.Resource.Id.scrollView = global::GitRemote.Droid.Resource.Id.scrollView;
+			global::UISleuth.Android.Resource.Id.scrollable = global::GitRemote.Droid.Resource.Id.scrollable;
+			global::UISleuth.Android.Resource.Id.search_badge = global::GitRemote.Droid.Resource.Id.search_badge;
+			global::UISleuth.Android.Resource.Id.search_bar = global::GitRemote.Droid.Resource.Id.search_bar;
+			global::UISleuth.Android.Resource.Id.search_button = global::GitRemote.Droid.Resource.Id.search_button;
+			global::UISleuth.Android.Resource.Id.search_close_btn = global::GitRemote.Droid.Resource.Id.search_close_btn;
+			global::UISleuth.Android.Resource.Id.search_edit_frame = global::GitRemote.Droid.Resource.Id.search_edit_frame;
+			global::UISleuth.Android.Resource.Id.search_go_btn = global::GitRemote.Droid.Resource.Id.search_go_btn;
+			global::UISleuth.Android.Resource.Id.search_mag_icon = global::GitRemote.Droid.Resource.Id.search_mag_icon;
+			global::UISleuth.Android.Resource.Id.search_plate = global::GitRemote.Droid.Resource.Id.search_plate;
+			global::UISleuth.Android.Resource.Id.search_src_text = global::GitRemote.Droid.Resource.Id.search_src_text;
+			global::UISleuth.Android.Resource.Id.search_voice_btn = global::GitRemote.Droid.Resource.Id.search_voice_btn;
+			global::UISleuth.Android.Resource.Id.select_dialog_listview = global::GitRemote.Droid.Resource.Id.select_dialog_listview;
+			global::UISleuth.Android.Resource.Id.shortcut = global::GitRemote.Droid.Resource.Id.shortcut;
+			global::UISleuth.Android.Resource.Id.showCustom = global::GitRemote.Droid.Resource.Id.showCustom;
+			global::UISleuth.Android.Resource.Id.showHome = global::GitRemote.Droid.Resource.Id.showHome;
+			global::UISleuth.Android.Resource.Id.showTitle = global::GitRemote.Droid.Resource.Id.showTitle;
+			global::UISleuth.Android.Resource.Id.snackbar_action = global::GitRemote.Droid.Resource.Id.snackbar_action;
+			global::UISleuth.Android.Resource.Id.snackbar_text = global::GitRemote.Droid.Resource.Id.snackbar_text;
+			global::UISleuth.Android.Resource.Id.snap = global::GitRemote.Droid.Resource.Id.snap;
+			global::UISleuth.Android.Resource.Id.spacer = global::GitRemote.Droid.Resource.Id.spacer;
+			global::UISleuth.Android.Resource.Id.split_action_bar = global::GitRemote.Droid.Resource.Id.split_action_bar;
+			global::UISleuth.Android.Resource.Id.src_atop = global::GitRemote.Droid.Resource.Id.src_atop;
+			global::UISleuth.Android.Resource.Id.src_in = global::GitRemote.Droid.Resource.Id.src_in;
+			global::UISleuth.Android.Resource.Id.src_over = global::GitRemote.Droid.Resource.Id.src_over;
+			global::UISleuth.Android.Resource.Id.start = global::GitRemote.Droid.Resource.Id.start;
+			global::UISleuth.Android.Resource.Id.status_bar_latest_event_content = global::GitRemote.Droid.Resource.Id.status_bar_latest_event_content;
+			global::UISleuth.Android.Resource.Id.submit_area = global::GitRemote.Droid.Resource.Id.submit_area;
+			global::UISleuth.Android.Resource.Id.tabMode = global::GitRemote.Droid.Resource.Id.tabMode;
+			global::UISleuth.Android.Resource.Id.text = global::GitRemote.Droid.Resource.Id.text;
+			global::UISleuth.Android.Resource.Id.text2 = global::GitRemote.Droid.Resource.Id.text2;
+			global::UISleuth.Android.Resource.Id.textSpacerNoButtons = global::GitRemote.Droid.Resource.Id.textSpacerNoButtons;
+			global::UISleuth.Android.Resource.Id.time = global::GitRemote.Droid.Resource.Id.time;
+			global::UISleuth.Android.Resource.Id.title = global::GitRemote.Droid.Resource.Id.title;
+			global::UISleuth.Android.Resource.Id.title_template = global::GitRemote.Droid.Resource.Id.title_template;
+			global::UISleuth.Android.Resource.Id.top = global::GitRemote.Droid.Resource.Id.top;
+			global::UISleuth.Android.Resource.Id.topPanel = global::GitRemote.Droid.Resource.Id.topPanel;
+			global::UISleuth.Android.Resource.Id.touch_outside = global::GitRemote.Droid.Resource.Id.touch_outside;
+			global::UISleuth.Android.Resource.Id.up = global::GitRemote.Droid.Resource.Id.up;
+			global::UISleuth.Android.Resource.Id.useLogo = global::GitRemote.Droid.Resource.Id.useLogo;
+			global::UISleuth.Android.Resource.Id.view_offset_helper = global::GitRemote.Droid.Resource.Id.view_offset_helper;
+			global::UISleuth.Android.Resource.Id.volume_item_container = global::GitRemote.Droid.Resource.Id.volume_item_container;
+			global::UISleuth.Android.Resource.Id.withText = global::GitRemote.Droid.Resource.Id.withText;
+			global::UISleuth.Android.Resource.Id.wrap_content = global::GitRemote.Droid.Resource.Id.wrap_content;
+			global::UISleuth.Android.Resource.Integer.abc_config_activityDefaultDur = global::GitRemote.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::UISleuth.Android.Resource.Integer.abc_config_activityShortDur = global::GitRemote.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::UISleuth.Android.Resource.Integer.abc_max_action_buttons = global::GitRemote.Droid.Resource.Integer.abc_max_action_buttons;
+			global::UISleuth.Android.Resource.Integer.bottom_sheet_slide_duration = global::GitRemote.Droid.Resource.Integer.bottom_sheet_slide_duration;
+			global::UISleuth.Android.Resource.Integer.cancel_button_image_alpha = global::GitRemote.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::UISleuth.Android.Resource.Integer.design_snackbar_text_max_lines = global::GitRemote.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::UISleuth.Android.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::GitRemote.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
+			global::UISleuth.Android.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::GitRemote.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
+			global::UISleuth.Android.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::GitRemote.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
+			global::UISleuth.Android.Resource.Integer.status_bar_notification_info_maxnum = global::GitRemote.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::UISleuth.Android.Resource.Interpolator.mr_fast_out_slow_in = global::GitRemote.Droid.Resource.Interpolator.mr_fast_out_slow_in;
+			global::UISleuth.Android.Resource.Interpolator.mr_linear_out_slow_in = global::GitRemote.Droid.Resource.Interpolator.mr_linear_out_slow_in;
+			global::UISleuth.Android.Resource.Layout.abc_action_bar_title_item = global::GitRemote.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::UISleuth.Android.Resource.Layout.abc_action_bar_up_container = global::GitRemote.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::UISleuth.Android.Resource.Layout.abc_action_bar_view_list_nav_layout = global::GitRemote.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
+			global::UISleuth.Android.Resource.Layout.abc_action_menu_item_layout = global::GitRemote.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::UISleuth.Android.Resource.Layout.abc_action_menu_layout = global::GitRemote.Droid.Resource.Layout.abc_action_menu_layout;
+			global::UISleuth.Android.Resource.Layout.abc_action_mode_bar = global::GitRemote.Droid.Resource.Layout.abc_action_mode_bar;
+			global::UISleuth.Android.Resource.Layout.abc_action_mode_close_item_material = global::GitRemote.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::UISleuth.Android.Resource.Layout.abc_activity_chooser_view = global::GitRemote.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::UISleuth.Android.Resource.Layout.abc_activity_chooser_view_list_item = global::GitRemote.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::UISleuth.Android.Resource.Layout.abc_alert_dialog_button_bar_material = global::GitRemote.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::UISleuth.Android.Resource.Layout.abc_alert_dialog_material = global::GitRemote.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::UISleuth.Android.Resource.Layout.abc_dialog_title_material = global::GitRemote.Droid.Resource.Layout.abc_dialog_title_material;
+			global::UISleuth.Android.Resource.Layout.abc_expanded_menu_layout = global::GitRemote.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::UISleuth.Android.Resource.Layout.abc_list_menu_item_checkbox = global::GitRemote.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::UISleuth.Android.Resource.Layout.abc_list_menu_item_icon = global::GitRemote.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::UISleuth.Android.Resource.Layout.abc_list_menu_item_layout = global::GitRemote.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::UISleuth.Android.Resource.Layout.abc_list_menu_item_radio = global::GitRemote.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::UISleuth.Android.Resource.Layout.abc_popup_menu_item_layout = global::GitRemote.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::UISleuth.Android.Resource.Layout.abc_screen_content_include = global::GitRemote.Droid.Resource.Layout.abc_screen_content_include;
+			global::UISleuth.Android.Resource.Layout.abc_screen_simple = global::GitRemote.Droid.Resource.Layout.abc_screen_simple;
+			global::UISleuth.Android.Resource.Layout.abc_screen_simple_overlay_action_mode = global::GitRemote.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::UISleuth.Android.Resource.Layout.abc_screen_toolbar = global::GitRemote.Droid.Resource.Layout.abc_screen_toolbar;
+			global::UISleuth.Android.Resource.Layout.abc_search_dropdown_item_icons_2line = global::GitRemote.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::UISleuth.Android.Resource.Layout.abc_search_view = global::GitRemote.Droid.Resource.Layout.abc_search_view;
+			global::UISleuth.Android.Resource.Layout.abc_select_dialog_material = global::GitRemote.Droid.Resource.Layout.abc_select_dialog_material;
+			global::UISleuth.Android.Resource.Layout.design_bottom_sheet_dialog = global::GitRemote.Droid.Resource.Layout.design_bottom_sheet_dialog;
+			global::UISleuth.Android.Resource.Layout.design_layout_snackbar = global::GitRemote.Droid.Resource.Layout.design_layout_snackbar;
+			global::UISleuth.Android.Resource.Layout.design_layout_snackbar_include = global::GitRemote.Droid.Resource.Layout.design_layout_snackbar_include;
+			global::UISleuth.Android.Resource.Layout.design_layout_tab_icon = global::GitRemote.Droid.Resource.Layout.design_layout_tab_icon;
+			global::UISleuth.Android.Resource.Layout.design_layout_tab_text = global::GitRemote.Droid.Resource.Layout.design_layout_tab_text;
+			global::UISleuth.Android.Resource.Layout.design_menu_item_action_area = global::GitRemote.Droid.Resource.Layout.design_menu_item_action_area;
+			global::UISleuth.Android.Resource.Layout.design_navigation_item = global::GitRemote.Droid.Resource.Layout.design_navigation_item;
+			global::UISleuth.Android.Resource.Layout.design_navigation_item_header = global::GitRemote.Droid.Resource.Layout.design_navigation_item_header;
+			global::UISleuth.Android.Resource.Layout.design_navigation_item_separator = global::GitRemote.Droid.Resource.Layout.design_navigation_item_separator;
+			global::UISleuth.Android.Resource.Layout.design_navigation_item_subheader = global::GitRemote.Droid.Resource.Layout.design_navigation_item_subheader;
+			global::UISleuth.Android.Resource.Layout.design_navigation_menu = global::GitRemote.Droid.Resource.Layout.design_navigation_menu;
+			global::UISleuth.Android.Resource.Layout.design_navigation_menu_item = global::GitRemote.Droid.Resource.Layout.design_navigation_menu_item;
+			global::UISleuth.Android.Resource.Layout.mr_chooser_dialog = global::GitRemote.Droid.Resource.Layout.mr_chooser_dialog;
+			global::UISleuth.Android.Resource.Layout.mr_chooser_list_item = global::GitRemote.Droid.Resource.Layout.mr_chooser_list_item;
+			global::UISleuth.Android.Resource.Layout.mr_controller_material_dialog_b = global::GitRemote.Droid.Resource.Layout.mr_controller_material_dialog_b;
+			global::UISleuth.Android.Resource.Layout.mr_controller_volume_item = global::GitRemote.Droid.Resource.Layout.mr_controller_volume_item;
+			global::UISleuth.Android.Resource.Layout.mr_playback_control = global::GitRemote.Droid.Resource.Layout.mr_playback_control;
+			global::UISleuth.Android.Resource.Layout.mr_volume_control = global::GitRemote.Droid.Resource.Layout.mr_volume_control;
+			global::UISleuth.Android.Resource.Layout.notification_media_action = global::GitRemote.Droid.Resource.Layout.notification_media_action;
+			global::UISleuth.Android.Resource.Layout.notification_media_cancel_action = global::GitRemote.Droid.Resource.Layout.notification_media_cancel_action;
+			global::UISleuth.Android.Resource.Layout.notification_template_big_media = global::GitRemote.Droid.Resource.Layout.notification_template_big_media;
+			global::UISleuth.Android.Resource.Layout.notification_template_big_media_narrow = global::GitRemote.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::UISleuth.Android.Resource.Layout.notification_template_lines = global::GitRemote.Droid.Resource.Layout.notification_template_lines;
+			global::UISleuth.Android.Resource.Layout.notification_template_media = global::GitRemote.Droid.Resource.Layout.notification_template_media;
+			global::UISleuth.Android.Resource.Layout.notification_template_part_chronometer = global::GitRemote.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::UISleuth.Android.Resource.Layout.notification_template_part_time = global::GitRemote.Droid.Resource.Layout.notification_template_part_time;
+			global::UISleuth.Android.Resource.Layout.select_dialog_item_material = global::GitRemote.Droid.Resource.Layout.select_dialog_item_material;
+			global::UISleuth.Android.Resource.Layout.select_dialog_multichoice_material = global::GitRemote.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::UISleuth.Android.Resource.Layout.select_dialog_singlechoice_material = global::GitRemote.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::UISleuth.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::GitRemote.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::UISleuth.Android.Resource.String.ApplicationName = global::GitRemote.Droid.Resource.String.ApplicationName;
+			global::UISleuth.Android.Resource.String.abc_action_bar_home_description = global::GitRemote.Droid.Resource.String.abc_action_bar_home_description;
+			global::UISleuth.Android.Resource.String.abc_action_bar_home_description_format = global::GitRemote.Droid.Resource.String.abc_action_bar_home_description_format;
+			global::UISleuth.Android.Resource.String.abc_action_bar_home_subtitle_description_format = global::GitRemote.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
+			global::UISleuth.Android.Resource.String.abc_action_bar_up_description = global::GitRemote.Droid.Resource.String.abc_action_bar_up_description;
+			global::UISleuth.Android.Resource.String.abc_action_menu_overflow_description = global::GitRemote.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::UISleuth.Android.Resource.String.abc_action_mode_done = global::GitRemote.Droid.Resource.String.abc_action_mode_done;
+			global::UISleuth.Android.Resource.String.abc_activity_chooser_view_see_all = global::GitRemote.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::UISleuth.Android.Resource.String.abc_activitychooserview_choose_application = global::GitRemote.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::UISleuth.Android.Resource.String.abc_capital_off = global::GitRemote.Droid.Resource.String.abc_capital_off;
+			global::UISleuth.Android.Resource.String.abc_capital_on = global::GitRemote.Droid.Resource.String.abc_capital_on;
+			global::UISleuth.Android.Resource.String.abc_search_hint = global::GitRemote.Droid.Resource.String.abc_search_hint;
+			global::UISleuth.Android.Resource.String.abc_searchview_description_clear = global::GitRemote.Droid.Resource.String.abc_searchview_description_clear;
+			global::UISleuth.Android.Resource.String.abc_searchview_description_query = global::GitRemote.Droid.Resource.String.abc_searchview_description_query;
+			global::UISleuth.Android.Resource.String.abc_searchview_description_search = global::GitRemote.Droid.Resource.String.abc_searchview_description_search;
+			global::UISleuth.Android.Resource.String.abc_searchview_description_submit = global::GitRemote.Droid.Resource.String.abc_searchview_description_submit;
+			global::UISleuth.Android.Resource.String.abc_searchview_description_voice = global::GitRemote.Droid.Resource.String.abc_searchview_description_voice;
+			global::UISleuth.Android.Resource.String.abc_shareactionprovider_share_with = global::GitRemote.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::UISleuth.Android.Resource.String.abc_shareactionprovider_share_with_application = global::GitRemote.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::UISleuth.Android.Resource.String.abc_toolbar_collapse_description = global::GitRemote.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::UISleuth.Android.Resource.String.appbar_scrolling_view_behavior = global::GitRemote.Droid.Resource.String.appbar_scrolling_view_behavior;
+			global::UISleuth.Android.Resource.String.bottom_sheet_behavior = global::GitRemote.Droid.Resource.String.bottom_sheet_behavior;
+			global::UISleuth.Android.Resource.String.character_counter_pattern = global::GitRemote.Droid.Resource.String.character_counter_pattern;
+			global::UISleuth.Android.Resource.String.mr_button_content_description = global::GitRemote.Droid.Resource.String.mr_button_content_description;
+			global::UISleuth.Android.Resource.String.mr_chooser_searching = global::GitRemote.Droid.Resource.String.mr_chooser_searching;
+			global::UISleuth.Android.Resource.String.mr_chooser_title = global::GitRemote.Droid.Resource.String.mr_chooser_title;
+			global::UISleuth.Android.Resource.String.mr_controller_casting_screen = global::GitRemote.Droid.Resource.String.mr_controller_casting_screen;
+			global::UISleuth.Android.Resource.String.mr_controller_close_description = global::GitRemote.Droid.Resource.String.mr_controller_close_description;
+			global::UISleuth.Android.Resource.String.mr_controller_collapse_group = global::GitRemote.Droid.Resource.String.mr_controller_collapse_group;
+			global::UISleuth.Android.Resource.String.mr_controller_disconnect = global::GitRemote.Droid.Resource.String.mr_controller_disconnect;
+			global::UISleuth.Android.Resource.String.mr_controller_expand_group = global::GitRemote.Droid.Resource.String.mr_controller_expand_group;
+			global::UISleuth.Android.Resource.String.mr_controller_no_info_available = global::GitRemote.Droid.Resource.String.mr_controller_no_info_available;
+			global::UISleuth.Android.Resource.String.mr_controller_no_media_selected = global::GitRemote.Droid.Resource.String.mr_controller_no_media_selected;
+			global::UISleuth.Android.Resource.String.mr_controller_pause = global::GitRemote.Droid.Resource.String.mr_controller_pause;
+			global::UISleuth.Android.Resource.String.mr_controller_play = global::GitRemote.Droid.Resource.String.mr_controller_play;
+			global::UISleuth.Android.Resource.String.mr_controller_stop = global::GitRemote.Droid.Resource.String.mr_controller_stop;
+			global::UISleuth.Android.Resource.String.mr_system_route_name = global::GitRemote.Droid.Resource.String.mr_system_route_name;
+			global::UISleuth.Android.Resource.String.mr_user_route_category_name = global::GitRemote.Droid.Resource.String.mr_user_route_category_name;
+			global::UISleuth.Android.Resource.String.status_bar_notification_info_overflow = global::GitRemote.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::UISleuth.Android.Resource.Style.AlertDialog_AppCompat = global::GitRemote.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::UISleuth.Android.Resource.Style.AlertDialog_AppCompat_Light = global::GitRemote.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Animation_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::GitRemote.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::UISleuth.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::GitRemote.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::UISleuth.Android.Resource.Style.Base_AlertDialog_AppCompat = global::GitRemote.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::GitRemote.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::UISleuth.Android.Resource.Style.Base_CardView = global::GitRemote.Droid.Resource.Style.Base_CardView;
+			global::UISleuth.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::GitRemote.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::GitRemote.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Button = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Large = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Small = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Title = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::UISleuth.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::GitRemote.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::UISleuth.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::GitRemote.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::UISleuth.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::GitRemote.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::GitRemote.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::UISleuth.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::GitRemote.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::UISleuth.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::GitRemote.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::UISleuth.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::GitRemote.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::GitRemote.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::UISleuth.Android.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::GitRemote.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::UISleuth.Android.Resource.Style.Base_V21_Theme_AppCompat = global::GitRemote.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::GitRemote.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_V22_Theme_AppCompat = global::GitRemote.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_V23_Theme_AppCompat = global::GitRemote.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_V23_Theme_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_V7_Theme_AppCompat = global::GitRemote.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::UISleuth.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::GitRemote.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::UISleuth.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::GitRemote.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::UISleuth.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::GitRemote.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionButton = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActionMode = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Button = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_EditText = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ImageButton = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ListView = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_RatingBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_SearchView = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_SeekBar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Spinner = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Toolbar = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::UISleuth.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::GitRemote.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::UISleuth.Android.Resource.Style.Base_Widget_Design_TabLayout = global::GitRemote.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::UISleuth.Android.Resource.Style.CardView = global::GitRemote.Droid.Resource.Style.CardView;
+			global::UISleuth.Android.Resource.Style.CardView_Dark = global::GitRemote.Droid.Resource.Style.CardView_Dark;
+			global::UISleuth.Android.Resource.Style.CardView_Light = global::GitRemote.Droid.Resource.Style.CardView_Light;
+			global::UISleuth.Android.Resource.Style.Platform_AppCompat = global::GitRemote.Droid.Resource.Style.Platform_AppCompat;
+			global::UISleuth.Android.Resource.Style.Platform_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Platform_ThemeOverlay_AppCompat = global::GitRemote.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::UISleuth.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::GitRemote.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::UISleuth.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Platform_V11_AppCompat = global::GitRemote.Droid.Resource.Style.Platform_V11_AppCompat;
+			global::UISleuth.Android.Resource.Style.Platform_V11_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Platform_V11_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Platform_V14_AppCompat = global::GitRemote.Droid.Resource.Style.Platform_V14_AppCompat;
+			global::UISleuth.Android.Resource.Style.Platform_V14_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Platform_V14_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Platform_Widget_AppCompat_Spinner = global::GitRemote.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::GitRemote.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::UISleuth.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::GitRemote.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::UISleuth.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::GitRemote.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::UISleuth.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::GitRemote.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Body1 = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Body2 = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Button = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Caption = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Display1 = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Display2 = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Display3 = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Display4 = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Headline = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Large = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Medium = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Menu = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Small = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Subhead = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::UISleuth.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::GitRemote.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_Counter = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_Counter;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_Counter_Overflow = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_Error = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_Hint = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_Hint;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_Snackbar_Message = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Design_Tab = global::GitRemote.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::UISleuth.Android.Resource.Style.TextAppearance_StatusBar_EventContent = global::GitRemote.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
+			global::UISleuth.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::GitRemote.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
+			global::UISleuth.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::GitRemote.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
+			global::UISleuth.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::GitRemote.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
+			global::UISleuth.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::GitRemote.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::GitRemote.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::UISleuth.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::GitRemote.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat = global::GitRemote.Droid.Resource.Style.Theme_AppCompat;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Dialog = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::GitRemote.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_Design = global::GitRemote.Droid.Resource.Style.Theme_Design;
+			global::UISleuth.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::GitRemote.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::UISleuth.Android.Resource.Style.Theme_Design_Light = global::GitRemote.Droid.Resource.Style.Theme_Design_Light;
+			global::UISleuth.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::GitRemote.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::UISleuth.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::GitRemote.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_Design_NoActionBar = global::GitRemote.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::UISleuth.Android.Resource.Style.Theme_MediaRouter = global::GitRemote.Droid.Resource.Style.Theme_MediaRouter;
+			global::UISleuth.Android.Resource.Style.Theme_MediaRouter_Light = global::GitRemote.Droid.Resource.Style.Theme_MediaRouter_Light;
+			global::UISleuth.Android.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::GitRemote.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
+			global::UISleuth.Android.Resource.Style.Theme_MediaRouter_LightControlPanel = global::GitRemote.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
+			global::UISleuth.Android.Resource.Style.ThemeOverlay_AppCompat = global::GitRemote.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::UISleuth.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::GitRemote.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::UISleuth.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::GitRemote.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::UISleuth.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::GitRemote.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::UISleuth.Android.Resource.Style.ThemeOverlay_AppCompat_Light = global::GitRemote.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionButton = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActionMode = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Button = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Button_Small = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_EditText = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ImageButton = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ImageButton;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionButton = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_SearchView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ListPopupWindow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ListView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ListView_DropDown = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ListView_Menu = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_PopupMenu = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_PopupWindow = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ProgressBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_RatingBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_RatingBar_Small = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_SearchView = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_SeekBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_SeekBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Spinner = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Toolbar = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::UISleuth.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::GitRemote.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::UISleuth.Android.Resource.Style.Widget_Design_AppBarLayout = global::GitRemote.Droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::UISleuth.Android.Resource.Style.Widget_Design_BottomSheet_Modal = global::GitRemote.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::UISleuth.Android.Resource.Style.Widget_Design_CollapsingToolbar = global::GitRemote.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::UISleuth.Android.Resource.Style.Widget_Design_CoordinatorLayout = global::GitRemote.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
+			global::UISleuth.Android.Resource.Style.Widget_Design_FloatingActionButton = global::GitRemote.Droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::UISleuth.Android.Resource.Style.Widget_Design_NavigationView = global::GitRemote.Droid.Resource.Style.Widget_Design_NavigationView;
+			global::UISleuth.Android.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::GitRemote.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::UISleuth.Android.Resource.Style.Widget_Design_Snackbar = global::GitRemote.Droid.Resource.Style.Widget_Design_Snackbar;
+			global::UISleuth.Android.Resource.Style.Widget_Design_TabLayout = global::GitRemote.Droid.Resource.Style.Widget_Design_TabLayout;
+			global::UISleuth.Android.Resource.Style.Widget_Design_TextInputLayout = global::GitRemote.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Dark = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Dark;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Light = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Light;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Dark = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Dark;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Light = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Light;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Dark = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Dark;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Light = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Light;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Dark = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Dark;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Light = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Light;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title_Dark = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title_Dark;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title_Light = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title_Light;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::UISleuth.Android.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::GitRemote.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::UISleuth.Android.Resource.Styleable.ActionBar = global::GitRemote.Droid.Resource.Styleable.ActionBar;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_background = global::GitRemote.Droid.Resource.Styleable.ActionBar_background;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_backgroundSplit = global::GitRemote.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_backgroundStacked = global::GitRemote.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_contentInsetEnd = global::GitRemote.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_contentInsetLeft = global::GitRemote.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_contentInsetRight = global::GitRemote.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_contentInsetStart = global::GitRemote.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_customNavigationLayout = global::GitRemote.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_displayOptions = global::GitRemote.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_divider = global::GitRemote.Droid.Resource.Styleable.ActionBar_divider;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_elevation = global::GitRemote.Droid.Resource.Styleable.ActionBar_elevation;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_height = global::GitRemote.Droid.Resource.Styleable.ActionBar_height;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_hideOnContentScroll = global::GitRemote.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_homeAsUpIndicator = global::GitRemote.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_homeLayout = global::GitRemote.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_icon = global::GitRemote.Droid.Resource.Styleable.ActionBar_icon;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::GitRemote.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_itemPadding = global::GitRemote.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_logo = global::GitRemote.Droid.Resource.Styleable.ActionBar_logo;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_navigationMode = global::GitRemote.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_popupTheme = global::GitRemote.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_progressBarPadding = global::GitRemote.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_progressBarStyle = global::GitRemote.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_subtitle = global::GitRemote.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::GitRemote.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_title = global::GitRemote.Droid.Resource.Styleable.ActionBar_title;
+			global::UISleuth.Android.Resource.Styleable.ActionBar_titleTextStyle = global::GitRemote.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::UISleuth.Android.Resource.Styleable.ActionBarLayout = global::GitRemote.Droid.Resource.Styleable.ActionBarLayout;
+			global::UISleuth.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::GitRemote.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::UISleuth.Android.Resource.Styleable.ActionMenuItemView = global::GitRemote.Droid.Resource.Styleable.ActionMenuItemView;
+			global::UISleuth.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::GitRemote.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::UISleuth.Android.Resource.Styleable.ActionMenuView = global::GitRemote.Droid.Resource.Styleable.ActionMenuView;
+			global::UISleuth.Android.Resource.Styleable.ActionMode = global::GitRemote.Droid.Resource.Styleable.ActionMode;
+			global::UISleuth.Android.Resource.Styleable.ActionMode_background = global::GitRemote.Droid.Resource.Styleable.ActionMode_background;
+			global::UISleuth.Android.Resource.Styleable.ActionMode_backgroundSplit = global::GitRemote.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::UISleuth.Android.Resource.Styleable.ActionMode_closeItemLayout = global::GitRemote.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::UISleuth.Android.Resource.Styleable.ActionMode_height = global::GitRemote.Droid.Resource.Styleable.ActionMode_height;
+			global::UISleuth.Android.Resource.Styleable.ActionMode_subtitleTextStyle = global::GitRemote.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::UISleuth.Android.Resource.Styleable.ActionMode_titleTextStyle = global::GitRemote.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::UISleuth.Android.Resource.Styleable.ActivityChooserView = global::GitRemote.Droid.Resource.Styleable.ActivityChooserView;
+			global::UISleuth.Android.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::GitRemote.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::UISleuth.Android.Resource.Styleable.ActivityChooserView_initialActivityCount = global::GitRemote.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog = global::GitRemote.Droid.Resource.Styleable.AlertDialog;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog_android_layout = global::GitRemote.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::GitRemote.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog_listItemLayout = global::GitRemote.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog_listLayout = global::GitRemote.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::GitRemote.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::UISleuth.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::GitRemote.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout = global::GitRemote.Droid.Resource.Styleable.AppBarLayout;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout_android_background = global::GitRemote.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout_elevation = global::GitRemote.Droid.Resource.Styleable.AppBarLayout_elevation;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout_expanded = global::GitRemote.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout_LayoutParams = global::GitRemote.Droid.Resource.Styleable.AppBarLayout_LayoutParams;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags = global::GitRemote.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags;
+			global::UISleuth.Android.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator = global::GitRemote.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator;
+			global::UISleuth.Android.Resource.Styleable.AppCompatImageView = global::GitRemote.Droid.Resource.Styleable.AppCompatImageView;
+			global::UISleuth.Android.Resource.Styleable.AppCompatImageView_android_src = global::GitRemote.Droid.Resource.Styleable.AppCompatImageView_android_src;
+			global::UISleuth.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::GitRemote.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTextView = global::GitRemote.Droid.Resource.Styleable.AppCompatTextView;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTextView_android_textAppearance = global::GitRemote.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::GitRemote.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarSize = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_checkboxStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorAccent = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorControlActivated = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorControlNormal = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorPrimary = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_controlBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_panelBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_searchViewStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_seekBarStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_spinnerStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_switchStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_toolbarStyle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowActionBar = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::UISleuth.Android.Resource.Styleable.AppCompatTheme_windowNoTitle = global::GitRemote.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::UISleuth.Android.Resource.Styleable.BottomSheetBehavior_Params = global::GitRemote.Droid.Resource.Styleable.BottomSheetBehavior_Params;
+			global::UISleuth.Android.Resource.Styleable.BottomSheetBehavior_Params_behavior_hideable = global::GitRemote.Droid.Resource.Styleable.BottomSheetBehavior_Params_behavior_hideable;
+			global::UISleuth.Android.Resource.Styleable.BottomSheetBehavior_Params_behavior_peekHeight = global::GitRemote.Droid.Resource.Styleable.BottomSheetBehavior_Params_behavior_peekHeight;
+			global::UISleuth.Android.Resource.Styleable.ButtonBarLayout = global::GitRemote.Droid.Resource.Styleable.ButtonBarLayout;
+			global::UISleuth.Android.Resource.Styleable.ButtonBarLayout_allowStacking = global::GitRemote.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::UISleuth.Android.Resource.Styleable.CardView = global::GitRemote.Droid.Resource.Styleable.CardView;
+			global::UISleuth.Android.Resource.Styleable.CardView_android_minHeight = global::GitRemote.Droid.Resource.Styleable.CardView_android_minHeight;
+			global::UISleuth.Android.Resource.Styleable.CardView_android_minWidth = global::GitRemote.Droid.Resource.Styleable.CardView_android_minWidth;
+			global::UISleuth.Android.Resource.Styleable.CardView_cardBackgroundColor = global::GitRemote.Droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::UISleuth.Android.Resource.Styleable.CardView_cardCornerRadius = global::GitRemote.Droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::UISleuth.Android.Resource.Styleable.CardView_cardElevation = global::GitRemote.Droid.Resource.Styleable.CardView_cardElevation;
+			global::UISleuth.Android.Resource.Styleable.CardView_cardMaxElevation = global::GitRemote.Droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::UISleuth.Android.Resource.Styleable.CardView_cardPreventCornerOverlap = global::GitRemote.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::UISleuth.Android.Resource.Styleable.CardView_cardUseCompatPadding = global::GitRemote.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::UISleuth.Android.Resource.Styleable.CardView_contentPadding = global::GitRemote.Droid.Resource.Styleable.CardView_contentPadding;
+			global::UISleuth.Android.Resource.Styleable.CardView_contentPaddingBottom = global::GitRemote.Droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::UISleuth.Android.Resource.Styleable.CardView_contentPaddingLeft = global::GitRemote.Droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::UISleuth.Android.Resource.Styleable.CardView_contentPaddingRight = global::GitRemote.Droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::UISleuth.Android.Resource.Styleable.CardView_contentPaddingTop = global::GitRemote.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::UISleuth.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams = global::GitRemote.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams;
+			global::UISleuth.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode = global::GitRemote.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode;
+			global::UISleuth.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = global::GitRemote.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_title = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::UISleuth.Android.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::GitRemote.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::UISleuth.Android.Resource.Styleable.CompoundButton = global::GitRemote.Droid.Resource.Styleable.CompoundButton;
+			global::UISleuth.Android.Resource.Styleable.CompoundButton_android_button = global::GitRemote.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::UISleuth.Android.Resource.Styleable.CompoundButton_buttonTint = global::GitRemote.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::UISleuth.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::GitRemote.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_keylines = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_LayoutParams = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior;
+			global::UISleuth.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline = global::GitRemote.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline;
+			global::UISleuth.Android.Resource.Styleable.DesignTheme = global::GitRemote.Droid.Resource.Styleable.DesignTheme;
+			global::UISleuth.Android.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::GitRemote.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
+			global::UISleuth.Android.Resource.Styleable.DesignTheme_bottomSheetStyle = global::GitRemote.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
+			global::UISleuth.Android.Resource.Styleable.DesignTheme_textColorError = global::GitRemote.Droid.Resource.Styleable.DesignTheme_textColorError;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_barLength = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_color = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_drawableSize = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_spinBars = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::UISleuth.Android.Resource.Styleable.DrawerArrowToggle_thickness = global::GitRemote.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_borderWidth = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_elevation = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_fabSize = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_rippleColor = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::UISleuth.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::GitRemote.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::UISleuth.Android.Resource.Styleable.ForegroundLinearLayout = global::GitRemote.Droid.Resource.Styleable.ForegroundLinearLayout;
+			global::UISleuth.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::GitRemote.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::UISleuth.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::GitRemote.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::UISleuth.Android.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::GitRemote.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_android_gravity = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_android_orientation = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_divider = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::UISleuth.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::GitRemote.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::UISleuth.Android.Resource.Styleable.ListPopupWindow = global::GitRemote.Droid.Resource.Styleable.ListPopupWindow;
+			global::UISleuth.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::GitRemote.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::UISleuth.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::GitRemote.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::UISleuth.Android.Resource.Styleable.MediaRouteButton = global::GitRemote.Droid.Resource.Styleable.MediaRouteButton;
+			global::UISleuth.Android.Resource.Styleable.MediaRouteButton_android_minHeight = global::GitRemote.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::UISleuth.Android.Resource.Styleable.MediaRouteButton_android_minWidth = global::GitRemote.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::UISleuth.Android.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::GitRemote.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup = global::GitRemote.Droid.Resource.Styleable.MenuGroup;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup_android_checkableBehavior = global::GitRemote.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup_android_enabled = global::GitRemote.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup_android_id = global::GitRemote.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup_android_menuCategory = global::GitRemote.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup_android_orderInCategory = global::GitRemote.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::UISleuth.Android.Resource.Styleable.MenuGroup_android_visible = global::GitRemote.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::UISleuth.Android.Resource.Styleable.MenuItem = global::GitRemote.Droid.Resource.Styleable.MenuItem;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_actionLayout = global::GitRemote.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_actionProviderClass = global::GitRemote.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_actionViewClass = global::GitRemote.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_checkable = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_checked = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_enabled = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_icon = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_id = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_id;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_menuCategory = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_numericShortcut = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_onClick = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_orderInCategory = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_title = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_title;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_titleCondensed = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_android_visible = global::GitRemote.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::UISleuth.Android.Resource.Styleable.MenuItem_showAsAction = global::GitRemote.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::UISleuth.Android.Resource.Styleable.MenuView = global::GitRemote.Droid.Resource.Styleable.MenuView;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_headerBackground = global::GitRemote.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_horizontalDivider = global::GitRemote.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_itemBackground = global::GitRemote.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::GitRemote.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_itemTextAppearance = global::GitRemote.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_verticalDivider = global::GitRemote.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::UISleuth.Android.Resource.Styleable.MenuView_android_windowAnimationStyle = global::GitRemote.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::UISleuth.Android.Resource.Styleable.MenuView_preserveIconSpacing = global::GitRemote.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::UISleuth.Android.Resource.Styleable.NavigationView = global::GitRemote.Droid.Resource.Styleable.NavigationView;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_android_background = global::GitRemote.Droid.Resource.Styleable.NavigationView_android_background;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::GitRemote.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_android_maxWidth = global::GitRemote.Droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_elevation = global::GitRemote.Droid.Resource.Styleable.NavigationView_elevation;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_headerLayout = global::GitRemote.Droid.Resource.Styleable.NavigationView_headerLayout;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_itemBackground = global::GitRemote.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_itemIconTint = global::GitRemote.Droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_itemTextAppearance = global::GitRemote.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_itemTextColor = global::GitRemote.Droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::UISleuth.Android.Resource.Styleable.NavigationView_menu = global::GitRemote.Droid.Resource.Styleable.NavigationView_menu;
+			global::UISleuth.Android.Resource.Styleable.PopupWindow = global::GitRemote.Droid.Resource.Styleable.PopupWindow;
+			global::UISleuth.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::GitRemote.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::UISleuth.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::GitRemote.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::UISleuth.Android.Resource.Styleable.PopupWindowBackgroundState = global::GitRemote.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::UISleuth.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::GitRemote.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::UISleuth.Android.Resource.Styleable.RecyclerView = global::GitRemote.Droid.Resource.Styleable.RecyclerView;
+			global::UISleuth.Android.Resource.Styleable.RecyclerView_android_orientation = global::GitRemote.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::UISleuth.Android.Resource.Styleable.RecyclerView_layoutManager = global::GitRemote.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::UISleuth.Android.Resource.Styleable.RecyclerView_reverseLayout = global::GitRemote.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::UISleuth.Android.Resource.Styleable.RecyclerView_spanCount = global::GitRemote.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::UISleuth.Android.Resource.Styleable.RecyclerView_stackFromEnd = global::GitRemote.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::UISleuth.Android.Resource.Styleable.ScrimInsetsFrameLayout = global::GitRemote.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::UISleuth.Android.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::GitRemote.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::UISleuth.Android.Resource.Styleable.ScrollingViewBehavior_Params = global::GitRemote.Droid.Resource.Styleable.ScrollingViewBehavior_Params;
+			global::UISleuth.Android.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop = global::GitRemote.Droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop;
+			global::UISleuth.Android.Resource.Styleable.SearchView = global::GitRemote.Droid.Resource.Styleable.SearchView;
+			global::UISleuth.Android.Resource.Styleable.SearchView_android_focusable = global::GitRemote.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::UISleuth.Android.Resource.Styleable.SearchView_android_imeOptions = global::GitRemote.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::UISleuth.Android.Resource.Styleable.SearchView_android_inputType = global::GitRemote.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::UISleuth.Android.Resource.Styleable.SearchView_android_maxWidth = global::GitRemote.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::UISleuth.Android.Resource.Styleable.SearchView_closeIcon = global::GitRemote.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::UISleuth.Android.Resource.Styleable.SearchView_commitIcon = global::GitRemote.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::UISleuth.Android.Resource.Styleable.SearchView_defaultQueryHint = global::GitRemote.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::UISleuth.Android.Resource.Styleable.SearchView_goIcon = global::GitRemote.Droid.Resource.Styleable.SearchView_goIcon;
+			global::UISleuth.Android.Resource.Styleable.SearchView_iconifiedByDefault = global::GitRemote.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::UISleuth.Android.Resource.Styleable.SearchView_layout = global::GitRemote.Droid.Resource.Styleable.SearchView_layout;
+			global::UISleuth.Android.Resource.Styleable.SearchView_queryBackground = global::GitRemote.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::UISleuth.Android.Resource.Styleable.SearchView_queryHint = global::GitRemote.Droid.Resource.Styleable.SearchView_queryHint;
+			global::UISleuth.Android.Resource.Styleable.SearchView_searchHintIcon = global::GitRemote.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::UISleuth.Android.Resource.Styleable.SearchView_searchIcon = global::GitRemote.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::UISleuth.Android.Resource.Styleable.SearchView_submitBackground = global::GitRemote.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::UISleuth.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::GitRemote.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::UISleuth.Android.Resource.Styleable.SearchView_voiceIcon = global::GitRemote.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::UISleuth.Android.Resource.Styleable.SnackbarLayout = global::GitRemote.Droid.Resource.Styleable.SnackbarLayout;
+			global::UISleuth.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::GitRemote.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::UISleuth.Android.Resource.Styleable.SnackbarLayout_elevation = global::GitRemote.Droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::UISleuth.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::GitRemote.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::UISleuth.Android.Resource.Styleable.Spinner = global::GitRemote.Droid.Resource.Styleable.Spinner;
+			global::UISleuth.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::GitRemote.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::UISleuth.Android.Resource.Styleable.Spinner_android_entries = global::GitRemote.Droid.Resource.Styleable.Spinner_android_entries;
+			global::UISleuth.Android.Resource.Styleable.Spinner_android_popupBackground = global::GitRemote.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::UISleuth.Android.Resource.Styleable.Spinner_android_prompt = global::GitRemote.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::UISleuth.Android.Resource.Styleable.Spinner_popupTheme = global::GitRemote.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat = global::GitRemote.Droid.Resource.Styleable.SwitchCompat;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_android_textOff = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_android_textOn = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_android_thumb = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_showText = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_splitTrack = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_switchMinWidth = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_switchPadding = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_switchTextAppearance = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_thumbTextPadding = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::UISleuth.Android.Resource.Styleable.SwitchCompat_track = global::GitRemote.Droid.Resource.Styleable.SwitchCompat_track;
+			global::UISleuth.Android.Resource.Styleable.TabItem = global::GitRemote.Droid.Resource.Styleable.TabItem;
+			global::UISleuth.Android.Resource.Styleable.TabItem_android_icon = global::GitRemote.Droid.Resource.Styleable.TabItem_android_icon;
+			global::UISleuth.Android.Resource.Styleable.TabItem_android_layout = global::GitRemote.Droid.Resource.Styleable.TabItem_android_layout;
+			global::UISleuth.Android.Resource.Styleable.TabItem_android_text = global::GitRemote.Droid.Resource.Styleable.TabItem_android_text;
+			global::UISleuth.Android.Resource.Styleable.TabLayout = global::GitRemote.Droid.Resource.Styleable.TabLayout;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabBackground = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabBackground;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabContentStart = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabGravity = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabIndicatorColor = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabIndicatorHeight = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabMaxWidth = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabMinWidth = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabMode = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabMode;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabPadding = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabPadding;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabPaddingBottom = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabPaddingEnd = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabPaddingStart = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabPaddingTop = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabSelectedTextColor = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabTextAppearance = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.TabLayout_tabTextColor = global::GitRemote.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance = global::GitRemote.Droid.Resource.Styleable.TextAppearance;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_shadowColor = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_shadowDx = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_shadowDy = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_shadowRadius = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_textColor = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_textSize = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_textStyle = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_android_typeface = global::GitRemote.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::UISleuth.Android.Resource.Styleable.TextAppearance_textAllCaps = global::GitRemote.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout = global::GitRemote.Droid.Resource.Styleable.TextInputLayout;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_android_hint = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_android_textColorHint = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_counterEnabled = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_counterMaxLength = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_counterTextAppearance = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_errorEnabled = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_errorTextAppearance = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_hintEnabled = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::UISleuth.Android.Resource.Styleable.TextInputLayout_hintTextAppearance = global::GitRemote.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.Toolbar = global::GitRemote.Droid.Resource.Styleable.Toolbar;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_android_gravity = global::GitRemote.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_android_minHeight = global::GitRemote.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_collapseContentDescription = global::GitRemote.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_collapseIcon = global::GitRemote.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_contentInsetEnd = global::GitRemote.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_contentInsetLeft = global::GitRemote.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_contentInsetRight = global::GitRemote.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_contentInsetStart = global::GitRemote.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_logo = global::GitRemote.Droid.Resource.Styleable.Toolbar_logo;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_logoDescription = global::GitRemote.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_maxButtonHeight = global::GitRemote.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_navigationContentDescription = global::GitRemote.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_navigationIcon = global::GitRemote.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_popupTheme = global::GitRemote.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_subtitle = global::GitRemote.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_subtitleTextAppearance = global::GitRemote.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_subtitleTextColor = global::GitRemote.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_title = global::GitRemote.Droid.Resource.Styleable.Toolbar_title;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleMarginStart = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleMarginTop = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleMargins = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::UISleuth.Android.Resource.Styleable.Toolbar_titleTextColor = global::GitRemote.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::UISleuth.Android.Resource.Styleable.View = global::GitRemote.Droid.Resource.Styleable.View;
+			global::UISleuth.Android.Resource.Styleable.View_android_focusable = global::GitRemote.Droid.Resource.Styleable.View_android_focusable;
+			global::UISleuth.Android.Resource.Styleable.View_android_theme = global::GitRemote.Droid.Resource.Styleable.View_android_theme;
+			global::UISleuth.Android.Resource.Styleable.View_paddingEnd = global::GitRemote.Droid.Resource.Styleable.View_paddingEnd;
+			global::UISleuth.Android.Resource.Styleable.View_paddingStart = global::GitRemote.Droid.Resource.Styleable.View_paddingStart;
+			global::UISleuth.Android.Resource.Styleable.View_theme = global::GitRemote.Droid.Resource.Styleable.View_theme;
+			global::UISleuth.Android.Resource.Styleable.ViewBackgroundHelper = global::GitRemote.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::UISleuth.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::GitRemote.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::UISleuth.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::GitRemote.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::UISleuth.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::GitRemote.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::UISleuth.Android.Resource.Styleable.ViewStubCompat = global::GitRemote.Droid.Resource.Styleable.ViewStubCompat;
+			global::UISleuth.Android.Resource.Styleable.ViewStubCompat_android_id = global::GitRemote.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::UISleuth.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::GitRemote.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::UISleuth.Android.Resource.Styleable.ViewStubCompat_android_layout = global::GitRemote.Droid.Resource.Styleable.ViewStubCompat_android_layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::GitRemote.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -1090,665 +2875,126 @@ namespace GitRemote.Droid
 			}
 		}
 		
-		public partial class Color
+		public partial class Drawable
 		{
 			
-			// aapt resource value: 0x7f0b0050
-			public const int BlackCursor = 2131427408;
+			// aapt resource value: 0x7f020000
+			public const int icon = 2130837504;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int BlueBarBackground = 2131427406;
-			
-			// aapt resource value: 0x7f0b004d
-			public const int GreenIndicator = 2131427405;
-			
-			// aapt resource value: 0x7f0b0051
-			public const int KindOfBlueHintColor = 2131427409;
-			
-			// aapt resource value: 0x7f0b004f
-			public const int MetalBlueEntryHighLight = 2131427407;
-			
-			// aapt resource value: 0x7f0b0053
-			public const int NativeCellAndroidBackground = 2131427411;
-			
-			// aapt resource value: 0x7f0b0054
-			public const int NativeCellAndroidTextColor = 2131427412;
-			
-			// aapt resource value: 0x7f0b0052
-			public const int SomethingLikeGreenForUnderLine = 2131427410;
-			
-			// aapt resource value: 0x7f0b0055
-			public const int abc_background_cache_hint_selector_material_dark = 2131427413;
-			
-			// aapt resource value: 0x7f0b0056
-			public const int abc_background_cache_hint_selector_material_light = 2131427414;
-			
-			// aapt resource value: 0x7f0b0057
-			public const int abc_color_highlight_material = 2131427415;
-			
-			// aapt resource value: 0x7f0b0004
-			public const int abc_input_method_navigation_guard = 2131427332;
-			
-			// aapt resource value: 0x7f0b0058
-			public const int abc_primary_text_disable_only_material_dark = 2131427416;
-			
-			// aapt resource value: 0x7f0b0059
-			public const int abc_primary_text_disable_only_material_light = 2131427417;
-			
-			// aapt resource value: 0x7f0b005a
-			public const int abc_primary_text_material_dark = 2131427418;
-			
-			// aapt resource value: 0x7f0b005b
-			public const int abc_primary_text_material_light = 2131427419;
-			
-			// aapt resource value: 0x7f0b005c
-			public const int abc_search_url_text = 2131427420;
-			
-			// aapt resource value: 0x7f0b0005
-			public const int abc_search_url_text_normal = 2131427333;
-			
-			// aapt resource value: 0x7f0b0006
-			public const int abc_search_url_text_pressed = 2131427334;
-			
-			// aapt resource value: 0x7f0b0007
-			public const int abc_search_url_text_selected = 2131427335;
-			
-			// aapt resource value: 0x7f0b005d
-			public const int abc_secondary_text_material_dark = 2131427421;
-			
-			// aapt resource value: 0x7f0b005e
-			public const int abc_secondary_text_material_light = 2131427422;
-			
-			// aapt resource value: 0x7f0b004a
-			public const int accent = 2131427402;
-			
-			// aapt resource value: 0x7f0b004b
-			public const int accentForFloatingEntry = 2131427403;
-			
-			// aapt resource value: 0x7f0b0008
-			public const int accent_material_dark = 2131427336;
-			
-			// aapt resource value: 0x7f0b0009
-			public const int accent_material_light = 2131427337;
-			
-			// aapt resource value: 0x7f0b000a
-			public const int background_floating_material_dark = 2131427338;
-			
-			// aapt resource value: 0x7f0b000b
-			public const int background_floating_material_light = 2131427339;
-			
-			// aapt resource value: 0x7f0b000c
-			public const int background_material_dark = 2131427340;
-			
-			// aapt resource value: 0x7f0b000d
-			public const int background_material_light = 2131427341;
-			
-			// aapt resource value: 0x7f0b000e
-			public const int bright_foreground_disabled_material_dark = 2131427342;
-			
-			// aapt resource value: 0x7f0b000f
-			public const int bright_foreground_disabled_material_light = 2131427343;
-			
-			// aapt resource value: 0x7f0b0010
-			public const int bright_foreground_inverse_material_dark = 2131427344;
-			
-			// aapt resource value: 0x7f0b0011
-			public const int bright_foreground_inverse_material_light = 2131427345;
-			
-			// aapt resource value: 0x7f0b0012
-			public const int bright_foreground_material_dark = 2131427346;
-			
-			// aapt resource value: 0x7f0b0013
-			public const int bright_foreground_material_light = 2131427347;
-			
-			// aapt resource value: 0x7f0b0014
-			public const int button_material_dark = 2131427348;
-			
-			// aapt resource value: 0x7f0b0015
-			public const int button_material_light = 2131427349;
-			
-			// aapt resource value: 0x7f0b0000
-			public const int cardview_dark_background = 2131427328;
-			
-			// aapt resource value: 0x7f0b0001
-			public const int cardview_light_background = 2131427329;
-			
-			// aapt resource value: 0x7f0b0002
-			public const int cardview_shadow_end_color = 2131427330;
-			
-			// aapt resource value: 0x7f0b0003
-			public const int cardview_shadow_start_color = 2131427331;
-			
-			// aapt resource value: 0x7f0b003e
-			public const int design_fab_shadow_end_color = 2131427390;
-			
-			// aapt resource value: 0x7f0b003f
-			public const int design_fab_shadow_mid_color = 2131427391;
-			
-			// aapt resource value: 0x7f0b0040
-			public const int design_fab_shadow_start_color = 2131427392;
-			
-			// aapt resource value: 0x7f0b0041
-			public const int design_fab_stroke_end_inner_color = 2131427393;
-			
-			// aapt resource value: 0x7f0b0042
-			public const int design_fab_stroke_end_outer_color = 2131427394;
-			
-			// aapt resource value: 0x7f0b0043
-			public const int design_fab_stroke_top_inner_color = 2131427395;
-			
-			// aapt resource value: 0x7f0b0044
-			public const int design_fab_stroke_top_outer_color = 2131427396;
-			
-			// aapt resource value: 0x7f0b0045
-			public const int design_snackbar_background_color = 2131427397;
-			
-			// aapt resource value: 0x7f0b0046
-			public const int design_textinput_error_color_dark = 2131427398;
-			
-			// aapt resource value: 0x7f0b0047
-			public const int design_textinput_error_color_light = 2131427399;
-			
-			// aapt resource value: 0x7f0b0016
-			public const int dim_foreground_disabled_material_dark = 2131427350;
-			
-			// aapt resource value: 0x7f0b0017
-			public const int dim_foreground_disabled_material_light = 2131427351;
-			
-			// aapt resource value: 0x7f0b0018
-			public const int dim_foreground_material_dark = 2131427352;
-			
-			// aapt resource value: 0x7f0b0019
-			public const int dim_foreground_material_light = 2131427353;
-			
-			// aapt resource value: 0x7f0b001a
-			public const int foreground_material_dark = 2131427354;
-			
-			// aapt resource value: 0x7f0b001b
-			public const int foreground_material_light = 2131427355;
-			
-			// aapt resource value: 0x7f0b001c
-			public const int highlighted_text_material_dark = 2131427356;
-			
-			// aapt resource value: 0x7f0b001d
-			public const int highlighted_text_material_light = 2131427357;
-			
-			// aapt resource value: 0x7f0b001e
-			public const int hint_foreground_material_dark = 2131427358;
-			
-			// aapt resource value: 0x7f0b001f
-			public const int hint_foreground_material_light = 2131427359;
-			
-			// aapt resource value: 0x7f0b0020
-			public const int material_blue_grey_800 = 2131427360;
-			
-			// aapt resource value: 0x7f0b0021
-			public const int material_blue_grey_900 = 2131427361;
-			
-			// aapt resource value: 0x7f0b0022
-			public const int material_blue_grey_950 = 2131427362;
-			
-			// aapt resource value: 0x7f0b0023
-			public const int material_deep_teal_200 = 2131427363;
-			
-			// aapt resource value: 0x7f0b0024
-			public const int material_deep_teal_500 = 2131427364;
-			
-			// aapt resource value: 0x7f0b0025
-			public const int material_grey_100 = 2131427365;
-			
-			// aapt resource value: 0x7f0b0026
-			public const int material_grey_300 = 2131427366;
-			
-			// aapt resource value: 0x7f0b0027
-			public const int material_grey_50 = 2131427367;
-			
-			// aapt resource value: 0x7f0b0028
-			public const int material_grey_600 = 2131427368;
-			
-			// aapt resource value: 0x7f0b0029
-			public const int material_grey_800 = 2131427369;
-			
-			// aapt resource value: 0x7f0b002a
-			public const int material_grey_850 = 2131427370;
-			
-			// aapt resource value: 0x7f0b002b
-			public const int material_grey_900 = 2131427371;
-			
-			// aapt resource value: 0x7f0b0048
-			public const int primary = 2131427400;
-			
-			// aapt resource value: 0x7f0b0049
-			public const int primaryDark = 2131427401;
-			
-			// aapt resource value: 0x7f0b002c
-			public const int primary_dark_material_dark = 2131427372;
-			
-			// aapt resource value: 0x7f0b002d
-			public const int primary_dark_material_light = 2131427373;
-			
-			// aapt resource value: 0x7f0b002e
-			public const int primary_material_dark = 2131427374;
-			
-			// aapt resource value: 0x7f0b002f
-			public const int primary_material_light = 2131427375;
-			
-			// aapt resource value: 0x7f0b0030
-			public const int primary_text_default_material_dark = 2131427376;
-			
-			// aapt resource value: 0x7f0b0031
-			public const int primary_text_default_material_light = 2131427377;
-			
-			// aapt resource value: 0x7f0b0032
-			public const int primary_text_disabled_material_dark = 2131427378;
-			
-			// aapt resource value: 0x7f0b0033
-			public const int primary_text_disabled_material_light = 2131427379;
-			
-			// aapt resource value: 0x7f0b0034
-			public const int ripple_material_dark = 2131427380;
-			
-			// aapt resource value: 0x7f0b0035
-			public const int ripple_material_light = 2131427381;
-			
-			// aapt resource value: 0x7f0b0036
-			public const int secondary_text_default_material_dark = 2131427382;
-			
-			// aapt resource value: 0x7f0b0037
-			public const int secondary_text_default_material_light = 2131427383;
-			
-			// aapt resource value: 0x7f0b0038
-			public const int secondary_text_disabled_material_dark = 2131427384;
-			
-			// aapt resource value: 0x7f0b0039
-			public const int secondary_text_disabled_material_light = 2131427385;
-			
-			// aapt resource value: 0x7f0b003a
-			public const int switch_thumb_disabled_material_dark = 2131427386;
-			
-			// aapt resource value: 0x7f0b003b
-			public const int switch_thumb_disabled_material_light = 2131427387;
-			
-			// aapt resource value: 0x7f0b005f
-			public const int switch_thumb_material_dark = 2131427423;
-			
-			// aapt resource value: 0x7f0b0060
-			public const int switch_thumb_material_light = 2131427424;
-			
-			// aapt resource value: 0x7f0b003c
-			public const int switch_thumb_normal_material_dark = 2131427388;
-			
-			// aapt resource value: 0x7f0b003d
-			public const int switch_thumb_normal_material_light = 2131427389;
-			
-			// aapt resource value: 0x7f0b004c
-			public const int window_background = 2131427404;
-			
-			static Color()
+			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
-			private Color()
+			private Drawable()
 			{
 			}
 		}
 		
-		public partial class Dimension
+		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060019
-			public const int abc_action_bar_content_inset_material = 2131099673;
+			// aapt resource value: 0x7f07008d
+			public const int action0 = 2131165325;
 			
-			// aapt resource value: 0x7f06000d
-			public const int abc_action_bar_default_height_material = 2131099661;
+			// aapt resource value: 0x7f07005a
+			public const int action_bar = 2131165274;
 			
-			// aapt resource value: 0x7f06001a
-			public const int abc_action_bar_default_padding_end_material = 2131099674;
+			// aapt resource value: 0x7f070001
+			public const int action_bar_activity_content = 2131165185;
 			
-			// aapt resource value: 0x7f06001b
-			public const int abc_action_bar_default_padding_start_material = 2131099675;
+			// aapt resource value: 0x7f070059
+			public const int action_bar_container = 2131165273;
 			
-			// aapt resource value: 0x7f06001d
-			public const int abc_action_bar_icon_vertical_padding_material = 2131099677;
+			// aapt resource value: 0x7f070055
+			public const int action_bar_root = 2131165269;
 			
-			// aapt resource value: 0x7f06001e
-			public const int abc_action_bar_overflow_padding_end_material = 2131099678;
+			// aapt resource value: 0x7f070002
+			public const int action_bar_spinner = 2131165186;
 			
-			// aapt resource value: 0x7f06001f
-			public const int abc_action_bar_overflow_padding_start_material = 2131099679;
+			// aapt resource value: 0x7f07003b
+			public const int action_bar_subtitle = 2131165243;
 			
-			// aapt resource value: 0x7f06000e
-			public const int abc_action_bar_progress_bar_size = 2131099662;
+			// aapt resource value: 0x7f07003a
+			public const int action_bar_title = 2131165242;
 			
-			// aapt resource value: 0x7f060020
-			public const int abc_action_bar_stacked_max_height = 2131099680;
+			// aapt resource value: 0x7f07005b
+			public const int action_context_bar = 2131165275;
 			
-			// aapt resource value: 0x7f060021
-			public const int abc_action_bar_stacked_tab_max_width = 2131099681;
+			// aapt resource value: 0x7f070091
+			public const int action_divider = 2131165329;
 			
-			// aapt resource value: 0x7f060022
-			public const int abc_action_bar_subtitle_bottom_margin_material = 2131099682;
+			// aapt resource value: 0x7f070003
+			public const int action_menu_divider = 2131165187;
 			
-			// aapt resource value: 0x7f060023
-			public const int abc_action_bar_subtitle_top_margin_material = 2131099683;
+			// aapt resource value: 0x7f070004
+			public const int action_menu_presenter = 2131165188;
 			
-			// aapt resource value: 0x7f060024
-			public const int abc_action_button_min_height_material = 2131099684;
+			// aapt resource value: 0x7f070057
+			public const int action_mode_bar = 2131165271;
 			
-			// aapt resource value: 0x7f060025
-			public const int abc_action_button_min_width_material = 2131099685;
+			// aapt resource value: 0x7f070056
+			public const int action_mode_bar_stub = 2131165270;
 			
-			// aapt resource value: 0x7f060026
-			public const int abc_action_button_min_width_overflow_material = 2131099686;
+			// aapt resource value: 0x7f07003c
+			public const int action_mode_close_button = 2131165244;
 			
-			// aapt resource value: 0x7f06000c
-			public const int abc_alert_dialog_button_bar_height = 2131099660;
+			// aapt resource value: 0x7f07003d
+			public const int activity_chooser_view_content = 2131165245;
 			
-			// aapt resource value: 0x7f060027
-			public const int abc_button_inset_horizontal_material = 2131099687;
+			// aapt resource value: 0x7f070049
+			public const int alertTitle = 2131165257;
 			
-			// aapt resource value: 0x7f060028
-			public const int abc_button_inset_vertical_material = 2131099688;
+			// aapt resource value: 0x7f07001e
+			public const int always = 2131165214;
 			
-			// aapt resource value: 0x7f060029
-			public const int abc_button_padding_horizontal_material = 2131099689;
+			// aapt resource value: 0x7f07001b
+			public const int beginning = 2131165211;
 			
-			// aapt resource value: 0x7f06002a
-			public const int abc_button_padding_vertical_material = 2131099690;
+			// aapt resource value: 0x7f07002a
+			public const int bottom = 2131165226;
 			
-			// aapt resource value: 0x7f060011
-			public const int abc_config_prefDialogWidth = 2131099665;
+			// aapt resource value: 0x7f070044
+			public const int buttonPanel = 2131165252;
 			
-			// aapt resource value: 0x7f06002b
-			public const int abc_control_corner_material = 2131099691;
+			// aapt resource value: 0x7f07008e
+			public const int cancel_action = 2131165326;
 			
-			// aapt resource value: 0x7f06002c
-			public const int abc_control_inset_material = 2131099692;
+			// aapt resource value: 0x7f07002b
+			public const int center = 2131165227;
 			
-			// aapt resource value: 0x7f06002d
-			public const int abc_control_padding_material = 2131099693;
+			// aapt resource value: 0x7f07002c
+			public const int center_horizontal = 2131165228;
 			
-			// aapt resource value: 0x7f060012
-			public const int abc_dialog_fixed_height_major = 2131099666;
+			// aapt resource value: 0x7f07002d
+			public const int center_vertical = 2131165229;
 			
-			// aapt resource value: 0x7f060013
-			public const int abc_dialog_fixed_height_minor = 2131099667;
+			// aapt resource value: 0x7f070052
+			public const int checkbox = 2131165266;
 			
-			// aapt resource value: 0x7f060014
-			public const int abc_dialog_fixed_width_major = 2131099668;
+			// aapt resource value: 0x7f070094
+			public const int chronometer = 2131165332;
 			
-			// aapt resource value: 0x7f060015
-			public const int abc_dialog_fixed_width_minor = 2131099669;
+			// aapt resource value: 0x7f070033
+			public const int clip_horizontal = 2131165235;
 			
-			// aapt resource value: 0x7f06002e
-			public const int abc_dialog_list_padding_vertical_material = 2131099694;
+			// aapt resource value: 0x7f070034
+			public const int clip_vertical = 2131165236;
 			
-			// aapt resource value: 0x7f060016
-			public const int abc_dialog_min_width_major = 2131099670;
+			// aapt resource value: 0x7f070069
+			public const int codeInputEditText = 2131165289;
 			
-			// aapt resource value: 0x7f060017
-			public const int abc_dialog_min_width_minor = 2131099671;
+			// aapt resource value: 0x7f07001f
+			public const int collapseActionView = 2131165215;
 			
-			// aapt resource value: 0x7f06002f
-			public const int abc_dialog_padding_material = 2131099695;
+			// aapt resource value: 0x7f07004a
+			public const int contentPanel = 2131165258;
 			
-			// aapt resource value: 0x7f060030
-			public const int abc_dialog_padding_top_material = 2131099696;
+			// aapt resource value: 0x7f070050
+			public const int custom = 2131165264;
 			
-			// aapt resource value: 0x7f060031
-			public const int abc_disabled_alpha_material_dark = 2131099697;
-			
-			// aapt resource value: 0x7f060032
-			public const int abc_disabled_alpha_material_light = 2131099698;
-			
-			// aapt resource value: 0x7f060033
-			public const int abc_dropdownitem_icon_width = 2131099699;
-			
-			// aapt resource value: 0x7f060034
-			public const int abc_dropdownitem_text_padding_left = 2131099700;
-			
-			// aapt resource value: 0x7f060035
-			public const int abc_dropdownitem_text_padding_right = 2131099701;
-			
-			// aapt resource value: 0x7f060036
-			public const int abc_edit_text_inset_bottom_material = 2131099702;
-			
-			// aapt resource value: 0x7f060037
-			public const int abc_edit_text_inset_horizontal_material = 2131099703;
-			
-			// aapt resource value: 0x7f060038
-			public const int abc_edit_text_inset_top_material = 2131099704;
-			
-			// aapt resource value: 0x7f060039
-			public const int abc_floating_window_z = 2131099705;
-			
-			// aapt resource value: 0x7f06003a
-			public const int abc_list_item_padding_horizontal_material = 2131099706;
-			
-			// aapt resource value: 0x7f06003b
-			public const int abc_panel_menu_list_width = 2131099707;
-			
-			// aapt resource value: 0x7f06003c
-			public const int abc_search_view_preferred_width = 2131099708;
-			
-			// aapt resource value: 0x7f060018
-			public const int abc_search_view_text_min_width = 2131099672;
-			
-			// aapt resource value: 0x7f06003d
-			public const int abc_seekbar_track_background_height_material = 2131099709;
-			
-			// aapt resource value: 0x7f06003e
-			public const int abc_seekbar_track_progress_height_material = 2131099710;
-			
-			// aapt resource value: 0x7f06003f
-			public const int abc_select_dialog_padding_start_material = 2131099711;
-			
-			// aapt resource value: 0x7f06001c
-			public const int abc_switch_padding = 2131099676;
-			
-			// aapt resource value: 0x7f060040
-			public const int abc_text_size_body_1_material = 2131099712;
-			
-			// aapt resource value: 0x7f060041
-			public const int abc_text_size_body_2_material = 2131099713;
-			
-			// aapt resource value: 0x7f060042
-			public const int abc_text_size_button_material = 2131099714;
-			
-			// aapt resource value: 0x7f060043
-			public const int abc_text_size_caption_material = 2131099715;
-			
-			// aapt resource value: 0x7f060044
-			public const int abc_text_size_display_1_material = 2131099716;
-			
-			// aapt resource value: 0x7f060045
-			public const int abc_text_size_display_2_material = 2131099717;
-			
-			// aapt resource value: 0x7f060046
-			public const int abc_text_size_display_3_material = 2131099718;
-			
-			// aapt resource value: 0x7f060047
-			public const int abc_text_size_display_4_material = 2131099719;
-			
-			// aapt resource value: 0x7f060048
-			public const int abc_text_size_headline_material = 2131099720;
-			
-			// aapt resource value: 0x7f060049
-			public const int abc_text_size_large_material = 2131099721;
-			
-			// aapt resource value: 0x7f06004a
-			public const int abc_text_size_medium_material = 2131099722;
-			
-			// aapt resource value: 0x7f06004b
-			public const int abc_text_size_menu_material = 2131099723;
-			
-			// aapt resource value: 0x7f06004c
-			public const int abc_text_size_small_material = 2131099724;
-			
-			// aapt resource value: 0x7f06004d
-			public const int abc_text_size_subhead_material = 2131099725;
-			
-			// aapt resource value: 0x7f06000f
-			public const int abc_text_size_subtitle_material_toolbar = 2131099663;
-			
-			// aapt resource value: 0x7f06004e
-			public const int abc_text_size_title_material = 2131099726;
-			
-			// aapt resource value: 0x7f060010
-			public const int abc_text_size_title_material_toolbar = 2131099664;
-			
-			// aapt resource value: 0x7f060009
-			public const int cardview_compat_inset_shadow = 2131099657;
-			
-			// aapt resource value: 0x7f06000a
-			public const int cardview_default_elevation = 2131099658;
-			
-			// aapt resource value: 0x7f06000b
-			public const int cardview_default_radius = 2131099659;
-			
-			// aapt resource value: 0x7f06005f
-			public const int design_appbar_elevation = 2131099743;
-			
-			// aapt resource value: 0x7f060060
-			public const int design_bottom_sheet_modal_elevation = 2131099744;
-			
-			// aapt resource value: 0x7f060061
-			public const int design_bottom_sheet_modal_peek_height = 2131099745;
-			
-			// aapt resource value: 0x7f060062
-			public const int design_fab_border_width = 2131099746;
-			
-			// aapt resource value: 0x7f060063
-			public const int design_fab_elevation = 2131099747;
-			
-			// aapt resource value: 0x7f060064
-			public const int design_fab_image_size = 2131099748;
-			
-			// aapt resource value: 0x7f060065
-			public const int design_fab_size_mini = 2131099749;
-			
-			// aapt resource value: 0x7f060066
-			public const int design_fab_size_normal = 2131099750;
-			
-			// aapt resource value: 0x7f060067
-			public const int design_fab_translation_z_pressed = 2131099751;
-			
-			// aapt resource value: 0x7f060068
-			public const int design_navigation_elevation = 2131099752;
-			
-			// aapt resource value: 0x7f060069
-			public const int design_navigation_icon_padding = 2131099753;
-			
-			// aapt resource value: 0x7f06006a
-			public const int design_navigation_icon_size = 2131099754;
-			
-			// aapt resource value: 0x7f060057
-			public const int design_navigation_max_width = 2131099735;
-			
-			// aapt resource value: 0x7f06006b
-			public const int design_navigation_padding_bottom = 2131099755;
-			
-			// aapt resource value: 0x7f06006c
-			public const int design_navigation_separator_vertical_padding = 2131099756;
-			
-			// aapt resource value: 0x7f060058
-			public const int design_snackbar_action_inline_max_width = 2131099736;
-			
-			// aapt resource value: 0x7f060059
-			public const int design_snackbar_background_corner_radius = 2131099737;
-			
-			// aapt resource value: 0x7f06006d
-			public const int design_snackbar_elevation = 2131099757;
-			
-			// aapt resource value: 0x7f06005a
-			public const int design_snackbar_extra_spacing_horizontal = 2131099738;
-			
-			// aapt resource value: 0x7f06005b
-			public const int design_snackbar_max_width = 2131099739;
-			
-			// aapt resource value: 0x7f06005c
-			public const int design_snackbar_min_width = 2131099740;
-			
-			// aapt resource value: 0x7f06006e
-			public const int design_snackbar_padding_horizontal = 2131099758;
-			
-			// aapt resource value: 0x7f06006f
-			public const int design_snackbar_padding_vertical = 2131099759;
-			
-			// aapt resource value: 0x7f06005d
-			public const int design_snackbar_padding_vertical_2lines = 2131099741;
-			
-			// aapt resource value: 0x7f060070
-			public const int design_snackbar_text_size = 2131099760;
-			
-			// aapt resource value: 0x7f060071
-			public const int design_tab_max_width = 2131099761;
-			
-			// aapt resource value: 0x7f06005e
-			public const int design_tab_scrollable_min_width = 2131099742;
-			
-			// aapt resource value: 0x7f060072
-			public const int design_tab_text_size = 2131099762;
-			
-			// aapt resource value: 0x7f060073
-			public const int design_tab_text_size_2line = 2131099763;
-			
-			// aapt resource value: 0x7f06004f
-			public const int disabled_alpha_material_dark = 2131099727;
-			
-			// aapt resource value: 0x7f060050
-			public const int disabled_alpha_material_light = 2131099728;
-			
-			// aapt resource value: 0x7f060051
-			public const int highlight_alpha_material_colored = 2131099729;
-			
-			// aapt resource value: 0x7f060052
-			public const int highlight_alpha_material_dark = 2131099730;
-			
-			// aapt resource value: 0x7f060053
-			public const int highlight_alpha_material_light = 2131099731;
-			
-			// aapt resource value: 0x7f060000
-			public const int item_touch_helper_max_drag_scroll_per_frame = 2131099648;
-			
-			// aapt resource value: 0x7f060001
-			public const int item_touch_helper_swipe_escape_max_velocity = 2131099649;
-			
-			// aapt resource value: 0x7f060002
-			public const int item_touch_helper_swipe_escape_velocity = 2131099650;
-			
-			// aapt resource value: 0x7f060003
-			public const int mr_controller_volume_group_list_item_height = 2131099651;
-			
-			// aapt resource value: 0x7f060004
-			public const int mr_controller_volume_group_list_item_icon_size = 2131099652;
-			
-			// aapt resource value: 0x7f060005
-			public const int mr_controller_volume_group_list_max_height = 2131099653;
-			
-			// aapt resource value: 0x7f060008
-			public const int mr_controller_volume_group_list_padding_top = 2131099656;
-			
-			// aapt resource value: 0x7f060006
-			public const int mr_dialog_fixed_width_major = 2131099654;
-			
-			// aapt resource value: 0x7f060007
-			public const int mr_dialog_fixed_width_minor = 2131099655;
-			
-			// aapt resource value: 0x7f060054
-			public const int notification_large_icon_height = 2131099732;
-			
-			// aapt resource value: 0x7f060055
-			public const int notification_large_icon_width = 2131099733;
-			
-			// aapt resource value: 0x7f060056
-			public const int notification_subtext_size = 2131099734;
-			
-			static Dimension()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
+			// aapt resource value: 0x7f07004f
+			public const int customPanel = 2131165263;
 			
 			private Dimension()
 			{
@@ -2227,73 +3473,79 @@ namespace GitRemote.Droid
 			public const int ic_play_light = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int ic_speaker_dark = 2130837660;
+			public const int ic_radio_button_on_24px = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int ic_speaker_group_dark = 2130837661;
+			public const int ic_radio_button_unchecked_black_24dp = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int ic_speaker_group_light = 2130837662;
+			public const int ic_speaker_dark = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int ic_speaker_light = 2130837663;
+			public const int ic_speaker_group_dark = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int ic_tv_dark = 2130837664;
+			public const int ic_speaker_group_light = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ic_tv_light = 2130837665;
+			public const int ic_speaker_light = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int icon = 2130837666;
+			public const int ic_tv_dark = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int mr_dialog_material_background_dark = 2130837667;
+			public const int ic_tv_light = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int mr_dialog_material_background_light = 2130837668;
+			public const int icon = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int mr_ic_audiotrack_light = 2130837669;
+			public const int mr_dialog_material_background_dark = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int mr_ic_cast_dark = 2130837670;
+			public const int mr_dialog_material_background_light = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int mr_ic_cast_light = 2130837671;
+			public const int mr_ic_audiotrack_light = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int mr_ic_close_dark = 2130837672;
+			public const int mr_ic_cast_dark = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int mr_ic_close_light = 2130837673;
+			public const int mr_ic_cast_light = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837674;
+			public const int mr_ic_close_dark = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int mr_ic_media_route_connecting_mono_light = 2130837675;
+			public const int mr_ic_close_light = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int mr_ic_media_route_mono_dark = 2130837676;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int mr_ic_media_route_mono_light = 2130837677;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int mr_ic_pause_dark = 2130837678;
+			public const int mr_ic_media_route_mono_dark = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int mr_ic_pause_light = 2130837679;
+			public const int mr_ic_media_route_mono_light = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int mr_ic_play_dark = 2130837680;
+			public const int mr_ic_pause_dark = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int mr_ic_play_light = 2130837681;
+			public const int mr_ic_pause_light = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int notification_template_icon_bg = 2130837682;
+			public const int mr_ic_play_dark = 2130837682;
+			
+			// aapt resource value: 0x7f0200b3
+			public const int mr_ic_play_light = 2130837683;
+			
+			// aapt resource value: 0x7f0200b4
+			public const int notification_template_icon_bg = 2130837684;
 			
 			static Drawable()
 			{
@@ -3044,11 +4296,11 @@ namespace GitRemote.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080027
-			public const int ApplicationName = 2131230759;
-			
 			// aapt resource value: 0x7f080026
-			public const int Hello = 2131230758;
+			public const int ApplicationName = 2131230758;
+			
+			// aapt resource value: 0x7f080027
+			public const int Hello = 2131230759;
 			
 			// aapt resource value: 0x7f08000f
 			public const int abc_action_bar_home_description = 2131230735;
@@ -5537,519 +6789,393 @@ namespace GitRemote.Droid
 			// aapt resource value: 0
 			public const int PopupWindow_android_popupBackground = 0;
 			
-			// aapt resource value: 1
-			public const int PopupWindow_overlapAnchor = 1;
+			// aapt resource value: 0x7f070040
+			public const int default_activity_button = 2131165248;
 			
-			public static int[] PopupWindowBackgroundState = new int[] {
-					2130772174};
+			// aapt resource value: 0x7f07006c
+			public const int design_bottom_sheet = 2131165292;
 			
-			// aapt resource value: 0
-			public const int PopupWindowBackgroundState_state_above_anchor = 0;
+			// aapt resource value: 0x7f070073
+			public const int design_menu_item_action_area = 2131165299;
 			
-			public static int[] RecyclerView = new int[] {
-					16842948,
-					2130771968,
-					2130771969,
-					2130771970,
-					2130771971};
+			// aapt resource value: 0x7f070072
+			public const int design_menu_item_action_area_stub = 2131165298;
 			
-			// aapt resource value: 0
-			public const int RecyclerView_android_orientation = 0;
+			// aapt resource value: 0x7f070071
+			public const int design_menu_item_text = 2131165297;
 			
-			// aapt resource value: 1
-			public const int RecyclerView_layoutManager = 1;
+			// aapt resource value: 0x7f070070
+			public const int design_navigation_view = 2131165296;
 			
-			// aapt resource value: 3
-			public const int RecyclerView_reverseLayout = 3;
+			// aapt resource value: 0x7f07000e
+			public const int disableHome = 2131165198;
 			
-			// aapt resource value: 2
-			public const int RecyclerView_spanCount = 2;
+			// aapt resource value: 0x7f07005c
+			public const int edit_query = 2131165276;
 			
-			// aapt resource value: 4
-			public const int RecyclerView_stackFromEnd = 4;
+			// aapt resource value: 0x7f07001c
+			public const int end = 2131165212;
 			
-			public static int[] ScrimInsetsFrameLayout = new int[] {
-					2130772256};
+			// aapt resource value: 0x7f070099
+			public const int end_padder = 2131165337;
 			
-			// aapt resource value: 0
-			public const int ScrimInsetsFrameLayout_insetForeground = 0;
+			// aapt resource value: 0x7f070023
+			public const int enterAlways = 2131165219;
 			
-			public static int[] ScrollingViewBehavior_Params = new int[] {
-					2130772257};
+			// aapt resource value: 0x7f070024
+			public const int enterAlwaysCollapsed = 2131165220;
 			
-			// aapt resource value: 0
-			public const int ScrollingViewBehavior_Params_behavior_overlapTop = 0;
+			// aapt resource value: 0x7f070025
+			public const int exitUntilCollapsed = 2131165221;
 			
-			public static int[] SearchView = new int[] {
-					16842970,
-					16843039,
-					16843296,
-					16843364,
-					2130772175,
-					2130772176,
-					2130772177,
-					2130772178,
-					2130772179,
-					2130772180,
-					2130772181,
-					2130772182,
-					2130772183,
-					2130772184,
-					2130772185,
-					2130772186,
-					2130772187};
+			// aapt resource value: 0x7f07003e
+			public const int expand_activities_button = 2131165246;
 			
-			// aapt resource value: 0
-			public const int SearchView_android_focusable = 0;
+			// aapt resource value: 0x7f070051
+			public const int expanded_menu = 2131165265;
 			
-			// aapt resource value: 3
-			public const int SearchView_android_imeOptions = 3;
+			// aapt resource value: 0x7f070035
+			public const int fill = 2131165237;
 			
-			// aapt resource value: 2
-			public const int SearchView_android_inputType = 2;
+			// aapt resource value: 0x7f070036
+			public const int fill_horizontal = 2131165238;
 			
-			// aapt resource value: 1
-			public const int SearchView_android_maxWidth = 1;
+			// aapt resource value: 0x7f07002e
+			public const int fill_vertical = 2131165230;
 			
-			// aapt resource value: 8
-			public const int SearchView_closeIcon = 8;
+			// aapt resource value: 0x7f070038
+			public const int @fixed = 2131165240;
 			
-			// aapt resource value: 13
-			public const int SearchView_commitIcon = 13;
+			// aapt resource value: 0x7f070005
+			public const int home = 2131165189;
 			
-			// aapt resource value: 7
-			public const int SearchView_defaultQueryHint = 7;
+			// aapt resource value: 0x7f07000f
+			public const int homeAsUp = 2131165199;
 			
-			// aapt resource value: 9
-			public const int SearchView_goIcon = 9;
+			// aapt resource value: 0x7f070042
+			public const int icon = 2131165250;
 			
-			// aapt resource value: 5
-			public const int SearchView_iconifiedByDefault = 5;
+			// aapt resource value: 0x7f070020
+			public const int ifRoom = 2131165216;
 			
-			// aapt resource value: 4
-			public const int SearchView_layout = 4;
+			// aapt resource value: 0x7f07003f
+			public const int image = 2131165247;
 			
-			// aapt resource value: 15
-			public const int SearchView_queryBackground = 15;
+			// aapt resource value: 0x7f070098
+			public const int info = 2131165336;
 			
-			// aapt resource value: 6
-			public const int SearchView_queryHint = 6;
+			// aapt resource value: 0x7f070000
+			public const int item_touch_helper_previous_elevation = 2131165184;
 			
-			// aapt resource value: 11
-			public const int SearchView_searchHintIcon = 11;
+			// aapt resource value: 0x7f07002f
+			public const int left = 2131165231;
 			
-			// aapt resource value: 10
-			public const int SearchView_searchIcon = 10;
+			// aapt resource value: 0x7f07006a
+			public const int line = 2131165290;
 			
-			// aapt resource value: 16
-			public const int SearchView_submitBackground = 16;
+			// aapt resource value: 0x7f070092
+			public const int line1 = 2131165330;
 			
-			// aapt resource value: 14
-			public const int SearchView_suggestionRowLayout = 14;
+			// aapt resource value: 0x7f070096
+			public const int line3 = 2131165334;
 			
-			// aapt resource value: 12
-			public const int SearchView_voiceIcon = 12;
+			// aapt resource value: 0x7f07000b
+			public const int listMode = 2131165195;
 			
-			public static int[] SnackbarLayout = new int[] {
-					16843039,
-					2130772032,
-					2130772258};
+			// aapt resource value: 0x7f070041
+			public const int list_item = 2131165249;
 			
-			// aapt resource value: 0
-			public const int SnackbarLayout_android_maxWidth = 0;
+			// aapt resource value: 0x7f070090
+			public const int media_actions = 2131165328;
 			
-			// aapt resource value: 1
-			public const int SnackbarLayout_elevation = 1;
+			// aapt resource value: 0x7f07001d
+			public const int middle = 2131165213;
 			
-			// aapt resource value: 2
-			public const int SnackbarLayout_maxActionInlineWidth = 2;
+			// aapt resource value: 0x7f070037
+			public const int mini = 2131165239;
 			
-			public static int[] Spinner = new int[] {
-					16842930,
-					16843126,
-					16843131,
-					16843362,
-					2130772033};
+			// aapt resource value: 0x7f07007f
+			public const int mr_art = 2131165311;
 			
-			// aapt resource value: 3
-			public const int Spinner_android_dropDownWidth = 3;
+			// aapt resource value: 0x7f070074
+			public const int mr_chooser_list = 2131165300;
 			
-			// aapt resource value: 0
-			public const int Spinner_android_entries = 0;
+			// aapt resource value: 0x7f070077
+			public const int mr_chooser_route_desc = 2131165303;
 			
-			// aapt resource value: 1
-			public const int Spinner_android_popupBackground = 1;
+			// aapt resource value: 0x7f070075
+			public const int mr_chooser_route_icon = 2131165301;
 			
-			// aapt resource value: 2
-			public const int Spinner_android_prompt = 2;
+			// aapt resource value: 0x7f070076
+			public const int mr_chooser_route_name = 2131165302;
 			
-			// aapt resource value: 4
-			public const int Spinner_popupTheme = 4;
+			// aapt resource value: 0x7f07007c
+			public const int mr_close = 2131165308;
 			
-			public static int[] SwitchCompat = new int[] {
-					16843044,
-					16843045,
-					16843074,
-					2130772188,
-					2130772189,
-					2130772190,
-					2130772191,
-					2130772192,
-					2130772193,
-					2130772194};
+			// aapt resource value: 0x7f070082
+			public const int mr_control_divider = 2131165314;
 			
-			// aapt resource value: 1
-			public const int SwitchCompat_android_textOff = 1;
+			// aapt resource value: 0x7f070088
+			public const int mr_control_play_pause = 2131165320;
 			
-			// aapt resource value: 0
-			public const int SwitchCompat_android_textOn = 0;
+			// aapt resource value: 0x7f07008b
+			public const int mr_control_subtitle = 2131165323;
 			
-			// aapt resource value: 2
-			public const int SwitchCompat_android_thumb = 2;
+			// aapt resource value: 0x7f07008a
+			public const int mr_control_title = 2131165322;
 			
-			// aapt resource value: 9
-			public const int SwitchCompat_showText = 9;
+			// aapt resource value: 0x7f070089
+			public const int mr_control_title_container = 2131165321;
 			
-			// aapt resource value: 8
-			public const int SwitchCompat_splitTrack = 8;
+			// aapt resource value: 0x7f07007d
+			public const int mr_custom_control = 2131165309;
 			
-			// aapt resource value: 6
-			public const int SwitchCompat_switchMinWidth = 6;
+			// aapt resource value: 0x7f07007e
+			public const int mr_default_control = 2131165310;
 			
-			// aapt resource value: 7
-			public const int SwitchCompat_switchPadding = 7;
+			// aapt resource value: 0x7f070079
+			public const int mr_dialog_area = 2131165305;
 			
-			// aapt resource value: 5
-			public const int SwitchCompat_switchTextAppearance = 5;
+			// aapt resource value: 0x7f070078
+			public const int mr_expandable_area = 2131165304;
 			
-			// aapt resource value: 4
-			public const int SwitchCompat_thumbTextPadding = 4;
+			// aapt resource value: 0x7f07008c
+			public const int mr_group_expand_collapse = 2131165324;
 			
-			// aapt resource value: 3
-			public const int SwitchCompat_track = 3;
+			// aapt resource value: 0x7f070080
+			public const int mr_media_main_control = 2131165312;
 			
-			public static int[] TabItem = new int[] {
-					16842754,
-					16842994,
-					16843087};
+			// aapt resource value: 0x7f07007b
+			public const int mr_name = 2131165307;
 			
-			// aapt resource value: 0
-			public const int TabItem_android_icon = 0;
+			// aapt resource value: 0x7f070081
+			public const int mr_playback_control = 2131165313;
 			
-			// aapt resource value: 1
-			public const int TabItem_android_layout = 1;
+			// aapt resource value: 0x7f07007a
+			public const int mr_title_bar = 2131165306;
 			
-			// aapt resource value: 2
-			public const int TabItem_android_text = 2;
+			// aapt resource value: 0x7f070083
+			public const int mr_volume_control = 2131165315;
 			
-			public static int[] TabLayout = new int[] {
-					2130772259,
-					2130772260,
-					2130772261,
-					2130772262,
-					2130772263,
-					2130772264,
-					2130772265,
-					2130772266,
-					2130772267,
-					2130772268,
-					2130772269,
-					2130772270,
-					2130772271,
-					2130772272,
-					2130772273,
-					2130772274};
+			// aapt resource value: 0x7f070084
+			public const int mr_volume_group_list = 2131165316;
 			
-			// aapt resource value: 3
-			public const int TabLayout_tabBackground = 3;
+			// aapt resource value: 0x7f070086
+			public const int mr_volume_item_icon = 2131165318;
 			
-			// aapt resource value: 2
-			public const int TabLayout_tabContentStart = 2;
+			// aapt resource value: 0x7f070087
+			public const int mr_volume_slider = 2131165319;
 			
-			// aapt resource value: 5
-			public const int TabLayout_tabGravity = 5;
+			// aapt resource value: 0x7f070016
+			public const int multiply = 2131165206;
 			
-			// aapt resource value: 0
-			public const int TabLayout_tabIndicatorColor = 0;
+			// aapt resource value: 0x7f07006f
+			public const int navigation_header_container = 2131165295;
 			
-			// aapt resource value: 1
-			public const int TabLayout_tabIndicatorHeight = 1;
+			// aapt resource value: 0x7f070021
+			public const int never = 2131165217;
 			
-			// aapt resource value: 7
-			public const int TabLayout_tabMaxWidth = 7;
+			// aapt resource value: 0x7f070010
+			public const int none = 2131165200;
 			
-			// aapt resource value: 6
-			public const int TabLayout_tabMinWidth = 6;
+			// aapt resource value: 0x7f07000c
+			public const int normal = 2131165196;
 			
-			// aapt resource value: 4
-			public const int TabLayout_tabMode = 4;
+			// aapt resource value: 0x7f070028
+			public const int parallax = 2131165224;
 			
-			// aapt resource value: 15
-			public const int TabLayout_tabPadding = 15;
+			// aapt resource value: 0x7f070046
+			public const int parentPanel = 2131165254;
 			
-			// aapt resource value: 14
-			public const int TabLayout_tabPaddingBottom = 14;
+			// aapt resource value: 0x7f070029
+			public const int pin = 2131165225;
 			
-			// aapt resource value: 13
-			public const int TabLayout_tabPaddingEnd = 13;
+			// aapt resource value: 0x7f070006
+			public const int progress_circular = 2131165190;
 			
-			// aapt resource value: 11
-			public const int TabLayout_tabPaddingStart = 11;
+			// aapt resource value: 0x7f070007
+			public const int progress_horizontal = 2131165191;
 			
-			// aapt resource value: 12
-			public const int TabLayout_tabPaddingTop = 12;
+			// aapt resource value: 0x7f070054
+			public const int radio = 2131165268;
 			
-			// aapt resource value: 10
-			public const int TabLayout_tabSelectedTextColor = 10;
+			// aapt resource value: 0x7f070030
+			public const int right = 2131165232;
 			
-			// aapt resource value: 8
-			public const int TabLayout_tabTextAppearance = 8;
+			// aapt resource value: 0x7f070017
+			public const int screen = 2131165207;
 			
-			// aapt resource value: 9
-			public const int TabLayout_tabTextColor = 9;
+			// aapt resource value: 0x7f070026
+			public const int scroll = 2131165222;
 			
-			public static int[] TextAppearance = new int[] {
-					16842901,
-					16842902,
-					16842903,
-					16842904,
-					16843105,
-					16843106,
-					16843107,
-					16843108,
-					2130772043};
-			
-			// aapt resource value: 4
-			public const int TextAppearance_android_shadowColor = 4;
-			
-			// aapt resource value: 5
-			public const int TextAppearance_android_shadowDx = 5;
-			
-			// aapt resource value: 6
-			public const int TextAppearance_android_shadowDy = 6;
-			
-			// aapt resource value: 7
-			public const int TextAppearance_android_shadowRadius = 7;
-			
-			// aapt resource value: 3
-			public const int TextAppearance_android_textColor = 3;
+			// aapt resource value: 0x7f07004e
+			public const int scrollIndicatorDown = 2131165262;
 			
-			// aapt resource value: 0
-			public const int TextAppearance_android_textSize = 0;
+			// aapt resource value: 0x7f07004b
+			public const int scrollIndicatorUp = 2131165259;
 			
-			// aapt resource value: 2
-			public const int TextAppearance_android_textStyle = 2;
+			// aapt resource value: 0x7f07004c
+			public const int scrollView = 2131165260;
 			
-			// aapt resource value: 1
-			public const int TextAppearance_android_typeface = 1;
+			// aapt resource value: 0x7f070039
+			public const int scrollable = 2131165241;
 			
-			// aapt resource value: 8
-			public const int TextAppearance_textAllCaps = 8;
+			// aapt resource value: 0x7f07005e
+			public const int search_badge = 2131165278;
 			
-			public static int[] TextInputLayout = new int[] {
-					16842906,
-					16843088,
-					2130772275,
-					2130772276,
-					2130772277,
-					2130772278,
-					2130772279,
-					2130772280,
-					2130772281,
-					2130772282,
-					2130772283};
+			// aapt resource value: 0x7f07005d
+			public const int search_bar = 2131165277;
 			
-			// aapt resource value: 1
-			public const int TextInputLayout_android_hint = 1;
+			// aapt resource value: 0x7f07005f
+			public const int search_button = 2131165279;
 			
-			// aapt resource value: 0
-			public const int TextInputLayout_android_textColorHint = 0;
+			// aapt resource value: 0x7f070064
+			public const int search_close_btn = 2131165284;
 			
-			// aapt resource value: 6
-			public const int TextInputLayout_counterEnabled = 6;
+			// aapt resource value: 0x7f070060
+			public const int search_edit_frame = 2131165280;
 			
-			// aapt resource value: 7
-			public const int TextInputLayout_counterMaxLength = 7;
+			// aapt resource value: 0x7f070066
+			public const int search_go_btn = 2131165286;
 			
-			// aapt resource value: 9
-			public const int TextInputLayout_counterOverflowTextAppearance = 9;
+			// aapt resource value: 0x7f070061
+			public const int search_mag_icon = 2131165281;
 			
-			// aapt resource value: 8
-			public const int TextInputLayout_counterTextAppearance = 8;
+			// aapt resource value: 0x7f070062
+			public const int search_plate = 2131165282;
 			
-			// aapt resource value: 4
-			public const int TextInputLayout_errorEnabled = 4;
+			// aapt resource value: 0x7f070063
+			public const int search_src_text = 2131165283;
 			
-			// aapt resource value: 5
-			public const int TextInputLayout_errorTextAppearance = 5;
+			// aapt resource value: 0x7f070067
+			public const int search_voice_btn = 2131165287;
 			
-			// aapt resource value: 10
-			public const int TextInputLayout_hintAnimationEnabled = 10;
+			// aapt resource value: 0x7f070068
+			public const int select_dialog_listview = 2131165288;
 			
-			// aapt resource value: 3
-			public const int TextInputLayout_hintEnabled = 3;
+			// aapt resource value: 0x7f070053
+			public const int shortcut = 2131165267;
 			
-			// aapt resource value: 2
-			public const int TextInputLayout_hintTextAppearance = 2;
+			// aapt resource value: 0x7f070011
+			public const int showCustom = 2131165201;
 			
-			public static int[] Toolbar = new int[] {
-					16842927,
-					16843072,
-					2130772009,
-					2130772012,
-					2130772016,
-					2130772028,
-					2130772029,
-					2130772030,
-					2130772031,
-					2130772033,
-					2130772195,
-					2130772196,
-					2130772197,
-					2130772198,
-					2130772199,
-					2130772200,
-					2130772201,
-					2130772202,
-					2130772203,
-					2130772204,
-					2130772205,
-					2130772206,
-					2130772207,
-					2130772208,
-					2130772209};
+			// aapt resource value: 0x7f070012
+			public const int showHome = 2131165202;
 			
-			// aapt resource value: 0
-			public const int Toolbar_android_gravity = 0;
+			// aapt resource value: 0x7f070013
+			public const int showTitle = 2131165203;
 			
-			// aapt resource value: 1
-			public const int Toolbar_android_minHeight = 1;
+			// aapt resource value: 0x7f07009a
+			public const int sliding_tabs = 2131165338;
 			
-			// aapt resource value: 19
-			public const int Toolbar_collapseContentDescription = 19;
+			// aapt resource value: 0x7f07006e
+			public const int snackbar_action = 2131165294;
 			
-			// aapt resource value: 18
-			public const int Toolbar_collapseIcon = 18;
+			// aapt resource value: 0x7f07006d
+			public const int snackbar_text = 2131165293;
 			
-			// aapt resource value: 6
-			public const int Toolbar_contentInsetEnd = 6;
+			// aapt resource value: 0x7f070027
+			public const int snap = 2131165223;
 			
-			// aapt resource value: 7
-			public const int Toolbar_contentInsetLeft = 7;
+			// aapt resource value: 0x7f070045
+			public const int spacer = 2131165253;
 			
-			// aapt resource value: 8
-			public const int Toolbar_contentInsetRight = 8;
+			// aapt resource value: 0x7f070008
+			public const int split_action_bar = 2131165192;
 			
-			// aapt resource value: 5
-			public const int Toolbar_contentInsetStart = 5;
+			// aapt resource value: 0x7f070018
+			public const int src_atop = 2131165208;
 			
-			// aapt resource value: 4
-			public const int Toolbar_logo = 4;
+			// aapt resource value: 0x7f070019
+			public const int src_in = 2131165209;
 			
-			// aapt resource value: 22
-			public const int Toolbar_logoDescription = 22;
+			// aapt resource value: 0x7f07001a
+			public const int src_over = 2131165210;
 			
-			// aapt resource value: 17
-			public const int Toolbar_maxButtonHeight = 17;
+			// aapt resource value: 0x7f070031
+			public const int start = 2131165233;
 			
-			// aapt resource value: 21
-			public const int Toolbar_navigationContentDescription = 21;
+			// aapt resource value: 0x7f07008f
+			public const int status_bar_latest_event_content = 2131165327;
 			
-			// aapt resource value: 20
-			public const int Toolbar_navigationIcon = 20;
+			// aapt resource value: 0x7f070065
+			public const int submit_area = 2131165285;
 			
-			// aapt resource value: 9
-			public const int Toolbar_popupTheme = 9;
+			// aapt resource value: 0x7f07000d
+			public const int tabMode = 2131165197;
 			
-			// aapt resource value: 3
-			public const int Toolbar_subtitle = 3;
+			// aapt resource value: 0x7f070097
+			public const int text = 2131165335;
 			
-			// aapt resource value: 11
-			public const int Toolbar_subtitleTextAppearance = 11;
+			// aapt resource value: 0x7f070095
+			public const int text2 = 2131165333;
 			
-			// aapt resource value: 24
-			public const int Toolbar_subtitleTextColor = 24;
+			// aapt resource value: 0x7f07009b
+			public const int textInputLayout = 2131165339;
 			
-			// aapt resource value: 2
-			public const int Toolbar_title = 2;
+			// aapt resource value: 0x7f07004d
+			public const int textSpacerNoButtons = 2131165261;
 			
-			// aapt resource value: 16
-			public const int Toolbar_titleMarginBottom = 16;
+			// aapt resource value: 0x7f070093
+			public const int time = 2131165331;
 			
-			// aapt resource value: 14
-			public const int Toolbar_titleMarginEnd = 14;
+			// aapt resource value: 0x7f070043
+			public const int title = 2131165251;
 			
-			// aapt resource value: 13
-			public const int Toolbar_titleMarginStart = 13;
+			// aapt resource value: 0x7f070048
+			public const int title_template = 2131165256;
 			
-			// aapt resource value: 15
-			public const int Toolbar_titleMarginTop = 15;
+			// aapt resource value: 0x7f07009c
+			public const int toolbar = 2131165340;
 			
-			// aapt resource value: 12
-			public const int Toolbar_titleMargins = 12;
+			// aapt resource value: 0x7f070032
+			public const int top = 2131165234;
 			
-			// aapt resource value: 10
-			public const int Toolbar_titleTextAppearance = 10;
+			// aapt resource value: 0x7f070047
+			public const int topPanel = 2131165255;
 			
-			// aapt resource value: 23
-			public const int Toolbar_titleTextColor = 23;
+			// aapt resource value: 0x7f07006b
+			public const int touch_outside = 2131165291;
 			
-			public static int[] View = new int[] {
-					16842752,
-					16842970,
-					2130772210,
-					2130772211,
-					2130772212};
+			// aapt resource value: 0x7f070009
+			public const int up = 2131165193;
 			
-			// aapt resource value: 1
-			public const int View_android_focusable = 1;
+			// aapt resource value: 0x7f070014
+			public const int useLogo = 2131165204;
 			
-			// aapt resource value: 0
-			public const int View_android_theme = 0;
+			// aapt resource value: 0x7f07000a
+			public const int view_offset_helper = 2131165194;
 			
-			// aapt resource value: 3
-			public const int View_paddingEnd = 3;
+			// aapt resource value: 0x7f070085
+			public const int volume_item_container = 2131165317;
 			
-			// aapt resource value: 2
-			public const int View_paddingStart = 2;
+			// aapt resource value: 0x7f070022
+			public const int withText = 2131165218;
 			
-			// aapt resource value: 4
-			public const int View_theme = 4;
+			// aapt resource value: 0x7f070015
+			public const int wrap_content = 2131165205;
 			
-			public static int[] ViewBackgroundHelper = new int[] {
-					16842964,
-					2130772213,
-					2130772214};
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+		}
+		
+		public partial class String
+		{
 			
-			// aapt resource value: 0
-			public const int ViewBackgroundHelper_android_background = 0;
+			// aapt resource value: 0x7f030001
+			public const int ApplicationName = 2130903041;
 			
-			// aapt resource value: 1
-			public const int ViewBackgroundHelper_backgroundTint = 1;
+			// aapt resource value: 0x7f030000
+			public const int Hello = 2130903040;
 			
-			// aapt resource value: 2
-			public const int ViewBackgroundHelper_backgroundTintMode = 2;
-			
-			public static int[] ViewStubCompat = new int[] {
-					16842960,
-					16842994,
-					16842995};
-			
-			// aapt resource value: 0
-			public const int ViewStubCompat_android_id = 0;
-			
-			// aapt resource value: 2
-			public const int ViewStubCompat_android_inflatedId = 2;
-			
-			// aapt resource value: 1
-			public const int ViewStubCompat_android_layout = 1;
-			
-			static Styleable()
+			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
-			private Styleable()
+			private String()
 			{
 			}
 		}

@@ -12,7 +12,7 @@
                  Command="{Binding NotificationsCommand}"/>
   </TabbedPage.ToolbarItems>
   
-  <views:NewsPage/>
+  <views:PrivateNewsPage/>
   <views:RepositoriesPage/>
   <views:StarsPage/>
   <views:FollowPage Title="Followers"/>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.RepositoryContributorsPage"
+             Title="{Binding Title}">
+
+  <controls:FlowListView x:Name="ContributorsList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding Contributors}"
+                         HasUnevenRows="True"
+                         FlowColumnCount="1"
+                         FlowLastTappedItem="{Binding TappedItem}"
+                         FlowItemTappedCommand="{Binding ItemTappedCommand}">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              Margin="10, 5, 10, 10">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
+          </Grid.RowDefinitions>
+
+          <forms:CachedImage
+            x:Name="Avatar"
+            Source="{Binding AvatarUrl}"
+            HeightRequest="50"
+            WidthRequest="50"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            Margin="0, 0, 10, 0"
+            DownsampleToViewSize ="True"
+            LoadingPlaceholder="ic_list_NoAvatar.png"
+            BitmapOptimizations="True">
+            <forms:CachedImage.Transformations>
+              <transformations:RoundedTransformation Radius="100"/>
+            </forms:CachedImage.Transformations>
+
+          </forms:CachedImage>
+
+          <Label x:Name="Login"
+                 Text="{Binding Login}"
+                 TextColor="Black"
+                 FontSize="18"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"/>
+
+          <Label x:Name="CommitsCount"
+                 Text="{Binding CommitsText}"
+                 FontSize="16"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="FillAndExpand">
+            
+          </Label>
+
+        </Grid>
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+  </controls:FlowListView>
+
+</ContentPage>
