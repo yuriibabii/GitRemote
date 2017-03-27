@@ -1,10 +1,8 @@
-﻿using GitRemote.GitHub;
+﻿using GitRemote.GitHub.Managers;
 using GitRemote.Services;
-using GitRemote.ViewModels;
-using GitRemote.ViewModels.Authentication;
-using GitRemote.ViewModels.MasterPageViews;
 using GitRemote.Views;
-using GitRemote.Views.MasterPageViews;
+using GitRemote.Views.MasterMenuPage;
+using GitRemote.Views.PopUp;
 using Prism.Unity;
 using ChooseUserPage = GitRemote.Views.Authentication.ChooseUserPage;
 using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
@@ -20,35 +18,46 @@ namespace GitRemote
         protected override void OnInitialized()
         {
             InitializeComponent();
+
             //if User didn't exit from last session, then opens last session, otherwise opens start page
             NavigationService.NavigateAsync(StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-            ? $"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
+            ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
             : $"{nameof(StartPage)}");
-            //NavigationService.NavigateAsync($"{nameof(ProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}");
-            //NavigationService.NavigateAsync($"{nameof(RepositoriesPage)}");
-            //NavigationService.NavigateAsync($"{nameof(StartPage)}");
+
+            //NavigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(FilterPage)}");
         }
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<BookmarksPage, BookmarksPageViewModel>();
-            Container.RegisterTypeForNavigation<GistsPage, GistsPageViewModel>();
-            Container.RegisterTypeForNavigation<IssueDashboardPage, IssueDashboardPageViewModel>();
-            Container.RegisterTypeForNavigation<ReportAnIssuePage, ReportAnIssuePageViewModel>();
-            Container.RegisterTypeForNavigation<DetailPage, DetailPageViewModel>();
-            Container.RegisterTypeForNavigation<FollowPage, FollowPageViewModel>();
-            Container.RegisterTypeForNavigation<LoginingPage, LoginingPageViewModel>();
-            Container.RegisterTypeForNavigation<MasterPage, MasterPageViewModel>();
-            Container.RegisterTypeForNavigation<NewsPage, NewsPageViewModel>();
-            Container.RegisterTypeForNavigation<ProfilePage, ProfilePageViewModel>();
-            Container.RegisterTypeForNavigation<RepositoriesPage, RepositoriesPageViewModel>();
-            Container.RegisterTypeForNavigation<StarsPage, StarsPageViewModel>();
+            Container.RegisterTypeForNavigation<BookmarksPage>();
+            Container.RegisterTypeForNavigation<GistsPage>();
+            Container.RegisterTypeForNavigation<IssueDashboardPage>();
+            Container.RegisterTypeForNavigation<DetailPage>();
+            Container.RegisterTypeForNavigation<FollowPage>();
+            Container.RegisterTypeForNavigation<LoginingPage>();
+            Container.RegisterTypeForNavigation<MasterPage>();
+            Container.RegisterTypeForNavigation<PrivateNewsPage>();
+            Container.RegisterTypeForNavigation<PrivateProfilePage>();
+            Container.RegisterTypeForNavigation<RepositoriesPage>();
+            Container.RegisterTypeForNavigation<StarsPage>();
             Container.RegisterTypeForNavigation<NavigationBarPage>();
-            Container.RegisterTypeForNavigation<StartPage, StartPageViewModel>();
-            Container.RegisterTypeForNavigation<ChooseUserPage, ChooseUserPageViewModel>();
-            Container.RegisterTypeForNavigation<TwoFactorAuthPage, TwoFactorAuthPageViewModel>();
-            Container.RegisterTypeForNavigation<NotificationsPage, NotificationsPageViewModel>();
-            Container.RegisterTypeForNavigation<GistsListPage, GistsListPageViewModel>();
+            Container.RegisterTypeForNavigation<StartPage>();
+            Container.RegisterTypeForNavigation<ChooseUserPage>();
+            Container.RegisterTypeForNavigation<TwoFactorAuthPage>();
+            Container.RegisterTypeForNavigation<NotificationsPage>();
+            Container.RegisterTypeForNavigation<GistsListPage>();
+            Container.RegisterTypeForNavigation<RepositoryNewsPage>();
+            Container.RegisterTypeForNavigation<FileExplorerPage>();
+            Container.RegisterTypeForNavigation<BranchSelectPage>();
+            Container.RegisterTypeForNavigation<CommitsPage>();
+            Container.RegisterTypeForNavigation<PublicIssuesPage>();
+            Container.RegisterTypeForNavigation<PublicRepositoryPage>();
+            Container.RegisterTypeForNavigation<PullRequestsPage>();
+            Container.RegisterTypeForNavigation<ForkedRepositoryPage>();
+            Container.RegisterTypeForNavigation<RepositoryContributorsPage>();
+            Container.RegisterTypeForNavigation<FilterPage>();
+            Container.RegisterTypeForNavigation<AssignedSelectPage>();
+            Container.RegisterTypeForNavigation<MilestoneSelectPage>();
         }
 
         protected override void OnSleep()

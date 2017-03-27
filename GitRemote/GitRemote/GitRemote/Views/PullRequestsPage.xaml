@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:views="clr-namespace:GitRemote.Views;assembly=GitRemote"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="GitRemote.Views.PullRequestsPage">
+
+  <views:PullRequestsPage.ToolbarItems>
+    <ToolbarItem Text="{Binding StarText}"
+                 Order="Secondary"
+                 Command="{Binding StarCommand}"/>
+    <ToolbarItem Text="Fork"
+                 Order="Secondary"
+                 Command="{Binding ForkCommand}"/>
+    <ToolbarItem Text="Contributors"
+                 Order="Secondary"
+                 Command="{Binding ContributorsCommand}"/>
+    <ToolbarItem Text="Share"
+                 Order="Secondary"
+                 Command="{Binding ShareCommand}"/>
+    <ToolbarItem Text="Open in browser"
+                 Order="Secondary"
+                 Command="{Binding OpenInBrowserCommand}"/>
+    <ToolbarItem Text="Bookmark"
+                 Order="Secondary"
+                 Command="{Binding BookmarkCommand}"/>
+    <ToolbarItem Text="Filter"
+                 Order="Secondary"
+                 Command="{Binding FilterCommand}"/>
+    <ToolbarItem Text="Refresh"
+                 Order="Secondary"
+                 Command="{Binding RefreshCommand}"/>
+  </views:PullRequestsPage.ToolbarItems>
+  
+   <controls:FlowListView x:Name="IssuesList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         FlowItemsSource="{Binding PullRequests}"
+                         HasUnevenRows="True"
+                         FlowColumnCount="1">
+
+    <controls:FlowListView.FlowColumnTemplate>
+      <DataTemplate>
+        <Grid VerticalOptions="Start"
+              HorizontalOptions="FillAndExpand"
+              Margin="0, 15, 5, 15"
+              ColumnSpacing="0"
+              RowSpacing="5">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
+
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+          </Grid.RowDefinitions>
+
+          <BoxView BackgroundColor="#EAEBEC"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Margin="0, 0, 15, 0"/>
+
+          <Label Text="{Binding Nomer}"
+                 FontSize="12"
+                 TextColor="Black"
+                 HorizontalOptions="EndAndExpand"
+                 VerticalOptions="CenterAndExpand"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 Margin="0, 0, 15, 0"/>
+
+          <Label x:Name="Title"
+                 FormattedText="{Binding Title}"
+                 TextColor="Black"
+                 FontSize="16"
+                 LineBreakMode="TailTruncation"
+                 VerticalOptions="CenterAndExpand"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="6"/>
+
+          <forms:CachedImage
+            x:Name="Avatar"
+            Source="{Binding ImageUrl}"
+            HeightRequest="25"
+            WidthRequest="25"
+            Grid.Column="1"
+            Grid.Row="1"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            CacheDuration = "5"
+            DownsampleToViewSize ="True"
+            LoadingPlaceholder="ic_list_NoAvatar.png"
+            Margin="-5, 0, 0, 0"
+            BitmapOptimizations="True">
+            <forms:CachedImage.Transformations>
+              <transformations:RoundedTransformation Radius="100"/>
+            </forms:CachedImage.Transformations>
+
+          </forms:CachedImage>
+
+          <Label x:Name="OwnerName"
+                 FormattedText="{Binding OwnerName}"
+                 TextColor="Gray"
+                 FontAttributes="Bold"
+                 FontSize="14"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="2"
+                 Grid.Row="1"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="Start"/>
+
+          <Label x:Name="CreatedTime"
+                 FormattedText="{Binding CreatedTime}"
+                 TextColor="Gray"
+                 FontSize="14"
+                 LineBreakMode="TailTruncation"
+                 Grid.Column="3"
+                 Grid.Row="1"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Margin="10, 0, 5, 0"/>
+
+          <customClasses:FontIcon x:Name="PullRequestFontIcon"
+                                  Text="{Binding PullRequestFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="12"
+                                  FontFamily="Octicons"
+                                  Grid.Column="4"
+                                  Grid.Row="1"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="End"
+                                  Margin="0, 5, 0, 0"/>
+
+          <customClasses:FontIcon x:Name="CommentFontIcon"
+                                  Text="{Binding CommentFontIcon}"
+                                  TextColor="Gray"
+                                  FontSize="12"
+                                  FontFamily="Octicons"
+                                  Grid.Column="5"
+                                  Grid.Row="1"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="End"
+                                  Margin="0, 5, 0, 0"
+                                  Opacity="{Binding CommentOpacity}"/>
+
+          <Label x:Name="CommentsCount"
+                 Text="{Binding CommentsCount}"
+                 FontSize="12"
+                 TextColor="#A8A8A8"
+                 Grid.Column="6"
+                 Grid.Row="1"
+                 VerticalOptions="Center"
+                 HorizontalOptions="CenterAndExpand"
+                 Margin="0, 3, 0, 0"
+                 Opacity="{Binding CommentOpacity}"/>
+
+        </Grid>
+      </DataTemplate>
+    </controls:FlowListView.FlowColumnTemplate>
+
+
+  </controls:FlowListView>
+  
+</ContentPage>

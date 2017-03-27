@@ -9,8 +9,11 @@ namespace GitRemote.Models
     {
         #region ElementsPropertiesDeclaretion
 
+        public string PullRequestFontIcon => FontIconsService.Octicons.PullRequest;
+        public double PullRequestOpacity => IsPullRequest ? 1.0 : 0;
         public string CommentFontIcon => FontIconsService.Octicons.Comment;
         public double CommentOpacity => IsCommented ? 1.0 : 0.25;
+
         private bool _isCommented;
 
         public bool IsCommented
@@ -25,6 +28,14 @@ namespace GitRemote.Models
         {
             get { return _commentsCount; }
             set { SetProperty(ref _commentsCount, value); }
+        }
+
+        private bool _isPullRequest;
+
+        public bool IsPullRequest
+        {
+            get { return _isPullRequest; }
+            set { SetProperty(ref _isPullRequest, value); }
         }
 
         private string _title;
