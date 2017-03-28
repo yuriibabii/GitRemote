@@ -62,7 +62,7 @@ namespace GitRemote.ViewModels
             {
                 { "OwnerName", ownerName},
                 { "ReposName", reposName},
-                { "Session", _session},
+                { nameof(Session), _session},
             };
 
             var path = $"{nameof(PublicRepositoryPage)}";

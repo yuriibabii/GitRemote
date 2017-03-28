@@ -27,7 +27,7 @@ namespace GitRemote.ViewModels
             var session = new Session(UserManager.GetLastUser(), store.Properties.First().Value,
                 store.Properties["PrivateFeedUrl"]);
 
-            var navigationParameters = new NavigationParameters { { "Session", session } };
+            var navigationParameters = new NavigationParameters { { nameof(Session), session } };
 
             _followManager = new FollowManager(session);
 

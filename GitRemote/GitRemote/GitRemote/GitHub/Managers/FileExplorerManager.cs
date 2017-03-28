@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Plugin.Share.Abstractions;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -52,21 +53,21 @@ namespace GitRemote.GitHub.Managers
         public ObservableCollection<FileExplorerModel> GetFiles(string pathPart)
         {
             var collection = new ObservableCollection<FileExplorerModel>();
-            if ( StringService.CheckForNullOrEmpty(pathPart) )
+            if (StringService.CheckForNullOrEmpty(pathPart))
                 _currentPath.Add(pathPart);
             var stringPath = _currentPath.JoinStrings("");
             var index = _currentPath.Count - 1;
 
-            foreach ( var file in _tree[index][stringPath] )
+            foreach (var file in _tree[index][stringPath])
             {
-                if ( file.FileType == "dir" )
+                if (file.FileType == "dir")
                 {
                     var files = 0;
                     var folders = 0;
 
-                    foreach ( var subFile in _tree[index + 1][stringPath + file.Name + '/'] )
+                    foreach (var subFile in _tree[index + 1][stringPath + file.Name + '/'])
                     {
-                        if ( subFile.FileType == "file" )
+                        if (subFile.FileType == "file")
                             files++;
                         else
                             folders++;
@@ -83,7 +84,7 @@ namespace GitRemote.GitHub.Managers
 
         public async Task SetCurrentBranchAsync(string branch = "")
         {
-            if ( StringService.CheckForNullOrEmpty(branch) )
+            if (StringService.CheckForNullOrEmpty(branch))
                 CurrentBranch = branch;
             else
                 CurrentBranch = await GetDefaultBranchAsync();
@@ -122,10 +123,10 @@ namespace GitRemote.GitHub.Managers
 
             try
             {
-                foreach ( var element in jsonTree )
+                foreach (var element in jsonTree)
                 {
                     var fileType = element["type"].ToString();
-                    if ( fileType == "commit" ) continue;
+                    if (fileType == "commit") continue;
 
                     fileType = fileType == "blob" ? "file" : "dir";
 
@@ -138,30 +139,30 @@ namespace GitRemote.GitHub.Managers
                         FileType = fileType,
                     };
 
-                    if ( model.FileType == "file" )
+                    if (model.FileType == "file")
                         model.FileSize = ConvertSize(element["size"]);
 
                     var index = pathParts.Length - 2; // "-2" Because a name is also count
                     var pathWithoutName = path.Substring(0, path.Length - pathParts[pathParts.Length - 1].Length);
 
-                    if ( tree.Count <= index )
+                    if (tree.Count <= index)
                         tree.Add(new Dictionary<string, List<FileExplorerModel>>());
 
-                    if ( !tree[index].ContainsKey(pathWithoutName) )
+                    if (!tree[index].ContainsKey(pathWithoutName))
                         tree[index].Add(pathWithoutName, new List<FileExplorerModel>());
 
                     tree[index][pathWithoutName].Add(model);
                 }
 
-                foreach ( var level in tree )
+                foreach (var level in tree)
                 {
-                    foreach ( var group in level )
+                    foreach (var group in level)
                     {
                         group.Value.Sort(Comparison);
                     }
                 }
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message + "GetTreeAsync Failed");
             }
@@ -179,7 +180,7 @@ namespace GitRemote.GitHub.Managers
             var originalSize = Convert.ToInt32(originalSizeObject.ToString());
             var size = originalSize < 1024
                 ? Convert.ToString(originalSize) + "B"
-                : Convert.ToString(Math.Round(( double )originalSize / 1024, 2)) + "KB";
+                : Convert.ToString(Math.Round((double)originalSize / 1024, 2)) + "KB";
 
             return size;
         }
@@ -234,7 +235,7 @@ namespace GitRemote.GitHub.Managers
         /// <returns></returns>
         private int Comparison(FileExplorerModel fileExplorerModel, FileExplorerModel explorerModel)
         {
-            if ( fileExplorerModel.FileType == "dir" )
+            if (fileExplorerModel.FileType == "dir")
                 return explorerModel.FileType == "dir" ? 0 : -1;
 
             return explorerModel.FileType == "dir" ? 1 : 0;
@@ -246,7 +247,7 @@ namespace GitRemote.GitHub.Managers
         /// <returns>If successful</returns>
         public bool PopUpExplorer()
         {
-            if ( _currentPath.Count <= 1 ) return false;
+            if (_currentPath.Count <= 1) return false;
 
             _currentPath.RemoveAt(_currentPath.Count - 1);
             return true;
@@ -288,7 +289,8 @@ namespace GitRemote.GitHub.Managers
 
         public async Task ShareLinkOnRepository()
         {
-            await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
+            var message = new ShareMessage { Url = $"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}" };
+            await CrossShare.Current.Share(message);
         }
     }
 }

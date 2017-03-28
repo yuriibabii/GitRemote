@@ -51,10 +51,10 @@ namespace GitRemote.ViewModels.PopUp
             var index = 0;
             var counter = 0;
 
-            foreach ( var branch in branchesTask.Result )
+            foreach (var branch in branchesTask.Result)
             {
                 var model = new BranchSelectModel { Name = branch.Name, Type = "Branch", IsActivated = false };
-                if ( model.Name == commitsManager.CurrentBranch )
+                if (model.Name == commitsManager.CurrentBranch)
                 {
                     index = counter;
                     model.IsActivated = true;
@@ -63,10 +63,10 @@ namespace GitRemote.ViewModels.PopUp
                 counter++;
             }
 
-            foreach ( var tag in tagsTask.Result )
+            foreach (var tag in tagsTask.Result)
             {
                 var model = new BranchSelectModel { Name = tag.Name, Type = "Tag", IsActivated = false };
-                if ( model.Name == commitsManager.CurrentBranch )
+                if (model.Name == commitsManager.CurrentBranch)
                 {
                     index = counter;
                     model.IsActivated = true;
@@ -75,7 +75,7 @@ namespace GitRemote.ViewModels.PopUp
                 counter++;
             }
 
-            OnPropertyChanged(nameof(Items));
+            RaisePropertyChanged(nameof(Items));
             MessagingCenter.Send(index.ToString(), MessageService.Messages.ScrollToActivatedBranchItem);
         }
 
@@ -89,10 +89,10 @@ namespace GitRemote.ViewModels.PopUp
             var index = 0;
             var counter = 0;
 
-            foreach ( var branch in branchesTask.Result )
+            foreach (var branch in branchesTask.Result)
             {
                 var model = new BranchSelectModel { Name = branch, Type = "Branch", IsActivated = false };
-                if ( model.Name == fileExplorerManager.CurrentBranch )
+                if (model.Name == fileExplorerManager.CurrentBranch)
                 {
                     index = counter;
                     model.IsActivated = true;
@@ -101,10 +101,10 @@ namespace GitRemote.ViewModels.PopUp
                 counter++;
             }
 
-            foreach ( var tag in tagsTask.Result )
+            foreach (var tag in tagsTask.Result)
             {
                 var model = new BranchSelectModel { Name = tag, Type = "Tag", IsActivated = false };
-                if ( model.Name == fileExplorerManager.CurrentBranch )
+                if (model.Name == fileExplorerManager.CurrentBranch)
                 {
                     index = counter;
                     model.IsActivated = true;
@@ -113,7 +113,7 @@ namespace GitRemote.ViewModels.PopUp
                 counter++;
             }
 
-            OnPropertyChanged(nameof(Items));
+            RaisePropertyChanged(nameof(Items));
             MessagingCenter.Send(index.ToString(), MessageService.Messages.ScrollToActivatedBranchItem);
         }
 

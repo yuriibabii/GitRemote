@@ -6,6 +6,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using GitRemote.GitHub;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
@@ -26,7 +27,7 @@ namespace GitRemote.ViewModels
         public DelegateCommand RefreshCommand { get; }
         #endregion
 
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private readonly IDevice _device;
         private PullRequestsManager _manager;
         public ObservableCollection<PullRequestModel> PullRequests { get; set; }
@@ -67,7 +68,7 @@ namespace GitRemote.ViewModels
         {
             _manager = new PullRequestsManager(data.Session, data.OwnerName, data.ReposName);
             PullRequests = new ObservableCollection<PullRequestModel>(await _manager.GetPullRequestsAsync());
-            OnPropertyChanged(nameof(PullRequests));
+            RaisePropertyChanged(nameof(PullRequests));
             MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages);
 
@@ -77,7 +78,7 @@ namespace GitRemote.ViewModels
 
             _parameters = new NavigationParameters
             {
-                {"Session", data.Session },
+                {nameof(Session), data.Session },
                 {"OwnerName", data.OwnerName },
                 {"ReposName", data.ReposName }
             };
@@ -87,7 +88,7 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if ( await _manager.CheckStar() )
+            if (await _manager.CheckStar())
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";
@@ -128,17 +129,17 @@ namespace GitRemote.ViewModels
 
         private void OnFilter()
         {
-            _parameters.Add("Type", "Pull Requests");
+            var parameters = _parameters;
+            parameters.Add("Type", "Pull Requests");
             _navigationService.NavigateAsync($"{nameof(NavigationBarPage)}/{nameof(FilterPage)}",
-                _parameters,
+                parameters,
                 animated: false);
-            _parameters.Remove("Type");
         }
 
         private async void OnRefresh()
         {
             PullRequests = new ObservableCollection<PullRequestModel>(await _manager.GetPullRequestsAsync());
-            OnPropertyChanged(nameof(PullRequests));
+            RaisePropertyChanged(nameof(PullRequests));
         }
 
         #endregion

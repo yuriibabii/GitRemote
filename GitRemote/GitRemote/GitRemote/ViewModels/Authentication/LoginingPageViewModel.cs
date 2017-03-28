@@ -23,8 +23,11 @@ namespace GitRemote.ViewModels.Authentication
         private readonly AccountManager _accountManager;
         private readonly IDevice _device;
         public DelegateCommand CheckedCommand => new DelegateCommand(OnCheckBoxTapped);
-        public DelegateCommand LogInCommand => new DelegateCommand(OnLogInTapped,
-            () => StringService.CheckForNullOrEmpty(_entries.LoginText, _entries.PasswordText));
+        //public DelegateCommand LogInCommand => new DelegateCommand(OnLogInTapped,
+        //    () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText));
+        //public DelegateCommand LogInCommand { get; } = new DelegateCommand(OnLogInTapped,
+        //    () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText));
+        public DelegateCommand LogInCommand { get; }
         public DelegateCommand HyperLinkTappedCommand => new DelegateCommand(OnHyperLinkTapped);
 
         private bool _isPasswordVisible;
@@ -34,8 +37,8 @@ namespace GitRemote.ViewModels.Authentication
             set
             {
                 SetProperty(ref _isPasswordVisible, value);
-                OnPropertyChanged(nameof(CheckBoxIcon));
-                OnPropertyChanged(nameof(CheckBoxColor));
+                RaisePropertyChanged(nameof(CheckBoxIcon));
+                RaisePropertyChanged(nameof(CheckBoxColor));
             }
         }
 
@@ -69,6 +72,8 @@ namespace GitRemote.ViewModels.Authentication
             _navigationService = navigationService;
             _keyboardHelper = keyboardHelper;
             _accountManager = new AccountManager(new ClientAuthorization(_navigationService), securedDataProvider);
+            Func<bool> canExecuteLogIn = () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText);
+            LogInCommand = new DelegateCommand(OnLogInTapped, canExecuteLogIn);
         }
 
         public void OnCheckBoxTapped()
@@ -88,17 +93,17 @@ namespace GitRemote.ViewModels.Authentication
 
             var token = await _accountManager.GetTokenAsync(gitHubClient);
 
+            if (token == "2FA") return; // If account hasn't 2FA then I working with it and do below job later
+
             var privateFeedUrl = await newsManager.GetPrivateFeedUrlFromApiAsync(gitHubClient);
 
             var session = new Session(LoginEntryText, token, privateFeedUrl);
-
-            if (token == "2FA") return; // If account hasn't 2FA then I working with it and do below job later
 
             _accountManager.AddAccount(LoginEntryText, token, privateFeedUrl);
 
             UserManager.SetLastUser(LoginEntryText);
 
-            var parameters = new NavigationParameters { { "Session", session } };
+            var parameters = new NavigationParameters { { nameof(Session), session } };
 
             var navigationStack = new Uri("https://Necessary/" +
                 $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);

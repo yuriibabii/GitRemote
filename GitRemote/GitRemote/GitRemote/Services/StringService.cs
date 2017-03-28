@@ -13,5 +13,11 @@ namespace GitRemote.Services
         {
             return strings.All(s => !string.IsNullOrEmpty(s));
         }
+
+        public static bool IsNullOrEmpty(params string[] strings)
+        {
+            var res = strings.Any(string.IsNullOrEmpty);
+            return res;
+        }
     }
 }

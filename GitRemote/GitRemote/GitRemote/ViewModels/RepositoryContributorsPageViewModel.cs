@@ -28,19 +28,19 @@ namespace GitRemote.ViewModels
 
         public async void OnNavigatingTo(NavigationParameters parameters)
         {
-            if ( !parameters.ContainsKey("Session") ||
+            if (!parameters.ContainsKey(nameof(Session)) ||
                 !parameters.ContainsKey("OwnerName") ||
-                !parameters.ContainsKey("ReposName") )
+                !parameters.ContainsKey("ReposName"))
                 return;
 
-            var session = parameters["Session"] as Session;
+            var session = parameters[nameof(Session)] as Session;
             var ownerName = parameters["OwnerName"] as string;
             var reposName = parameters["ReposName"] as string;
 
             var manager = new RepositoryContributorsManager(session, ownerName, reposName);
             Contributors = new ObservableCollection<RepositoryContributorModel>
                 (await manager.GetRepositoryContributors());
-            OnPropertyChanged(nameof(Contributors));
+            RaisePropertyChanged(nameof(Contributors));
         }
     }
 }

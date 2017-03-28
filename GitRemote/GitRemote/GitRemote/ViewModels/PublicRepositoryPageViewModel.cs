@@ -53,12 +53,12 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-            if ( !parameters.ContainsKey("Session") ||
+            if ( !parameters.ContainsKey(nameof(Session)) ||
                 !parameters.ContainsKey("OwnerName") ||
                 !parameters.ContainsKey("ReposName") )
                 return;
 
-            var session = parameters["Session"] as Session;
+            var session = parameters[nameof(Session)] as Session;
             var ownerName = parameters["OwnerName"] as string;
             var reposName = parameters["ReposName"] as string;
 

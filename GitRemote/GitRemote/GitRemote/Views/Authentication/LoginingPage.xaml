@@ -68,7 +68,8 @@
         <customClasses:FloatingEntry ClassId="PasswordEntry"
                                      x:Name="PasswordEntry"
                                      Text="{Binding PasswordEntryText, Mode=OneWayToSource}"
-                                     IsPassword="{Binding IsPasswordVisible, Converter={x:Static converters:InvertBoolConverter.Instance}}"
+                                     IsPassword="{Binding IsPasswordVisible,
+                                                Converter={x:Static converters:InvertBoolConverter.Instance}}"
                                      Placeholder="Password"
                                      Grid.Column="0"
                                      Grid.Row="2" />

@@ -8,6 +8,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using GitRemote.GitHub;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
@@ -61,7 +62,7 @@ namespace GitRemote.ViewModels
             _manager = new RepositoryNewsManager(data.Session, data.OwnerName, data.ReposName);
 
             News = await GetRepositoryNewsAsync();
-            OnPropertyChanged(nameof(News));
+            RaisePropertyChanged(nameof(News));
             MessagingCenter.Unsubscribe<SendDataToPublicReposParticularPagesModel>
                 (this, SendDataToPublicReposParticularPages);
             StarText = await _manager.CheckStar()
@@ -70,7 +71,7 @@ namespace GitRemote.ViewModels
 
             _parameters = new NavigationParameters
             {
-                {"Session", data.Session },
+                {nameof(Session), data.Session },
                 {"OwnerName", data.OwnerName },
                 {"ReposName", data.ReposName }
             };
@@ -87,7 +88,7 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if ( await _manager.CheckStar() )
+            if (await _manager.CheckStar())
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";

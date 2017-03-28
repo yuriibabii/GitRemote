@@ -43,7 +43,7 @@ namespace GitRemote.ViewModels.PopUp
             var milestones = await _manager.GetMilestonesAsync();
             Milestones = new ObservableCollection<MilestoneModel>();
 
-            foreach ( var milestone in milestones )
+            foreach (var milestone in milestones)
             {
                 var model = new MilestoneModel()
                 {
@@ -52,12 +52,12 @@ namespace GitRemote.ViewModels.PopUp
                     IsDescription = StringService.CheckForNullOrEmpty(milestone.Description)
                 };
 
-                if ( manager.MilestoneName == model.Title ) model.IsActivated = true;
+                if (manager.MilestoneName == model.Title) model.IsActivated = true;
 
                 Milestones.Add(model);
             }
 
-            OnPropertyChanged(nameof(Milestones));
+            RaisePropertyChanged(nameof(Milestones));
         }
 
         private async void OnClearButtonTapped()

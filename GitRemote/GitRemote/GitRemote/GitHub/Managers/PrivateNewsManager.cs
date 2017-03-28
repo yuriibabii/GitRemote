@@ -31,9 +31,9 @@ namespace GitRemote.GitHub.Managers
         /// <returns>Private Url</returns>
         public async Task<string> GetPrivateFeedUrlFromApiAsync(GitHubClient gitHubClient)
         {
-            var task = await gitHubClient.Activity.Feeds.GetFeeds();
+            var feeds = await gitHubClient.Activity.Feeds.GetFeeds();
 
-            return task.CurrentUserUrl;
+            return feeds.CurrentUserUrl;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace GitRemote.GitHub.Managers
 
                 var gitRemotePrivateFeedItems = new List<PrivateNewsModel>();
 
-                foreach ( var item in gitHubPrivateFeedItems )
+                foreach (var item in gitHubPrivateFeedItems)
                 {
                     var newsItem = new PrivateNewsModel
                     {
@@ -60,7 +60,7 @@ namespace GitRemote.GitHub.Managers
 
                     var splitedTitle = newsItem.Title?.Split(' ');
 
-                    if ( splitedTitle != null )
+                    if (splitedTitle != null)
                     {
                         newsItem.Perfomer = splitedTitle[0];
                         newsItem.ActionType = splitedTitle[1];
@@ -71,7 +71,7 @@ namespace GitRemote.GitHub.Managers
                             ? splitedTitle[2]
                             : splitedTitle[splitedTitle.Length - 1];
 
-                        switch ( newsItem.ActionType )
+                        switch (newsItem.ActionType)
                         {
                             case "added":
                                 newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Person;
@@ -95,11 +95,11 @@ namespace GitRemote.GitHub.Managers
                 return gitRemotePrivateFeedItems;
             }
 
-            catch ( WebException ex )
+            catch (WebException ex)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception("Getting private news from github failed! " + ex.Message);
             }
@@ -112,11 +112,11 @@ namespace GitRemote.GitHub.Managers
         /// <returns>Items(entries)</returns>
         private async Task<IEnumerable<XElement>> GetPrivateFeedItems()
         {
-            using ( var client = new HttpClient(new NativeMessageHandler()) )
+            using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var feed = await client.GetStringAsync(_session.GetPrivateFeedUrl());
 
-                if ( string.IsNullOrEmpty(feed) ) return new List<XElement>();
+                if (string.IsNullOrEmpty(feed)) return new List<XElement>();
 
                 var parsedFeed = XElement.Parse(feed);
 

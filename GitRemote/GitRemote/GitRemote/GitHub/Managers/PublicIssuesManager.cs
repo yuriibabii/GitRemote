@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Plugin.Share.Abstractions;
 using Xamarin.Forms;
 
 namespace GitRemote.GitHub.Managers
@@ -45,7 +46,7 @@ namespace GitRemote.GitHub.Managers
 
                 var gitRemotePublicIssues = new List<IssueModel>();
 
-                foreach ( var issue in gitHubPublicIssues )
+                foreach (var issue in gitHubPublicIssues)
                 {
                     var issueModel = new IssueModel
                     {
@@ -68,11 +69,11 @@ namespace GitRemote.GitHub.Managers
 
                 return gitRemotePublicIssues;
             }
-            catch ( WebException ex )
+            catch (WebException ex)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception("Getting issues from github failed! " + ex.Message);
             }
@@ -81,7 +82,7 @@ namespace GitRemote.GitHub.Managers
         public void CopyColors(ObservableCollection<Color> colors, IEnumerable<string> strings)
         {
             var i = 0;
-            foreach ( var s in strings )
+            foreach (var s in strings)
             {
                 colors[i] = Color.FromHex(s);
                 ++i;
@@ -116,7 +117,8 @@ namespace GitRemote.GitHub.Managers
 
         public async Task ShareLinkOnRepository()
         {
-            await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
+            var message = new ShareMessage { Url = $"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}" };
+            await CrossShare.Current.Share(message);
         }
 
         public async Task<IReadOnlyList<User>> GetAssigneesAsync()

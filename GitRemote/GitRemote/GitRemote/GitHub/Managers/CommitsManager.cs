@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Plugin.Share.Abstractions;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -34,7 +35,7 @@ namespace GitRemote.GitHub.Managers
 
         public void SetCurrentBranch(string branch)
         {
-            if ( StringService.CheckForNullOrEmpty(branch) )
+            if (StringService.CheckForNullOrEmpty(branch))
                 CurrentBranch = branch;
         }
 
@@ -55,7 +56,7 @@ namespace GitRemote.GitHub.Managers
 
                 var gitRemoteCommitsItems = new List<CommitModel>();
 
-                foreach ( var item in gitHubCommitsItems )
+                foreach (var item in gitHubCommitsItems)
                 {
                     var commitModel = new CommitModel
                     {
@@ -73,11 +74,11 @@ namespace GitRemote.GitHub.Managers
 
                 return gitRemoteCommitsItems;
             }
-            catch ( WebException ex )
+            catch (WebException ex)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception("Getting commits from github failed! " + ex.Message);
             }
@@ -120,7 +121,8 @@ namespace GitRemote.GitHub.Managers
 
         public async Task ShareLinkOnRepository()
         {
-            await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
+            var message = new ShareMessage { Url = $"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}" };
+            await CrossShare.Current.Share(message);
         }
     }
 }

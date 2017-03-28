@@ -75,7 +75,7 @@ namespace GitRemote.ViewModels
             _metricsHelper = metricsHelper;
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
-            _navigationParameters = new NavigationParameters { { "Session", _session } };
+            _navigationParameters = new NavigationParameters { { nameof(Session), _session } };
             SetProfileImageAndNickNameAsync();
         }
 

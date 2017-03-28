@@ -11,6 +11,7 @@ using Prism.Navigation;
 using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using GitRemote.GitHub;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
@@ -28,7 +29,7 @@ namespace GitRemote.ViewModels
         public DelegateCommand OpenInBrowserCommand { get; }
         #endregion
 
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private readonly IDevice _device;
         private CommitsManager _manager;
         public DelegateCommand BotPanelTapped { get; }
@@ -83,14 +84,14 @@ namespace GitRemote.ViewModels
             await task.ContinueWith(t => _manager.SetDefaultBranch());
             CurrentBranch = _manager.CurrentBranch;
             Commits = await GetCommitsAsync();
-            OnPropertyChanged(nameof(Commits));
+            RaisePropertyChanged(nameof(Commits));
             StarText = await _manager.CheckStar()
                 ? StarText = "Unstar"
                 : StarText = "Star";
 
             _parameters = new NavigationParameters
             {
-                {"Session", data.Session },
+                {nameof(Session), data.Session },
                 {"OwnerName", data.OwnerName },
                 {"ReposName", data.ReposName }
             };
@@ -99,11 +100,11 @@ namespace GitRemote.ViewModels
         private async void OnBranchSelected(BranchSelectModel selectBranchPopUpModel)
         {
             _currentSourceType = selectBranchPopUpModel.Type;
-            OnPropertyChanged(nameof(BranchIcon));
+            RaisePropertyChanged(nameof(BranchIcon));
             _manager.SetCurrentBranch(selectBranchPopUpModel.Name);
             CurrentBranch = _manager.CurrentBranch;
             Commits = await GetCommitsAsync();
-            OnPropertyChanged(nameof(Commits));
+            RaisePropertyChanged(nameof(Commits));
         }
 
         private void OnBotPanelTapped()
@@ -122,7 +123,7 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if ( await _manager.CheckStar() )
+            if (await _manager.CheckStar())
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Plugin.Share.Abstractions;
 using static GitRemote.Services.FontIconsService.Octicons;
 
 namespace GitRemote.GitHub.Managers
@@ -228,7 +229,8 @@ namespace GitRemote.GitHub.Managers
 
         public async Task ShareLinkOnRepository()
         {
-            await CrossShare.Current.ShareLink($"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}");
+            var message = new ShareMessage { Url = $"{ConstantsService.GitHubOfficialPageUrl}{_ownerName}/{_reposName}" };
+            await CrossShare.Current.Share(message);
         }
     }
 }

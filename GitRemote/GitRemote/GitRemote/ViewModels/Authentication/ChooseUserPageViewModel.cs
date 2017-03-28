@@ -120,7 +120,7 @@ namespace GitRemote.ViewModels.Authentication
             var token = _securedDataProvider.Retreive(ConstantsService.ProviderName, currentCellName);
 
             UserManager.SetLastUser(currentCellName);
-            var parameters = new NavigationParameters { { "Session", new Session(currentCellName, token.Properties.First().Value) } };
+            var parameters = new NavigationParameters { { nameof(Session), new Session(currentCellName, token.Properties.First().Value) } };
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
                 UriKind.Absolute);
             _currentCell = null;

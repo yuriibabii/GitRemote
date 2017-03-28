@@ -37,9 +37,9 @@ namespace GitRemote.ViewModels
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
-            if ( !parameters.ContainsKey("Session") ) return;
+            if ( !parameters.ContainsKey(nameof(Session)) ) return;
 
-            _session = parameters["Session"] as Session;
+            _session = parameters[nameof(Session)] as Session;
 
             _notificationsManager = new NotificationsManager(_session);
 

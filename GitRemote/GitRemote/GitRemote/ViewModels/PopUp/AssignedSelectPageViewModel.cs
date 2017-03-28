@@ -42,7 +42,7 @@ namespace GitRemote.ViewModels.PopUp
             var assignees = await _manager.GetAssigneesAsync();
             Assignees = new ObservableCollection<AssigneeModel>();
 
-            foreach ( var assignee in assignees )
+            foreach (var assignee in assignees)
             {
                 var model = new AssigneeModel
                 {
@@ -50,12 +50,12 @@ namespace GitRemote.ViewModels.PopUp
                     AvatarUrl = assignee.AvatarUrl
                 };
 
-                if ( manager.AssignedName == model.Name ) model.IsActivated = true;
+                if (manager.AssignedName == model.Name) model.IsActivated = true;
 
                 Assignees.Add(model);
             }
 
-            OnPropertyChanged(nameof(Assignees));
+            RaisePropertyChanged(nameof(Assignees));
         }
 
         private async void OnClearButtonTapped()

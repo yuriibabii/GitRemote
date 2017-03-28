@@ -46,7 +46,7 @@ namespace GitRemote.ViewModels
             {
                 { "OwnerName", ownerName},
                 { "ReposName", reposName},
-                { "Session", _session}
+                { nameof(Session), _session}
             };
 
             var path = TappedItem.StarredRepositoryType == "Fork"

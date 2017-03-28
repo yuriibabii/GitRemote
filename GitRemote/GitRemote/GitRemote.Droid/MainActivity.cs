@@ -32,7 +32,7 @@ namespace GitRemote.Droid
 #if DEBUG
             UISleuth.Inspector.Init();
             // optional
-            UISleuth.Inspector.ShowAcceptingConnections();
+            //UISleuth.Inspector.ShowAcceptingConnections();
 #endif
             MessagingCenter.Subscribe<string>(this, SetIsExecuteHardwareBack, OnSetExecuteHardwareBack);
         }

@@ -60,7 +60,8 @@ namespace GitRemote.GitHub
             }
             catch ( Exception ex )
             {
-                throw new Exception(ex.Message + " (Something wrong with 2FA token generation)");
+                //throw new Exception(ex.Message + " (Something wrong with 2FA token generation)");
+                throw;
             }
         }
 

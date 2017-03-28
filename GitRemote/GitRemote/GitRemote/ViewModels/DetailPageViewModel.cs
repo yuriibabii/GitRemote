@@ -38,15 +38,15 @@ namespace GitRemote.ViewModels
 
         private async void OnNotificationsTapped()
         {
-            var navigationParameters = new NavigationParameters { { "Session", _session } };
+            var navigationParameters = new NavigationParameters { { nameof(Session), _session } };
 
             await _navigationService.NavigateAsync($"{nameof(NotificationsPage)}", navigationParameters);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if ( parameters.ContainsKey("Session") )
-                _session = parameters["Session"] as Session;
+            if ( parameters.ContainsKey(nameof(Session)) )
+                _session = parameters[nameof(Session)] as Session;
 
             MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
         }
