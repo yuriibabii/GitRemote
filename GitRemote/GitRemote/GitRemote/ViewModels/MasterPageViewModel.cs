@@ -91,9 +91,9 @@ namespace GitRemote.ViewModels
             {
                 var user = await gitHubClient.User.Current();
                 ProfileImageUrl = user?.AvatarUrl;
-                ProfileNickName = StringService.CheckForNullOrEmpty(user?.Name)
-                    ? user?.Name
-                    : user?.Login;
+                ProfileNickName = StringService.IsNullOrEmpty(user?.Name)
+                    ? user?.Login 
+                    : user?.Name;
             }
             catch ( WebException )
             {

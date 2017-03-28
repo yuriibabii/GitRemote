@@ -3,80 +3,91 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.Authentication.ChooseUserPage"
-             Title ="Existing Users">
-  <ContentPage.ToolbarItems>
-    <ToolbarItem x:Name="AddButton"
-                 Icon="ic_menu_ic_person_add.png"
-                 Command="{Binding AddCommand}"/>
-  </ContentPage.ToolbarItems>
-  <ListView x:Name="ListOfUsers"
-            ItemsSource="{Binding Users}"
-            VerticalOptions="Fill"
-            RowHeight="80"
-            SeparatorVisibility="None">
+             Title="Existing Users">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddButton"
+                     Icon="ic_menu_ic_person_add.png"
+                     Command="{Binding AddCommand}" />
+    </ContentPage.ToolbarItems>
+    <controls:FlowListView x:Name="ListOfUsers"
+                           FlowItemsSource="{Binding Users}"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FlowColumnCount="1"
+                           SeparatorVisibility="None"
+                           HasUnevenRows="False">
 
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell x:Name="Cell">
-          <ViewCell.View>
-            <StackLayout Padding="20, 20, 20, 0"
-                         Orientation="Horizontal">
-              <Label Text="{Binding }"
-                     FontSize="32"
-                     HorizontalOptions="EndAndExpand"
-                     VerticalOptions="Center"
-                     LineBreakMode="MiddleTruncation"
-                     WidthRequest="200"/>
+        <controls:FlowListView.FlowColumnTemplate>
+            <DataTemplate>
+                <Grid 
+                      x:Name="Layout"
+                      ColumnSpacing="10"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
 
-              <Image Source="ic_menu_delete_button.png"
-                     HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="Center"
-                     HeightRequest="32"
-                     WidthRequest="32"
-                     IsVisible="False"
-                     IsEnabled="True"
-                     BackgroundColor="#EDEDED">
-               
-                <Image.GestureRecognizers>
-                  <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
+                    <Label Text="{Binding .}"
+                           FontSize="32"
+                           TextColor="Black"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"
+                           LineBreakMode="MiddleTruncation"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+
+                    <Image Source="ic_menu_delete_button.png"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="32"
+                           WidthRequest="32"
+                           IsVisible="False"
+                           BackgroundColor="#EDEDED"
+                           Grid.Column="1"
+                           Grid.Row="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
                                                           Path=BindingContext.DeleteCommand}"
-                                        NumberOfTapsRequired="1">
-                  </TapGestureRecognizer>
-                </Image.GestureRecognizers>
-              </Image>
-              
-              <Image Source="ic_menu_open_button.png"
-                     HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="Center"
-                     HeightRequest="30"
-                     WidthRequest="30"
-                     IsVisible="False"
-                     IsEnabled="True"
-                     BackgroundColor="#EDEDED">
+                                                  NumberOfTapsRequired="1">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
 
-                <Image.GestureRecognizers>
-                  <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
+                    <Image Source="ic_menu_open_button.png"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="30"
+                           WidthRequest="30"
+                           IsVisible="False"
+                           BackgroundColor="#EDEDED"
+                           Grid.Column="2"
+                           Grid.Row="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name = ListOfUsers},
                                                             Path=BindingContext.OpenCommand}"
-                                        NumberOfTapsRequired="1">
-                  </TapGestureRecognizer>
-                </Image.GestureRecognizers>
-              </Image>
-            </StackLayout>
-          </ViewCell.View>
-          <behaviors:Interaction.Behaviors>
-            <behaviors:BehaviorCollection>
-              <behaviors:EventToCommand EventName="Tapped"
-                                        Command="{Binding Source = {x:Reference Name = ListOfUsers},
+                                                  NumberOfTapsRequired="1">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source = {x:Reference Name = ListOfUsers},
                                                           Path=BindingContext.ListItemTappedCommand}"
-                                        CommandParameter="{x:Reference Name=Cell}">
-              </behaviors:EventToCommand>
-            </behaviors:BehaviorCollection>
-          </behaviors:Interaction.Behaviors>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>
+                                              CommandParameter="{x:Reference Name=Layout}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </DataTemplate>
+        </controls:FlowListView.FlowColumnTemplate>
+    </controls:FlowListView>
 
 </ContentPage>

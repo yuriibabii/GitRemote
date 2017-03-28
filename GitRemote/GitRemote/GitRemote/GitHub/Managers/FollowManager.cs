@@ -28,7 +28,7 @@ namespace GitRemote.GitHub.Managers
                 IEnumerable<User> gitHubFollowUsers;
 
                 //Switch Follow page
-                if ( IsActiveFollowersPage )
+                if (IsActiveFollowersPage)
                 {
                     IsActiveFollowersPage = !IsActiveFollowersPage;
                     gitHubFollowUsers = await _gitHubClient.User.Followers.GetAllForCurrent();
@@ -41,11 +41,11 @@ namespace GitRemote.GitHub.Managers
 
                 var gitRemoteFollowUsers = new List<FollowModel>();
 
-                foreach ( var user in gitHubFollowUsers )
+                foreach (var user in gitHubFollowUsers)
                 {
                     var followItem = new FollowModel()
                     {
-                        Name = StringService.CheckForNullOrEmpty(user?.Name) ? user?.Name : user?.Login,
+                        Name = StringService.IsNullOrEmpty(user?.Name) ? user?.Login : user?.Name,
                         ImageUrl = user?.AvatarUrl
                     };
 
@@ -55,11 +55,11 @@ namespace GitRemote.GitHub.Managers
                 return gitRemoteFollowUsers;
             }
 
-            catch ( WebException ex )
+            catch (WebException ex)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception("Getting follow from github failed! " + ex.Message);
             }

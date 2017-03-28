@@ -49,9 +49,9 @@ namespace GitRemote.GitHub.Managers
                         IsCommented = pullRequest.Comments > 0,
                         CommentsCount = pullRequest.Comments,
                         Title = pullRequest.Title,
-                        OwnerName = StringService.CheckForNullOrEmpty(pullRequest.User.Name)
-                            ? pullRequest.User.Name
-                            : pullRequest.User.Login,
+                        OwnerName = StringService.IsNullOrEmpty(pullRequest.User.Name)
+                            ? pullRequest.User.Login
+                            : pullRequest.User.Name,
                         ImageUrl = pullRequest.User.AvatarUrl,
                         CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(pullRequest.CreatedAt)),
                         Nomer = Convert.ToString(pullRequest.Number),

@@ -19,7 +19,7 @@ namespace GitRemote.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            App.ScreenWidth = ( int )( Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density );
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
             FlowListView.Init();
             CachedImageRenderer.Init();
             ToolbarResource = Resource.Layout.toolbar;
@@ -39,7 +39,7 @@ namespace GitRemote.Droid
 
         private void OnSetExecuteHardwareBack(string s)
         {
-            if ( StringService.CheckForNullOrEmpty(s) )
+            if (!StringService.IsNullOrEmpty(s))
                 _isExecuteHardwareBack = Convert.ToBoolean(s);
         }
 
@@ -47,7 +47,7 @@ namespace GitRemote.Droid
         {
             MessagingCenter.Send("JustIgnore", HardwareBackPressed);
 
-            if ( !_isExecuteHardwareBack )
+            if (!_isExecuteHardwareBack)
             {
                 _isExecuteHardwareBack = true;
                 return;

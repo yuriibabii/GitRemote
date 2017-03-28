@@ -68,9 +68,9 @@ namespace GitRemote.GitHub.Managers
                         CommentsCount = issue.Comments,
                         Title = issue.Title,
                         Repository = issue.Repository.FullName,
-                        OwnerName = StringService.CheckForNullOrEmpty(issue.User.Name)
-                            ? issue.User.Name
-                            : issue.User.Login,
+                        OwnerName = StringService.IsNullOrEmpty(issue.User.Name)
+                            ? issue.User.Login
+                            : issue.User.Name,
                         ImageUrl = issue.User.AvatarUrl,
                         CreatedTime = TimeService.ConvertToFriendly(Convert.ToString(issue.CreatedAt)),
                         Nomer = Convert.ToString(issue.Number),

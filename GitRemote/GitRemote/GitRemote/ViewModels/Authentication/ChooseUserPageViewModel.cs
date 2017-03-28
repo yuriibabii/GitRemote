@@ -10,6 +10,7 @@ using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using DLToolkit.Forms.Controls;
 using Xamarin.Forms;
 using Label = Xamarin.Forms.Label;
 using LoginingPage = GitRemote.Views.Authentication.LoginingPage;
@@ -20,12 +21,12 @@ namespace GitRemote.ViewModels.Authentication
     {
         public ObservableCollection<string> Users => _userManager?.GetAllUsers();
 
-        private ViewCell _previousCell;
-        private ViewCell _currentCell;
-        private StackLayout _currentStackLayout;
-        private StackLayout _previousStackLayout;
+        private Grid _previousCell;
+        private Grid _currentCell;
+        private Grid _currentLayout;
+        private Grid _previousLayout;
 
-        public DelegateCommand<ViewCell> ListItemTappedCommand { get; }
+        public DelegateCommand<Grid> ListItemTappedCommand { get; }
         public DelegateCommand AddCommand { get; }
         public DelegateCommand DeleteCommand { get; }
         public DelegateCommand OpenCommand { get; }
@@ -44,7 +45,7 @@ namespace GitRemote.ViewModels.Authentication
             _securedDataProvider = securedDataProvider;
             _pageDialogService = pageDialogService;
             _userManager = new UserManager(_securedDataProvider);
-            ListItemTappedCommand = new DelegateCommand<ViewCell>(OnListItemTapped);
+            ListItemTappedCommand = new DelegateCommand<Grid>(OnListItemTapped);
             AddCommand = new DelegateCommand(OnAdd);
             DeleteCommand = new DelegateCommand(OnDelete);
             OpenCommand = new DelegateCommand(OnOpen);
@@ -55,39 +56,39 @@ namespace GitRemote.ViewModels.Authentication
         /// Sets property background and Hides/Shows delete and open buttons(images)
         /// </summary>
         /// <param name="cell">Cell that is tapped</param>
-        public void OnListItemTapped(ViewCell cell)
+        public void OnListItemTapped(Grid cell)
         {
             _currentCell = cell;
 
-            if ( _previousCell == _currentCell ) return; // If it is the same cell
+            if (_previousCell == _currentCell) return; // If it is the same cell
 
-            ( ( ListView )_currentCell.Parent ).SelectedItem = 0;
+            //((FlowListView)_currentCell.Parent).SelectedItem = 0;
 
-            if ( _previousCell != null )
-                _previousCell.View.BackgroundColor = Color.Default; // Clears color from previous tapped list item
+            if (_previousCell != null)
+                _previousCell.BackgroundColor = Color.Default; // Clears color from previous tapped list item
 
-            _currentCell.View.BackgroundColor = Color.FromHex("#EDEDED");
+            _currentCell.BackgroundColor = Color.FromHex("#EDEDED");
 
-            _currentStackLayout = _currentCell.View as StackLayout;
+            _currentLayout = _currentCell as Grid;
 
-            if ( _currentStackLayout != null ) //Shows buttons of current item
+            if (_currentLayout != null) //Shows buttons of current item
             {
-                _currentStackLayout.Children[1].IsVisible = true;
-                _currentStackLayout.Children[1].IsEnabled = true;
-                _currentStackLayout.Children[2].IsVisible = true;
-                _currentStackLayout.Children[2].IsEnabled = true;
+                _currentLayout.Children[1].IsVisible = true;
+                _currentLayout.Children[1].IsEnabled = true;
+                _currentLayout.Children[2].IsVisible = true;
+                _currentLayout.Children[2].IsEnabled = true;
             }
 
-            if ( _previousStackLayout != null ) //Hides buttons of previous item
+            if (_previousLayout != null) //Hides buttons of previous item
             {
-                _previousStackLayout.Children[1].IsVisible = false;
-                _previousStackLayout.Children[1].IsEnabled = false;
-                _previousStackLayout.Children[2].IsVisible = false;
-                _previousStackLayout.Children[2].IsEnabled = false;
+                _previousLayout.Children[1].IsVisible = false;
+                _previousLayout.Children[1].IsEnabled = false;
+                _previousLayout.Children[2].IsVisible = false;
+                _previousLayout.Children[2].IsEnabled = false;
             }
 
             _previousCell = _currentCell;
-            _previousStackLayout = _currentStackLayout;
+            _previousLayout = _currentLayout;
         }
 
         public void OnAdd()
@@ -101,10 +102,10 @@ namespace GitRemote.ViewModels.Authentication
             var answer = await _pageDialogService.DisplayAlertAsync("Delete Operation",
                                                               "Are you sure that you want to delete this user?",
                                                               "Yes", "No");
-            if ( answer )
-                if ( _currentCell != null )
+            if (answer)
+                if (_currentCell != null)
                 {
-                    var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
+                    var currentCellName = ((Label)(_currentCell).Children[0]).Text;
                     _securedDataProvider.Clear(currentCellName);
                     Users.Remove(currentCellName);
                 }
@@ -114,15 +115,18 @@ namespace GitRemote.ViewModels.Authentication
 
         public void OnOpen()
         {
-            if ( _currentCell == null ) return;
+            if (_currentCell == null) return;
 
-            var currentCellName = ( ( Label )( ( StackLayout )_currentCell.View ).Children[0] ).Text;
+            var currentCellName = ((Label)(_currentCell).Children[0]).Text;
             var token = _securedDataProvider.Retreive(ConstantsService.ProviderName, currentCellName);
 
             UserManager.SetLastUser(currentCellName);
-            var parameters = new NavigationParameters { { nameof(Session), new Session(currentCellName, token.Properties.First().Value) } };
-            var navigationStack = new Uri("https://Necessary/" + $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}",
-                UriKind.Absolute);
+            var parameters = new NavigationParameters
+            {
+                { nameof(Session), new Session(currentCellName, token.Properties.First().Value) }
+            };
+
+            var navigationStack = new Uri("https://Necessary/" + $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}", UriKind.Absolute);
             _currentCell = null;
             _navigationService.NavigateAsync(navigationStack, parameters, animated: false);
         }

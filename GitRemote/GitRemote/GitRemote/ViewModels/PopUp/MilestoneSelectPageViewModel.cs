@@ -49,7 +49,7 @@ namespace GitRemote.ViewModels.PopUp
                 {
                     Title = milestone.Title,
                     Description = milestone.Description,
-                    IsDescription = StringService.CheckForNullOrEmpty(milestone.Description)
+                    IsDescription = !StringService.IsNullOrEmpty(milestone.Description)
                 };
 
                 if (manager.MilestoneName == model.Title) model.IsActivated = true;

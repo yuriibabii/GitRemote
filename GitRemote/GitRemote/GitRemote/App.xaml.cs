@@ -20,9 +20,9 @@ namespace GitRemote
         {
             InitializeComponent();
 
-            var path = StringService.CheckForNullOrEmpty(UserManager.GetLastUserFromStorage())
-                    ? $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}"
-                    : $"{nameof(StartPage)}";
+            var path = StringService.IsNullOrEmpty(UserManager.GetLastUserFromStorage())
+                    ? $"{nameof(StartPage)}"
+                    : $"{nameof(PrivateProfilePage)}/{nameof(NavigationBarPage)}/{nameof(DetailPage)}";
 
             NavigationService.NavigateAsync(path);
 

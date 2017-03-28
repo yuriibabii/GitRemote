@@ -32,13 +32,13 @@ namespace GitRemote.GitHub
                 var getTokenTask = await client.Authorization.Create(newAuthorization);
                 return getTokenTask.Token;
             }
-            catch ( TwoFactorRequiredException )
+            catch (TwoFactorRequiredException)
             {
                 var parameters = new NavigationParameters { { "Client", client } };
                 await _navigationService.NavigateAsync($"{nameof(TwoFactorAuthPage)}", parameters, animated: false);
                 return "2FA";
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message + " (Something wrong with token generation)");
             }
@@ -58,10 +58,9 @@ namespace GitRemote.GitHub
                 var getTokenTask = await client.Authorization.Create(newAuthorization, twoFactorAuthCode);
                 return getTokenTask.Token;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                //throw new Exception(ex.Message + " (Something wrong with 2FA token generation)");
-                throw;
+                throw new Exception(ex.Message + " (Something wrong with 2FA token generation)");
             }
         }
 

@@ -22,7 +22,7 @@ namespace GitRemote.GitHub.Managers
 
         public static void SetGitHubClient(Session session)
         {
-            if ( _gitHubClient == null )
+            if (_gitHubClient == null)
                 _gitHubClient = new GitHubClient(new ProductHeaderValue(ConstantsService.AppName),
                     new InMemoryCredentialStore(new Credentials(session?.GetToken())));
         }
@@ -33,7 +33,7 @@ namespace GitRemote.GitHub.Managers
             {
                 IReadOnlyList<Gist> gitHubGists;
 
-                switch ( Tab )
+                switch (Tab)
                 {
                     case "Mine":
                         Tab = "Starred";
@@ -55,7 +55,7 @@ namespace GitRemote.GitHub.Managers
 
                 var gitRemoteGists = new List<GistModel>();
 
-                foreach ( var gist in gitHubGists )
+                foreach (var gist in gitHubGists)
                 {
                     var gistModel = new GistModel
                     {
@@ -67,27 +67,27 @@ namespace GitRemote.GitHub.Managers
                         ImageUrl = gist.Owner?.AvatarUrl ?? NoAvatarImage
                     };
 
-                    if ( gist.Owner == null )
+                    if (gist.Owner == null)
                         gistModel.OwnerName = "Anonymous";
                     else
-                        gistModel.OwnerName = StringService.CheckForNullOrEmpty(gist.Owner?.Name)
-                            ? gist.Owner?.Name
-                            : gist.Owner?.Login;
+                        gistModel.OwnerName = StringService.IsNullOrEmpty(gist.Owner?.Name)
+                            ? gist.Owner?.Login
+                            : gist.Owner?.Name;
 
-                    gistModel.Description = StringService.CheckForNullOrEmpty(gist.Description)
-                        ? gist.Description
-                        : "No description given.";
+                    gistModel.Description = StringService.IsNullOrEmpty(gist.Description)
+                        ? "No description given."
+                        : gist.Description;
 
                     gitRemoteGists.Add(gistModel);
                 }
 
                 return gitRemoteGists;
             }
-            catch ( WebException ex )
+            catch (WebException ex)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception("Getting gists from github failed! " + ex.Message);
             }
@@ -103,7 +103,7 @@ namespace GitRemote.GitHub.Managers
             var mineTitleWidth = metricsHelper.GetWidthOfString("MINE") + 2 * spaceWidth;
             var starredTitleWidth = metricsHelper.GetWidthOfString("STARRED");
             var allTitleWidth = metricsHelper.GetWidthOfString("ALL") + 2 * spaceWidth;
-            var restOfSpace = App.ScreenWidth - ( mineTitleWidth + starredTitleWidth + allTitleWidth ) - 7;
+            var restOfSpace = App.ScreenWidth - (mineTitleWidth + starredTitleWidth + allTitleWidth) - 7;
             var minePageTabWidth = restOfSpace / 2;
             var allPageTabWidth = restOfSpace - minePageTabWidth;
             var amountOfMineTabSpaces = minePageTabWidth / spaceWidth;
@@ -119,9 +119,9 @@ namespace GitRemote.GitHub.Managers
         {
             return Tab == "Mine"
                 ? _minePageTitle
-                : ( Tab == "Starred"
+                : (Tab == "Starred"
                         ? _starredPageTitle
-                        : _allPageTitle );
+                        : _allPageTitle);
         }
     }
 

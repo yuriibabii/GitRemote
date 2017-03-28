@@ -35,7 +35,7 @@ namespace GitRemote.GitHub.Managers
 
         public void SetCurrentBranch(string branch)
         {
-            if (StringService.CheckForNullOrEmpty(branch))
+            if (!StringService.IsNullOrEmpty(branch))
                 CurrentBranch = branch;
         }
 

@@ -23,10 +23,6 @@ namespace GitRemote.ViewModels.Authentication
         private readonly AccountManager _accountManager;
         private readonly IDevice _device;
         public DelegateCommand CheckedCommand => new DelegateCommand(OnCheckBoxTapped);
-        //public DelegateCommand LogInCommand => new DelegateCommand(OnLogInTapped,
-        //    () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText));
-        //public DelegateCommand LogInCommand { get; } = new DelegateCommand(OnLogInTapped,
-        //    () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText));
         public DelegateCommand LogInCommand { get; }
         public DelegateCommand HyperLinkTappedCommand => new DelegateCommand(OnHyperLinkTapped);
 
@@ -72,7 +68,8 @@ namespace GitRemote.ViewModels.Authentication
             _navigationService = navigationService;
             _keyboardHelper = keyboardHelper;
             _accountManager = new AccountManager(new ClientAuthorization(_navigationService), securedDataProvider);
-            Func<bool> canExecuteLogIn = () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText);
+            Func<bool> canExecuteLogIn =
+                 () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText);
             LogInCommand = new DelegateCommand(OnLogInTapped, canExecuteLogIn);
         }
 

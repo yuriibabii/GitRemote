@@ -53,7 +53,7 @@ namespace GitRemote.GitHub.Managers
         public ObservableCollection<FileExplorerModel> GetFiles(string pathPart)
         {
             var collection = new ObservableCollection<FileExplorerModel>();
-            if (StringService.CheckForNullOrEmpty(pathPart))
+            if (!StringService.IsNullOrEmpty(pathPart))
                 _currentPath.Add(pathPart);
             var stringPath = _currentPath.JoinStrings("");
             var index = _currentPath.Count - 1;
@@ -84,7 +84,7 @@ namespace GitRemote.GitHub.Managers
 
         public async Task SetCurrentBranchAsync(string branch = "")
         {
-            if (StringService.CheckForNullOrEmpty(branch))
+            if (!StringService.IsNullOrEmpty(branch))
                 CurrentBranch = branch;
             else
                 CurrentBranch = await GetDefaultBranchAsync();
