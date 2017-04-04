@@ -18,12 +18,12 @@
                            HorizontalOptions="FillAndExpand"
                            FlowColumnCount="1"
                            SeparatorVisibility="None"
-                           HasUnevenRows="False">
+                           HasUnevenRows="True">
+        <!-- "HasUnevenRows=True" Ensure that height of rows is normal, without bug-->
 
         <controls:FlowListView.FlowColumnTemplate>
             <DataTemplate>
-                <Grid 
-                      x:Name="Layout"
+                <Grid x:Name="Layout"
                       ColumnSpacing="10"
                       HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand">
@@ -33,15 +33,16 @@
                         <ColumnDefinition Width="50" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
+                        <RowDefinition Height="55" />
                     </Grid.RowDefinitions>
 
                     <Label Text="{Binding .}"
                            FontSize="32"
                            TextColor="Black"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
+                           VerticalOptions="FillAndExpand"
                            HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            LineBreakMode="MiddleTruncation"
                            Grid.Column="0"
                            Grid.Row="0"/>
