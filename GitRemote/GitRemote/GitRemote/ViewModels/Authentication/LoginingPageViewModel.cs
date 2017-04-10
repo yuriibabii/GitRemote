@@ -10,6 +10,8 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Threading.Tasks;
+using GitRemote.CustomClasses;
 using Xamarin.Forms;
 using static GitRemote.Services.FontIconsService.FontAwesome;
 
@@ -71,11 +73,11 @@ namespace GitRemote.ViewModels.Authentication
             Func<bool> canExecuteLogIn =
                  () => !StringService.IsNullOrEmpty(_entries.LoginText, _entries.PasswordText);
             LogInCommand = new DelegateCommand(OnLogInTapped, canExecuteLogIn);
+            _keyboardHelper.ShowKeyboard();
         }
 
         public void OnCheckBoxTapped()
         {
-            _keyboardHelper.ShowKeyboard();
             IsPasswordVisible = !IsPasswordVisible;
         }
 

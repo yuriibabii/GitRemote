@@ -85,7 +85,6 @@
     <Compile Include="Services\ConstantsService.cs" />
     <Compile Include="DI\IKeyboardHelper.cs" />
     <Compile Include="DI\ISecuredDataProvider.cs" />
-    <Compile Include="DI\IViewSaver.cs" />
     <Compile Include="Services\FontIconsService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\StringService.cs" />

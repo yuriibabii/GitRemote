@@ -1,8 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace GitRemote.CustomClasses
 {
-    public class FloatingEntry : Entry
-    {
-    }
+    public class FloatingEntry : Entry { }
 }

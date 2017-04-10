@@ -5,5 +5,7 @@
         void ShowKeyboard();
 
         void HideKeyboard();
+
+        bool IsKeyboard();
     }
 }

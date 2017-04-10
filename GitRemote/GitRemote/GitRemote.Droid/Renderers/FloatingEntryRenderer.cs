@@ -1,3 +1,4 @@
+using System;
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
@@ -7,6 +8,8 @@ using GitRemote.Droid.DependencyServices;
 using GitRemote.Droid.Renderers;
 using GitRemote.ViewModels.Authentication;
 using System.ComponentModel;
+using Android.Content;
+using Android.Graphics;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Color = Xamarin.Forms.Color;
@@ -17,17 +20,15 @@ using View = Android.Views.View;
 
 namespace GitRemote.Droid.Renderers
 {
-    public class FloatingEntryRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<Entry, View>
+    public class FloatingEntryRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<FloatingEntry, View>
     {
         private TextInputLayout _nativeView;
 
-        private TextInputLayout NativeView => _nativeView ?? ( _nativeView = InitializeNativeView() );
+        private TextInputLayout NativeView => _nativeView ?? (_nativeView = InitializeNativeView());
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<FloatingEntry> e)
         {
             base.OnElementChanged(e);
-
-            if ( e.OldElement != null ) return;
 
             // FloatingEntry Render Staff
             #region
@@ -41,63 +42,34 @@ namespace GitRemote.Droid.Renderers
             SetIsPassword();
             #endregion
 
-            if ( Control == null ) return;
+            if (Control == null) return;
 
-            switch ( e.NewElement.ClassId )
+            if (e.NewElement == null) return;
+
+            if (e.NewElement.ClassId == "LoginEntry")
             {
-                case "LoginEntry":
-                    ViewSaver.SaveLoginView(Control);
-                    break;
-                case "PasswordEntry":
-                    SetSendButtonAction();
-                    ViewSaver.SavePasswordView(Control);
-                    break;
+                Control.Selected = true;
+                Control.RequestFocusFromTouch();
             }
+            else if (e.NewElement.ClassId == "PasswordEntry")
+                SetSendButtonAction();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if ( e.PropertyName == Entry.PlaceholderProperty.PropertyName )
-            {
-                SetHintText();
-            }
-
-            if ( e.PropertyName == Entry.TextColorProperty.PropertyName )
-            {
-                SetTextColor();
-            }
-
-            if ( e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName )
-            {
-                SetBackgroundColor();
-            }
-
-            if ( e.PropertyName == Entry.IsPasswordProperty.PropertyName )
-            {
-                SetIsPassword();
-            }
-
-            if ( e.PropertyName == Entry.TextProperty.PropertyName )
-            {
-                SetText();
-            }
-
+            if (e.PropertyName == Entry.PlaceholderProperty.PropertyName) SetHintText();
+            if (e.PropertyName == Entry.TextColorProperty.PropertyName) SetTextColor();
+            if (e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName) SetBackgroundColor();
+            if (e.PropertyName == Entry.IsPasswordProperty.PropertyName) SetIsPassword();
+            if (e.PropertyName == Entry.TextProperty.PropertyName) SetText();
         }
 
         private void EditTextOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             Element.Text = textChangedEventArgs.Text.ToString();
-
-            //Sets cursor to the end of entry
-            NativeView.EditText.SetSelection(Element.Text.Length);
-        }
-
-        private void EditTextOnFocusChanged(object sender, FocusChangeEventArgs focusChangedEventArgs)
-        {
-            if ( focusChangedEventArgs.HasFocus )
-                ViewSaver.SetLastView(Element.ClassId);
+            NativeView.EditText.SetSelection(Element.Text.Length); //Sets cursor to the end of entry
         }
 
         private void SetText()
@@ -124,7 +96,7 @@ namespace GitRemote.Droid.Renderers
 
         private void SetTextColor()
         {
-            if ( Element.TextColor == Color.Default )
+            if (Element.TextColor == Color.Default)
                 NativeView.EditText.SetTextColor(NativeView.EditText.TextColors);
             else
                 NativeView.EditText.SetTextColor(Element.TextColor.ToAndroid());
@@ -134,7 +106,6 @@ namespace GitRemote.Droid.Renderers
         {
             var view = FindViewById<TextInputLayout>(Resource.Id.textInputLayout);
             view.EditText.TextChanged += EditTextOnTextChanged;
-            view.EditText.FocusChange += EditTextOnFocusChanged;
             return view;
         }
 
@@ -144,23 +115,21 @@ namespace GitRemote.Droid.Renderers
         }
 
         /// <summary>
-        /// If Action of our entry is Send than call method from Portable
+        /// If Action of our entry is Send than call method from PCL
         /// </summary>
         private void SetSendButtonAction()
         {
             NativeView.EditText.EditorAction += (sender, e) =>
             {
-                if ( e.ActionId == ImeAction.Send )
+                if (e.ActionId == ImeAction.Send)
                 {
-                    if ( ( ( LoginingPageViewModel )Element.BindingContext ).LogInCommand.CanExecute() )
-                        ( ( LoginingPageViewModel )Element.BindingContext ).LogInCommand.Execute();
+                    if (((LoginingPageViewModel)Element.BindingContext).LogInCommand.CanExecute())
+                        ((LoginingPageViewModel)Element.BindingContext).LogInCommand.Execute();
                 }
                 else
                     e.Handled = false;
             };
         }
-
-
     }
 
 }

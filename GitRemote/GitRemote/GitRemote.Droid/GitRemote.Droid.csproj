@@ -238,7 +238,6 @@
     <Compile Include="DependencyServices\KeyboardHelper.cs" />
     <Compile Include="DependencyServices\MetricsHelper.cs" />
     <Compile Include="DependencyServices\SecuredDataProvider.cs" />
-    <Compile Include="DependencyServices\ViewSaver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Renderers\CodeEntryRenderer.cs" />

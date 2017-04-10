@@ -4,33 +4,27 @@ using GitRemote.DI;
 using GitRemote.Droid.DependencyServices;
 using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(KeyboardHelper))]
+[assembly: Dependency(typeof(KeyboardHelper))]
 namespace GitRemote.Droid.DependencyServices
 {
     public class KeyboardHelper : Java.Lang.Object, IKeyboardHelper
     {
-        private Context _context;
-        private Android.Views.View _currentView;
-
         public void ShowKeyboard()
         {
-            _currentView = ViewSaver.GetLastView() == "LoginEntry" ? ViewSaver.GetLoginView() : ViewSaver.GetPasswordView();
-            _currentView.RequestFocus();
-            _context = Forms.Context;
-            var inputMethodManager = _context.GetSystemService(Context.InputMethodService) as InputMethodManager;
-            inputMethodManager?.ShowSoftInput(_currentView, ShowFlags.Forced);
-            //inputMethodManager?.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
+            var inputMethodManager = Forms.Context.GetSystemService(Context.InputMethodService) as InputMethodManager;
+            inputMethodManager?.ToggleSoftInput(ShowFlags.Implicit, 0);
         }
 
         public void HideKeyboard()
         {
-            _currentView = ViewSaver.GetLastView() == "LoginEntry" ? ViewSaver.GetLoginView() : ViewSaver.GetPasswordView();
-            _currentView.ClearFocus();
-            _context = Forms.Context;
-            var inputMethodManager = _context.GetSystemService(Context.InputMethodService) as InputMethodManager;
-            inputMethodManager?.HideSoftInputFromWindow(_currentView.WindowToken, HideSoftInputFlags.None);
+            var inputMethodManager = Forms.Context.GetSystemService(Context.InputMethodService) as InputMethodManager;
+            inputMethodManager?.ToggleSoftInput(0, HideSoftInputFlags.ImplicitOnly);
         }
 
-
+        public bool IsKeyboard()
+        {
+            var inputMethodManager = Forms.Context.GetSystemService(Context.InputMethodService) as InputMethodManager;
+            return inputMethodManager?.IsAcceptingText ?? false;
+        }
     }
 }

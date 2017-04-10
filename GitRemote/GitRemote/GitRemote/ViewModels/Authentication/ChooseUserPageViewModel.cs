@@ -62,8 +62,6 @@ namespace GitRemote.ViewModels.Authentication
 
             if (_previousCell == _currentCell) return; // If it is the same cell
 
-            //((FlowListView)_currentCell.Parent).SelectedItem = 0;
-
             if (_previousCell != null)
                 _previousCell.BackgroundColor = Color.Default; // Clears color from previous tapped list item
 

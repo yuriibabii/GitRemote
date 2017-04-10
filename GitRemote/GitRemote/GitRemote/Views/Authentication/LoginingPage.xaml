@@ -86,12 +86,6 @@
                                       NumberOfTapsRequired="1" />
             </StackLayout.GestureRecognizers>
 
-            <!--<Image x:Name="ShowPasswordImage"
-                   Source="{Binding CheckBoxImagePath}"
-                   HeightRequest="20"
-                   WidthRequest="20"
-                   VerticalOptions="CenterAndExpand" />-->
-
             <customClasses:FontIcon Text="{Binding CheckBoxIcon}"
                                     FontSize="20"
                                     TextColor="{Binding CheckBoxColor}"
