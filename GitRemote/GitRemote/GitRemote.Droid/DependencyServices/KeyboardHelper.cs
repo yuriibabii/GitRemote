@@ -18,7 +18,7 @@ namespace GitRemote.Droid.DependencyServices
         public void HideKeyboard()
         {
             var inputMethodManager = Forms.Context.GetSystemService(Context.InputMethodService) as InputMethodManager;
-            inputMethodManager?.ToggleSoftInput(0, HideSoftInputFlags.ImplicitOnly);
+            inputMethodManager?.ToggleSoftInput(ShowFlags.Implicit, HideSoftInputFlags.ImplicitOnly);
         }
 
         public bool IsKeyboard()

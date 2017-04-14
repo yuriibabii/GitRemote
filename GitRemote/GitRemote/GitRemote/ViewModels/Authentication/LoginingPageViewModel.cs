@@ -83,6 +83,7 @@ namespace GitRemote.ViewModels.Authentication
 
         public async void OnLogInTapped()
         {
+            _keyboardHelper.ShowKeyboard(); // I know it's bad way to hide keyboard, but whatever
             _keyboardHelper.HideKeyboard();
 
             var newsManager = new PrivateNewsManager();
