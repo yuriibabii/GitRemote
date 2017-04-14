@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using GitRemote.GitHub.Managers;
+using static GitRemote.Services.StringService.SoftStrings;
 
 namespace GitRemote.ViewModels
 {
@@ -25,7 +26,7 @@ namespace GitRemote.ViewModels
             var store = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
 
             var session = new Session(UserManager.GetLastUser(), store.Properties.First().Value,
-                store.Properties["PrivateFeedUrl"]);
+                store.Properties[PrivateFeedUrl]);
 
             var navigationParameters = new NavigationParameters { { nameof(Session), session } };
 

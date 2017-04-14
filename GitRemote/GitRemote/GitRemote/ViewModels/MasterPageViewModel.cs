@@ -13,7 +13,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using GitRemote.Views.MasterMenuPage;
+using Prism.Events;
 using Xamarin.Forms;
+using static GitRemote.Services.MessageService;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
 using StartPage = GitRemote.Views.Authentication.StartPage;
@@ -58,9 +60,12 @@ namespace GitRemote.ViewModels
         private readonly INavigationService _navigationService;
         private readonly Session _session;
         private readonly IMetricsHelper _metricsHelper;
+        private readonly IEventAggregator _eventAggregator;
 
-        public MasterPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider,
-            IMetricsHelper metricsHelper)
+        public MasterPageViewModel(INavigationService navigationService,
+            ISecuredDataProvider securedDataProvider,
+            IMetricsHelper metricsHelper,
+            IEventAggregator eventAggregator)
         {
             #region Initialize Commands
 
@@ -73,6 +78,7 @@ namespace GitRemote.ViewModels
 
             _navigationService = navigationService;
             _metricsHelper = metricsHelper;
+            _eventAggregator = eventAggregator;
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
             _navigationParameters = new NavigationParameters { { nameof(Session), _session } };
@@ -92,14 +98,14 @@ namespace GitRemote.ViewModels
                 var user = await gitHubClient.User.Current();
                 ProfileImageUrl = user?.AvatarUrl;
                 ProfileNickName = StringService.IsNullOrEmpty(user?.Name)
-                    ? user?.Login 
+                    ? user?.Login
                     : user?.Name;
             }
-            catch ( WebException )
+            catch (WebException)
             {
                 Debug.WriteLine("Something wrong with internet connection, try to On Internet");
             }
-            catch ( Exception )
+            catch (Exception)
             {
                 Debug.WriteLine("Getting user from github failed!");
             }
@@ -112,35 +118,45 @@ namespace GitRemote.ViewModels
             GistsManager.SetTabsTitles(_metricsHelper);
 
             var path = $"{nameof(GistsPage)}";
-            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            _eventAggregator
+                .GetEvent<DoNavigation>()
+                .Publish(new DoNavigationModel(path, _navigationParameters));
+
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
         private void OnDashboardTapped()
         {
             var path = $"{nameof(IssueDashboardPage)}";
-            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            _eventAggregator
+                .GetEvent<DoNavigation>()
+                .Publish(new DoNavigationModel(path, _navigationParameters));
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
         private void OnBookmarksTapped()
         {
             var path = $"{nameof(BookmarksPage)}";
-            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            _eventAggregator
+                 .GetEvent<DoNavigation>()
+                 .Publish(new DoNavigationModel(path, _navigationParameters));
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
         private void OnIssueTapped()
         {
-            if ( !_navigationParameters.ContainsKey("OwnerName") )
+            if (!_navigationParameters.ContainsKey("OwnerName"))
                 _navigationParameters.Add("OwnerName", "UniorDev");
 
-            if ( !_navigationParameters.ContainsKey("ReposName") )
+            if (!_navigationParameters.ContainsKey("ReposName"))
                 _navigationParameters.Add("ReposName", "GitRemote");
 
             var path = $"{nameof(PublicRepositoryPage)}";
 
-            MessagingCenter.Send(new DoNavigationModel(path, _navigationParameters), DoNavigation);
+            _eventAggregator
+                .GetEvent<DoNavigation>()
+                .Publish(new DoNavigationModel(path, _navigationParameters));
+
             MessagingCenter.Send("Issues", SetCurrentTabWithTitle);
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }

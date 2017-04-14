@@ -19,5 +19,14 @@ namespace GitRemote.Services
             var res = strings.Any(string.IsNullOrEmpty);
             return res;
         }
+
+        public static class SoftStrings
+        {
+            public const string PrivateFeedUrl = nameof(PrivateFeedUrl);
+            public const string Space = " ";
+            public const string Empty = "";
+            public const string OwnerName = nameof(OwnerName);
+            public const string ReposName = nameof(ReposName);
+        }
     }
 }

@@ -99,10 +99,14 @@ namespace GitRemote.GitHub.Managers
             _starredPageTitle = string.Empty;
             _allPageTitle = string.Empty;
 
-            var spaceWidth = metricsHelper.GetWidthOfString("i i") - metricsHelper.GetWidthOfString("ii");
-            var mineTitleWidth = metricsHelper.GetWidthOfString("MINE") + 2 * spaceWidth;
-            var starredTitleWidth = metricsHelper.GetWidthOfString("STARRED");
-            var allTitleWidth = metricsHelper.GetWidthOfString("ALL") + 2 * spaceWidth;
+            //
+            //TODO This is bad hack. Replace it. 
+            //
+
+            var spaceWidth = metricsHelper.GetLabelWidth("i i", App.ScreenWidth) - metricsHelper.GetLabelWidth("ii", App.ScreenWidth);
+            var mineTitleWidth = metricsHelper.GetLabelWidth("MINE", App.ScreenWidth) + 2 * spaceWidth;
+            var starredTitleWidth = metricsHelper.GetLabelWidth("STARRED", App.ScreenWidth);
+            var allTitleWidth = metricsHelper.GetLabelWidth("ALL", App.ScreenWidth) + 2 * spaceWidth;
             var restOfSpace = App.ScreenWidth - (mineTitleWidth + starredTitleWidth + allTitleWidth) - 7;
             var minePageTabWidth = restOfSpace / 2;
             var allPageTabWidth = restOfSpace - minePageTabWidth;
@@ -110,9 +114,9 @@ namespace GitRemote.GitHub.Managers
             amountOfMineTabSpaces = amountOfMineTabSpaces - amountOfMineTabSpaces / 3;
             var amountOfAllTabSpaces = allPageTabWidth / spaceWidth;
             amountOfAllTabSpaces = amountOfAllTabSpaces - amountOfAllTabSpaces / 3;
-            _minePageTitle = _minePageTitle.PadLeft(amountOfMineTabSpaces - 2, ' ') + "MINE" + "  ";
+            _minePageTitle = _minePageTitle.PadLeft((int)amountOfMineTabSpaces - 2, ' ') + "MINE" + "  ";
             _starredPageTitle = "STARRED";
-            _allPageTitle = "  " + "ALL" + _allPageTitle.PadRight(amountOfAllTabSpaces - 2, ' ');
+            _allPageTitle = "  " + "ALL" + _allPageTitle.PadRight((int)amountOfAllTabSpaces - 2, ' ');
         }
 
         public string GetTabTitle()

@@ -1,4 +1,5 @@
 ﻿using GitRemote.GitHub;
+using Prism.Events;
 using Prism.Navigation;
 
 namespace GitRemote.Services
@@ -16,7 +17,6 @@ namespace GitRemote.Services
             public const string SetIsExecuteHardwareBack = "SetIsExecuteHardwareBack";
             public const string PublicReposCurrentTabChanged = "PublicReposCurrentTabChanged";
             public const string SetCurrentTabWithTitle = "SetCurrentTabWithTitle";
-            public const string DoNavigation = "DoNavigation";
             public const string HideMasterPage = "HideMasterPage";
             public const string SendManagerToFilterPopUp = "SendManagerToFilterPopUp";
             public const string TakeAssigneeNameFromPopUpPage = "TakeAssigneeNameFromPopUpPage";
@@ -51,5 +51,7 @@ namespace GitRemote.Services
                 }
             }
         }
+
+        public class DoNavigation : PubSubEvent<MessageModels.DoNavigationModel> { }
     }
 }

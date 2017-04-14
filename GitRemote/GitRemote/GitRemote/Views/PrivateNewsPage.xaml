@@ -10,90 +10,86 @@
              x:Class="GitRemote.Views.PrivateNewsPage"
              Title="News">
 
-  <controls:FlowListView x:Name="NewsList"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding PrivateNews.Result}"
-                         HasUnevenRows="True"
-                         FlowColumnCount="1"
-                         FlowLastTappedItem="{Binding TappedItem}"
-                         FlowItemTappedCommand="{Binding ItemTappedCommand}">
+    <controls:FlowListView x:Name="NewsList"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           FlowItemsSource="{Binding PrivateNews.Result}"
+                           HasUnevenRows="True"
+                           FlowColumnCount="1"
+                           FlowLastTappedItem="{Binding TappedItem}"
+                           FlowItemTappedCommand="{Binding ItemTappedCommand}">
 
-    <controls:FlowListView.FlowColumnTemplate>
-      <DataTemplate>
-        <Grid VerticalOptions="Start"
-              HorizontalOptions="Start"
-              Margin="15, 15, 15, 15"
-              ColumnSpacing="0"
-              RowSpacing="5">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="{Binding Source={x:Reference Name=NewsList}, Path=BindingContext.ColumnWidth}"/>
+        <controls:FlowListView.FlowColumnTemplate>
+            <DataTemplate>
+                <Grid VerticalOptions="Start"
+                      HorizontalOptions="Start"
+                      Padding="15, 15, 15, 0"
+                      ColumnSpacing="0"
+                      RowSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="{Binding Path=BindingContext.ColumnWidth, Source={x:Reference NewsList}}" />
 
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-          </Grid.RowDefinitions>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
 
-          <ffimageloading:CachedImage
-            x:Name="Avatar"
-            Source="{Binding ImageUrl}"
-            HeightRequest="40"
-            WidthRequest="40"
-            Grid.Column="0"
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            VerticalOptions="Start"
-            HorizontalOptions="Start"
-            Margin="0, 5, 10, 0"
-            CacheDuration ="5"
-            DownsampleToViewSize ="True"
-            LoadingPlaceholder="ic_list_NoAvatar.png"
-            BitmapOptimizations="True">
-            <ffimageloading:CachedImage.Transformations>
-              <transformations:RoundedTransformation Radius="100"/>
-            </ffimageloading:CachedImage.Transformations>
-          
-            </ffimageloading:CachedImage>
+                    <ffimageloading:CachedImage x:Name="Avatar"
+                                                Source="{Binding AvatarUrl}"
+                                                HeightRequest="40"
+                                                WidthRequest="40"
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                Grid.RowSpan="2"
+                                                VerticalOptions="Start"
+                                                HorizontalOptions="Start"
+                                                Margin="0, 5, 10, 0"
+                                                CacheDuration="5"
+                                                DownsampleToViewSize="True"
+                                                LoadingPlaceholder="ic_list_NoAvatar.png"
+                                                BitmapOptimizations="True">
+                        <ffimageloading:CachedImage.Transformations>
+                            <transformations:RoundedTransformation Radius="100" />
+                        </ffimageloading:CachedImage.Transformations>
 
-          <StackLayout  Grid.Column="1"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-
-            <Label x:Name="Title"
-                   FormattedText="{Binding CustomFormattedText}"
-                   TextColor="Black"
-                   LineBreakMode="CharacterWrap"/>
-          </StackLayout>
-
-          <customClasses:FontIcon x:Name="ActionTypeIcon"
-                                  Text="{Binding ActionTypeFontIcon}"
-                                  TextColor="Gray"
-                                  FontSize="16"
-                                  FontFamily="Octicons"
-                                  Grid.Column="1"
+                    </ffimageloading:CachedImage>
+                    
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="0">
+                    <Label x:Name="Title"
+                           FormattedText="{Binding CustomFormattedText}"
+                           TextColor="Black"
+                           LineBreakMode="CharacterWrap"
+                           FontSize="16"/>
+                    </StackLayout>
+                    
+                    <StackLayout  Grid.Column="1"
                                   Grid.Row="1"
-                                  VerticalOptions="Center"
-                                  HorizontalOptions="StartAndExpand"
-                                  Margin="0, 0, 5, 0"/>
+                                  Orientation="Horizontal"
+                                  Spacing="5"
+                                  VerticalOptions="End">
+                        
+                        <customClasses:FontIcon x:Name="ActionTypeIcon"
+                                                Text="{Binding ActionTypeFontIcon}"
+                                                TextColor="Gray"
+                                                FontSize="16"
+                                                FontFamily="Octicons"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="CenterAndExpand"/>
 
-          <Label x:Name="PublishedTime"
-                 Text="{Binding Published}"
-                 FontSize="14"
-                 Grid.Column="2"
-                 VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"
-                 Grid.Row="1"/>
+                        <Label Text="{Binding Date}"
+                               FontSize="14"
+                               HorizontalOptions="Start"
+                               VerticalOptions="CenterAndExpand"/>
+                        
+                    </StackLayout>
 
-        </Grid>
-      </DataTemplate>
-    </controls:FlowListView.FlowColumnTemplate>
+                </Grid>
+            </DataTemplate>
+        </controls:FlowListView.FlowColumnTemplate>
 
-
-  </controls:FlowListView>
+    </controls:FlowListView>
 
 </ContentPage>

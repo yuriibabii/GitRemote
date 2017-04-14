@@ -4,11 +4,15 @@ using ModernHttpClient;
 using Octokit;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static GitRemote.Models.PrivateNewsModel;
+using static GitRemote.Services.ExceptionsService;
+using static GitRemote.Services.FontIconsService;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -21,8 +25,7 @@ namespace GitRemote.GitHub.Managers
             _session = session;
         }
 
-        public PrivateNewsManager()
-        { }
+        public PrivateNewsManager() { }
 
         /// <summary>
         /// Gets Private Url from GitHub API
@@ -32,7 +35,6 @@ namespace GitRemote.GitHub.Managers
         public async Task<string> GetPrivateFeedUrlFromApiAsync(GitHubClient gitHubClient)
         {
             var feeds = await gitHubClient.Activity.Feeds.GetFeeds();
-
             return feeds.CurrentUserUrl;
         }
 
@@ -40,71 +42,80 @@ namespace GitRemote.GitHub.Managers
         /// Gets Private News via GitHub API, only 30 last items.
         /// </summary>
         /// <returns>IEnumerable of PrivateNewsModel</returns>
-        public async Task<IEnumerable<PrivateNewsModel>> GetPrivateNews()
+        public async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNews()
         {
             try
             {
                 var gitHubPrivateFeedItems = await GetPrivateFeedItems();
-
                 var gitRemotePrivateFeedItems = new List<PrivateNewsModel>();
 
                 foreach (var item in gitHubPrivateFeedItems)
                 {
-                    var newsItem = new PrivateNewsModel
-                    {
-                        Title = item?.Element(XName.Get("title", ConstantsService.AtomNamespace))?.Value,
-                        Published = TimeService.ConvertToFriendly(
-                                item?.Element(XName.Get("published", ConstantsService.AtomNamespace))?.Value),
-                        ImageUrl = item?.Elements().ElementAtOrDefault(6).Attribute("url").Value, // Hardcoded, but happy cuz works
-                    };
+                    var newsItem = new PrivateNewsModel();
+                    var title = XName.Get("title", ConstantsService.AtomNamespace);
+                    newsItem.Title = item.Element(title)?.Value;
+                    var date = XName.Get("published", ConstantsService.AtomNamespace);
+                    newsItem.Date = TimeService.ConvertToFriendly(item.Element(date)?.Value);
+                    newsItem.AvatarUrl = item.Elements().ElementAtOrDefault(6).Attribute("url").Value; // Hardcoded, but happy cuz works
 
                     var splitedTitle = newsItem.Title?.Split(' ');
 
                     if (splitedTitle != null)
                     {
                         newsItem.Perfomer = splitedTitle[0];
-                        newsItem.ActionType = splitedTitle[1];
-                        newsItem.AdditionalTarget = newsItem.ActionType == "added"
+                        newsItem.ActionType = GetActionType(splitedTitle[1]);
+                        newsItem.AdditionalTarget = newsItem.ActionType == ActionTypes.Added
                             ? splitedTitle[2]
                             : string.Empty;
-                        newsItem.Target = newsItem.ActionType == "forked"
-                            ? splitedTitle[2]
-                            : splitedTitle[splitedTitle.Length - 1];
+
+                        if (newsItem.ActionType == ActionTypes.Forked ||
+                            newsItem.ActionType == ActionTypes.Made)
+                        {
+                            newsItem.Target = splitedTitle[2];
+                        }
+                        else
+                        {
+                            newsItem.Target = splitedTitle[splitedTitle.Length - 1];
+                        }
 
                         switch (newsItem.ActionType)
                         {
-                            case "added":
-                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Person;
+                            case ActionTypes.Added:
+                                newsItem.ActionTypeFontIcon = Octicons.Person;
                                 break;
-                            case "created":
-                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Repo;
+                            case ActionTypes.Created:
+                                newsItem.ActionTypeFontIcon = Octicons.Repo;
                                 break;
-                            case "forked":
-                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.RepoForked;
+                            case ActionTypes.Forked:
+                                newsItem.ActionTypeFontIcon = Octicons.RepoForked;
                                 break;
-                            case "starred":
-                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.Star;
+                            case ActionTypes.Starred:
+                                newsItem.ActionTypeFontIcon = Octicons.Star;
                                 break;
-                            case "opened":
-                                newsItem.ActionTypeFontIcon = FontIconsService.Octicons.IssueOpened;
+                            case ActionTypes.Opened:
+                                newsItem.ActionTypeFontIcon = Octicons.IssueOpened;
                                 break;
+                            case ActionTypes.Made:
+                                newsItem.ActionTypeFontIcon = Octicons.Repo;
+                                break;
+                            default: throw new ActionTypeNotFoundException();
                         }
                     }
                     gitRemotePrivateFeedItems.Add(newsItem);
                 }
-                return gitRemotePrivateFeedItems;
+
+                return new ObservableCollection<PrivateNewsModel>(gitRemotePrivateFeedItems);
             }
 
-            catch (WebException ex)
+            catch (WebException exn)
             {
-                throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
+                throw new Exception("Something wrong with internet connection, try to On Internet " + exn.Message);
             }
-            catch (Exception ex)
+            catch (Exception exn)
             {
-                throw new Exception("Getting private news from github failed! " + ex.Message);
+                throw new Exception("Getting private news from github failed! " + exn.Message);
             }
         }
-
 
         /// <summary>
         /// Executes http request to private feed url, takes feed in Atom XML format
@@ -125,6 +136,20 @@ namespace GitRemote.GitHub.Managers
                               select entry;
 
                 return entries;
+            }
+        }
+
+        private ActionTypes GetActionType(string hardCodedType)
+        {
+            switch (hardCodedType)
+            {
+                case "added": return ActionTypes.Added;
+                case "created": return ActionTypes.Created;
+                case "forked": return ActionTypes.Forked;
+                case "starred": return ActionTypes.Starred;
+                case "opened": return ActionTypes.Opened;
+                case "made": return ActionTypes.Made;
+                default: throw new ActionTypeNotFoundException();
             }
         }
     }

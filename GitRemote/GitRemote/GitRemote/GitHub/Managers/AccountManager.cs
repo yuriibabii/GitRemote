@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using GitRemote.DI;
 using GitRemote.Services;
 using Octokit;
+using static GitRemote.Services.StringService.SoftStrings;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -31,7 +32,7 @@ namespace GitRemote.GitHub.Managers
             var securedDictionary = new Dictionary<string, string>
             {
                 {_clientAuthorization.Note, token},
-                {"PrivateFeedUrl", privateFeedUrl}
+                {PrivateFeedUrl, privateFeedUrl}
             };
 
             _securedDataProvider.Store(login, ConstantsService.ProviderName, securedDictionary);
@@ -69,7 +70,7 @@ namespace GitRemote.GitHub.Managers
         {
             var retreiveResponce = _securedDataProvider.Retreive(ConstantsService.ProviderName, login)?.Username;
 
-            if ( retreiveResponce == null ) return;
+            if (retreiveResponce == null) return;
 
             _securedDataProvider.Clear(retreiveResponce);
 

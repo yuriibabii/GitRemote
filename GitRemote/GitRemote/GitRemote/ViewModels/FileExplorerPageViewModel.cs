@@ -326,7 +326,7 @@ namespace GitRemote.ViewModels
             }
 
             var size = DependencyService.Get<IMetricsHelper>()
-                .GetWidthOfString(layoutText + "/" + pathPartName + "/", (float)((Label)layout.Children[0]).FontSize);
+                .GetLabelWidth(layoutText + "/" + pathPartName + "/", (float)((Label)layout.Children[0]).FontSize);
 
             #region Slash
 

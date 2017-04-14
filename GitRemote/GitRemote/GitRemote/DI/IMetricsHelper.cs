@@ -2,6 +2,8 @@
 {
     public interface IMetricsHelper
     {
-        int GetWidthOfString(string target, float textSize = 14);
+        double GetLabelWidth(string text, double maxWidth, double fontSize = 14);
+
+        double GetLabelHeight(string text, double maxWidth, double fontSize = 14);
     }
 }

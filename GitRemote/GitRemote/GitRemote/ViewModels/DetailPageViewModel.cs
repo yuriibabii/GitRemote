@@ -7,6 +7,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Linq;
+using Prism.Events;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
@@ -18,21 +19,23 @@ namespace GitRemote.ViewModels
         private Session _session;
         private readonly INavigationService _navigationService;
         public DelegateCommand NotificationsCommand { get; }
+        private readonly IEventAggregator _eventAggregator;
 
-        public DetailPageViewModel(INavigationService navigationService, ISecuredDataProvider securedDataProvider)
+        public DetailPageViewModel(INavigationService navigationService,
+            ISecuredDataProvider securedDataProvider,
+            IEventAggregator eventAggregator)
         {
             _navigationService = navigationService;
             NotificationsCommand = new DelegateCommand(OnNotificationsTapped);
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
-
-            //MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<MessageService.DoNavigation>().Subscribe(OnDoNavigation);
         }
 
         private async void OnDoNavigation(DoNavigationModel model)
         {
-            MessagingCenter.Unsubscribe<DoNavigationModel>(this, DoNavigation);
-
+            _eventAggregator.GetEvent<MessageService.DoNavigation>().Unsubscribe(OnDoNavigation);
             await _navigationService.NavigateAsync(model.Path, model.Parameters);
         }
 
@@ -45,10 +48,10 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if ( parameters.ContainsKey(nameof(Session)) )
+            if (parameters.ContainsKey(nameof(Session)))
                 _session = parameters[nameof(Session)] as Session;
 
-            MessagingCenter.Subscribe<DoNavigationModel>(this, DoNavigation, OnDoNavigation);
+            _eventAggregator.GetEvent<MessageService.DoNavigation>().Subscribe(OnDoNavigation);
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -57,7 +60,7 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            MessagingCenter.Unsubscribe<DoNavigationModel>(this, DoNavigation);
+            _eventAggregator.GetEvent<MessageService.DoNavigation>().Unsubscribe(OnDoNavigation);
         }
 
     }
