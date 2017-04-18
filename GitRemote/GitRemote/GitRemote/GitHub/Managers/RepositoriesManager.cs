@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using MvvmHelpers;
+using static GitRemote.Common.Enums;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -25,12 +27,12 @@ namespace GitRemote.GitHub.Managers
         /// Sends request via API to Github acc and takes all repos from it, then converts it to GitRemote repos and groups it
         /// </summary>
         /// <returns>Grouped Obs Collection of GitRemote repos</returns>
-        public async Task<ObservableCollection<GroupingModel<string, RepositoryModel>>> GetRepositoriesAsync()
+        public async Task<ObservableRangeCollection<GroupingModel<string, RepositoryModel>>> GetRepositoriesAsync(int pageNumber = 1)
         {
             try
             {
-                var gitHubRepos = await _gitHubClient.Repository.GetAllForCurrent();
-
+                var gitHubRepos = await _gitHubClient.Repository.GetAllForCurrent
+                    (new ApiOptions { PageCount = 1, PageSize = 20, StartPage = pageNumber });
                 var gitRemoteRepos = new List<RepositoryModel>();
 
                 foreach (var repository in gitHubRepos)
@@ -58,7 +60,7 @@ namespace GitRemote.GitHub.Managers
                                             group model by Convert.ToString(model.Name[0]).ToUpper() into modelGroup //Save each group and its key
                                             select new GroupingModel<string, RepositoryModel>(modelGroup.Key.ToUpper(), modelGroup); //Convert it to collection
 
-                return new ObservableCollection<GroupingModel<string, RepositoryModel>>(groupedGitRemoteRepos);
+                return new ObservableRangeCollection<GroupingModel<string, RepositoryModel>>(groupedGitRemoteRepos);
             }
             catch (WebException ex)
             {
@@ -70,11 +72,12 @@ namespace GitRemote.GitHub.Managers
             }
         }
 
-        private string GetRepositoryType(Repository repos)
+        private RepositoriesTypes GetRepositoryType(Repository repository)
         {
-            return repos.Fork ? "Fork"
-                              : (repos.Private ? "Private"
-                                                : "Public");
+            if (repository.Fork) return RepositoriesTypes.Fork;
+            if (repository.Private) return RepositoriesTypes.Private;
+
+            return RepositoriesTypes.Public;
         }
 
     }

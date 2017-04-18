@@ -12,6 +12,7 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using GitRemote.Common;
 using MvvmHelpers;
 using Prism.Events;
 using Xamarin.Forms;
@@ -116,7 +117,7 @@ namespace GitRemote.ViewModels
         private void OnItemTapped()
         {
             var splited = TappedItem.Target.Split('/');
-            var ownerName = TappedItem.ActionType == ActionTypes.Forked
+            var ownerName = TappedItem.ActionType == Enums.ActionTypes.Forked
                 ? TappedItem.Perfomer
                 : splited[0];
 

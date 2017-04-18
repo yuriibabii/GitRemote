@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\FlowListViewPaginating.cs" />
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Converters\InvertBoolConverter.cs" />
     <Compile Include="Converters\ItemVisibilityEventConverter.cs" />
     <Compile Include="CustomClasses\CodeEntry.cs" />

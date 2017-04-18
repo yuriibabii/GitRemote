@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using MvvmHelpers;
-using static GitRemote.Models.PrivateNewsModel;
+using static GitRemote.Common.Enums;
 using static GitRemote.Services.ExceptionsService;
 using static GitRemote.Services.FontIconsService;
 

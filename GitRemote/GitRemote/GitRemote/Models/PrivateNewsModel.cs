@@ -1,21 +1,11 @@
-﻿using GitRemote.DI;
-using GitRemote.Services;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using static GitRemote.Common.Enums;
 using static GitRemote.Services.StringService.SoftStrings;
 
 namespace GitRemote.Models
 {
     public class PrivateNewsModel
     {
-        public enum ActionTypes
-        {
-            Opened,
-            Created,
-            Added,
-            Forked,
-            Starred,
-            Made
-        }
 
         public string Title { get; set; }
         public string Date { get; set; }

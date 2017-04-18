@@ -4,6 +4,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:customClasses="clr-namespace:GitRemote.CustomClasses;assembly=GitRemote"
+             xmlns:converters="clr-namespace:GitRemote.Converters;assembly=GitRemote"
+             xmlns:behaviors="clr-namespace:GitRemote.Behaviors;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.RepositoriesPage"
              Title="Repositories">
@@ -18,8 +20,16 @@
                            IsGroupingEnabled="True"
                            FlowGroupDisplayBinding="{Binding Key}"
                            FlowLastTappedItem="{Binding TappedItem}"
-                           FlowItemTappedCommand="{Binding ItemTappedCommand}">
+                           FlowItemTappedCommand="{Binding ItemTappedCommand}"
+                           IsPullToRefreshEnabled="True"
+                           RefreshCommand="{Binding RefreshCommand}"
+                           IsRefreshing="{Binding IsBusy}">
 
+        <controls:FlowListView.Footer>
+            <BoxView HeightRequest="10"
+                     Color="Transparent" />
+        </controls:FlowListView.Footer>
+        
         <controls:FlowListView.GroupHeaderTemplate>
             <DataTemplate>
                 <ViewCell Height="40">
@@ -138,6 +148,11 @@
             </DataTemplate>
         </controls:FlowListView.FlowColumnTemplate>
 
+        <controls:FlowListView.Behaviors>
+            <behaviors:FlowListViewPaginating Command="{Binding LoadMoreCommand}"
+                                              Converter="{x:Static converters:ItemVisibilityEventConverter.Instance}" />
+        </controls:FlowListView.Behaviors>
+        
     </controls:FlowListView>
 
 </ContentPage>
