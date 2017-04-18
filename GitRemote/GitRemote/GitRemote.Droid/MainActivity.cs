@@ -20,20 +20,15 @@ namespace GitRemote.Droid
         protected override void OnCreate(Bundle bundle)
         {
             App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
-            FlowListView.Init();
+
             CachedImageRenderer.Init();
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
 
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
+            FlowListView.Init();
             LoadApplication(new App());
-
-#if DEBUG
-            UISleuth.Inspector.Init();
-            // optional
-            //UISleuth.Inspector.ShowAcceptingConnections();
-#endif
             MessagingCenter.Subscribe<string>(this, SetIsExecuteHardwareBack, OnSetExecuteHardwareBack);
         }
 

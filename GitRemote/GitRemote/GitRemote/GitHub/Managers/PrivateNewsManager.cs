@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using MvvmHelpers;
 using static GitRemote.Models.PrivateNewsModel;
 using static GitRemote.Services.ExceptionsService;
 using static GitRemote.Services.FontIconsService;
@@ -42,11 +43,11 @@ namespace GitRemote.GitHub.Managers
         /// Gets Private News via GitHub API, only 30 last items.
         /// </summary>
         /// <returns>IEnumerable of PrivateNewsModel</returns>
-        public async Task<ObservableCollection<PrivateNewsModel>> GetPrivateNews()
+        public async Task<ObservableRangeCollection<PrivateNewsModel>> GetPrivateNews(int pageNumber = 1)
         {
             try
             {
-                var gitHubPrivateFeedItems = await GetPrivateFeedItems();
+                var gitHubPrivateFeedItems = await GetPrivateFeedItems(pageNumber);
                 var gitRemotePrivateFeedItems = new List<PrivateNewsModel>();
 
                 foreach (var item in gitHubPrivateFeedItems)
@@ -104,16 +105,16 @@ namespace GitRemote.GitHub.Managers
                     gitRemotePrivateFeedItems.Add(newsItem);
                 }
 
-                return new ObservableCollection<PrivateNewsModel>(gitRemotePrivateFeedItems);
+                return new ObservableRangeCollection<PrivateNewsModel>(gitRemotePrivateFeedItems);
             }
 
             catch (WebException exn)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + exn.Message);
             }
-            catch (Exception exn)
+            catch (Exception exception)
             {
-                throw new Exception("Getting private news from github failed! " + exn.Message);
+                throw new Exception("Getting private news from github failed! " + exception.Message);
             }
         }
 
@@ -121,11 +122,11 @@ namespace GitRemote.GitHub.Managers
         /// Executes http request to private feed url, takes feed in Atom XML format
         /// </summary>
         /// <returns>Items(entries)</returns>
-        private async Task<IEnumerable<XElement>> GetPrivateFeedItems()
+        private async Task<IEnumerable<XElement>> GetPrivateFeedItems(int pageNumber)
         {
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
-                var feed = await client.GetStringAsync(_session.GetPrivateFeedUrl());
+                var feed = await client.GetStringAsync(_session.GetPrivateFeedUrl() + $"&page={pageNumber}");
 
                 if (string.IsNullOrEmpty(feed)) return new List<XElement>();
 

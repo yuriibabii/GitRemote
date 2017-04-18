@@ -105,9 +105,9 @@ namespace GitRemote.ViewModels
             {
                 Debug.WriteLine("Something wrong with internet connection, try to On Internet");
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                Debug.WriteLine("Getting user from github failed!");
+                Debug.WriteLine("Getting user from github failed! " + exception.Message);
             }
         }
 
