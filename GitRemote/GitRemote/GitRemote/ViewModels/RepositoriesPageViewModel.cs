@@ -41,7 +41,7 @@ namespace GitRemote.ViewModels
         {
             var ownerName = TappedItem.OwnerName;
 
-            var reposName = TappedItem.RepositoryName;
+            var reposName = TappedItem.Name;
 
             var parameters = new NavigationParameters
             {
@@ -50,7 +50,7 @@ namespace GitRemote.ViewModels
                 { nameof(Session), _session}
             };
 
-            var path = TappedItem.RepositoryType == "Fork"
+            var path = TappedItem.Type == "Fork"
                 ? $"{nameof(ForkedRepositoryPage)}"
                 : $"{nameof(PublicRepositoryPage)}";
 

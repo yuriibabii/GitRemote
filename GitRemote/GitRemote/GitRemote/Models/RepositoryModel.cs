@@ -5,30 +5,30 @@ namespace GitRemote.Models
 {
     public class RepositoryModel : BindableBase
     {
-        #region ElementsPropertiesDeclaretion
+        #region Properties
 
         public bool IsDescription { get; set; }
 
-        public string RepositoryTypeIcon => RepositoryType == "Fork"
+        public string TypeIcon => Type == "Fork"
             ? FontIconsService.Octicons.RepoForked
-            : ( RepositoryType == "Private"
+            : (Type == "Private"
                 ? FontIconsService.Octicons.Lock
-                : FontIconsService.Octicons.Repo );
+                : FontIconsService.Octicons.Repo);
 
-        private string _repositoryType;
+        private string _type;
 
-        public string RepositoryType
+        public string Type
         {
-            get { return _repositoryType; }
-            set { SetProperty(ref _repositoryType, value); }
+            get { return _type; }
+            set { SetProperty(ref _type, value); }
         }
 
-        private string _repositoryName;
+        private string _name;
 
-        public string RepositoryName
+        public string Name
         {
-            get { return _repositoryName; }
-            set { SetProperty(ref _repositoryName, value); }
+            get { return _name; }
+            set { SetProperty(ref _name, value); }
         }
 
         private string _ownerName;
@@ -39,55 +39,61 @@ namespace GitRemote.Models
             set { SetProperty(ref _ownerName, value); }
         }
 
-        private string _repositoryDescription;
+        private string _description;
 
-        public string RepositoryDescription
+        public string Description
         {
-            get { return _repositoryDescription; }
-            set { SetProperty(ref _repositoryDescription, value); }
+            get { return _description; }
+            set { SetProperty(ref _description, value); }
         }
 
-        private string _repositoryLanguage;
+        private string _language;
 
-        public string RepositoryLanguage
+        public string Language
         {
-            get { return _repositoryLanguage; }
-            set { SetProperty(ref _repositoryLanguage, value); }
+            get { return _language; }
+            set { SetProperty(ref _language, value); }
         }
 
-        private string _repositoryStarIcon;
+        private bool _isLanguage;
 
-        public string RepositoryStarIcon
+        public bool IsLanguage
         {
-            get { return _repositoryStarIcon; }
-            set { SetProperty(ref _repositoryStarIcon, value); }
+            get { return _isLanguage; }
+            set { SetProperty(ref _isLanguage, value); }
         }
 
-        private string _repositoryStarsCount;
+        private string _starIcon;
 
-        public string RepositoryStarsCount
+        public string StarIcon
         {
-            get { return _repositoryStarsCount; }
-            set { SetProperty(ref _repositoryStarsCount, value); }
+            get { return _starIcon; }
+            set { SetProperty(ref _starIcon, value); }
         }
 
-        private string _repositoryForkIcon;
+        private string _starsCount;
 
-        public string RepositoryForkIcon
+        public string StarsCount
         {
-            get { return _repositoryForkIcon; }
-            set { SetProperty(ref _repositoryForkIcon, value); }
+            get { return _starsCount; }
+            set { SetProperty(ref _starsCount, value); }
         }
 
-        private string _repositoryForksCount;
+        private string _forkIcon;
 
-        public string RepositoryForksCount
+        public string ForkIcon
         {
-            get { return _repositoryForksCount; }
-            set { SetProperty(ref _repositoryForksCount, value); }
+            get { return _forkIcon; }
+            set { SetProperty(ref _forkIcon, value); }
+        }
+
+        private string _forksCount;
+
+        public string ForksCount
+        {
+            get { return _forksCount; }
+            set { SetProperty(ref _forksCount, value); }
         }
         #endregion
-
-
     }
 }
