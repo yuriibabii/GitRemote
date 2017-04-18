@@ -31,8 +31,8 @@ namespace GitRemote.GitHub.Managers
         {
             try
             {
-                var gitHubRepos = await _gitHubClient.Repository.GetAllForCurrent
-                    (new ApiOptions { PageCount = 1, PageSize = 20, StartPage = pageNumber });
+                var options = new ApiOptions { PageCount = 1, PageSize = 20, StartPage = pageNumber };
+                var gitHubRepos = await _gitHubClient.Repository.GetAllForCurrent(options);
                 var gitRemoteRepos = new List<RepositoryModel>();
 
                 foreach (var repository in gitHubRepos)
@@ -46,9 +46,7 @@ namespace GitRemote.GitHub.Managers
                         IsDescription = !string.IsNullOrEmpty(repository.Description),
                         Language = repository.Language ?? " ",
                         IsLanguage = repository.Language != null,
-                        StarIcon = FontIconsService.Octicons.Star,
                         StarsCount = Convert.ToString(repository.StargazersCount),
-                        ForkIcon = FontIconsService.Octicons.RepoForked,
                         ForksCount = Convert.ToString(repository.ForksCount)
                     };
 

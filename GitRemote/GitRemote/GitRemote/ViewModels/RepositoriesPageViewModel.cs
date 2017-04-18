@@ -43,6 +43,9 @@ namespace GitRemote.ViewModels
 
         #region Properties
 
+        public string StarIcon => FontIconsService.Octicons.Star;
+        public string ForkIcon => FontIconsService.Octicons.RepoForked;
+
         public RepositoryModel TappedItem { get; set; }
         private bool _isBusy;
         public bool IsBusy
@@ -98,7 +101,6 @@ namespace GitRemote.ViewModels
         private bool CanLoadMore(object model)
         {
             if (IsBusy) return false;
-
             if (GroupedRepositories.Result.Count < 1) return false;
 
             var list = model as IList;
@@ -125,8 +127,8 @@ namespace GitRemote.ViewModels
             var reposName = TappedItem.Name;
             var parameters = new NavigationParameters
             {
-                { nameof(OwnerName), ownerName},
-                { nameof(ReposName), reposName},
+                { OwnerName, ownerName},
+                { ReposName, reposName},
                 { nameof(Session), _session}
             };
 

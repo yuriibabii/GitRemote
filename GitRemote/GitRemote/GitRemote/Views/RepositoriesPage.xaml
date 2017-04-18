@@ -111,8 +111,8 @@
                            HorizontalOptions="Center"
                            Grid.Row="2"
                            Margin="0, 0, 10, 0"/>
-                    
-                    <customClasses:FontIcon Text="{Binding StarIcon}"
+
+                    <customClasses:FontIcon Text="{Binding Path=BindingContext.StarIcon, Source={x:Reference ReposList}}"
                                             FontSize="14"
                                             FontFamily="Octicons"
                                             Grid.Column="2"
@@ -128,7 +128,7 @@
                            HorizontalOptions="End"
                            Grid.Row="2" />
 
-                    <customClasses:FontIcon Text="{Binding ForkIcon}"
+                    <customClasses:FontIcon Text="{Binding Path=BindingContext.ForkIcon, Source={x:Reference ReposList}}"
                                             FontSize="14"
                                             FontFamily="Octicons"
                                             Grid.Column="4"

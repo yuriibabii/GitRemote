@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using MvvmHelpers;
+using static GitRemote.Common.Enums;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -19,55 +21,54 @@ namespace GitRemote.GitHub.Managers
                 new InMemoryCredentialStore(new Credentials(session?.GetToken())));
         }
 
-        public async Task<IEnumerable<StarredRepositoryModel>> GetStarsAsync()
+        public async Task<ObservableRangeCollection<StarredRepositoryModel>> GetStarsAsync(int pageNumber = 1)
         {
             try
             {
-                var gitHubStarredRepos = await _gitHubClient.Activity.Starring.GetAllForCurrent();
-
+                var options = new ApiOptions { PageCount = 1, PageSize = 20, StartPage = pageNumber };
+                var gitHubStarredRepos = await _gitHubClient.Activity.Starring.GetAllForCurrent(options);
                 var gitRemoteStarredRepos = new List<StarredRepositoryModel>();
 
-                foreach ( var starredRepos in gitHubStarredRepos )
+                foreach (var repo in gitHubStarredRepos)
                 {
-                    var starredReposModel = new StarredRepositoryModel
+                    var model = new StarredRepositoryModel
                     {
-                        StarredRepositoryType = GetStarredRepositoryType(starredRepos),
-                        StarredRepositoryDescription = starredRepos.Description,
-                        IsDescription = !string.IsNullOrEmpty(starredRepos.Description),
-                        StarredRepositoryLanguage = starredRepos.Language,
-                        StarredRepositoryStarIcon = FontIconsService.Octicons.Star,
-                        StarredRepositoryStarsCount = Convert.ToString(starredRepos.StargazersCount),
-                        StarredRepositoryForkIcon = FontIconsService.Octicons.RepoForked,
-                        StarredRepositoryForksCount = Convert.ToString(starredRepos.ForksCount)
+                        Type = GetRepositoryType(repo),
+                        Description = repo.Description,
+                        IsDescription = !string.IsNullOrEmpty(repo.Description),
+                        Language = repo.Language ?? string.Empty,
+                        IsLanguage = repo.Language != null,
+                        StarsCount = Convert.ToString(repo.StargazersCount),
+                        ForksCount = Convert.ToString(repo.ForksCount)
                     };
 
                     //Separating Full name to have repos name bold
-                    var fullName = starredRepos.FullName;
+                    var fullName = repo.FullName;
                     var separateIndex = fullName.LastIndexOf('/') + 1;
-                    starredReposModel.StarredRepositoryName = fullName.Substring(separateIndex);
-                    starredReposModel.StarredRepositoryPath = fullName.Substring(0, separateIndex);
-                    starredReposModel.OwnerName = starredReposModel.StarredRepositoryPath.Substring(0,
-                        starredReposModel.StarredRepositoryPath.Length - 1);
-                    gitRemoteStarredRepos.Add(starredReposModel);
+                    model.Name = fullName.Substring(separateIndex);
+                    model.Path = fullName.Substring(0, separateIndex);
+                    model.OwnerName = model.Path.Substring(0, model.Path.Length - 1);
+                    gitRemoteStarredRepos.Add(model);
                 }
 
-                return gitRemoteStarredRepos;
+                return new ObservableRangeCollection<StarredRepositoryModel>(gitRemoteStarredRepos);
             }
-            catch ( WebException ex )
+            catch (WebException ex)
             {
                 throw new Exception("Something wrong with internet connection, try to On Internet " + ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new Exception("Getting starredRepos from github failed! " + ex.Message);
             }
         }
 
-        private string GetStarredRepositoryType(Repository repos)
+        private RepositoriesTypes GetRepositoryType(Repository repository)
         {
-            return repos.Fork ? "Fork"
-                              : ( repos.Private ? "Private"
-                                                : "Public" );
+            if (repository.Fork) return RepositoriesTypes.Fork;
+            if (repository.Private) return RepositoriesTypes.Private;
+
+            return RepositoriesTypes.Public;
         }
     }
 }

@@ -22,9 +22,7 @@ namespace GitRemote.Models
         public string Description { get; set; }
         public string Language { get; set; }
         public bool IsLanguage { get; set; }
-        public string StarIcon { get; set; }
         public string StarsCount { get; set; }
-        public string ForkIcon { get; set; }
         public string ForksCount { get; set; }
 
         #endregion
