@@ -24,67 +24,57 @@ namespace GitRemote.ViewModels
 {
     public class MasterPageViewModel : BindableBase
     {
+        #region Properties
+
+        private string _profileImageUrl;
         public string ProfileImageUrl
         {
             get { return _profileImageUrl; }
             set { SetProperty(ref _profileImageUrl, value); }
         }
 
-        private string _profileImageUrl = "ic_account_circle_white_24dp.png";
-
+        private string _profileNickName = "Unknown";
         public string ProfileNickName
         {
             get { return _profileNickName; }
             set { SetProperty(ref _profileNickName, value); }
         }
 
-        private string _profileNickName = "Unknown";
+        public string GistsFontIcon => FontIconsService.Octicons.Gist;
+        public string SignOutFontIcon => FontIconsService.Octicons.SignOut;
+        public string DashboardFontIcon => FontIconsService.Octicons.Dashboard;
+        public string BookmarksFontIcon => FontIconsService.Octicons.Bookmark;
+        public string IssueFontIcon => FontIconsService.Octicons.IssueOpened;
 
-        private readonly NavigationParameters _navigationParameters;
-
-        #region ImagePaths
-        public string GistsPageImagePath => "ic_list_gists.png";
-        public string DashboardPageImagePath => "ic_list_issueDashboard.png";
-        public string BookmarksPageImagePath => "ic_list_bookmarks.png";
-        public string IssuePageImagePath => "ic_list_issue.png";
         #endregion
 
         #region Commands
-        public DelegateCommand ExitCommand { get; }
-        public DelegateCommand GistsCommand { get; }
-        public DelegateCommand DashboardCommand { get; }
-        public DelegateCommand BookmarksCommand { get; }
-        public DelegateCommand IssueCommand { get; }
+        public DelegateCommand SignOutCommand => new DelegateCommand(OnSignOut);
+        public DelegateCommand GistsCommand => new DelegateCommand(OnGists);
+        public DelegateCommand DashboardCommand => new DelegateCommand(OnDashboard);
+        public DelegateCommand BookmarksCommand => new DelegateCommand(OnBookmarks);
+        public DelegateCommand IssueCommand => new DelegateCommand(OnIssue);
         #endregion
 
+        private readonly NavigationParameters _navigationParameters;
         private readonly INavigationService _navigationService;
         private readonly Session _session;
-        private readonly IMetricsHelper _metricsHelper;
         private readonly IEventAggregator _eventAggregator;
+        private readonly IMetricsHelper _metricsHelper;
 
         public MasterPageViewModel(INavigationService navigationService,
             ISecuredDataProvider securedDataProvider,
-            IMetricsHelper metricsHelper,
-            IEventAggregator eventAggregator)
+            IEventAggregator eventAggregator,
+            IMetricsHelper metricsHelper)
         {
-            #region Initialize Commands
-
-            ExitCommand = new DelegateCommand(OnExitTapped);
-            GistsCommand = new DelegateCommand(OnGistsTapped);
-            DashboardCommand = new DelegateCommand(OnDashboardTapped);
-            BookmarksCommand = new DelegateCommand(OnBookmarksTapped);
-            IssueCommand = new DelegateCommand(OnIssueTapped);
-            #endregion
-
             _navigationService = navigationService;
-            _metricsHelper = metricsHelper;
             _eventAggregator = eventAggregator;
+            _metricsHelper = metricsHelper;
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
             _navigationParameters = new NavigationParameters { { nameof(Session), _session } };
             SetProfileImageAndNickNameAsync();
         }
-
 
         /// <summary>
         /// Creates gitHubClient with existing token, gets Avatar from url and nickname
@@ -111,9 +101,7 @@ namespace GitRemote.ViewModels
             }
         }
 
-        #region CommandHandlers
-
-        private void OnGistsTapped()
+        private void OnGists()
         {
             GistsManager.SetTabsTitles(_metricsHelper);
 
@@ -125,7 +113,7 @@ namespace GitRemote.ViewModels
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private void OnDashboardTapped()
+        private void OnDashboard()
         {
             var path = $"{nameof(IssueDashboardPage)}";
             _eventAggregator
@@ -134,7 +122,7 @@ namespace GitRemote.ViewModels
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private void OnBookmarksTapped()
+        private void OnBookmarks()
         {
             var path = $"{nameof(BookmarksPage)}";
             _eventAggregator
@@ -143,7 +131,7 @@ namespace GitRemote.ViewModels
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private void OnIssueTapped()
+        private void OnIssue()
         {
             if (!_navigationParameters.ContainsKey("OwnerName"))
                 _navigationParameters.Add("OwnerName", "UniorDev");
@@ -161,15 +149,11 @@ namespace GitRemote.ViewModels
             MessagingCenter.Send("JustIgnore", HideMasterPage);
         }
 
-        private async void OnExitTapped()
+        private async void OnSignOut()
         {
             UserManager.SetLastUser(string.Empty);
             var navigationStack = new Uri("https://Necessary/" + $"{nameof(StartPage)}", UriKind.Absolute);
             await _navigationService.NavigateAsync(navigationStack, animated: false);
         }
-
-
-        #endregion
-
     }
 }

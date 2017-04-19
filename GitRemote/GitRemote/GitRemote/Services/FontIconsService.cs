@@ -25,7 +25,10 @@
             public const string CloudDownload = "\uf00b";
             public const string Directory = "\uf016";
             public const string SubModule = "\uf017";
-
+            public const string Gist = "\uf00e";
+            public const string SignOut = "\uf032";
+            public const string Dashboard = "\uf07d";
+            public const string Bookmark = "\uf07b";
         }
 
         public static class FontAwesome
