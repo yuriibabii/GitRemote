@@ -58,8 +58,8 @@
                                                 Margin="0, 5, 10, 0"
                                                 CacheDuration="5"
                                                 DownsampleToViewSize="True"
-                                                LoadingPlaceholder="ic_list_NoAvatar.png"
-                                                BitmapOptimizations="True">
+                                                LoadingPlaceholder="ic_list_NoAvatar.png">
+                        <!--BitmapOptimizations="True"-->
                         <ffimageloading:CachedImage.Transformations>
                             <transformations:RoundedTransformation Radius="100" />
                         </ffimageloading:CachedImage.Transformations>
@@ -79,7 +79,7 @@
                                   Grid.Row="1"
                                   Orientation="Horizontal"
                                   Spacing="5"
-                                  VerticalOptions="End">
+                                  VerticalOptions="Center">
                         
                         <customClasses:FontIcon x:Name="ActionTypeIcon"
                                                 Text="{Binding ActionTypeFontIcon}"

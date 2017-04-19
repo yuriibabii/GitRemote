@@ -10,10 +10,12 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Microsoft.Practices.ObjectBuilder2;
 using MvvmHelpers;
 using static GitRemote.Common.Enums;
 using static GitRemote.Services.ExceptionsService;
 using static GitRemote.Services.FontIconsService;
+using static GitRemote.Services.StringService.UrlManipulation;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -57,10 +59,14 @@ namespace GitRemote.GitHub.Managers
                     newsItem.Title = item.Element(title)?.Value;
                     var date = XName.Get("published", ConstantsService.AtomNamespace);
                     newsItem.Date = TimeService.ConvertToFriendly(item.Element(date)?.Value);
-                    newsItem.AvatarUrl = item.Elements().ElementAtOrDefault(6).Attribute("url").Value; // Hardcoded, but happy cuz works
+                    var rawAvatarUrl = item.Elements()
+                        .ElementAtOrDefault(6)
+                        .Attribute("url")
+                        .Value; // Hardcoded, but happy cuz works
+
+                    newsItem.AvatarUrl = GetImageUrl(rawAvatarUrl);
 
                     var splitedTitle = newsItem.Title?.Split(' ');
-
                     if (splitedTitle != null)
                     {
                         newsItem.Perfomer = splitedTitle[0];
@@ -152,6 +158,16 @@ namespace GitRemote.GitHub.Managers
                 case "made": return ActionTypes.Made;
                 default: throw new ActionTypeNotFoundException();
             }
+        }
+
+        private string GetImageUrl(string rawAvatarUrl)
+        {
+            var url = rawAvatarUrl.GetPlainUrlAndParametersFromUrl();
+            var urlParameters = url.parameters.Split('&');
+            var indexOfSizeParameter = (urlParameters.GetIndexOfUrlParameter("s"));
+            var list = urlParameters.ToList();
+            list.RemoveAt(indexOfSizeParameter);
+            return url.plainUrl + '?' + list.JoinStrings("&");
         }
     }
 }

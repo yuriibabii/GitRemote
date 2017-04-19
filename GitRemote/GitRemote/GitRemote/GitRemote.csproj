@@ -89,6 +89,7 @@
     <Compile Include="DI\IKeyboardHelper.cs" />
     <Compile Include="DI\ISecuredDataProvider.cs" />
     <Compile Include="Services\ExceptionsService.cs" />
+    <Compile Include="Services\ExtensionMethodsService.cs" />
     <Compile Include="Services\FontIconsService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\StringService.cs" />
@@ -330,6 +331,9 @@
     <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="Validation, Version=2.4.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Validation.2.4.15\lib\portable-net45+win8+wp8+wpa81\Validation.dll</HintPath>

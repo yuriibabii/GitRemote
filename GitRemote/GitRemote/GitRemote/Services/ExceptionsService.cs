@@ -25,5 +25,22 @@ namespace GitRemote.Services
 
             }
         }
+
+        public class SpecificParameterInUrlNotFoundException : Exception
+        {
+            public SpecificParameterInUrlNotFoundException()
+            {
+
+            }
+            public SpecificParameterInUrlNotFoundException(string message) : base(message)
+            {
+
+            }
+
+            public SpecificParameterInUrlNotFoundException(string message, Exception inner) : base(message, inner)
+            {
+
+            }
+        }
     }
 }
