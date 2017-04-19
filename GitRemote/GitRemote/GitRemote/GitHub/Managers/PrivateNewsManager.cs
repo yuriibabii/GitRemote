@@ -15,7 +15,6 @@ using MvvmHelpers;
 using static GitRemote.Common.Enums;
 using static GitRemote.Services.ExceptionsService;
 using static GitRemote.Services.FontIconsService;
-using static GitRemote.Services.StringService.UrlManipulation;
 
 namespace GitRemote.GitHub.Managers
 {

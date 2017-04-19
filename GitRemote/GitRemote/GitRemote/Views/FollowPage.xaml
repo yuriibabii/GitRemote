@@ -5,50 +5,67 @@
              xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:converters="clr-namespace:GitRemote.Converters;assembly=GitRemote"
+             xmlns:behaviors="clr-namespace:GitRemote.Behaviors;assembly=GitRemote"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="GitRemote.Views.FollowPage">
 
-  <controls:FlowListView x:Name="FollowsList"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Follows.Result}"
-                         HasUnevenRows="True"
-                         FlowColumnCount="1">
+    <controls:FlowListView x:Name="FollowsList"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           FlowItemsSource="{Binding Follows.Result}"
+                           HasUnevenRows="True"
+                           FlowColumnCount="1"
+                           FlowLastTappedItem="{Binding TappedItem}"
+                           FlowItemTappedCommand="{Binding ItemTappedCommand}"
+                           IsPullToRefreshEnabled="True"
+                           RefreshCommand="{Binding RefreshCommand}"
+                           IsRefreshing="{Binding IsBusy}">
 
-    <controls:FlowListView.FlowColumnTemplate>
-      <DataTemplate>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        Margin="15, 15, 15, 0">
-          <ffimageloading:CachedImage
-            x:Name="Avatar"
-            Source="{Binding ImageUrl}"
-            HeightRequest="50"
-            WidthRequest="50"
-            AbsoluteLayout.LayoutBounds="10, 0, 50, 50"
-            AbsoluteLayout.LayoutFlags="None"
-            Margin="0, 0, 15, 10"
-            CacheDuration ="5"
-            DownsampleToViewSize = "True"
-            LoadingPlaceholder="ic_list_NoAvatar.png">
-            <ffimageloading:CachedImage.Transformations>
-              <transformations:RoundedTransformation Radius="100"/>
-            </ffimageloading:CachedImage.Transformations>
-          </ffimageloading:CachedImage>
+        <controls:FlowListView.Footer>
+            <BoxView HeightRequest="10"
+                     Color="Transparent" />
+        </controls:FlowListView.Footer>
 
-          <Label x:Name="Name"
-                 Text="{Binding Name}"
-                 TextColor="Black"
-                 FontSize="20"
-                 Margin="0, 0, 0, 10"
-                 AbsoluteLayout.LayoutBounds="65, 5, 1, 1"
-                 AbsoluteLayout.LayoutFlags="SizeProportional"
-                 LineBreakMode="TailTruncation"/>
+        <controls:FlowListView.FlowColumnTemplate>
+            <DataTemplate>
+                <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Margin="15, 15, 15, 0">
+                    <ffimageloading:CachedImage x:Name="Avatar"
+                                                Source="{Binding ImageUrl}"
+                                                HeightRequest="50"
+                                                WidthRequest="50"
+                                                AbsoluteLayout.LayoutBounds="10, 0, 50, 50"
+                                                AbsoluteLayout.LayoutFlags="None"
+                                                Margin="0, 0, 15, 10"
+                                                CacheDuration="5"
+                                                DownsampleToViewSize="True"
+                                                LoadingPlaceholder="ic_list_NoAvatar.png">
+                        <ffimageloading:CachedImage.Transformations>
+                            <transformations:RoundedTransformation Radius="100" />
+                        </ffimageloading:CachedImage.Transformations>
+                    </ffimageloading:CachedImage>
+
+                    <Label x:Name="Name"
+                           Text="{Binding Name}"
+                           TextColor="Black"
+                           FontSize="20"
+                           Margin="0, 0, 0, 10"
+                           AbsoluteLayout.LayoutBounds="65, 5, 1, 1"
+                           AbsoluteLayout.LayoutFlags="SizeProportional"
+                           LineBreakMode="TailTruncation" />
+
+                </AbsoluteLayout>
+
+            </DataTemplate>
+        </controls:FlowListView.FlowColumnTemplate>
+
+        <controls:FlowListView.Behaviors>
+            <behaviors:FlowListViewPaginating Command="{Binding LoadMoreCommand}"
+                                              Converter="{x:Static converters:ItemVisibilityEventConverter.Instance}" />
+        </controls:FlowListView.Behaviors>
         
-        </AbsoluteLayout>
-
-      </DataTemplate>
-    </controls:FlowListView.FlowColumnTemplate>
-  </controls:FlowListView>
+    </controls:FlowListView>
 
 </ContentPage>

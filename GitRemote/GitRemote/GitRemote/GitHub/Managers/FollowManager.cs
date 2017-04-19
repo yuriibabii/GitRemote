@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using GitRemote.Models;
 using GitRemote.Services;
+using MvvmHelpers;
 using Octokit;
 using Octokit.Internal;
 
@@ -21,22 +22,23 @@ namespace GitRemote.GitHub.Managers
                 new InMemoryCredentialStore(new Credentials(session?.GetToken())));
         }
 
-        public async Task<IEnumerable<FollowModel>> GetFollowsAsync()
+        public async Task<ObservableRangeCollection<FollowModel>> GetFollowsAsync(int pageNumber = 1)
         {
             try
             {
                 IEnumerable<User> gitHubFollowUsers;
+                var options = new ApiOptions { PageCount = 1, PageSize = 20, StartPage = pageNumber };
 
                 //Switch Follow page
                 if (IsActiveFollowersPage)
                 {
                     IsActiveFollowersPage = !IsActiveFollowersPage;
-                    gitHubFollowUsers = await _gitHubClient.User.Followers.GetAllForCurrent();
+                    gitHubFollowUsers = await _gitHubClient.User.Followers.GetAllForCurrent(options);
                 }
                 else
                 {
                     IsActiveFollowersPage = !IsActiveFollowersPage;
-                    gitHubFollowUsers = await _gitHubClient.User.Followers.GetAllFollowingForCurrent();
+                    gitHubFollowUsers = await _gitHubClient.User.Followers.GetAllFollowingForCurrent(options);
                 }
 
                 var gitRemoteFollowUsers = new List<FollowModel>();
@@ -45,14 +47,14 @@ namespace GitRemote.GitHub.Managers
                 {
                     var followItem = new FollowModel()
                     {
-                        Name = StringService.IsNullOrEmpty(user?.Name) ? user?.Login : user?.Name,
-                        ImageUrl = user?.AvatarUrl
+                        Name = StringService.IsNullOrEmpty(user.Name) ? user.Login : user.Name,
+                        ImageUrl = user.AvatarUrl
                     };
 
                     gitRemoteFollowUsers.Add(followItem);
                 }
 
-                return gitRemoteFollowUsers;
+                return new ObservableRangeCollection<FollowModel>(gitRemoteFollowUsers);
             }
 
             catch (WebException ex)
