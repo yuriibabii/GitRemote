@@ -8,83 +8,86 @@
              x:Class="GitRemote.Views.NotificationsPage"
              Title="Notifications">
 
-  <controls:FlowListView x:Name="NotifyList"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand"
-                         FlowItemsSource="{Binding Notifications}"
-                         HasUnevenRows="True"
-                         FlowColumnCount="1">
+    <controls:FlowListView x:Name="NotifyList"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           FlowItemsSource="{Binding Notifications.Result}"
+                           HasUnevenRows="True"
+                           FlowColumnCount="1"
+                           IsPullToRefreshEnabled="True"
+                           RefreshCommand="{Binding RefreshCommand}"
+                           IsRefreshing="{Binding IsBusy}">
 
-    <controls:FlowListView.FlowColumnTemplate>
-      <DataTemplate>
-        <Grid VerticalOptions="Start"
-              HorizontalOptions="Start"
-              Margin="15, 15, 15, 25"
-              ColumnSpacing="0"
-              RowSpacing="5">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="{Binding Source={x:Reference Name=NotifyList}, Path=BindingContext.ColumnWidth}"/>
+        <controls:FlowListView.Footer>
+            <BoxView HeightRequest="25"
+                     Color="Transparent" />
+        </controls:FlowListView.Footer>
+        
+        <controls:FlowListView.FlowColumnTemplate>
+            <DataTemplate>
+                <Grid VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      Padding="15, 15, 15, 10"
+                      ColumnSpacing="10"
+                      RowSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="{Binding Source={x:Reference Name=NotifyList}, Path=BindingContext.ColumnWidth}" />
 
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="18"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-          </Grid.RowDefinitions>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
 
-          <customClasses:FontIcon
-            x:Name="TypeIcon"
-            Text="{Binding NotifyTypeIcon}"
-            FontSize="20"
-            TextColor="{Binding NotifyTypeIconColor}"
-            FontFamily="Octicons"
-            Grid.Column="0"
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            VerticalOptions="Start"
-            HorizontalOptions="Start"
-            Margin="0, 3, 10, 0"/>
+                    <customClasses:FontIcon Text="{Binding TypeIcon}"
+                                            FontSize="20"
+                                            TextColor="{Binding TypeIconColor}"
+                                            FontFamily="Octicons"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Start"
+                                            Margin="0, 5, 0, 0" />
 
-          <Label x:Name="FullName"
-                 Text="{Binding NotifyFullName}"
-                 TextColor="Black"
-                 FontSize="14"
-                 Grid.Column="1"
-                 VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"
-                 Grid.Row="0"
-                 LineBreakMode="TailTruncation"/>
+                    <Label Text="{Binding FullName}"
+                           TextColor="Black"
+                           FontSize="14"
+                           Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           Grid.Row="0"
+                           LineBreakMode="TailTruncation" />
 
-          <StackLayout  Grid.Column="1"
-                        Grid.Row="1"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Margin="0, 0, 0, 2">
+                    <StackLayout  Grid.Column="1"
+                                  Grid.Row="1"
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand"
+                                  Margin="0, 0, 0, 2">
 
-            <Label x:Name="Title"
-                   FontAttributes="{Binding NotifyFontAttr}"
-                   FontSize="16"
-                   Text="{Binding NotifyTitle}"
-                   TextColor="{Binding NotifyTitleColor}"
-                   LineBreakMode="CharacterWrap"/>
-          </StackLayout>
+                        <Label FontAttributes="{Binding FontAttr}"
+                               FontSize="16"
+                               Text="{Binding Title}"
+                               TextColor="{Binding TitleColor}"
+                               LineBreakMode="CharacterWrap" />
+                    </StackLayout>
 
-          <Label x:Name="PublishedTime"
-                 TextColor="Black"
-                 Text="{Binding NotifyTime}"
-                 FontSize="12"
-                 LineBreakMode="TailTruncation"
-                 Grid.Column="1"
-                 Grid.Row="2"
-                 VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"/>
+                    <Label x:Name="PublishedTime"
+                           TextColor="Black"
+                           Text="{Binding Time}"
+                           FontSize="12"
+                           LineBreakMode="TailTruncation"
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand" />
 
-        </Grid>
+                </Grid>
 
-      </DataTemplate>
-    </controls:FlowListView.FlowColumnTemplate>
+            </DataTemplate>
+        </controls:FlowListView.FlowColumnTemplate>
 
-
-  </controls:FlowListView>
+    </controls:FlowListView>
 </ContentPage>

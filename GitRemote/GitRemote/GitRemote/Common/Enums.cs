@@ -24,5 +24,12 @@ namespace GitRemote.Common
             Public,
             Fork
         }
+
+        public enum NotificationsTypes
+        {
+            Issue,
+            Commit,
+            PullRequest
+        }
     }
 }

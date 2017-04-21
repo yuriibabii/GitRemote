@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using MvvmHelpers;
+using static GitRemote.Common.Enums;
+using static GitRemote.Common.Enums.NotificationsTypes;
 
 namespace GitRemote.GitHub.Managers
 {
@@ -19,29 +22,30 @@ namespace GitRemote.GitHub.Managers
                new InMemoryCredentialStore(new Credentials(session?.GetToken())));
         }
 
-        public async Task<IEnumerable<NotificationModel>> GetNotificationsAsync()
+        public async Task<ObservableRangeCollection<NotificationModel>> GetNotificationsAsync(int pageNumber = 1)
         {
             try
             {
+                var options = new ApiOptions { PageCount = 1, PageSize = 20, StartPage = pageNumber };
                 var notifyRequest = new NotificationsRequest { All = true };
-                var gitHubNotifies = await _gitHubClient.Activity.Notifications.GetAllForCurrent(notifyRequest);
+                var gitHubNotifies = await _gitHubClient.Activity.Notifications.GetAllForCurrent(notifyRequest, options);
                 var gitRemoteNotifies = new List<NotificationModel>();
 
                 foreach ( var notification in gitHubNotifies )
                 {
                     var notify = new NotificationModel()
                     {
-                        NotifyFullName = notification.Repository.FullName,
-                        NotifyTitle = notification.Subject.Title,
-                        NotifyTime = TimeService.ConvertToFriendly(notification.UpdatedAt),
+                        FullName = notification.Repository.FullName,
+                        Title = notification.Subject.Title,
+                        Time = TimeService.ConvertToFriendly(notification.UpdatedAt),
                         IsRead = !notification.Unread,
-                        NotifyTypeIcon = GetNotifyTypeIcon(notification)
+                        TypeIcon = GetNotifyTypeIcon(notification)
                     };
 
                     gitRemoteNotifies.Add(notify);
                 }
 
-                return gitRemoteNotifies;
+                return new ObservableRangeCollection<NotificationModel>(gitRemoteNotifies);
             }
             catch ( WebException ex )
             {
@@ -56,9 +60,9 @@ namespace GitRemote.GitHub.Managers
 
         private string GetNotifyTypeIcon(Notification notification)
         {
-            return notification.Subject.Type == "Issue"
+            return notification.Subject.Type == nameof(NotificationsTypes.Issue)
                 ? FontIconsService.Octicons.IssueOpened
-                : ( notification.Subject.Type == "Commit"
+                : ( notification.Subject.Type == nameof(NotificationsTypes.Commit)
                                 ? FontIconsService.Octicons.Commit
                                 : FontIconsService.Octicons.PullRequest );
         }

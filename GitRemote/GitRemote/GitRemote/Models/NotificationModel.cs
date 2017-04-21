@@ -5,11 +5,7 @@ namespace GitRemote.Models
 {
     public class NotificationModel : BindableBase
     {
-
-        #region ElementsPropertiesDeclaretion
-
         private bool _isRead;
-
         public bool IsRead
         {
             get { return _isRead; }
@@ -19,75 +15,66 @@ namespace GitRemote.Models
 
                 if ( IsRead )
                 {
-                    NotifyTitleColor = Color.FromHex("054678");
-                    NotifyTypeIconColor = Color.FromHex("054678");
-                    NotifyFontAttr = FontAttributes.None;
+                    TitleColor = Color.FromHex("054678");
+                    TypeIconColor = Color.FromHex("054678");
+                    FontAttr = FontAttributes.None;
                 }
                 else
                 {
-                    NotifyTitleColor = Color.Black;
-                    NotifyTypeIconColor = Color.Black;
-                    NotifyFontAttr = FontAttributes.Bold;
+                    TitleColor = Color.Black;
+                    TypeIconColor = Color.Black;
+                    FontAttr = FontAttributes.Bold;
                 }
             }
         }
 
-        private string _notifyTypeIcon;
-
-        public string NotifyTypeIcon
+        private string _typeIcon;
+        public string TypeIcon
         {
-            get { return _notifyTypeIcon; }
-            set { SetProperty(ref _notifyTypeIcon, value); }
+            get { return _typeIcon; }
+            set { SetProperty(ref _typeIcon, value); }
         }
 
-        private string _notifyFullName;
-
-        public string NotifyFullName
+        private string _fullName;
+        public string FullName
         {
-            get { return _notifyFullName; }
-            set { SetProperty(ref _notifyFullName, value); }
+            get { return _fullName; }
+            set { SetProperty(ref _fullName, value); }
         }
 
-        private string _notifyTitle;
-
-        public string NotifyTitle
+        private string _title;
+        public string Title
         {
-            get { return _notifyTitle; }
-            set { SetProperty(ref _notifyTitle, value); }
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
         }
 
-        private string _notifyTime;
-
-        public string NotifyTime
+        private string _time;
+        public string Time
         {
-            get { return _notifyTime; }
-            set { SetProperty(ref _notifyTime, value); }
+            get { return _time; }
+            set { SetProperty(ref _time, value); }
         }
 
-        private Color _notifyTitleColor;
-
-        public Color NotifyTitleColor
+        private Color _titleColor;
+        public Color TitleColor
         {
-            get { return _notifyTitleColor; }
-            set { SetProperty(ref _notifyTitleColor, value); }
+            get { return _titleColor; }
+            set { SetProperty(ref _titleColor, value); }
         }
 
-        private Color _notifyTypeIconColor;
-
-        public Color NotifyTypeIconColor
+        private Color _typeIconColor;
+        public Color TypeIconColor
         {
-            get { return _notifyTypeIconColor; }
-            set { SetProperty(ref _notifyTypeIconColor, value); }
+            get { return _typeIconColor; }
+            set { SetProperty(ref _typeIconColor, value); }
         }
 
-        private FontAttributes _notifyFontAttr;
-
-        public FontAttributes NotifyFontAttr
+        private FontAttributes _fontAttr;
+        public FontAttributes FontAttr
         {
-            get { return _notifyFontAttr; }
-            set { SetProperty(ref _notifyFontAttr, value); }
+            get { return _fontAttr; }
+            set { SetProperty(ref _fontAttr, value); }
         }
-
-        #endregion
     }
 }
