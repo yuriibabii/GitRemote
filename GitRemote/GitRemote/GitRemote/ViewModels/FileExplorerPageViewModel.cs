@@ -13,10 +13,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using GitRemote.GitHub;
 using GitRemote.Views.PopUp;
+using Prism.Events;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
 using static GitRemote.Services.MessageService.Messages;
 using static System.String;
+using static GitRemote.Services.MessageService;
 
 namespace GitRemote.ViewModels
 {
@@ -62,6 +64,8 @@ namespace GitRemote.ViewModels
         #endregion
 
         #region Fields
+
+        private readonly IEventAggregator _eventAggregator;
         private readonly INavigationService _navigationService;
         private readonly IDevice _device;
         private FileExplorerManager _manager;
@@ -79,13 +83,20 @@ namespace GitRemote.ViewModels
         private NavigationParameters _parameters;
         #endregion
 
-        public FileExplorerPageViewModel(INavigationService navigationService, IDevice device)
+        public FileExplorerPageViewModel(INavigationService navigationService,
+            IDevice device,
+            IEventAggregator eventAggregator)
         {
             _navigationService = navigationService;
             _device = device;
+            _eventAggregator = eventAggregator;
             ListItemTappedCommand = new DelegateCommand(OnListItemTapped);
             BotPanelTapped = new DelegateCommand(OnBotPanelTapped);
-            MessagingCenter.Subscribe<string>(this, PublicReposCurrentTabChanged, OnTabChanged);
+
+            _eventAggregator
+                .GetEvent<PublicReposCurrentTabChanged>()
+                .Subscribe(OnTabChanged);
+
             MessagingCenter.Subscribe<Grid>(this, TakePathPartsGrid, SetPathPartsGrid);
             MessagingCenter.Subscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage, OnBranchSelected);
             MessagingCenter.Subscribe<SendDataToPublicReposParticularPagesModel>
@@ -104,7 +115,7 @@ namespace GitRemote.ViewModels
 
         private async void OnStar()
         {
-            if (await _manager.CheckStar())
+            if ( await _manager.CheckStar() )
             {
                 await _manager.UnstarRepository();
                 StarText = "Star";
@@ -157,7 +168,7 @@ namespace GitRemote.ViewModels
 
         private void OnTabChanged(string s)
         {
-            if (s == "Code")
+            if ( s == "Code" )
                 MessagingCenter.Subscribe<string>(this, HardwareBackPressed, OnHardwareBackPressed);
             else
                 MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
@@ -167,7 +178,7 @@ namespace GitRemote.ViewModels
         {
             _manager = new FileExplorerManager(data.Session, data.OwnerName, data.ReposName);
             _reposName = data.ReposName;
-            ((HyperLinkLabel)((StackLayout)_pathPartsGrid.Children[1]).Children[0]).Text = _reposName;
+            ( ( HyperLinkLabel )( ( StackLayout )_pathPartsGrid.Children[1] ).Children[0] ).Text = _reposName;
             await _manager.SetCurrentBranchAsync();
             CurrentBranch = _manager.CurrentBranch;
             _manager.ClearCurrentPath();
@@ -217,7 +228,7 @@ namespace GitRemote.ViewModels
         {
             _pathPartsGrid = grid;
 
-            for (var i = 1; i < _pathPartsGrid.Children.Count; i++)
+            for ( var i = 1; i < _pathPartsGrid.Children.Count; i++ )
                 _pathPartsGrid.Children.RemoveAt(i);
 
             _partsIndexes.Add(0);
@@ -264,22 +275,22 @@ namespace GitRemote.ViewModels
         private void OnPathPartTapped(int[] indexes)
         {
             var i = _pathPartsGrid.Children.Count - 2; // Cause FontIcon
-            for (; i > indexes[0]; i--)
+            for ( ; i > indexes[0]; i-- )
             {
-                var deadLayout = (StackLayout)_pathPartsGrid.Children[i + 1];
+                var deadLayout = ( StackLayout )_pathPartsGrid.Children[i + 1];
                 var doubleCount = deadLayout.Children.Count / 2f; // Cause slashes
-                _partsCount -= (int)Math.Floor(doubleCount) + 1;
+                _partsCount -= ( int )Math.Floor(doubleCount) + 1;
                 _pathPartsGrid.Children.RemoveAt(i + 1);
-                var nextLayout = (StackLayout)_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
+                var nextLayout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
                 nextLayout.Children.RemoveAt(nextLayout.Children.Count - 1);
                 _partsIndexes.RemoveAt(i);
                 _layoutIsFull.RemoveAt(_layoutIsFull.Count - 1);
             }
 
-            var layout = (StackLayout)_pathPartsGrid.Children[i + 1];
+            var layout = ( StackLayout )_pathPartsGrid.Children[i + 1];
             _layoutIsFull[_layoutIsFull.Count - 1] = false;
 
-            for (var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2) // "* 2" - Cause slashes
+            for ( var j = layout.Children.Count - 1; j > indexes[1] * 2; j -= 2 ) // "* 2" - Cause slashes
             {
                 _partsCount--;
                 layout.Children.RemoveAt(j);
@@ -287,7 +298,7 @@ namespace GitRemote.ViewModels
                 _partsIndexes[i]--;
             }
 
-            var tappedPart = (HyperLinkLabel)layout.Children[layout.Children.Count - 1];
+            var tappedPart = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
             tappedPart.IsUnderline = false;
             tappedPart.TextColor = Color.Black;
 
@@ -299,13 +310,13 @@ namespace GitRemote.ViewModels
             _manager.PopUpExplorerToIndex(count);
             FileTree = _manager.GetFiles(Empty);
             RaisePropertyChanged(nameof(FileTree));
-            if (count == 1)
+            if ( count == 1 )
                 PathPartsGridIsVisible = false;
         }
 
         private void OnListItemTapped()
         {
-            if (LastTappedItem.IsFolder)
+            if ( LastTappedItem.IsFolder )
             {
                 FileTree = _manager.GetFiles(LastTappedItem.Name + "/");
                 RaisePropertyChanged(nameof(FileTree));
@@ -317,16 +328,16 @@ namespace GitRemote.ViewModels
 
         private void AddPathPart(string pathPartName)
         {
-            var layout = (StackLayout)_pathPartsGrid.Children[_layoutIsFull.Count];
+            var layout = ( StackLayout )_pathPartsGrid.Children[_layoutIsFull.Count];
             var layoutText = Empty;
 
-            foreach (var child in layout.Children)
+            foreach ( var child in layout.Children )
             {
-                layoutText = Concat(layoutText, ((Label)child).Text);
+                layoutText = Concat(layoutText, ( ( Label )child ).Text);
             }
 
             var size = DependencyService.Get<IMetricsHelper>()
-                .GetLabelWidth(layoutText + "/" + pathPartName + "/", (float)((Label)layout.Children[0]).FontSize);
+                .GetLabelWidth(layoutText + "/" + pathPartName + "/", ( float )( ( Label )layout.Children[0] ).FontSize);
 
             #region Slash
 
@@ -341,11 +352,11 @@ namespace GitRemote.ViewModels
 
             #endregion
 
-            var previousPart = (HyperLinkLabel)layout.Children[layout.Children.Count - 1];
+            var previousPart = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
             previousPart.IsUnderline = true;
             previousPart.TextColor = _hyperLinkColor;
 
-            if (layout.Spacing * (layout.Children.Count + 1) + size < PathPartsRowWidth.Value) // If needed space less than available
+            if ( layout.Spacing * ( layout.Children.Count + 1 ) + size < PathPartsRowWidth.Value ) // If needed space less than available
             {
                 _partsIndexes[_partsIndexes.Count - 1]++;
                 #region LinkLabel
@@ -420,25 +431,25 @@ namespace GitRemote.ViewModels
 
         private void OnHardwareBackPressed(string sender)
         {
-            if (_manager.PopUpExplorer()) // if there is something to PopUp
+            if ( _manager.PopUpExplorer() ) // if there is something to PopUp
             {
                 MessagingCenter.Send("false", SetIsExecuteHardwareBack);
                 FileTree = _manager.GetFiles(Empty);
                 RaisePropertyChanged(nameof(FileTree));
                 _partsCount--;
-                if (_partsCount == 1)
+                if ( _partsCount == 1 )
                     PathPartsGridIsVisible = false;
 
-                var layout = (StackLayout)_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
-                if (_pathPartsGrid.Children.Count > 2) // If current layout not firts layout (Cause FontIcon)
+                var layout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
+                if ( _pathPartsGrid.Children.Count > 2 ) // If current layout not firts layout (Cause FontIcon)
                 {
-                    if (layout.Children.Count < 2) // Remove whole layout
+                    if ( layout.Children.Count < 2 ) // Remove whole layout
                     {
                         _pathPartsGrid.Children.Remove(layout);
                         _layoutIsFull.RemoveAt(_layoutIsFull.Count - 1);
-                        var previousLayout = (StackLayout)_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
+                        var previousLayout = ( StackLayout )_pathPartsGrid.Children[_pathPartsGrid.Children.Count - 1];
                         previousLayout.Children.RemoveAt(previousLayout.Children.Count - 1);
-                        var label = (HyperLinkLabel)previousLayout.Children[previousLayout.Children.Count - 1];
+                        var label = ( HyperLinkLabel )previousLayout.Children[previousLayout.Children.Count - 1];
                         label.IsUnderline = false;
                         label.TextColor = Color.Black;
                         _partsIndexes.RemoveAt(_partsIndexes.Count - 1);
@@ -447,7 +458,7 @@ namespace GitRemote.ViewModels
                     {
                         layout.Children.RemoveAt(layout.Children.Count - 1);
                         layout.Children.RemoveAt(layout.Children.Count - 1);
-                        var label = (HyperLinkLabel)layout.Children[layout.Children.Count - 1];
+                        var label = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
                         label.IsUnderline = false;
                         label.TextColor = Color.Black;
                         _partsIndexes[_partsIndexes.Count - 1]--;
@@ -456,12 +467,12 @@ namespace GitRemote.ViewModels
                 }
                 else
                 {
-                    if (layout.Children.Count > 1) // Remove elements in first layout
+                    if ( layout.Children.Count > 1 ) // Remove elements in first layout
                     {
                         layout.Children.RemoveAt(layout.Children.Count - 1);
-                        if (layout.Children.Count > 1)
+                        if ( layout.Children.Count > 1 )
                             layout.Children.RemoveAt(layout.Children.Count - 1);
-                        var label = (HyperLinkLabel)layout.Children[layout.Children.Count - 1];
+                        var label = ( HyperLinkLabel )layout.Children[layout.Children.Count - 1];
                         label.IsUnderline = false;
                         label.TextColor = Color.Black;
                         _partsIndexes[_partsIndexes.Count - 1]--;
@@ -471,7 +482,10 @@ namespace GitRemote.ViewModels
             }
             else
             {
-                MessagingCenter.Unsubscribe<string>(this, PublicReposCurrentTabChanged);
+                _eventAggregator
+                    .GetEvent<PublicReposCurrentTabChanged>()
+                    .Unsubscribe(OnTabChanged);
+
                 MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
                 MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
                 MessagingCenter.Unsubscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage);
@@ -488,7 +502,10 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            MessagingCenter.Unsubscribe<string>(this, PublicReposCurrentTabChanged);
+            _eventAggregator
+                .GetEvent<PublicReposCurrentTabChanged>()
+                .Unsubscribe(OnTabChanged);
+
             MessagingCenter.Unsubscribe<string>(this, HardwareBackPressed);
             MessagingCenter.Unsubscribe<Grid>(this, TakePathPartsGrid);
             MessagingCenter.Unsubscribe<BranchSelectModel>(this, TakeBranchModelFromPopUpPage);

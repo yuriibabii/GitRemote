@@ -27,6 +27,8 @@ namespace GitRemote.Services
             public const string Empty = "";
             public const string OwnerName = nameof(OwnerName);
             public const string ReposName = nameof(ReposName);
+            public const string IgnoreString = nameof(IgnoreString);
+            public const string Issues = nameof(Issues);
         }
     }
 }

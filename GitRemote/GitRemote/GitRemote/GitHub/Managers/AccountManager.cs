@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GitRemote.DI;
-using GitRemote.Services;
 using Octokit;
+using static GitRemote.Services.ConstantsService;
 using static GitRemote.Services.StringService.SoftStrings;
 
 namespace GitRemote.GitHub.Managers
@@ -35,7 +35,7 @@ namespace GitRemote.GitHub.Managers
                 {PrivateFeedUrl, privateFeedUrl}
             };
 
-            _securedDataProvider.Store(login, ConstantsService.ProviderName, securedDictionary);
+            _securedDataProvider.Store(login, ProviderName, securedDictionary);
             UserManager.AddedUsers.Add(login);
         }
 
@@ -68,9 +68,9 @@ namespace GitRemote.GitHub.Managers
         /// <param name="login"></param>
         private void CheckForExist(string login)
         {
-            var retreiveResponce = _securedDataProvider.Retreive(ConstantsService.ProviderName, login)?.Username;
+            var retreiveResponce = _securedDataProvider.Retreive(ProviderName, login)?.Username;
 
-            if (retreiveResponce == null) return;
+            if ( retreiveResponce == null ) return;
 
             _securedDataProvider.Clear(retreiveResponce);
 

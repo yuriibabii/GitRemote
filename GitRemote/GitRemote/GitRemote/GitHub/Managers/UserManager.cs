@@ -17,9 +17,11 @@ namespace GitRemote.GitHub.Managers
         public UserManager(ISecuredDataProvider securedDataProvider)
         {
             //Takes a list of accounts names from storage and reverses it to suit display in ListView
-            _users = new ObservableCollection<string>(securedDataProvider.RetreiveAll(ConstantsService.ProviderName)
-                                                                         .Select(acc => acc.Username)
-                                                                         .Reverse());
+            _users = new ObservableCollection<string>
+                (securedDataProvider
+                    .RetreiveAll(ConstantsService.ProviderName)
+                    .Select(acc => acc.Username)
+                    .Reverse());
         }
 
         /// <summary>

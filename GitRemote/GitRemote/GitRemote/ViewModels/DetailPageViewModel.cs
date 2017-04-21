@@ -10,7 +10,6 @@ using System.Linq;
 using Prism.Events;
 using Xamarin.Forms;
 using static GitRemote.Services.MessageService.MessageModels;
-using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.ViewModels
 {
@@ -30,13 +29,15 @@ namespace GitRemote.ViewModels
             var token = securedDataProvider.Retreive(ConstantsService.ProviderName, UserManager.GetLastUser());
             _session = new Session(UserManager.GetLastUser(), token.Properties.First().Value);
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<MessageService.DoNavigation>().Subscribe(OnDoNavigation);
+
+            _eventAggregator
+                .GetEvent<MessageService.DoNavigation>()
+                .Subscribe(OnDoNavigation, false);
         }
 
-        private async void OnDoNavigation(DoNavigationModel model)
+        private void OnDoNavigation(DoNavigationModel model)
         {
-            _eventAggregator.GetEvent<MessageService.DoNavigation>().Unsubscribe(OnDoNavigation);
-            await _navigationService.NavigateAsync(model.Path, model.Parameters);
+            _navigationService.NavigateAsync(model.Path, model.Parameters);
         }
 
         private async void OnNotificationsTapped()
@@ -48,20 +49,12 @@ namespace GitRemote.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey(nameof(Session)))
+            if ( parameters.ContainsKey(nameof(Session)) )
                 _session = parameters[nameof(Session)] as Session;
-
-            _eventAggregator.GetEvent<MessageService.DoNavigation>().Subscribe(OnDoNavigation);
         }
 
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
-        }
+        public void OnNavigatingTo(NavigationParameters parameters) { }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-            _eventAggregator.GetEvent<MessageService.DoNavigation>().Unsubscribe(OnDoNavigation);
-        }
-
+        public void OnNavigatedFrom(NavigationParameters parameters) { }
     }
 }

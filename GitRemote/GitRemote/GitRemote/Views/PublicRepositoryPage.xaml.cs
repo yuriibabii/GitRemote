@@ -1,20 +1,32 @@
-﻿using Xamarin.Forms;
+﻿using Prism.Events;
+using Xamarin.Forms;
+using static GitRemote.Services.MessageService;
 using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.Views
 {
     public partial class PublicRepositoryPage
     {
-        public PublicRepositoryPage()
+        private readonly IEventAggregator _eventAggregator;
+
+        public PublicRepositoryPage(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
+
             InitializeComponent();
-            MessagingCenter.Subscribe<string>(this, SetCurrentTabWithTitle, OnSetCurrentTabWithTitle);
+
+            _eventAggregator
+                .GetEvent<SetCurrentTabWithTitle>()
+                .Subscribe(OnSetCurrentTabWithTitle);
         }
 
         protected override void OnCurrentPageChanged()
         {
-            MessagingCenter.Send(CurrentPage.Title, PublicReposCurrentTabChanged);
             base.OnCurrentPageChanged();
+
+            _eventAggregator
+                .GetEvent<PublicReposCurrentTabChanged>()
+                .Publish(CurrentPage.Title);
         }
 
         private void OnSetCurrentTabWithTitle(string title)
@@ -31,7 +43,10 @@ namespace GitRemote.Views
 
         protected override void OnDisappearing()
         {
-            MessagingCenter.Unsubscribe<string>(this, SetCurrentTabWithTitle);
+            _eventAggregator
+                .GetEvent<SetCurrentTabWithTitle>()
+                .Unsubscribe(OnSetCurrentTabWithTitle);
+
             base.OnDisappearing();
         }
     }

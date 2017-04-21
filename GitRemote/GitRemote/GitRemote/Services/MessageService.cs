@@ -8,19 +8,16 @@ namespace GitRemote.Services
     {
         public static class Messages
         {
-            public const string HardwareBackPressed = "HardwareBackPressed";
-            public const string TakePathPartsGrid = "TakePathPartsGrid";
-            public const string TakeBranchModelFromPopUpPage = "TakeBranchModelFromPopUpPage";
-            public const string SendManagerToBranchPopUpPage = "SendManagerToBranchPopUpPage";
-            public const string ScrollToActivatedBranchItem = "ScrollToActivatedBranchItem";
-            public const string SendDataToPublicReposParticularPages = "SendDataToPublicReposParticularPages";
-            public const string SetIsExecuteHardwareBack = "SetIsExecuteHardwareBack";
-            public const string PublicReposCurrentTabChanged = "PublicReposCurrentTabChanged";
-            public const string SetCurrentTabWithTitle = "SetCurrentTabWithTitle";
-            public const string HideMasterPage = "HideMasterPage";
-            public const string SendManagerToFilterPopUp = "SendManagerToFilterPopUp";
-            public const string TakeAssigneeNameFromPopUpPage = "TakeAssigneeNameFromPopUpPage";
-            public const string TakeMilestoneNameFromPopUpPage = "TakeMilestoneNameFromPopUpPage";
+            public const string HardwareBackPressed = nameof(HardwareBackPressed);
+            public const string TakePathPartsGrid = nameof(TakePathPartsGrid);
+            public const string TakeBranchModelFromPopUpPage = nameof(TakeBranchModelFromPopUpPage);
+            public const string SendManagerToBranchPopUpPage = nameof(SendManagerToBranchPopUpPage);
+            public const string ScrollToActivatedBranchItem = nameof(ScrollToActivatedBranchItem);
+            public const string SendDataToPublicReposParticularPages = nameof(SendDataToPublicReposParticularPages);
+            public const string SetIsExecuteHardwareBack = nameof(SetIsExecuteHardwareBack);
+            public const string SendManagerToFilterPopUp = nameof(SendManagerToFilterPopUp);
+            public const string TakeAssigneeNameFromPopUpPage = nameof(TakeAssigneeNameFromPopUpPage);
+            public const string TakeMilestoneNameFromPopUpPage = nameof(TakeMilestoneNameFromPopUpPage);
         }
 
         public static class MessageModels
@@ -53,5 +50,8 @@ namespace GitRemote.Services
         }
 
         public class DoNavigation : PubSubEvent<MessageModels.DoNavigationModel> { }
+        public class HideMasterPage : PubSubEvent<string> { }
+        public class SetCurrentTabWithTitle : PubSubEvent<string> { }
+        public class PublicReposCurrentTabChanged : PubSubEvent<string> { }
     }
 }

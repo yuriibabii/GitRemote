@@ -1,14 +1,21 @@
-﻿using Xamarin.Forms;
+﻿using GitRemote.Services;
+using Prism.Events;
+using Xamarin.Forms;
 using static GitRemote.Services.MessageService.Messages;
 
 namespace GitRemote.Views
 {
     public partial class PrivateProfilePage
     {
-        public PrivateProfilePage()
+        private readonly IEventAggregator _eventAggregator;
+
+        public PrivateProfilePage(IEventAggregator eventAggregator)
         {
             InitializeComponent();
-            MessagingCenter.Subscribe<string>(this, HideMasterPage, OnHideMasterPage);
+            _eventAggregator = eventAggregator;
+            _eventAggregator
+                .GetEvent<MessageService.HideMasterPage>()
+                .Subscribe(OnHideMasterPage);
         }
 
         private void OnHideMasterPage(string ignore)
@@ -18,7 +25,10 @@ namespace GitRemote.Views
 
         protected override void OnDisappearing()
         {
-            MessagingCenter.Unsubscribe<string>(this, HideMasterPage);
+            _eventAggregator
+                .GetEvent<MessageService.HideMasterPage>()
+                .Unsubscribe(OnHideMasterPage);
+
             base.OnDisappearing();
         }
     }
